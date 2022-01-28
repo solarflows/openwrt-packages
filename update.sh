@@ -74,6 +74,7 @@ git clone --depth 1 https://github.com/Erope/openwrt_nezha && mvdir openwrt_nezh
 git clone --depth 1 https://github.com/lvqier/luci-app-dnsmasq-ipset
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly
+git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly-dark
 git clone --depth 1 https://github.com/nickberry17/luci-proto-modemmanager
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 git clone --depth 1 https://github.com/zhaojh329/oui
