@@ -15,7 +15,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=dymo-cups-drivers-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://www.dymo-label-printers.co.uk/user/
-PKG_MD5SUM:=skip
+PKG_MD5SUM:=8774f98bbe8d57f5b337019ae86a23f0
 PKG_BUILD_DIR:=$(BUILD_DIR)/dymo-cups-drivers-$(PKG_VERSION_RC)
 TARGET_LDFLAGS+=-Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
