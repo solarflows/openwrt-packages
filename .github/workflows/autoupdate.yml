@@ -7,6 +7,8 @@ on:
       - '.github/workflows/update.yml'
   watch:
     types: started
+  schedule:
+    - cron: 0 20 * * *
   repository_dispatch:
 
 env:
