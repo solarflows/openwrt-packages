@@ -24,7 +24,16 @@ define Package/qBittorrent-Enhanced-Edition
 	CATEGORY:=Network
 	TITLE:=bittorrent client programmed in C++ / Qt
 	URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
-	DEPENDS:=+boost +libtorrent-rasterbar +python3 +qt5-core +qt5-network +qt5-sql +qt5-xml
+	DEPENDS:=+libgcc +libstdcpp \
+		+boost \
+		+libtorrent-rasterbar \
+		+libopenssl \
+		+python3 \
+		+qt5-core \
+		+qt5-network \
+		+qt5-sql \
+		+qt5-xml \
+		+zlib
 endef
 
 define Package/qBittorrent-Enhanced-Edition/description
@@ -43,8 +52,10 @@ CONFIGURE_ARGS += \
 MAKE_VARS += \
 	INSTALL_ROOT="$(PKG_INSTALL_DIR)"
 
-
-TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
+define Build/Prepare
+	$(call Build/Prepare/Default)
+	$(SED) '/<context>/{:a;N;/<\/context>/!ba;/\/gui\//d}' `ls $(PKG_BUILD_DIR)/src/lang/qbittorrent_*.ts`
+endef
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
