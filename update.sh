@@ -75,7 +75,6 @@ git clone --depth 1 https://github.com/lvqier/luci-app-dnsmasq-ipset
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly-dark
-git clone --depth 1 https://github.com/hyy-666/luci-proto-modemmanager
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 git clone --depth 1 https://github.com/zhaojh329/oui
 git clone --depth 1 https://github.com/DevOpenWRT-Router/luci-app-cpulimit
@@ -129,6 +128,7 @@ svn co https://github.com/immortalwrt/packages/trunk/net/smartdns
 # svn co https://github.com/linkease/istore-ui/trunk/app-store-ui
 svn co https://github.com/animefansxj/luci-app-smartinfo/trunk/luci-dir/applications/luci-app-smartinfo
 svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser
+svn co https://github.com/openwrt/luci/trunk/protocols/luci-proto-modemmanager
 svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir services
 svn co https://github.com/sirpdboy/netspeedtest/trunk/luci-app-netspeedtest
 svn co https://github.com/linkease/nas-packages-luci/trunk/luci && mvdir luci
