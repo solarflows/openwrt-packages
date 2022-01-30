@@ -35,10 +35,6 @@ define Package/qBittorrent-Enhanced-Edition/description
 	well as many features.
 endef
 
-CONFIGURE_VARS += \
-	QT_QMAKE="$(TOOLCHAIN_DIR)/bin" \
-	PKG_CONFIG_PATH="$(TOOLCHAIN_DIR)/lib/pkgconfig"
-
 CONFIGURE_ARGS += \
 	--disable-gui \
 	--enable-stacktrace=no \
@@ -47,10 +43,8 @@ CONFIGURE_ARGS += \
 MAKE_VARS += \
 	INSTALL_ROOT="$(PKG_INSTALL_DIR)"
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) '/<context>/{:a;N;/<\/context>/!ba;/\/gui\//d}' `ls $(PKG_BUILD_DIR)/src/lang/qbittorrent_*.ts`
-endef
+
+TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
