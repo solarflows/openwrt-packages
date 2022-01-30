@@ -77,7 +77,7 @@ git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly-dark
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 git clone --depth 1 https://github.com/zhaojh329/oui
-git clone --depth 1 https://github.com/DevOpenWRT-Router/luci-app-cpulimit
+# git clone --depth 1 https://github.com/DevOpenWRT-Router/luci-app-cpulimit
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
 
