@@ -4,7 +4,8 @@ name: Update packages
 on:
   push:
     paths:
-      - '.github/workflows/update.yml'
+      - '.github\workflows\autoupdate.yml'
+      - 'update.sh'
   watch:
     types: started
   schedule:
