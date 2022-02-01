@@ -36,7 +36,7 @@ git clone --depth 1 https://github.com/shanglanxin/luci-app-homebridge
 # git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon
 # git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 # git clone --depth 1 https://github.com/jerrykuku/luci-app-vssr
-git clone --depth 1 https://github.com/jerrykuku/luci-app-ttnode
+# git clone --depth 1 https://github.com/jerrykuku/luci-app-ttnode
 git clone --depth 1 https://github.com/jefferymvp/luci-app-koolproxyR
 # git clone --depth 1 https://github.com/peter-tank/luci-app-dnscrypt-proxy2
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
@@ -73,8 +73,7 @@ git clone --depth 1 https://github.com/CHN-beta/xmurp-ua
 git clone --depth 1 https://github.com/Erope/openwrt_nezha && mvdir openwrt_nezha
 git clone --depth 1 https://github.com/lvqier/luci-app-dnsmasq-ipset
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
-git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly
-git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-Butterfly-dark
+git clone --depth 1 https://github.com/hyy-666/luci-theme-Butterfly-dark
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 git clone --depth 1 https://github.com/zhaojh329/oui
 # git clone --depth 1 https://github.com/DevOpenWRT-Router/luci-app-cpulimit
@@ -91,7 +90,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman
 # svn co https://github.com/doushang/luci-app-shortcutmenu/trunk/luci-app-shortcutmenu
 # svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus
-svn co https://github.com/Ysurac/openmptcprouter-feeds/trunk/luci-app-iperf
+# svn co https://github.com/Ysurac/openmptcprouter-feeds/trunk/luci-app-iperf
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt aliyundrive && mvdir aliyundrive
 svn co https://github.com/immortalwrt/packages/trunk/net/amule
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-amule
