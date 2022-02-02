@@ -1,11 +1,11 @@
 <%#
 
-	luci-theme-Butterfly
+	luci-theme-butongwifi
 	Copyright 2017 Tracemouse <tracemouse@wcan.in>
-
+	
 	Smart Menu:
 	https://www.smartmenus.org/
-
+	
 	Font Awesome:
 	http://fontawesome.io/
 
@@ -151,13 +151,14 @@
         </style>
     <% end -%>
     <script src="<%=resource%>/xhr.js?v=git-17.016.25656-a85807d"></script>
-    <script src="<%=media%>/js/jquery.min.js?v=1.0"></script>
 </head>
 
 <body class="lang_<%=luci.i18n.context.lang%> <%- if node then %><%= striptags( node.title ) %><%- end %> <% if luci.dispatcher.context.authsession then %>logged-in<% end %>">
 
-
-
+	<div class="header-logo">
+		<div class="container"><img src="<%=media%>/images/logo.png" style="margin-top:0px;"></div>
+	</div>
+ 
 <nav class="main-nav" role="navigation">
 
   <!-- Mobile menu toggle button (hamburger/x icon) -->
@@ -203,7 +204,7 @@
 			 %>
 			 <li class="slide">
 				 <a class="menu" data-title="<%=pcdata(striptags(nnode.title))%>" href="#">
-				 <i class="fa fa-gear"></i>
+				 <i class="fa fa-gear"></i> 
 				 <%=pcdata(striptags(translate(nnode.title)))%>
 				 </a>
 				 <%- submenu("/" .. category .. "/" .. r .. "/", nnode) %>
@@ -222,7 +223,7 @@
 			 %>
   </ul>
 </nav>
-
+ 
 
  <div class="main">
 	 <div style="" class="loading"><span><div class="loading-img"></div>Loading...</span></div>

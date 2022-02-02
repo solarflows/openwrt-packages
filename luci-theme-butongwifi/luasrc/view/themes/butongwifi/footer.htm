@@ -1,11 +1,11 @@
 <%#
 
-	luci-theme-Butterfly
+	luci-theme-butongwifi
 	Copyright 2017 Tracemouse <tracemouse@wcan.in>
-
+	
 	Smart Menu:
 	https://www.smartmenus.org/
-
+	
 	Font Awesome:
 	http://fontawesome.io/
 
@@ -34,8 +34,8 @@
 %>
                 </div>
                 <footer class="mobile-hide" style="text-align:center">
-                    <a href="https://github.com/openwrt/luci">Powered by<%= ver.luciname %> (<%= ver.luciversion %>)</a> /
-                    <a href="https://github.com/openwrt/openwrt/"><%= ver.distversion %></a> /
+                    <a href="https://github.com/openwrt/luci">Powered by <%= ver.luciname %> (<%= ver.luciversion %>)</a> /
+                    <a href="http://butong.me/"><%= ver.distversion %></a> /
                     <% if #categories > 1 then %>
                     <ul class="breadcrumb pull-right" id="modemenu">
                         <% for i, r in ipairs(categories) do %>
@@ -53,7 +53,7 @@
     </script>
     <script src="<%=media%>/js/jquery.min.js?v=git-17.016.25656-a85807d"></script>
     <script src="<%=media%>/js/script.js?v=git-17.016.25656-a85807d"></script>
-    <script src="<%=media%>/js/jquery.smartmenus.min.js?v=git-20.033.33881-3c72cd1"></script>
+    <script src="<%=media%>/js/jquery.smartmenus.min.js"></script>
 
 	<script>
 
@@ -96,42 +96,46 @@ $(document).ready(function(){
 	 $(".node-main-login > .main form > div > h2").html(str);
 
 	 //add icons for navbar
-                 status = ".main-nav > #main-menu > .slide > a[data-title='Status'] > i";
-	 $(status).attr("class","fa fa-bank");
-
+	 status = ".main-nav > #main-menu > .slide > a[data-title='Status'] > i";
+	 $(status).attr("class","fa fa-bar-chart");
+ 
 	 status = ".main-nav > #main-menu > .slide > a[data-title='System'] > i";
-	 $(status).attr("class","fa fa-windows");
-
-                   status = ".main-nav > #main-menu > .slide > a[data-title='Docker'] > i";
-	  $(status).attr("class","fa fa-cubes");
-
-                    status = ".main-nav > #main-menu > .slide > a[data-title='Control'] > i";
-	  $(status).attr("class","fa fa-user-md");
-
-                   status = ".main-nav > #main-menu > .slide > a[data-title='NAS'] > i";
-	  $(status).attr("class","fa fa-recycle");
-
-                    status = ".main-nav > #main-menu > .slide > a[data-title='VPN'] > i";
-	  $(status).attr("class","fa fa-paper-plane-o");
+	 $(status).attr("class","fa fa-cogs");
 
 	 status = ".main-nav > #main-menu > .slide > a[data-title='Services'] > i";
-	 $(status).attr("class","fa fa-outdent");
+	 $(status).attr("class","fa fa-server");
 
 	 status = ".main-nav > #main-menu > .slide > a[data-title='Network'] > i";
 	 $(status).attr("class","fa fa-globe");
-
-                  status = ".main-nav > #main-menu > .slide > a[data-title='Bandwidth Monitor'] > i";
-	 $(status).attr("class","fa fa-rocket");
-
-                   status = ".main-nav > #main-menu > .slide > a[data-title='QOS'] > i";
-	 $(status).attr("class","fa fa-support");
-
+	
 	 status = ".main-nav > #main-menu > .slide > a[data-title='Quick Guide'] > i";
 	 $(status).attr("class","fa fa-paper-plane");
 
-                    status = ".main-nav > #main-menu > .slide > a[data-title='Logout'] > i";
-	 $(status).attr("class","fa fa-mail-reply-all");
+	 //icons
+	 /*
+	 $('img').each(function(){
+		 img = $(this).attr('src');
+		 //alert(img);
+		if (img.indexOf("images/wifi.png"))
+		{
+			$(this).after("<i class='fa fa-wifi'></i>");
+			$(this).remove();
+		}
+
+	 });
+	 */
+
 });
+
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9d64293436438b5ccd227072050a13a7";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 </body>
 </html>

@@ -1,18 +1,12 @@
 .main-nav {
   background: #3092c0;
-
-  background-image: -webkit-gradient(
-    linear,
-    to bottom,
-    to top,
-    color-stop(0%, #3298c8),
-    color-stop(100%, #2e8cb8)
-  );
+ 
+  background-image: -webkit-gradient(linear, to bottom, to top, color-stop(0%, #3298c8), color-stop(100%, #2e8cb8));
   background-image: -webkit-linear-gradient(to bottom, #3298c8, #2e8cb8);
   background-image: -moz-linear-gradient(to bottom, #3298c8, #2e8cb8);
   background-image: -o-linear-gradient(to bottom, #3298c8, #2e8cb8);
   background-image: linear-gradient(to bottom, #3298c8, #2e8cb8);
-
+ 
   /*-webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
@@ -41,7 +35,7 @@
   display: block;
   padding: 10px 10px 10px 20px;
   color: #fff;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 22px;
   font-weight: normal;
   line-height: 29px;
@@ -62,10 +56,11 @@
   }
 }
 
+
 /* Mobile menu top separator */
 
 #main-menu:before {
-  content: "";
+  content: '';
   display: block;
   height: 1px;
   font: 1px/1px sans-serif;
@@ -78,6 +73,7 @@
     display: none;
   }
 }
+
 
 /* Mobile menu toggle button */
 
@@ -95,6 +91,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
 /* hamburger icon */
 
 .main-menu-btn-icon,
@@ -111,16 +108,17 @@
 }
 
 .main-menu-btn-icon:before {
-  content: "";
+  content: '';
   top: -7px;
   left: 0;
 }
 
 .main-menu-btn-icon:after {
-  content: "";
+  content: '';
   top: 7px;
   left: 0;
 }
+
 
 /* x icon */
 
@@ -141,6 +139,7 @@
   transform: rotate(45deg);
 }
 
+
 /* hide menu state checkbox (keep it visible to screen readers) */
 
 #main-menu-state {
@@ -153,6 +152,7 @@
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
 }
+
 
 /* hide the menu in mobile view */
 
