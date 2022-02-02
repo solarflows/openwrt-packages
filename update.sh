@@ -71,7 +71,6 @@ git clone --depth 1 https://github.com/QiuSimons/openwrt-mos && mvdir openwrt-mo
 git clone -b lede https://github.com/pymumu/luci-app-smartdns
 git clone --depth 1 https://github.com/CHN-beta/xmurp-ua
 git clone --depth 1 https://github.com/Erope/openwrt_nezha && mvdir openwrt_nezha
-git clone --depth 1 https://github.com/lvqier/luci-app-dnsmasq-ipset
 git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
 git clone --depth 1 https://github.com/hyy-666/luci-theme-Butterfly-dark
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
