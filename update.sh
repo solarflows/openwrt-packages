@@ -80,6 +80,7 @@ git clone --depth 1 https://github.com/zhaojh329/oui
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
 git clone --depth 1 https://github.com/apollo-ng/luci-theme-darkmatter
+git clone --depth 1 https://github.com/aboutboy/luci-theme-butongwifi
 git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
 
 # svn co https://github.com/Lienol/openwrt-package/branches/other/lean/luci-app-autoreboot
