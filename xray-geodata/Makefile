@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xray-geodata
-PKG_VERSION:=202201272209
+PKG_VERSION:=202202042208
 PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_LICENSE_FILES:=LICENSE
@@ -13,7 +13,7 @@ define Download/geoip-enhached
   URL:=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$(PKG_VERSION)/
   URL_FILE:=geoip.dat
   FILE:=$(GEOIP_ENHACHED_FILE)
-  HASH:=151b99429ee06300583d8067539cfc05d50fe1e4a27a7fe4698d41e62377085e
+  HASH:=1fc3066e5ae02b7bcf1fcd34314ef8212acc98492cbd5453eda6edf12fe37e6a
 endef
 
 GEOSITE_ENHACHED_FILE:=geosite.dat.$(PKG_VERSION)
@@ -21,7 +21,7 @@ define Download/geosite-enhached
   URL:=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$(PKG_VERSION)/
   URL_FILE:=geosite.dat
   FILE:=$(GEOSITE_ENHACHED_FILE)
-  HASH:=c77f1d3d0c6fa77b943af9df282c7e1949ce18376fbb9738faecea70fd752a09
+  HASH:=e5ce53a10b8026a370a416dcda1dcc0e9c79884253a9db18cb9bd53cbcb28a2b
 endef
 
 define Package/xray-geodata/template
