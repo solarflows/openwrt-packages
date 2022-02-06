@@ -49,7 +49,6 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-jd-dailybonus
 # git clone --depth 1 https://github.com/hubbylei/luci-app-clash
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 git clone --depth 1 https://github.com/esirplayground/luci-app-poweroff
-git clone --depth 1 https://github.com/lvqier/luci-app-dnsmasq-ipset
 # git clone --depth 1 https://github.com/small-5/ddns-scripts-dnspod
 # git clone --depth 1 https://github.com/small-5/ddns-scripts-aliyun
 git clone --depth 1 https://github.com/walkingsky/luci-wifidog luci-app-wifidog
