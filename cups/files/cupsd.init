@@ -15,22 +15,14 @@ start() {
 	mkdir -m 0755 -p /var/cups
 	mkdir -m 0755 -p /var/spool/cups/tmp
 	service_start /usr/sbin/cupsd
+	echo "cupsd Server has start,please open http://openwrt-ip:631."
 }
 
 stop() {
-
-	killall -q -9 cupsd
-    echo "cupsd Server has stopped."
-}
-
-restart () {
-    stop
-	sleep 2
-	start
-	
+	service_stop /usr/sbin/cupsd
+	echo "cupsd Server has stopped."
 }
 
 reload() {
 	service_reload /usr/sbin/cupsd
-	
 }
