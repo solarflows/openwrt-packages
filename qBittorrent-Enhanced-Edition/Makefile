@@ -27,7 +27,7 @@ define Package/$(PKG_NAME)
 	URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	DEPENDS:=+libgcc +boost \
 		+libstdcpp \
-		+libtorrent-rasterbar \
+		+rblibtorrent \
 		+libopenssl \
 		+python3 \
 		+qt5-core \
