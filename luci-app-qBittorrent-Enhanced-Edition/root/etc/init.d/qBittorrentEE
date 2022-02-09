@@ -14,7 +14,7 @@ run_qBittorrentEE()
 	if [ $enable ]; then
 		local profile_dir
 		config_get profile_dir "$1" profile_dir
-		qBittorrentEE-nox -d --profile="$profile_dir"
+		qbittorrent-nox -d --profile="$profile_dir"
 	fi
 }
 
@@ -30,5 +30,5 @@ start()
 
 stop()
 {
-	killall "qBittorrentEE-nox" >/dev/null 2>&1
+	killall "qbittorrent-nox" >/dev/null 2>&1
 }
