@@ -35,7 +35,7 @@ define Package/$(PKG_NAME)/description
 	well as many features.
 endef
 
-define Download/qBittorrent-Enhanced-Edition
+define Download/$(PKG_NAME)
   URL:=https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-$(PKG_VERSION)
   URL_FILE:=qbittorrent-enhanced-nox_$(PKG_ARCH)-linux-musl_static.zip
   FILE:=qbittorrent-nox_$(PKG_ARCH).zip
@@ -52,4 +52,5 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/qbittorrent-nox $(1)/usr/bin/
 endef
 
+$(eval $(call Download,$(PKG_NAME)))
 $(eval $(call BuildPackage,$(PKG_NAME)))
