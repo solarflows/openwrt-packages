@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qBittorrent-Enhanced-Edition
-PKG_VERSION:=4.4.0.10
+PKG_VERSION:=4.3.9.10
 PKG_RELEASE=$(AUTORELEASE)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/c0re100/qBittorrent-Enhanced-Edition/tar.gz/release-$(PKG_VERSION)?
-PKG_HASH:=7296c4ed516baaa004f78ed6ef3be8f2f932cabaf6339eb14b11aeda53907fd9
+PKG_HASH:=4b450edf5cf6c58c1f9d330891f0d76d47db6d61c6d09961c533529035d66ad0
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-release-$(PKG_VERSION)
 
@@ -25,8 +25,7 @@ define Package/$(PKG_NAME)
 	CATEGORY:=Network
 	TITLE:=bittorrent client programmed in C++ / Qt
 	URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
-	DEPENDS:=+libgcc +boost \
-		+libstdcpp \
+	DEPENDS:=+libgcc +libstdcpp \
 		+rblibtorrent \
 		+libopenssl \
 		+python3 \
@@ -53,13 +52,11 @@ CONFIGURE_ARGS += \
 MAKE_VARS += \
 	INSTALL_ROOT="$(PKG_INSTALL_DIR)"
 
-define Package/$(PKG_NAME)/conffiles
-/etc/qBittorrent
-endef
 
-define Build/Prepare
-	$(call Build/Prepare/Default)
-	$(SED) '/<context>/{:a;N;/<\/context>/!ba;/\/gui\//d}' `ls $(PKG_BUILD_DIR)/src/lang/qbittorrent_*.ts`
+TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
+
+define Package/$(PKG_NAME)/conffiles
+/etc/qbittorrent
 endef
 
 define Package/$(PKG_NAME)/install
