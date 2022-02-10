@@ -12,8 +12,8 @@ LUCI_DEPENDS:= \
 define Package/$(PKG_NAME)/config
 	choice
 		prompt "Build Version Selection"
-		default PACKAGE_luci-app-qBittorrent-Enhanced-Edition_static if aarch64||x86_64
-		default PACKAGE_luci-app-qBittorrent-Enhanced-Edition_dynamic if !(aarch64||x86_64)
+		default PACKAGE_luci-app-qBittorrent-Enhanced-Edition_dynamic if aarch64||x86_64
+		default PACKAGE_luci-app-qBittorrent-Enhanced-Edition_static if !(aarch64||x86_64)
 
 		config PACKAGE_luci-app-qBittorrent-Enhanced-Edition_static
 			bool "Static_Version"

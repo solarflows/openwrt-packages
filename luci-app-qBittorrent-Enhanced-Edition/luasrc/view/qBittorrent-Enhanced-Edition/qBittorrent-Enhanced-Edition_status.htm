@@ -14,7 +14,7 @@ XHR.poll(3, '<%=url([[admin]], [[nas]], [[qBittorrent-Enhanced-Edition]], [[stat
 );
 
 function openwebui() {
-	var url = window.location.host + ":<%=luci.sys.exec("uci -q get qbittorrentEE.@qbittorrentEE[0].port"):gsub(" ^% s * (.-) % s * $", " % 1")%>";
+	var url = window.location.host + ":<%=luci.sys.exec("uci -q get qBittorrentEE.@qBittorrentEE[0].port"):gsub(" ^% s * (.-) % s * $", " % 1")%>";
 	window.open('http://' + url, 'target', '');
 };
 //]]>
