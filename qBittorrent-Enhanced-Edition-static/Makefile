@@ -36,7 +36,7 @@ define Package/$(PKG_NAME)/description
 endef
 
 define Download/$(PKG_NAME)
-  URL:=https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-$(PKG_VERSION)
+  URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-$(PKG_VERSION)
   URL_FILE:=qbittorrent-enhanced-nox_$(PKG_ARCH)-linux-musl_static.zip
   FILE:=qbittorrent-nox_$(PKG_ARCH).zip
   HASH:=skip
