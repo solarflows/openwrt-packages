@@ -82,6 +82,7 @@ git clone --depth 1 https://github.com/aboutboy/luci-theme-butongwifi
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon -b 18.06
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
+git clone --depth 1 https://github.com/immortalwrt/openwrt-filebrowser && mvdir openwrt-filebrowser
 
 # svn co https://github.com/Lienol/openwrt-package/branches/other/lean/luci-app-autoreboot
 # svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
@@ -105,7 +106,6 @@ svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-koolddns
 # svn co https://github.com/liuran001/openwrt-theme/trunk/luci-theme-argon-lr
 # svn co https://github.com/openwrt/packages/trunk/net/shadowsocks-libev
 # svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-aliddns
-svn co https://github.com/immortalwrt/openwrt-filebrowser/trunk/filebrowser
 svn co https://github.com/kenzok8/jell/trunk/luci-app-adguardhome
 svn co https://github.com/kenzok8/jell/trunk/adguardhome
 svn co https://github.com/immortalwrt/packages/trunk/net/smartdns
@@ -129,7 +129,6 @@ svn co https://github.com/immortalwrt/packages/trunk/net/smartdns
 # svn co https://github.com/linkease/istore/trunk/luci/luci-app-store
 # svn co https://github.com/linkease/istore-ui/trunk/app-store-ui
 svn co https://github.com/animefansxj/luci-app-smartinfo/trunk/luci-dir/applications/luci-app-smartinfo
-svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-filebrowser
 # svn co https://github.com/openwrt/luci/trunk/protocols/luci-proto-modemmanager
 svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir services
 svn co https://github.com/sirpdboy/netspeedtest/trunk/luci-app-netspeedtest
