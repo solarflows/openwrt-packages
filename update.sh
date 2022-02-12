@@ -78,7 +78,6 @@ git clone --depth 1 https://github.com/zhaojh329/oui
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
 git clone --depth 1 https://github.com/apollo-ng/luci-theme-darkmatter
-git clone --depth 1 https://github.com/aboutboy/luci-theme-butongwifi
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon -b 18.06
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
@@ -126,8 +125,8 @@ svn co https://github.com/immortalwrt/packages/trunk/net/smartdns
 # svn co https://github.com/kiddin9/openwrt-packages/trunk/qttools
 # svn co https://github.com/kiddin9/openwrt-packages/trunk/rblibtorrent
 # svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-advancedsetting
-# svn co https://github.com/linkease/istore/trunk/luci/luci-app-store
-# svn co https://github.com/linkease/istore-ui/trunk/app-store-ui
+svn co https://github.com/linkease/istore/trunk/luci/luci-app-store
+svn co https://github.com/linkease/istore-ui/trunk/app-store-ui
 svn co https://github.com/animefansxj/luci-app-smartinfo/trunk/luci-dir/applications/luci-app-smartinfo
 # svn co https://github.com/openwrt/luci/trunk/protocols/luci-proto-modemmanager
 svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir services
