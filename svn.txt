@@ -1,2 +1,0 @@
-https://github.com/kenzok8/jell/trunk/adguardhome
-https://github.com/kenzok8/jell/trunk/luci-app-adguardhome
