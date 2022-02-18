@@ -25,15 +25,7 @@ define Package/$(PKG_NAME)
 	CATEGORY:=Network
 	TITLE:=bittorrent client programmed in C++ / Qt
 	URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
-	DEPENDS:=+libgcc +libstdcpp \
-		+libtorrent-rasterbar \
-		+libopenssl \
-		+python3 \
-		+qt5-core \
-		+qt5-network \
-		+qt5-sql \
-		+qt5-xml \
-		+zlib
+	DEPENDS:=+boost +libtorrent-rasterbar +python3 +qt5-core +qt5-network +qt5-sql +qt5-xml
 	CONFLICTS:=
 endef
 
@@ -44,6 +36,10 @@ define Package/$(PKG_NAME)/description
 	there. qBittorrent is fast, stable and provides unicode support as
 	well as many features.
 endef
+
+CONFIGURE_VARS += \
+	QT_QMAKE="$(TOOLCHAIN_DIR)/bin" \
+	PKG_CONFIG_PATH="$(TOOLCHAIN_DIR)/lib/pkgconfig"
 
 CONFIGURE_ARGS += \
 	--disable-gui \
