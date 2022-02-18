@@ -90,7 +90,7 @@ svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt aliyundrive && mvdir aliyundrive
 svn co https://github.com/immortalwrt/packages/trunk/net/amule
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-amule
-svn co https://github.com/immortalwrt/packages/tree/master/net/antileech
+svn co https://github.com/immortalwrt/packages/trunk/net/antileech
 svn co https://github.com/immortalwrt/packages/trunk/net/cdnspeedtest
 svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-koolddns
 svn co https://github.com/kenzok8/jell/trunk/luci-app-adguardhome
