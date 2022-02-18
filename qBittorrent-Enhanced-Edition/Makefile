@@ -52,7 +52,7 @@ define Package/$(PKG_NAME)-v2
 		+qt5-sql \
 		+qt5-xml \
 		+zlib
-	CONFLICTS:=$(PKG_NAME)
+	CONFLICTS:=
 endef
 
 
