@@ -89,7 +89,11 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/qbittorrent-nox $(1)/usr/bin/
 endef
 
-Package/$(PKG_NAME)-v2/install:=$(Package/$(PKG_NAME)/install)
+define Package/$(PKG_NAME)-v2/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/qbittorrent-nox $(1)/usr/bin/
+endef
+
 
 $(eval $(call BuildPackage,$(PKG_NAME)-v2))
 $(eval $(call BuildPackage,$(PKG_NAME)))
