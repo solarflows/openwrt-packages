@@ -1,6 +1,6 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=qBittorrent-Enhanced-Edition
+PKG_NAME:=qBittorrent-Enhanced-Edition-v2
 PKG_VERSION:=4.4.1.10
 PKG_RELEASE=$(AUTORELEASE)
 
@@ -34,7 +34,7 @@ define Package/$(PKG_NAME)
 		+qt5-sql \
 		+qt5-xml \
 		+zlib
-	CONFLICTS:=$(PKG_NAME)-v2
+	CONFLICTS:=
 endef
 
 define Package/$(PKG_NAME)/description
