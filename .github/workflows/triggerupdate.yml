@@ -2,14 +2,14 @@
 name: Update packages
 
 on:
-  # push:
-  #   paths:
-  #     - '.github\workflows\autoupdate.yml'
-  #     - 'update.sh'
-  # watch:
-  #   types: started
-  schedule:
-    - cron: 0 20 * * *
+  push:
+    paths:
+      - '.github\workflows\autoupdate.yml'
+      - 'update.sh'
+  watch:
+    types: started
+  # schedule:
+  #   - cron: 0 20 * * *
   repository_dispatch:
 
 env:
@@ -59,7 +59,7 @@ jobs:
         [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
         cd $GITHUB_WORKSPACE/${{matrix.target}}
         git add .
-        git commit -m "update$(TZ='Asia/Shanghai' date +-%m.%d)"
+        git commit -m "trigger update $(TZ='Asia/Shanghai' date -d now)"
         git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hyy-666/openwrt-packages.git" HEAD:${{matrix.target}}
 
 
