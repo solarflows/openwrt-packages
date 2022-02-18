@@ -26,7 +26,7 @@ define Package/$(PKG_NAME)
 	TITLE:=bittorrent client programmed in C++ / Qt
 	URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	DEPENDS:=+libgcc +libstdcpp \
-		+rblibtorrent \
+		+libtorrent-rasterbar \
 		+libopenssl \
 		+python3 \
 		+qt5-core \
