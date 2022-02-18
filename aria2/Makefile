@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2012-2018 OpenWrt.org
+# Copyright (C) 2012-2021 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,11 +8,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=aria2
 PKG_VERSION:=1.36.0
-PKG_RELEASE:=9
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=https://github.com/aria2/aria2/releases/download/release-$(PKG_VERSION)/
-PKG_HASH:=skip
+PKG_HASH:=58d1e7608c12404f0229a3d9a4953d0d00c18040504498b483305bcb3de907a5
 PKG_INSTALL:=1
 PKG_BUILD_PARALLEL:=1
 
@@ -102,7 +102,6 @@ define Build/Prepare
 	unzip $(DL_DIR)/aria2.conf -d $(PKG_BUILD_DIR)/
 	sed -i '/rpc-secret/d' $(PKG_BUILD_DIR)/aria2.conf-master/*
 endef
-
 
 define Package/aria2/install
 	$(INSTALL_DIR) $(1)/usr/bin
