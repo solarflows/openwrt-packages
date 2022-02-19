@@ -13,4 +13,9 @@ profile_dir.default = "/etc"
 profile_dir.placeholder = "/etc"
 profile_dir.rmempty = false
 
+port = s:option(Value,"port",translate("Web Port"),translate("WEBUI listening port"))
+port.default = "8080"
+port.placeholder = "8080"
+port.rmempty = false
+
 return m

@@ -52,7 +52,7 @@ define Package/aria2
   SUBMENU:=File Transfer
   TITLE:=lightweight download utility
   URL:=https://aria2.github.io/
-  DEPENDS:=+bash +curl +findutils +jq +zlib +libstdcpp +ARIA2_OPENSSL:libopenssl +ARIA2_GNUTLS:libgnutls \
+  DEPENDS:=+zlib +libstdcpp +ARIA2_OPENSSL:libopenssl +ARIA2_GNUTLS:libgnutls \
 	+ARIA2_NETTLE:libnettle +ARIA2_LIBGCRYPT:libgcrypt +ARIA2_GMP:libgmp \
 	+ARIA2_LIBXML2:libxml2 +ARIA2_EXPAT:libexpat +ARIA2_SFTP:libssh2 \
 	+ARIA2_ASYNC_DNS:libcares +ARIA2_COOKIE:libsqlite3
@@ -110,6 +110,9 @@ define Package/aria2/install
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/aria2.init $(1)/etc/init.d/aria2
 
+	$(INSTALL_DIR) $(1)/etc/config
+	$(INSTALL_CONF) ./files/aria2.conf $(1)/etc/config/aria2
+	
 	$(INSTALL_DIR) $(1)/usr/share/aria2
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/aria2.conf-master/* $(1)/usr/share/aria2/
 endef
