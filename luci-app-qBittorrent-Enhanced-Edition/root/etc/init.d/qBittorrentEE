@@ -16,7 +16,7 @@ run_qBittorrentEE()
 		local port
 		config_get profile_dir "$1" profile_dir
 		config_get port "$1" port
-		qbittorrent-nox -d --profile="$profile_dir" ----webui-port="$port"
+		qbittorrent-nox -d --profile="$profile_dir" --webui-port="$port"
 	fi
 }
 
