@@ -27,3 +27,6 @@ msgstr "配置文件目录"
 
 msgid "Store configuration files in the Path"
 msgstr "配置文件存放路径"
+
+msgid "WEBUI listening port"
+msgstr "WEBUI 监听端口"
