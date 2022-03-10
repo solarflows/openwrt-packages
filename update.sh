@@ -41,6 +41,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
 git clone --depth 1 https://github.com/immortalwrt/openwrt-filebrowser && mvdir openwrt-filebrowser
 git clone --depth 1 https://github.com/kiddin9/luci-app-dnsfilter
+git clone --depth 1 https://github.com/WYC-2020/openwrt-subconverter
 # git clone --depth 1 https://github.com/kenzok78/my-packages && mvdir my-packages
 # git clone --depth 1 https://github.com/kiddin9/openwrt-bypass && mvdir openwrt-bypass
 # git clone --depth 1 https://github.com/kiddin9/aria2
