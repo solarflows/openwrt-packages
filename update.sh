@@ -33,7 +33,8 @@ git clone --depth 1 https://github.com/hyy-666/luci-theme-Butterfly-dark
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 git clone --depth 1 https://github.com/zhaojh329/oui
 git clone --depth 1 https://github.com/destan19/OpenAppFilter && mvdir OpenAppFilter
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall && mvdir openwrt-passwall
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b packages packages && mvdir packages
+git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b luci openwrt-passwall && mvdir openwrt-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 && mvdir openwrt-passwall2
 git clone --depth 1 https://github.com/apollo-ng/luci-theme-darkmatter
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon -b 18.06
