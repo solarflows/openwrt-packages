@@ -88,7 +88,7 @@ TARGET_CXXFLAGS += -ffunction-sections -fdata-sections -flto
 TARGET_LDFLAGS += -Wl,--gc-sections -flto
 
 define Package/aria2/conffiles
-/etc/config/aria2
+/usr/share/aria2
 endef
 
 define Download/aria2.conf
