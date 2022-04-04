@@ -9,9 +9,9 @@ PKG_HASH:=a4cc7404a203144754164b8b40994e2849fde1cfff06b08492f12fff9d9de7b9
 
 HOST_PYTHON3_PACKAGE_BUILD_DEPENDS:=setuptools-scm
 
-include ../pypi.mk
+include $(TOPDIR)/feeds/packages/lang/python/pypi.mk
 include $(INCLUDE_DIR)/package.mk
-include ../python3-package.mk
+include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
 
 define Package/python3-pyusb
   SUBMENU:=Python
