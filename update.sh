@@ -45,6 +45,17 @@ git clone --depth 1 https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod
 git clone --depth 1 https://github.com/hyy-666/luci-theme-Butterfly-dark
 git clone --depth 1 https://github.com/apollo-ng/luci-theme-darkmatter
 git clone --depth 1 https://github.com/jerrykuku/luci-theme-argon -b 18.06
+git clone --depth 1 https://github.com/thinktip/luci-theme-neobird
+git clone --depth 1 https://github.com/lynxnexy/luci-theme-tano
+svn co https://github.com/Carseason/openwrt-themedog/trunk/luci/luci-themedog luci-theme-dog
+# git clone --depth 1 https://github.com/kiddin9/luci-theme-edge
+# git clone --depth 1 https://github.com/kenzok78/luci-theme-argonne
+# svn co https://github.com/liuran001/openwrt-theme/trunk/luci-theme-argon-lr
+# svn co https://github.com/kenzok8/litte/trunk/luci-theme-argon_new
+# svn co https://github.com/kenzok8/litte/trunk/luci-theme-opentopd_new
+# svn co https://github.com/kenzok8/litte/trunk/luci-theme-atmaterial_new
+# svn co https://github.com/kenzok8/litte/trunk/luci-theme-mcat
+# svn co https://github.com/kenzok8/litte/trunk/luci-theme-tomato
 git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 # 无WIFIDOG实现WIFI认证
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
@@ -65,7 +76,6 @@ git clone --depth 1 https://github.com/WYC-2020/openwrt-subconverter && mvdir op
 # git clone --depth 1 https://github.com/kiddin9/openwrt-bypass && mvdir openwrt-bypass
 # git clone --depth 1 https://github.com/kiddin9/aria2
 # git clone --depth 1 https://github.com/kiddin9/luci-app-baidupcs-web
-# git clone --depth 1 https://github.com/kiddin9/luci-theme-edge
 # git clone --depth 1 https://github.com/kiddin9/qBittorrent-Enhanced-Edition
 # git clone --depth 1 https://github.com/kiddin9/autoshare && mvdir autoshare
 # git clone --depth 1 https://github.com/kiddin9/openwrt-openvpn && mvdir openwrt-openvpn
@@ -87,7 +97,6 @@ git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
 # git clone --depth 1 https://github.com/LGA1150/openwrt-sysuh3c && mvdir openwrt-sysuh3c
 # git clone --depth 1 https://github.com/gdck/luci-app-cupsd cupsd1 && mv -n cupsd1/luci-app-cupsd cupsd1/cups/cups ./ ; rm -rf cupsd1
 # git clone --depth 1 https://github.com/kenzok78/udp2raw
-# git clone --depth 1 https://github.com/kenzok78/luci-theme-argonne
 # git clone --depth 1 https://github.com/kiddin9/luci-app-wizard
 # git clone --depth 1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic
 # git clone --depth 1 https://github.com/kenzok78/openwrt-minisign
@@ -147,14 +156,8 @@ svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
 # svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/microsocks
 # svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/redsocks2
 # svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/tcpping
-# svn co https://github.com/liuran001/openwrt-theme/trunk/luci-theme-argon-lr
 # svn co https://github.com/openwrt/packages/trunk/net/shadowsocks-libev
 # svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-aliddns
-# svn co https://github.com/kenzok8/litte/trunk/luci-theme-argon_new
-# svn co https://github.com/kenzok8/litte/trunk/luci-theme-opentopd_new
-# svn co https://github.com/kenzok8/litte/trunk/luci-theme-atmaterial_new
-# svn co https://github.com/kenzok8/litte/trunk/luci-theme-mcat
-# svn co https://github.com/kenzok8/litte/trunk/luci-theme-tomato
 # svn co https://github.com/immortalwrt/packages/trunk/admin/bpytop
 # svn co https://github.com/immortalwrt/packages/trunk/libs/jpcre2
 # svn co https://github.com/immortalwrt/packages/trunk/libs/wxbase
