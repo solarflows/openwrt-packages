@@ -135,7 +135,7 @@ svn co https://github.com/sirpdboy/sirpdboy-package/trunk/luci-app-koolddns
 svn co https://github.com/kenzok8/jell/trunk/luci-app-adguardhome
 svn co https://github.com/kenzok8/jell/trunk/adguardhome
 # 易有云软件中心
-svn co https://github.com/linkease/istore/trunk/luci/luci-app-store
+svn co https://github.com/kenzok8/small-package/trunk/luci-app-store
 svn co https://github.com/linkease/istore-ui/trunk/app-store-ui
 # S.M.A.R.T监控软件
 svn co https://github.com/animefansxj/luci-app-smartinfo/trunk/luci-dir/applications/luci-app-smartinfo
