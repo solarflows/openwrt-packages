@@ -123,10 +123,10 @@ svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-
 # 阿里网盘Webdav挂载
 svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt aliyundrive && mvdir aliyundrive
 # amule 电驴
-svn co https://github.com/immortalwrt/packages/trunk/net/amule
-svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-amule
+# svn co https://github.com/immortalwrt/packages/trunk/net/amule
+# svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-amule
 # 电驴反吸血
-svn co https://github.com/immortalwrt/packages/trunk/net/antileech
+# svn co https://github.com/immortalwrt/packages/trunk/net/antileech
 # CloudFlare CDN 测速
 svn co https://github.com/immortalwrt/packages/trunk/net/cdnspeedtest
 # koolshare ddns穿透
