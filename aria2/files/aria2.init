@@ -346,7 +346,12 @@ aria2_start() {
 	procd_add_jail "$NAME.$section" log
 	procd_add_jail_mount "$config_file"
 	procd_add_jail_mount_rw "$dir" "$config_dir" "$log"
+	chmod -R +x $config_dir
+	$config_dir/tracker.sh $config_file
 	procd_close_instance
+	sed -i '/tracker.sh/d' /etc/crontabs/root >/dev/null 2>&1
+	echo "* */6 * * * $config_dir/tracker.sh $config_file RPC" >> /etc/crontabs/root
+	/etc/init.d/cron restart
 }
 
 service_triggers() {
@@ -357,8 +362,4 @@ service_triggers() {
 start_service() {
 	config_load "$NAME"
 	config_foreach aria2_validate "aria2" aria2_start
-	sed -i '/tracker.sh/d' /etc/crontabs/root >/dev/null 2>&1
-	echo "* */6 * * * /usr/share/aria2/tracker.sh"  >> /etc/crontabs/root
-	/etc/init.d/cron restart
-	
 }
