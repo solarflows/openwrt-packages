@@ -146,6 +146,8 @@ svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir 
 svn co https://github.com/linkease/nas-packages-luci/trunk/luci && mvdir luci
 # lean的ssr-plus
 svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
+# immortalwrt luci-app-syncthing
+svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06-k5.4/applications/luci-app-syncthing
 # svn co https://github.com/doushang/luci-app-shortcutmenu/trunk/luci-app-shortcutmenu
 # svn co https://github.com/sundaqiang/openwrt-packages/trunk/luci-app-services-wolplus
 # svn co https://github.com/Ysurac/openmptcprouter-feeds/trunk/luci-app-iperf
