@@ -6,21 +6,20 @@ PKG_RELEASE:=2
 LUCI_TITLE:=LuCI support for qBittorrent-Enhanced-Edition
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:= \
-	+PACKAGE_luci-app-qBittorrent-Enhanced-Edition_static:qBittorrent-Enhanced-Edition-static \
-	+PACKAGE_luci-app-qBittorrent-Enhanced-Edition_dynamic:qBittorrent-Enhanced-Edition \
+	+PACKAGE_static:qBittorrent-Enhanced-Edition-static \
+	+PACKAGE_dynamic:qBittorrent-Enhanced-Edition \
 
 define Package/luci-app-qBittorrent-Enhanced-Edition/config
 	choice
 		prompt "Build Version Selection"
-		default PACKAGE_luci-app-qBittorrent-Enhanced-Edition_dynamic if aarch64||x86_64
-		default PACKAGE_luci-app-qBittorrent-Enhanced-Edition_static if !(aarch64||x86_64)
+		default PACKAGE_dynamic
 
-		config PACKAGE_luci-app-qBittorrent-Enhanced-Edition_static
-			bool "Static_Version"
+		config PACKAGE_static
+			bool "Static"
 			depends on aarch64||x86_64
 
-		config PACKAGE_luci-app-qBittorrent-Enhanced-Edition_dynamic
-			bool "Dynamic_Version"
+		config PACKAGE_dynamic
+			bool "Dynamic"
 
 	endchoice
 endef
