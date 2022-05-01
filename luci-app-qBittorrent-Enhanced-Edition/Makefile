@@ -1,30 +1,30 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=luci-app-qBittorrent-Enhanced-Edition
+PKG_NAME:=luci-app-qBittorrent
 PKG_VERSION:=1.0
 PKG_RELEASE:=2
 LUCI_TITLE:=LuCI support for qBittorrent-Enhanced-Edition
 LUCI_PKGARCH:=all
 LUCI_DEPENDS:= \
-	+PACKAGE_static:qBittorrent-Enhanced-Edition-static \
-	+PACKAGE_dynamic:qBittorrent-Enhanced-Edition \
+	+PACKAGE_luci-app-qBittorrent_static:qBittorrent-Enhanced-Edition-static \
+	+PACKAGE_luci-app-qBittorrent_dynamic:qBittorrent-Enhanced-Edition \
 
-define Package/luci-app-qBittorrent-Enhanced-Edition/config
+define Package/$(PKG_NAME)/config
 	choice
 		prompt "Build Version Selection"
-		default PACKAGE_dynamic
+		default PACKAGE_luci-app-qBittorrent_dynamic
 
-		config PACKAGE_static
+		config PACKAGE_luci-app-qBittorrent_static
 			bool "Static"
 			depends on aarch64||x86_64
 
-		config PACKAGE_dynamic
+		config PACKAGE_luci-app-qBittorrent_dynamic
 			bool "Dynamic"
 
 	endchoice
 endef
 
-define Package/luci-app-qBittorrent-Enhanced-Edition/conffiles
+define Package/$(PKG_NAME)/conffiles
 /etc/qBittorrent
 /etc/config/qBittorrentEE
 endef
