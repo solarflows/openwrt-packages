@@ -67,6 +67,9 @@ git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b luci openwr
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 && mvdir openwrt-passwall2
 # my-diy仓库
 git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
+rm -rf ./luci-app-eqos
+# eqos
+git clone --depth 1 https://github.com/TorBoxCode/luci-app-eqos luci-app-eqos
 # filebrowser文件管理器
 git clone --depth 1 https://github.com/immortalwrt/openwrt-filebrowser && mvdir openwrt-filebrowser
 # 基于dnsmasq的去广告程序
@@ -140,7 +143,7 @@ svn co https://github.com/linkease/istore-ui/trunk/app-store-ui
 # S.M.A.R.T监控软件
 svn co https://github.com/animefansxj/luci-app-smartinfo/trunk/luci-dir/applications/luci-app-smartinfo
 # 网络测速
-svn co https://github.com/sirpdboy/netspeedtest/trunk/luci-app-netspeedtest
+svn co https://github.com/hyy-666/netspeedtest/trunk/luci-app-netspeedtest
 # 易有云ddnsto linkease
 svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir services
 svn co https://github.com/linkease/nas-packages-luci/trunk/luci && mvdir luci
