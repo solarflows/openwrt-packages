@@ -51,5 +51,6 @@ reload(){
 
 start() {
     limit_log $LOG 200
-	nstest
+# 	设置开机不自动开始测试，提高启动速度。
+# 	nstest
 }
