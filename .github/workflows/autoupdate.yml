@@ -9,7 +9,7 @@ on:
   # watch:
   #   types: started
   schedule:
-    - cron: 0 20 * * *
+    - cron: 23 30 * * *
   repository_dispatch:
 
 env:
