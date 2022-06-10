@@ -1,4 +1,9 @@
 #  Tano Systems LuCI theme
+This repository contains Tano Systems theme for LuCI web configuration interface.
+
+This theme is the official theme of the LuCI web configuration interface for [TanoWrt](https://github.com/tano-systems/meta-tano-openwrt) Linux distribution.
+
+[<img src="https://cdn.trakteer.id/images/embed/trbtn-red-2.png" height="40" style="border:0px;height:40px;" alt="Trakteer Saya">](https://trakteer.id/lynxnexy/tip)
 
 ## How to Install
 
