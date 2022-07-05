@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=syncthing
-PKG_VERSION:=1.19.1
+PKG_VERSION:=1.20.2
 PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE:=syncthing-source-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/syncthing/syncthing/releases/download/v$(PKG_VERSION)
-PKG_HASH:=ffc5ec2f232314122a216884f63a48eea7c8739f9779e249be1f4776d7a55127
+PKG_HASH:=6733ae6947497ace959c56f7c491b785ec058c8592cfd9824bc37125d1f342d9
 
 PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)
 
@@ -28,7 +28,7 @@ GO_PKG_LDFLAGS_X:=\
 	github.com/syncthing/syncthing/lib/build.Stamp=$(SOURCE_DATE_EPOCH) \
 	github.com/syncthing/syncthing/lib/build.User=openwrt \
 	github.com/syncthing/syncthing/lib/build.Host=openwrt \
-	github.com/syncthing/syncthing/lib/build.Program=syncthing
+	github.com/syncthing/syncthing/lib/build.Tags=noupgrade
 GO_PKG_TAGS:=noupgrade
 
 include $(INCLUDE_DIR)/package.mk
