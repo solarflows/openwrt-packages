@@ -11,7 +11,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-release-$(PKG_VERSION)
 
 PKG_LICENSE:=GPL-2.0-or-later
 PKG_LICENSE_FILES:=COPYING
-PKG_CPE_ID:=cpe:/a:qbittorrent:qbittorrent
+PKG_CPE_ID:=cpe:/a:qbittorrent-enhanced-edition:qbittorrent-enhanced-edition
 
 PKG_BUILD_DEPENDS:=qt6tools/host
 PKG_BUILD_PARALLEL:=1
@@ -27,7 +27,7 @@ define Package/qBittorrent-Enhanced-Edition
   URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
   DEPENDS:=+libtorrent-rasterbar +libQt6Core +libQt6Network +libQt6Sql \
     +libQt6Xml +qt6-plugin-libqopensslbackend +qt6-plugin-libqsqlite
-  PROVIDES:=qbittorrent
+  PROVIDES:=qbittorrent-enhanced-edition
 endef
 
 define Package/qBittorrent-Enhanced-Edition/description
