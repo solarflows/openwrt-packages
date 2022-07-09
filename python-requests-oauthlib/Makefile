@@ -18,12 +18,12 @@ define Package/python3-requests-oauthlib
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=requests-oauthlib
-  URL:=https://pypi.org/project/requests-toolbelt
+  URL:=https://pypi.org/project/requests-oauthlib
   DEPENDS:=+python3-light +python3-requests
 endef
 
 define Package/python3-requests-oauthlib/description
-  This project provides first-class OAuth library support for [Requests](http://python-requests.org). 
+  This project provides first-class OAuth library support for requests. 
 endef
 
 $(eval $(call Py3Package,python3-requests-oauthlib))
