@@ -20,5 +20,5 @@ jobs:
           target_repository: hyy-666/lede
           upstream_branch: master
           target_branch: my-diy
-          force: false  # 是否强制推送
-          tags: true  # 确定是否使用-tags
+          force: false
+          tags: false
