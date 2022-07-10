@@ -1,0 +1,26 @@
+name: mergeupstream
+on:
+  push:
+    paths:
+      - '.github\workflows\mergeupstream.yml'
+  schedule:
+    - cron: 0 */2 * * *
+    # 每隔2小时
+  repository_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  update_lede_fork:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: TobKed/github-forks-sync-action@master
+        with:
+          github_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          upstream_repository: coolsnowwolf/lede
+          target_repository: hyy-666/lede
+          upstream_branch: master
+          target_branch: my-diy
+          force: false  # 是否强制推送
+          tags: true  # 确定是否使用-tags
