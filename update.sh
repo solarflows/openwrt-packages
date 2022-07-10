@@ -3,7 +3,7 @@ function mvdir() {
 mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
-if [ "$1" = "qt6"]
+if [ "$1" = "qt6" ]
 then
     # my-diy仓库
     git clone --depth 1 https://github.com/hyy-666/my-diy -b "$1" && mvdir my-diy
