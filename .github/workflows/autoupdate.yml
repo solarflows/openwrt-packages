@@ -19,7 +19,7 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     runs-on: ubuntu-20.04
 
-    name: Update ${{matrix.target}}
+    name: Update Branch Main
     strategy:
       fail-fast: false
       matrix:
@@ -80,15 +80,15 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     runs-on: ubuntu-20.04
 
-    name: Update ${{matrix.target}}
+    name: Update Branch QT6
     strategy:
       fail-fast: false
       matrix:
-        target: [main]
+        target: [qt6]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@qt6
 
       - name: Initialization environment
         env:
@@ -123,7 +123,7 @@ jobs:
           git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hyy-666/openwrt-packages.git" HEAD:${{matrix.target}}
 
       - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@main
+        uses: GitRML/delete-workflow-runs@qt6
         with:
           retain_days: 1
           keep_minimum_runs: 0

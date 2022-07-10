@@ -1,8 +1,11 @@
 name: mergeupstream
+
 on:
   push:
     paths:
       - '.github\workflows\mergeupstream.yml'
+  watch:
+    types: started
   schedule:
     - cron: 0 */2 * * *
     # 每隔2小时
