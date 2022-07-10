@@ -138,6 +138,7 @@ CONFIGURE_ARGS = \
 		-no-openvg \
 		-no-pch \
 		-no-slog2 \
+		-icu \
 		-sql-sqlite \
 		-no-trace \
 		-no-tslib \
