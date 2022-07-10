@@ -1,4 +1,4 @@
-name: mergeupstream
+name: Sync all branches
 
 on:
   push:
@@ -8,11 +8,6 @@ on:
     types: started
   schedule:
     - cron: 0 */2 * * *
-    # 每隔2小时
-  repository_dispatch:
-
-env:
-  TZ: Asia/Shanghai
 
 jobs:
   update_lede_fork:
