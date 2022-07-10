@@ -3,6 +3,15 @@ function mvdir() {
 mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
+if [ "$1" = "qt6"]
+then
+    # my-diy仓库
+    git clone --depth 1 https://github.com/hyy-666/my-diy -b "$1" && mvdir my-diy
+else
+    # my-diy仓库
+    git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
+fi
+
 # 自动添加不能访问的网站到gfwlist转发链
 git clone --depth 1 https://github.com/rufengsuixing/luci-app-autoipsetadder
 # 控制dropbear的登录
@@ -67,8 +76,6 @@ git clone --depth 1 https://github.com/zhaojh329/oui
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b packages packages && mvdir packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b luci openwrt-passwall && mvdir openwrt-passwall
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall2 && mvdir openwrt-passwall2
-# my-diy仓库
-git clone --depth 1 https://github.com/hyy-666/my-diy && mvdir my-diy
 rm -rf ./luci-app-eqos
 # eqos
 git clone --depth 1 https://github.com/TorBoxCode/luci-app-eqos luci-app-eqos
