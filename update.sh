@@ -32,7 +32,9 @@ git clone --depth 1 https://github.com/walkingsky/luci-wifidog luci-app-wifidog
 # OpenWRT自动中继网络
 git clone --depth 1 https://github.com/peter-tank/luci-app-autorepeater
 # MosDNS
-git clone --depth 1 https://github.com/QiuSimons/openwrt-mos && mvdir openwrt-mos
+# git clone --depth 1 https://github.com/QiuSimons/openwrt-mos && mvdir openwrt-mos
+svn co https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns
+svn co https://github.com/QiuSimons/openwrt-mos/trunk/mosdns
 # SmartDNS
 git clone -b lede https://github.com/pymumu/luci-app-smartdns
 svn co https://github.com/immortalwrt/packages/trunk/net/smartdns
