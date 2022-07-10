@@ -34,7 +34,7 @@ define Package/qtbase/Default
 	SUBMENU:=Qt5
 	TITLE:=qtbase
 	URL:=http://qt-project.org
-	DEPENDS:=+libgcc +libstdcpp @!LINUX_2_6_36
+	DEPENDS:=+libgcc +libstdcpp +icu @!LINUX_2_6_36
 endef
 
 define Package/qtbase/description
@@ -145,6 +145,7 @@ CONFIGURE_ARGS = \
 		-no-widgets \
 		-no-xcb \
 		-no-xkbcommon \
+		-no-zstd \
 		-no-compile-examples \
 		-no-feature-concurrent \
 		-no-feature-gssapi \
