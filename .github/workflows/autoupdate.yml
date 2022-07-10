@@ -108,7 +108,7 @@ jobs:
           cd ${{matrix.target}}
           git rm -r --cache * >/dev/null 2>&1 &
           rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
-          $GITHUB_WORKSPACE/update.sh qt6
+          $GITHUB_WORKSPACE/update.sh "qt6"
           $GITHUB_WORKSPACE/diy/Modify.sh
 
       - name: Upload
