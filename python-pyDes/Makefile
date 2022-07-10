@@ -8,7 +8,7 @@ PYPI_NAME:=pyDes
 PKG_HASH:=e2ab8e21d2b83e90d90dbfdcb6fb8ac0000b813238b7ecaede04f8435c389012
 
 HOST_PYTHON3_PACKAGE_BUILD_DEPENDS:=setuptools-scm
-
+PYTHON3_PKG_SETUP_ARGS:=
 include $(TOPDIR)/feeds/packages/lang/python/pypi.mk
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/python/python3-package.mk
