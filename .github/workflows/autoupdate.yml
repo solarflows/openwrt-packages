@@ -61,12 +61,6 @@ jobs:
           git commit -m "update$(TZ='Asia/Shanghai' date +-%m.%d)"
           git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hyy-666/openwrt-packages.git" HEAD:${{matrix.target}}
 
-      - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@main
-        with:
-          retain_days: 1
-          keep_minimum_runs: 0
-
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@v0.1.0
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -121,12 +115,6 @@ jobs:
           git add .
           git commit -m "update$(TZ='Asia/Shanghai' date +-%m.%d)"
           git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/hyy-666/openwrt-packages.git" HEAD:${{matrix.target}}
-
-      - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@qt6
-        with:
-          retain_days: 1
-          keep_minimum_runs: 0
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@v0.1.0
