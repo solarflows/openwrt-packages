@@ -18,7 +18,7 @@ define Package/python3-html5lib
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=html5lib
-  URL:=https://pypi.org/project/requests-toolbelt
+  URL:=https://pypi.org/project/python-html5lib
   DEPENDS:=+python3-light +python3-requests
 endef
 

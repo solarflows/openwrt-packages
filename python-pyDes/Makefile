@@ -18,7 +18,7 @@ define Package/python3-pyDes
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=pyDes
-  URL:=https://pypi.org/project/requests-toolbelt
+  URL:=https://pypi.org/project/pyDes
   DEPENDS:=+python3-light
 endef
 

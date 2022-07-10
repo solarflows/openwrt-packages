@@ -18,7 +18,7 @@ define Package/python3-beautifulsoup4
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=beautifulsoup4
-  URL:=https://pypi.org/project/requests-toolbelt
+  URL:=https://pypi.org/project/beautifulsoup4
   DEPENDS:=+python3-light +python3-html5lib +python3-lxml +python3-soupsieve
 endef
 

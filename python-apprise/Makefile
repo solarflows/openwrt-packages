@@ -18,7 +18,7 @@ define Package/python3-apprise
   SECTION:=lang
   CATEGORY:=Languages
   TITLE:=apprise
-  URL:=https://pypi.org/project/requests-toolbelt
+  URL:=https://pypi.org/project/apprise
   DEPENDS:=+python3-light +python3-click +python3-markdown \
             +python3-yaml +python3-requests +python3-requests-oauthlib \
             +python3-six
