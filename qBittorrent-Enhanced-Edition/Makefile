@@ -33,6 +33,7 @@ define Package/qBittorrent-Enhanced-Edition
 		+libQt5Network \
 		+libQt5Sql \
 		+libQt5Xml \
+		+qt5-plugin-libqsqlite \
 		+zlib
 endef
 
