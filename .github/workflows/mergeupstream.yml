@@ -1,9 +1,8 @@
 name: Sync all branches
 
 on:
-  push:
-    paths:
-      - '.github\workflows\mergeupstream.yml'
+  watch:
+    types: started
   schedule:
     - cron: 0 */2 * * *
 
