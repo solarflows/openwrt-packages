@@ -160,7 +160,7 @@ define DefineQt5PluginPackage
   define Package/qt5-plugin-libq$(2)
     $(call Package/libQt5/Default)
     TITLE+=Plugin libq$(2)
-    DEPENDS+=$(foreach lib,$(3),+libQt5$(lib))
+    DEPENDS+=$(foreach lib,$(3),+libQt5$(lib)) $(4)
   endef
   
   define Package/qt5-plugin-libq$(2)/install
@@ -168,14 +168,14 @@ define DefineQt5PluginPackage
   endef
 endef
 
-$(eval $(call DefineQt5PluginPackage,bearer,connmanbearer,DBus Network))
-$(eval $(call DefineQt5PluginPackage,bearer,genericbearer,Network))
-$(eval $(call DefineQt5PluginPackage,bearer,nmbearer,DBus Network))
-$(eval $(call DefineQt5PluginPackage,generic,tuiotouchplugin,Gui Network))
-$(eval $(call DefineQt5PluginPackage,platforms,minimal,Gui))
-$(eval $(call DefineQt5PluginPackage,platforms,offscreen,Gui))
-$(eval $(call DefineQt5PluginPackage,platformthemes,xdgdesktopportal,DBus Gui))
-$(eval $(call DefineQt5PluginPackage,sqldrivers,sqlite,Sql))
+$(eval $(call DefineQt5PluginPackage,bearer,connmanbearer,DBus Network,))
+$(eval $(call DefineQt5PluginPackage,bearer,genericbearer,Network,))
+$(eval $(call DefineQt5PluginPackage,bearer,nmbearer,DBus Network,))
+$(eval $(call DefineQt5PluginPackage,generic,tuiotouchplugin,Gui Network,))
+$(eval $(call DefineQt5PluginPackage,platforms,minimal,Gui,))
+$(eval $(call DefineQt5PluginPackage,platforms,offscreen,Gui,))
+$(eval $(call DefineQt5PluginPackage,platformthemes,xdgdesktopportal,DBus Gui,))
+$(eval $(call DefineQt5PluginPackage,sqldrivers,sqlite,Sql,libsqlite3))
 PKG_CONFIG_DEPENDS+=qt5-plugin-libqtuiotouchplugin
 
 $(foreach lib,$(QT5BASE_LIBS),$(eval $(call BuildPackage,libQt5$(lib))))
