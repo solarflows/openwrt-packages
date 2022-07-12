@@ -29,10 +29,10 @@ define Package/qBittorrent-Enhanced-Edition
   DEPENDS:=+libgcc +libstdcpp \
 		+rblibtorrent \
 		+libopenssl \
-		+qt5-core \
-		+qt5-network \
-		+qt5-sql \
-		+qt5-xml \
+		+libQt5Core \
+		+libQt5Network \
+		+libQt5Sql \
+		+libQt5Xml \
 		+zlib
 endef
 
