@@ -33,7 +33,7 @@ define Package/libQt5/Default
   SUBMENU:=Qt5
   TITLE:=Qt5
   URL:=http://qt-project.org
-  DEPENDS:=+libatomic +libstdcpp +zlib
+  DEPENDS:=+libatomic +libstdcpp +icu +zlib
 endef
 
 define Package/libQt5
@@ -65,7 +65,7 @@ define Build/Configure
 		-qt-doubleconversion \
 		-no-glib \
 		-no-iconv \
-		-no-icu \
+		icu \
 		-mimetype-database \
 		-system-pcre \
 		$(if $(CONFIG_PACKAGE_libQt5Concurrent),,-no-feature-concurrent) \
