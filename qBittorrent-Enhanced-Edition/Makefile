@@ -26,7 +26,7 @@ define Package/qBittorrent-Enhanced-Edition
   CATEGORY:=Network
   TITLE:=bittorrent client programmed in C++ / Qt
   URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
-  DEPENDS:=DEPENDS:=+libgcc +libstdcpp \
+  DEPENDS:=+libgcc +libstdcpp \
 		+rblibtorrent \
 		+libopenssl \
 		+qt5-core \
