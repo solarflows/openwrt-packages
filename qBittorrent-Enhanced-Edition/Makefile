@@ -26,7 +26,14 @@ define Package/qBittorrent-Enhanced-Edition
   CATEGORY:=Network
   TITLE:=bittorrent client programmed in C++ / Qt
   URL:=https://github.com/c0re100/qBittorrent-Enhanced-Edition
-  DEPENDS:=+boost +libtorrent-rasterbar +qt5-core +qt5-network +qt5-sql +qt5-xml
+  DEPENDS:=DEPENDS:=+libgcc +libstdcpp \
+		+rblibtorrent \
+		+libopenssl \
+		+qt5-core \
+		+qt5-network \
+		+qt5-sql \
+		+qt5-xml \
+		+zlib
 endef
 
 define Package/qBittorrent-Enhanced-Edition/description
@@ -37,10 +44,13 @@ define Package/qBittorrent-Enhanced-Edition/description
   well as many features.
 endef
 
-CMAKE_OPTIONS+= \
+CMAKE_OPTIONS += \
 	-DGUI=OFF \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DQT6=OFF \
 	-DSTACKTRACE=OFF \
-	-DWEBUI=ON
+	-DWEBUI=ON \
+	-DVERBOSE_CONFIGURE=ON
 
 TARGET_CFLAGS += -std=c++17 -ffunction-sections -fdata-sections -flto
 TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed -flto
