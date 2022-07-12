@@ -30,6 +30,7 @@ define Package/qBittorrent-Enhanced-Edition
 		+rblibtorrent \
 		+libopenssl \
 		+libQt5Core \
+		+libQt5Gui \
 		+libQt5Network \
 		+libQt5Sql \
 		+libQt5Xml \
