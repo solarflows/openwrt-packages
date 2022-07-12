@@ -1,8 +1,8 @@
 name: Sync all branches
 
 on:
-  watch:
-    types: started
+  # watch:
+  #   types: started
   schedule:
     - cron: 0 */2 * * *
 
