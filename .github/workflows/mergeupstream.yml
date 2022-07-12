@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: TobKed/github-forks-sync-action@master
         with:
-          github_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.ACCESS_TOKEN }}
           upstream_repository: coolsnowwolf/lede
           target_repository: hyy-666/lede
           upstream_branch: master
