@@ -1,10 +1,10 @@
 name: Sync all branches
 
 on:
-  # watch:
-  #   types: started
-  schedule:
-    - cron: 0 */2 * * *
+  watch:
+    # types: started
+  # schedule:
+  #   - cron: 0 */2 * * *
 
 jobs:
   update_lede_fork:
