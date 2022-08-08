@@ -65,7 +65,7 @@ define Build/Configure
 		-qt-doubleconversion \
 		-no-glib \
 		-no-iconv \
-		icu \
+		-icu \
 		-mimetype-database \
 		-system-pcre \
 		$(if $(CONFIG_PACKAGE_libQt5Concurrent),,-no-feature-concurrent) \
