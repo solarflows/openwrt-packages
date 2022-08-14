@@ -11,15 +11,15 @@ LUCI_DEPENDS:= \
 
 define Package/$(PKG_NAME)/config
 	choice
-		prompt "Build Selection"
+		prompt "Build Version Selection"
 		default PACKAGE_$(PKG_NAME)_dynamic
 
 		config PACKAGE_$(PKG_NAME)_static
-			bool "Static"
+			bool "Static Build"
 			depends on aarch64||x86_64
 
 		config PACKAGE_$(PKG_NAME)_dynamic
-			bool "Dynamic"
+			bool "Dynamic Build"
 
 	endchoice
 endef
