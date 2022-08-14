@@ -1,7 +1,0 @@
-{
-    "system/upgrade": {
-        "title": "Backup / Upgrade",
-        "view": "oui-app-upgrade",
-        "index": 40
-    }
-}
