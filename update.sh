@@ -72,6 +72,8 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 # OUI
 git clone --depth 1 https://github.com/zhaojh329/oui
+# ssr-plus
+git clone --depth 1 https://github.com/fw876/helloworld && mvdir helloworld
 # PassWall1&2及其依赖
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b packages packages && mvdir packages
 git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall -b luci openwrt-passwall && mvdir openwrt-passwall
@@ -156,8 +158,8 @@ svn co https://github.com/hyy-666/netspeedtest/trunk/luci-app-netspeedtest
 # 易有云ddnsto linkease
 svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir services
 svn co https://github.com/linkease/nas-packages-luci/trunk/luci && mvdir luci
-# lean的ssr-plus
-svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
+# # lean的ssr-plus
+# svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
 # immortalwrt luci-app-syncthing
 svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06-k5.4/applications/luci-app-syncthing
 # svn co https://github.com/doushang/luci-app-shortcutmenu/trunk/luci-app-shortcutmenu
