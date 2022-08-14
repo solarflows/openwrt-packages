@@ -123,7 +123,7 @@ define DefineQt5Package
   define Package/libQt5$(1)
     $(call Package/libQt5/Default)
     TITLE+=$(1) Library
-    DEPENDS+=$(foreach lib,$(2),+libQt5$(lib)) $(3)
+    DEPENDS+=$(foreach lib,$(2),+libQt5$(lib)) +$(3)
   endef
 
   define Package/libQt5$(1)/description
