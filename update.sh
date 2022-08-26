@@ -105,7 +105,7 @@ git clone --depth 1 https://github.com/WYC-2020/openwrt-subconverter && mvdir op
 # 配置文件级别的设置修改插件
 git clone --depth 1 https://github.com/sirpdboy/luci-app-advanced
 # git clone --depth 1 https://github.com/sirpdboy/luci-app-netdata
-git clone --depth 1 https://github.com/NateLol/luci-app-oled
+# git clone --depth 1 https://github.com/NateLol/luci-app-oled
 # git clone --depth 1 https://github.com/hubbylei/luci-app-clash
 # git clone --depth 1 https://github.com/sensec/luci-app-udp2raw
 # git clone --depth 1 https://github.com/LGA1150/openwrt-sysuh3c && mvdir openwrt-sysuh3c
