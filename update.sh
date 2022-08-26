@@ -157,6 +157,7 @@ svn co https://github.com/animefansxj/luci-app-smartinfo/trunk/luci-dir/applicat
 svn co https://github.com/hyy-666/netspeedtest/trunk/luci-app-netspeedtest
 # 易有云ddnsto linkease
 svn co https://github.com/linkease/nas-packages/trunk/network/services && mvdir services
+svn co https://github.com/linkease/nas-packages/trunk/multimedia && mvdir multimedia
 svn co https://github.com/linkease/nas-packages-luci/trunk/luci && mvdir luci
 # # lean的ssr-plus
 # svn co https://github.com/fw876/helloworld/trunk/luci-app-ssr-plus
