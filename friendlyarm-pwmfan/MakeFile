@@ -13,7 +13,7 @@ PKG_RELEASE:=$(AUTORELEASE)
 include $(INCLUDE_DIR)/package.mk
 
 define Package/friendlyarm-pwmfan
-  SECTION:=util
+  SECTION:=base
   CATEGORY:=Base system
   TITLE:=pwmfan control script.
   DEPENDS:=@TARGET_rockchip
