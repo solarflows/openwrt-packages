@@ -7,15 +7,13 @@ PKG_RELEASE:=$(AUTORELEASE)
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)
-	SECTION:=base
-	CATEGORY:=Base system
-	TITLE:=pwmfan control script.
+	TITLE:=PwmFan Control For NanoPi R2S/R4S/R4SE And NanoPC T4.
 	DEPENDS:=@TARGET_rockchip
 	URL:=https://github.com/friendlyarm/friendlywrt/commit/6bd64bbc79b7a86224dea328dee07fa27f2cc06b
 endef
 
 define Package/$(PKG_NAME)/description
-	a script cherrycopy from friendlyarm to control pwmfan for NanoPC T4 / NanoPi R4S.
+	a script which cherrycopy from friendlyarm to control pwmfan on friendlyarm RK33XX Boards.
 endef
 
 define Build/Compile
