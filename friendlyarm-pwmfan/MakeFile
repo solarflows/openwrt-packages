@@ -16,12 +16,12 @@ define Package/friendlyarm-pwmfan
   SECTION:=util
   CATEGORY:=Base system
   TITLE:=pwmfan control script.
-  DEPENDS:=@TARGET_rockchip_armv8_DEVICE_friendlyarm
+  DEPENDS:=@TARGET_rockchip
   URL:=https://github.com/friendlyarm/friendlywrt/commit/6bd64bbc79b7a86224dea328dee07fa27f2cc06b
 endef
 
 define Package/friendlyarm-pwmfan/description
-  a script cherrycopy from friendlyarm to control pwmfan for nanoPC T4.
+  a script cherrycopy from friendlyarm to control pwmfan for NanoPC T4 / NanoPi R4S.
 endef
 
 define Build/Prepare
