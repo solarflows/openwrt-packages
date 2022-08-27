@@ -1,9 +1,3 @@
-#
-# Copyright (C) 2022 OpenWrt.org
-#
-# This is free software, licensed under the GNU General Public License v3.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=friendlyarm-pwmfan
@@ -12,28 +6,22 @@ PKG_RELEASE:=$(AUTORELEASE)
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/friendlyarm-pwmfan
-  SECTION:=base
-  CATEGORY:=Base system
-  TITLE:=pwmfan control script.
-  DEPENDS:=@TARGET_rockchip
-  URL:=https://github.com/friendlyarm/friendlywrt/commit/6bd64bbc79b7a86224dea328dee07fa27f2cc06b
+define Package/$(PKG_NAME)
+	SECTION:=base
+	CATEGORY:=Base system
+	TITLE:=pwmfan control script.
+	DEPENDS:=@TARGET_rockchip
+	URL:=https://github.com/friendlyarm/friendlywrt/commit/6bd64bbc79b7a86224dea328dee07fa27f2cc06b
 endef
 
-define Package/friendlyarm-pwmfan/description
-  a script cherrycopy from friendlyarm to control pwmfan for NanoPC T4 / NanoPi R4S.
-endef
-
-define Build/Prepare
-endef
-
-define Build/Configure
+define Package/$(PKG_NAME)/description
+	a script cherrycopy from friendlyarm to control pwmfan for NanoPC T4 / NanoPi R4S.
 endef
 
 define Build/Compile
 endef
 
-define Package/friendlyarm-pwmfan/install
+define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/fa-fancontrol $(1)/etc/init.d/
 
@@ -44,7 +32,6 @@ define Package/friendlyarm-pwmfan/install
 	$(INSTALL_BIN) ./files/cputemp.sh $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/fa-fancontrol-direct.sh $(1)/usr/bin/
 	$(INSTALL_BIN) ./files/fa-fancontrol.sh $(1)/usr/bin/
-
 endef
 
-$(eval $(call BuildPackage,friendlyarm-pwmfan))
+$(eval $(call BuildPackage,$(PKG_NAME)))
