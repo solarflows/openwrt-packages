@@ -123,7 +123,7 @@ define Package/nas-settings
 endef
 
 define Package/nas-settings/description
-	Nas device's default software setting.
+ Nas device's default software setting.
 endef
 
 define Build/Compile
