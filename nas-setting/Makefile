@@ -65,6 +65,7 @@ define Package/nas-settings
 			+luci-app-syncthing \
 			+luci-app-transmission \
 			+luci-app-ttyd \
+			+luci-app-turboacc \
 			+@luci-app-turboacc_INCLUDE_DNSFORWARDER \
 			+@luci-app-turboacc_INCLUDE_DNSPROXY \
 			+luci-app-unblockmusic \
@@ -73,6 +74,7 @@ define Package/nas-settings
 			+luci-app-webadmin \
 			+luci-app-wireguard \
 			+luci-app-wrtbwmon \
+			+aria2 \
 			+ARIA2_ASYNC_DNS \
 			+ARIA2_BITTORRENT \
 			+ARIA2_COOKIE \
