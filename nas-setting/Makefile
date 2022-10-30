@@ -19,8 +19,7 @@ define Package/nas-settings
   CATEGORY:=Configs
   TITLE:=Config For Nas Divices.
   PKGARCH:=all
-  DEPENDS:=+default-settings \
-			+luci-app-amule \
+  DEPENDS:=+luci-app-amule \
 			+luci-app-aria2 \
 			+luci-app-beardropper \
 			+luci-app-cpufreq \
