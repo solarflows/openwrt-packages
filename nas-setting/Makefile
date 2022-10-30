@@ -44,7 +44,6 @@ define Package/nas-settings
 			+@luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server \
 			+@luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server \
 			+@luci-app-passwall_INCLUDE_Trojan_GO \
-			+@luci-app-passwall_Iptables_Transparent_Proxy \
 			+luci-app-pgyvpn \
 			+luci-app-phtunnel \
 			+luci-app-poweroff \
