@@ -1,37 +1,31 @@
-#
-# Copyright (C) 2020 Krypton Lee <jun.k.lee199410@outlook.com>
-#
-# This is free software, licensed under the GNU General Public License v2.
-# See /LICENSE for more information.
-#
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=rblibtorrent
-PKG_VERSION:=1.2.16
-PKG_RELEASE:=1
+PKG_VERSION:=1.2.18
+PKG_RELEASE=1
 
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/arvidn/libtorrent.git
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE_VERSION:=37f6647c68bc25dc0b109cf9608c5a20fa716254
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/arvidn/libtorrent/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=2ee435c3e2e6dd8825903230b41fbaf0741b7aed57094f2ca0e6214d89fef9d4
-PKG_BUILD_DIR:=$(BUILD_DIR)/libtorrent-$(PKG_VERSION)
+PKG_MIRROR_HASH:=fef2b6817de4e6d960e019c27f21daf27bc2468a81d9e028a19d45d61456fa72
 
-PKG_MAINTAINER:=Krypton Lee <jun.k.lee199410@outlook.com>
 PKG_LICENSE:=BSD
 PKG_LICENSE_FILES:=COPYING
 
-PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
-PKG_INSTALL:=1
+PKG_BUILD_PARALLEL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/cmake.mk
 
 define Package/rblibtorrent
   SECTION:=libs
   CATEGORY:=Libraries
-  TITLE:=Rasterbar BitTorrent Library
+  TITLE:=Rasterbar BitTorrent library
   URL:=https://www.libtorrent.org/
-  DEPENDS:=+boost-system +libatomic +libopenssl
+  DEPENDS:=+libgcc +libstdcpp +libopenssl +boost +boost-system +boost-chrono +boost-random +libatomic
   MAINTAINER:=Arvid Norberg <arvid@libtorrent.org>
 endef
 
@@ -41,31 +35,28 @@ all the other bittorrent implementations around. It is a library and not a
 full featured client, although it comes with a working example client.
 endef
 
-CONFIGURE_ARGS += \
-	--enable-shared \
-	--enable-static \
-	--disable-debug \
-	--enable-encryption \
-	--with-boost=$(STAGING_DIR)/usr
+TARGET_CFLAGS += $(if $(CONFIG_SOFT_FLOAT),-DBOOST_NO_FENV_H) -fPIC -ffunction-sections -fdata-sections -flto
+EXTRA_CXXFLAGS += $(if $(CONFIG_GCC_VERSION_4_8),-std=gnu++11,-std=gnu++17) 
+TARGET_LDFLAGS += -lstdc++ -Wl,--gc-sections,--as-needed -flto
 
-define Build/Configure
-	cd $(PKG_BUILD_DIR) ; \
-		sh autotool.sh
-	$(call Build/Configure/Default)
-endef
-
+CMAKE_OPTIONS += \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DCMAKE_CXX_STANDARD=17 \
+	-DBUILD_SHARED_LIBS=ON \
+	-Ddeprecated-functions=ON  \
+	-Dencryption=ON \
+	-Diconv=ON \
+	-Dstatic_runtime=ON \
+	-Dlogging=OFF
+	
 define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include
-	$(CP) $(PKG_INSTALL_DIR)/usr/include/libtorrent $(1)/usr/include/
-	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libtorrent-rasterbar.{a,so*} $(1)/usr/lib/
-	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/pkgconfig/libtorrent-rasterbar.pc $(1)/usr/lib/pkgconfig/
+	$(INSTALL_DIR) $(1)
+	$(CP) $(PKG_INSTALL_DIR)/* $(1)
 endef
 
 define Package/rblibtorrent/install
 	$(INSTALL_DIR) $(1)/usr/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libtorrent-rasterbar.so* $(1)/usr/lib/
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so* $(1)/usr/lib
 endef
 
 $(eval $(call BuildPackage,rblibtorrent))
