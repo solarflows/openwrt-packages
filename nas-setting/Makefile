@@ -102,6 +102,7 @@ define Package/nas-settings
 			+@HTOP_LMSENSORS \
 			+hwclock \
 			+hwinfo \
+			+PACKAGE_lm-sensors:lm-sensors-detect \
 			+nano-plus \
 			+nginx \
 			+nginx-all-module \
