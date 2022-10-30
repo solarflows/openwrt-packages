@@ -1,16 +1,8 @@
-#
-# Copyright (C) 2016-2017 GitHub 
-#
-# This is free software, licensed under the GNU General Public License v3.
-# See /LICENSE for more information.
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nas-settings
 PKG_VERSION:=1
 PKG_RELEASE:=1
-PKG_LICENSE:=GPLv3
-PKG_LICENSE_FILES:=LICENSE
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -97,6 +89,7 @@ define Package/nas-settings
 			+antileech \
 			+autocore-arm \
 			+automount \
+			+ipv6helper \
 			+cdnspeedtest \
 			+ethtool-full \
 			+fdisk \
