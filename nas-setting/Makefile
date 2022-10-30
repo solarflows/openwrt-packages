@@ -94,7 +94,6 @@ define Package/nas-settings
 			+automount \
 			+ipv6helper \
 			+cdnspeedtest \
-			-ethtool \
 			+ethtool-full \
 			+fdisk \
 			+cfdisk \
