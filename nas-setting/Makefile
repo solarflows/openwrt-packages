@@ -17,6 +17,9 @@ define Package/nas-settings
 			+luci-app-cpufreq \
 			+luci-app-ddnsto \
 			+luci-app-diskman \
+			+@luci-app-diskman_INCLUDE_btrfs_progs \
+			+@luci-app-diskman_INCLUDE_lsblk \
+			+@luci-app-diskman_INCLUDE_mdadm \
 			+luci-app-dockerman \
 			+luci-app-filebrowser \
 			+luci-app-frpc \
