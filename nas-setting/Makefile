@@ -10,6 +10,7 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/nas-settings
   CATEGORY:=Configs
+  SECTION:=Configs
   TITLE:=Config For Nas Divices.
   PKGARCH:=all
   DEPENDS:=+default-settings \
