@@ -120,7 +120,6 @@ define Package/nas-settings
 			+vim-fuller \
 			+zram-swap \
 			+zstd
-
 endef
 
 define Package/nas-settings/description
