@@ -37,14 +37,14 @@ define Package/nas-settings
 			+luci-app-nfs \
 			+luci-app-openclash \
 			+luci-app-passwall \
-			+luci-app-passwall_INCLUDE_Brook \
-			+luci-app-passwall_INCLUDE_ChinaDNS_NG \
-			+luci-app-passwall_INCLUDE_Hysteria \
-			+luci-app-passwall_INCLUDE_NaiveProxy \
-			+luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server \
-			+luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server \
-			+luci-app-passwall_INCLUDE_Trojan_GO \
-			+luci-app-passwall_Iptables_Transparent_Proxy \
+			+@luci-app-passwall_INCLUDE_Brook \
+			+@luci-app-passwall_INCLUDE_ChinaDNS_NG \
+			+@luci-app-passwall_INCLUDE_Hysteria \
+			+@luci-app-passwall_INCLUDE_NaiveProxy \
+			+@luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server \
+			+@luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server \
+			+@luci-app-passwall_INCLUDE_Trojan_GO \
+			+@luci-app-passwall_Iptables_Transparent_Proxy \
 			+luci-app-pgyvpn \
 			+luci-app-phtunnel \
 			+luci-app-poweroff \
@@ -54,19 +54,19 @@ define Package/nas-settings
 			+luci-app-samba \
 			+luci-app-smartdns \
 			+luci-app-ssr-plus \
-			+luci-app-ssr-plus_INCLUDE_Hysteria \
-			+luci-app-ssr-plus_INCLUDE_IPT2Socks \
-			+luci-app-ssr-plus_INCLUDE_Kcptun \
-			+luci-app-ssr-plus_INCLUDE_NaiveProxy \
-			+luci-app-ssr-plus_INCLUDE_Redsocks2 \
-			+luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server \
-			+luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin \
-			+luci-app-ssr-plus_INCLUDE_Trojan \
+			+@luci-app-ssr-plus_INCLUDE_Hysteria \
+			+@luci-app-ssr-plus_INCLUDE_IPT2Socks \
+			+@luci-app-ssr-plus_INCLUDE_Kcptun \
+			+@luci-app-ssr-plus_INCLUDE_NaiveProxy \
+			+@luci-app-ssr-plus_INCLUDE_Redsocks2 \
+			+@luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server \
+			+@luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin \
+			+@luci-app-ssr-plus_INCLUDE_Trojan \
 			+luci-app-syncthing \
 			+luci-app-transmission \
 			+luci-app-ttyd \
-			+luci-app-turboacc_INCLUDE_DNSFORWARDER \
-			+luci-app-turboacc_INCLUDE_DNSPROXY \
+			+@luci-app-turboacc_INCLUDE_DNSFORWARDER \
+			+@luci-app-turboacc_INCLUDE_DNSPROXY \
 			+luci-app-unblockmusic \
 			+luci-app-verysync \
 			+luci-app-vnstat \
