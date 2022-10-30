@@ -1,9 +1,3 @@
-#
-# Copyright (C) 2016-2017 GitHub 
-#
-# This is free software, licensed under the GNU General Public License v3.
-# See /LICENSE for more information.
-
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=nas-settings
@@ -123,13 +117,10 @@ define Package/nas-settings
 endef
 
 define Package/nas-settings/description
- Nas device's default software setting.
+	Nas device's default software setting.
 endef
 
 define Build/Compile
-endef
-
-define Package/nas-settings/install
 endef
 
 $(eval $(call BuildPackage,nas-settings))
