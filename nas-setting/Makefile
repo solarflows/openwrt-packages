@@ -75,30 +75,31 @@ define Package/nas-settings
 			+luci-app-wireguard \
 			+luci-app-wrtbwmon \
 			+aria2 \
-			+ARIA2_ASYNC_DNS \
-			+ARIA2_BITTORRENT \
-			+ARIA2_COOKIE \
-			+ARIA2_LIBXML2 \
-			+ARIA2_METALINK \
-			+ARIA2_OPENSSL \
-			+ARIA2_SFTP \
-			+ARIA2_WEBSOCKET \
-			+CGROUPFS_MOUNT_KERNEL_CGROUPS \
-			+DOCKER_CGROUP_OPTIONS \
-			+DOCKER_NET_ENCRYPT \
-			+DOCKER_NET_MACVLAN \
-			+DOCKER_NET_OVERLAY \
-			+DOCKER_NET_TFTP \
-			+DOCKER_OPTIONAL_FEATURES \
-			+DOCKER_STO_BTRFS \
-			+DOCKER_STO_EXT4 \
+			+@ARIA2_ASYNC_DNS \
+			+@ARIA2_BITTORRENT \
+			+@ARIA2_COOKIE \
+			+@ARIA2_LIBXML2 \
+			+@ARIA2_METALINK \
+			+@ARIA2_OPENSSL \
+			+@ARIA2_SFTP \
+			+@ARIA2_WEBSOCKET \
+			+cgroupfs-mount \
+			+@CGROUPFS_MOUNT_KERNEL_CGROUPS \
+			+dockerd \
+			+@DOCKER_CGROUP_OPTIONS \
+			+@DOCKER_NET_ENCRYPT \
+			+@DOCKER_NET_MACVLAN \
+			+@DOCKER_NET_OVERLAY \
+			+@DOCKER_NET_TFTP \
+			+@DOCKER_OPTIONAL_FEATURES \
+			+@DOCKER_STO_BTRFS \
+			+@DOCKER_STO_EXT4 \
 			+6rd \
 			+6to4 \
 			+antileech \
 			+autocore-arm \
 			+automount \
 			+cdnspeedtest \
-			+cgroupfs-mount \
 			+ethtool-full \
 			+fdisk \
 			+cfdisk \
@@ -107,7 +108,7 @@ define Package/nas-settings
 			+hd-idle \
 			+hdparm \
 			+htop \
-			+HTOP_LMSENSORS \
+			+@HTOP_LMSENSORS \
 			+hwclock \
 			+hwinfo \
 			+lm-sensors-detect \
