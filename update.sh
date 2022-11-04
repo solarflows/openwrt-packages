@@ -71,7 +71,7 @@ git clone --depth 1 https://github.com/jerrykuku/luci-app-argon-config
 # 无WIFIDOG实现WIFI认证
 git clone --depth 1 https://github.com/tty228/luci-app-nodogsplash
 # OUI
-git clone --depth 1 https://github.com/zhaojh329/oui
+# git clone --depth 1 https://github.com/zhaojh329/oui
 # ssr-plus
 git clone --depth 1 https://github.com/fw876/helloworld && mvdir helloworld
 # PassWall1&2及其依赖
