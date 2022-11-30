@@ -9,14 +9,17 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qt5tools
 PKG_BASE_VERSION:=5.15
-PKG_SUBVERSION:=4
+PKG_SUBVERSION:=6
 PKG_VERSION:=$(PKG_BASE_VERSION).$(PKG_SUBVERSION)
 PKG_RELEASE:=1
 
-PKG_MD5SUM:=2466004ad9aad55f3416aadc370f8504
 PKG_SOURCE:=qttools-everywhere-opensource-src-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://download.qt-project.org/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules
 PKG_BUILD_DIR:=$(BUILD_DIR)/qttools-everywhere-src-$(PKG_VERSION)
+PKG_SOURCE_URL:= \
+		http://master.qt.io/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules \
+		http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules \
+		http://qt.mirror.constant.com/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules
+PKG_HASH:=2c1486ab7e6dad76fb34642cd4f91d533e5dfeec0ee527129c2c2ed4ab283c3b
 
 PKG_MAINTAINER:=Krypton Lee <jun.k.lee199410@outlook.com>
 PKG_LICENSE:=LGPL-2.1
