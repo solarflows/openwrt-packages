@@ -16,9 +16,9 @@ PKG_RELEASE:=1
 PKG_SOURCE:=qtbase-everywhere-opensource-src-$(PKG_VERSION).tar.xz
 PKG_BUILD_DIR:=$(BUILD_DIR)/qtbase-everywhere-src-$(PKG_VERSION)
 PKG_SOURCE_URL:= \
-		http://master.qt.io/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules \
-		http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules \
-		http://qt.mirror.constant.com/archive/qt/$(PKG_BASE)/$(PKG_VERSION)/submodules
+		http://master.qt.io/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules \
+		http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules \
+		http://qt.mirror.constant.com/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules
 PKG_HASH:=396bc6b0d773ac6a7c691a4c3d901999f571e3e7033d7fd6f65e4ef2b6eb7340
 
 PKG_MAINTAINER:=Krypton Lee <jun.k.lee199410@outlook.com>
