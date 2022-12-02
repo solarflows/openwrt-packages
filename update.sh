@@ -189,6 +189,9 @@ svn co https://github.com/immortalwrt/luci/branches/openwrt-18.06-k5.4/applicati
 # svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-advancedsetting
 # svn co https://github.com/openwrt/luci/trunk/protocols/luci-proto-modemmanager
 
+# FIX IRQBALANCE
+svn co https://github.com/openwrt/packages/trunk/utils/irqbalance
+
 rm -rf ./*/.git & rm -f ./*/.gitattributes
 rm -rf ./*/.svn & rm -rf ./*/.github & rm -rf ./*/.gitignore
 exit 0
