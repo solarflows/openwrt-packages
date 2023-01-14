@@ -87,6 +87,8 @@ git clone --depth 1 https://github.com/immortalwrt/openwrt-filebrowser && mvdir 
 git clone --depth 1 https://github.com/kiddin9/luci-app-dnsfilter
 # OpenWRT 订阅转换
 git clone --depth 1 https://github.com/WYC-2020/openwrt-subconverter && mvdir openwrt-subconverter
+# msd_lite IPTV转发
+git clone --depth 1 https://github.com/hyy-666/luci-app-msd_lite luci-app-msd_lite
 # git clone --depth 1 https://github.com/kiddin9/openwrt-bypass && mvdir openwrt-bypass
 # git clone --depth 1 https://github.com/kiddin9/aria2
 # git clone --depth 1 https://github.com/kiddin9/luci-app-baidupcs-web
