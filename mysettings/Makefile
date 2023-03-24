@@ -34,14 +34,14 @@ $(call Package/mysettings/Default)
   +luci-app-ipsec-vpnd +luci-app-openvpn +luci-app-openvpn-server +luci-app-privoxy \
   +luci-app-polipo +luci-app-tinyproxy +luci-app-phtunnel +luci-app-poweroff \
   +luci-app-unblockmusic \
-  +@CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go \
-  +@CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_NodeJS \
+  +@PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go \
+  +@PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_NodeJS \
   +luci-app-turboacc \
-  +@CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING \
-  +@CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA \
-  +@CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_PDNSD \
-  +@CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_DNSFORWARDER \
-  +@CONFIG_PACKAGE_luci-app-turboacc_INCLUDE_DNSPROXY \
+  +@PACKAGE_luci-app-turboacc_INCLUDE_OFFLOADING \
+  +@PACKAGE_luci-app-turboacc_INCLUDE_BBR_CCA \
+  +@PACKAGE_luci-app-turboacc_INCLUDE_PDNSD \
+  +@PACKAGE_luci-app-turboacc_INCLUDE_DNSFORWARDER \
+  +@PACKAGE_luci-app-turboacc_INCLUDE_DNSPROXY \
   +luci-theme-argon +luci-theme-bootstrap +luci-theme-darkmatter +luci-theme-design +luci-theme-material +luci-theme-neobird
 endef
 
@@ -50,40 +50,39 @@ $(call Package/mysettings/Default)
   TITLE:=Proxy packages
   DEPENDS:=+luci-app-autoipsetadder +luci-app-wireguard \
   +luci-app-passwall \
-  +@CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Haproxy \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin \
-  +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray \
+  +@PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Brook \
+  +@PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Haproxy \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Hysteria \
+  +@PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Client \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Client \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Rust_Server \
+  +@PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client \
+  +@PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus \
+  +@PACKAGE_luci-app-passwall_INCLUDE_V2ray \
+  +@PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata \
+  +@PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin \
+  +@PACKAGE_luci-app-passwall_INCLUDE_Xray \
   +luci-app-ssr-plus \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Server \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ChinaDNS_NG \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Hysteria \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_NaiveProxy \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2 \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Simple_Obfs \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Client \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server \
-  +@CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Server \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_ChinaDNS_NG \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Hysteria \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_NaiveProxy \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2 \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Simple_Obfs \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Client \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server \
+  +@PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan
 endef
 
 define Build/Prepare
