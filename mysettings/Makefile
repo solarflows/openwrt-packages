@@ -21,7 +21,7 @@ endef
 define Package/mysettings-router
 $(call Package/mysettings/Default)
   TITLE:=Router packages select.
-  DEPENDS:=mysettings +6rd +6to4 +kmod-shortcut-fe-cm \
+  DEPENDS:=+6rd +6to4 +kmod-shortcut-fe-cm \
   +luci-app-adguardhome +luci-app-advanced +luci-app-argon-config \
   +luci-app-autotimeset +luci-app-beardropper +luci-app-cloudflarespeedtest \
   +luci-app-commands +@TARGET_rockchip:luci-app-cpufreq +luci-app-ddnsto \
@@ -29,10 +29,10 @@ $(call Package/mysettings/Default)
   +luci-app-ikoolproxy +luci-app-irqbalance +luci-app-lucky +luci-app-minidlna \
   +luci-app-msd_lite +luci-app-netspeedtest +luci-app-onliner +luci-app-openclash \
   +luci-app-pppoe-relay +luci-app-pushbot +luci-app-ramfree +luci-app-smartdns \
-  +luci-app-mosdns +luci-app-tencentddns +luci-app-uhttpd +luci-app-ipsec-server \
-  +luci-app-vlmcsd +luci-app-vsftpd +luci-app-webadmin +luci-app-wolplus \
-  +luci-app-wrtbwmon +luci-app-ipsec-vpnd +luci-app-openvpn +luci-app-openvpn-server \
-  +luci-app-privoxy +luci-app-polipo +luci-app-tinyproxy +luci-app-phtunnel +luci-app-poweroff \
+  +luci-app-mosdns +luci-app-tencentddns +luci-app-uhttpd +luci-app-vlmcsd \
+  +luci-app-vsftpd +luci-app-webadmin +luci-app-wolplus +luci-app-wrtbwmon \
+  +luci-app-ipsec-vpnd +luci-app-openvpn +luci-app-openvpn-server +luci-app-privoxy \
+  +luci-app-polipo +luci-app-tinyproxy +luci-app-phtunnel +luci-app-poweroff \
   +luci-app-unblockmusic \
   +@CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go \
   +@CONFIG_PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_NodeJS \
@@ -48,7 +48,7 @@ endef
 define Package/mysettings-proxy
 $(call Package/mysettings/Default)
   TITLE:=Proxy packages
-  DEPENDS:=mysettings +luci-app-autoipsetadder +luci-app-wireguard \
+  DEPENDS:=+luci-app-autoipsetadder +luci-app-wireguard \
   +luci-app-passwall \
   +@CONFIG_PACKAGE_luci-app-passwall_Iptables_Transparent_Proxy \
   +@CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook \
