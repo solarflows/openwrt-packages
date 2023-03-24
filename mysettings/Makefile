@@ -15,7 +15,7 @@ endef
 define Package/mysettings
 $(call Package/mysettings/Default)
   TITLE:=my diy.
-  DEPENDS:=+nano-plus +vim-fuller +luci-app-natter +luci-app-iptvhelper +luci-app-pgyvpn +luci-app-zerotier +luci-app-vnstat
+  DEPENDS:=+nano-plus +vim-fuller +luci-app-natter +luci-app-iptvhelper +luci-app-pgyvpn +luci-app-zerotier +luci-app-vnstat +luci-app-ttyd
 endef
 
 define Package/mysettings-router
