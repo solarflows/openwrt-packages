@@ -18,7 +18,7 @@ $(call Package/mysettings/Default)
   DEPENDS:= \
   +nano-plus +vim-fuller +luci-app-ddnsto +luci-app-dnsfilter +luci-app-natter +luci-app-iptvhelper \
   +luci-app-pgyvpn +luci-app-phtunnel +luci-app-zerotier +luci-app-vnstat +luci-app-lucky \
-  +luci-app-ttyd +TARGET_aarch64:luci-app-cpufreq +luci-app-frpc +luci-app-frps +ipv6helper
+  +luci-app-ttyd +luci-app-cpufreq +luci-app-frpc +luci-app-frps +ipv6helper
 endef
 
 define Package/mysettings-router
