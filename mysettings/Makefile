@@ -16,9 +16,10 @@ define Package/mysettings
 $(call Package/mysettings/Default)
   TITLE:=my diy.
   DEPENDS:= \
-  +nano-plus +vim-fuller +luci-app-ddnsto +luci-app-dnsfilter +luci-app-natter +luci-app-iptvhelper \
-  +luci-app-pgyvpn +luci-app-phtunnel +luci-app-zerotier +luci-app-vnstat +luci-app-lucky \
-  +luci-app-ttyd +luci-app-cpufreq +luci-app-frpc +luci-app-frps +ipv6helper
+  +ipv6helper +nano-plus +vim-fuller +luci-app-advanced +luci-app-cpufreq \
+  +luci-app-ddnsto +luci-app-dnsfilter +luci-app-frpc +luci-app-frps \
+  +luci-app-iptvhelper +luci-app-lucky +luci-app-natter +luci-app-pgyvpn \
+  +luci-app-phtunnel +luci-app-ttyd +luci-app-vnstat +luci-app-zerotier
 endef
 
 define Package/mysettings-router
@@ -27,16 +28,14 @@ $(call Package/mysettings/Default)
   DEPENDS:= \
   +6rd +6to4 +kmod-shortcut-fe-cm +luci-app-adguardhome +luci-app-advanced \
   +luci-app-argon-config +luci-app-autotimeset +luci-app-beardropper \
-  +luci-app-cloudflarespeedtest +luci-app-commands \
-  +luci-app-design-config +luci-app-ikoolproxy \
-  +luci-app-irqbalance +luci-app-minidlna +luci-app-msd_lite \
-  +luci-app-netspeedtest +luci-app-onliner +luci-app-pppoe-relay \
-  +luci-app-pushbot +luci-app-ramfree +luci-app-smartdns \
-  +luci-app-tencentddns +luci-app-uhttpd +luci-app-vlmcsd +luci-app-vsftpd \
-  +luci-app-webadmin +luci-app-wolplus +luci-app-wrtbwmon \
-  +luci-app-poweroff +luci-app-unblockmusic \
+  +luci-app-cloudflarespeedtest +luci-app-commands +luci-app-design-config \
+  +luci-app-ikoolproxy +luci-app-irqbalance +luci-app-msd_lite \
+  +luci-app-netspeedtest +luci-app-onliner +luci-app-poweroff \
+  +luci-app-pppoe-relay +luci-app-pushbot +luci-app-ramfree \
+  +luci-app-smartdns +luci-app-tencentddns +luci-app-uhttpd \
+  +luci-app-vlmcsd +luci-app-vsftpd +luci-app-webadmin \
+  +luci-app-wolplus +luci-app-wrtbwmon +luci-app-unblockmusic \
   +@PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_Go \
-  +@PACKAGE_luci-app-unblockmusic_INCLUDE_UnblockNeteaseMusic_NodeJS \
   +luci-theme-argon +luci-theme-darkmatter +luci-theme-design +luci-theme-material
 endef
 

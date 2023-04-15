@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qt5base
 PKG_BASE_VERSION:=5.15
-PKG_SUBVERSION:=8
+PKG_SUBVERSION:=9
 PKG_VERSION:=$(PKG_BASE_VERSION).$(PKG_SUBVERSION)
 PKG_RELEASE:=1
 
@@ -19,7 +19,7 @@ PKG_SOURCE_URL:= \
 		http://master.qt.io/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules \
 		http://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules \
 		http://qt.mirror.constant.com/archive/qt/$(PKG_BASE_VERSION)/$(PKG_VERSION)/submodules
-PKG_HASH:=bfb11126c7f3abc3fdf86425ce912988b864a7e79a606d77325cffdbacb4be9c
+PKG_HASH:=1947deb9d98aaf46bf47e6659b3e1444ce6616974470523756c082041d396d1e
 
 PKG_MAINTAINER:=Krypton Lee <jun.k.lee199410@outlook.com>
 PKG_LICENSE:=LGPL-2.1
