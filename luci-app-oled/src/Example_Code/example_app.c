@@ -39,29 +39,27 @@ SOFTWARE.
 #include "SSD1306_OLED.h"
 #include "example_app.h"
 
-#define BUFMAX SSD1306_LCDWIDTH*SSD1306_LCDHEIGHT
+#define BUFMAX SSD1306_LCDWIDTH *SSD1306_LCDHEIGHT
 
 /* MACRO's */
 #define LOGO16_GLCD_HEIGHT 16
-#define LOGO16_GLCD_WIDTH  16
+#define LOGO16_GLCD_WIDTH 16
 #define NUMFLAKES 10
 #define XPOS 0
 #define YPOS 1
 #define DELTAY 2
 
-
-
 #define TIMESIZE 64
-//temperature
+// temperature
 #define TEMPPATH "/sys/class/thermal/thermal_zone0/temp"
 #define TEMPSIZE 5
-//cpu
-#define FREQSIZE 8 
+// cpu
+#define FREQSIZE 8
 #define FREQPATH "cat /sys/devices/system/cpu/cpu[04]/cpufreq/cpuinfo_cur_freq"
-//ip
+// ip
 #define IPPATH "ifconfig br-lan|grep 'inet addr:'|cut -d: -f2|awk '{print $1}'"
 #define IPSIZE 20
-//netspeed
+// netspeed
 #define NETPATH "cat /tmp/netspeed"
 
 /* Extern volatile */
@@ -69,86 +67,86 @@ extern volatile unsigned char flag;
 
 /* Bit Map - Taken from Adafruit SSD1306 OLED Library  */
 static const unsigned char logo16_glcd_bmp[] =
-{
- 0b00000000, 0b11000000,
- 0b00000001, 0b11000000,
- 0b00000001, 0b11000000,
- 0b00000011, 0b11100000,
- 0b11110011, 0b11100000,
- 0b11111110, 0b11111000,
- 0b01111110, 0b11111111,
- 0b00110011, 0b10011111,
- 0b00011111, 0b11111100,
- 0b00001101, 0b01110000,
- 0b00011011, 0b10100000,
- 0b00111111, 0b11100000,
- 0b00111111, 0b11110000,
- 0b01111100, 0b11110000,
- 0b01110000, 0b01110000,
- 0b00000000, 0b00110000
-};
+    {
+        0b00000000, 0b11000000,
+        0b00000001, 0b11000000,
+        0b00000001, 0b11000000,
+        0b00000011, 0b11100000,
+        0b11110011, 0b11100000,
+        0b11111110, 0b11111000,
+        0b01111110, 0b11111111,
+        0b00110011, 0b10011111,
+        0b00011111, 0b11111100,
+        0b00001101, 0b01110000,
+        0b00011011, 0b10100000,
+        0b00111111, 0b11100000,
+        0b00111111, 0b11110000,
+        0b01111100, 0b11110000,
+        0b01110000, 0b01110000,
+        0b00000000, 0b00110000};
 
 FILE *fp;
 char content_buff[BUFMAX];
 char buf[BUFMAX];
-int display_offset =7;
+int display_offset = 7;
 /* draw many lines */
-void testdrawline() 
+void testdrawline()
 {
     short i = 0;
-    for (i=0; i<SSD1306_LCDWIDTH; i+=4)
+    for (i = 0; i < SSD1306_LCDWIDTH; i += 4)
     {
-        drawLine(0, 0, i, SSD1306_LCDHEIGHT-1, WHITE);
+        drawLine(0, 0, i, SSD1306_LCDHEIGHT - 1, WHITE);
         Display();
         usleep(1000);
     }
-    for (i=0; i<SSD1306_LCDHEIGHT; i+=4)
+    for (i = 0; i < SSD1306_LCDHEIGHT; i += 4)
     {
-        drawLine(0, 0, SSD1306_LCDWIDTH-1, i, WHITE);
-        Display();
-        usleep(1000);
-    }
-    usleep(250000);
-
-    clearDisplay();
-    for (i=0; i<SSD1306_LCDWIDTH; i+=4)
-    {
-        drawLine(0, SSD1306_LCDHEIGHT-1, i, 0, WHITE);
-        Display();
-        usleep(1000);
-    }
-    for (i=SSD1306_LCDHEIGHT-1; i>=0; i-=4)
-    {
-        drawLine(0, SSD1306_LCDHEIGHT-1, SSD1306_LCDWIDTH-1, i, WHITE);
+        drawLine(0, 0, SSD1306_LCDWIDTH - 1, i, WHITE);
         Display();
         usleep(1000);
     }
     usleep(250000);
 
     clearDisplay();
-    for (i=SSD1306_LCDWIDTH-1; i>=0; i-=4)
+    for (i = 0; i < SSD1306_LCDWIDTH; i += 4)
     {
-        drawLine(SSD1306_LCDWIDTH-1, SSD1306_LCDHEIGHT-1, i, 0, WHITE);
+        drawLine(0, SSD1306_LCDHEIGHT - 1, i, 0, WHITE);
         Display();
         usleep(1000);
     }
-    for (i=SSD1306_LCDHEIGHT-1; i>=0; i-=4)
+    for (i = SSD1306_LCDHEIGHT - 1; i >= 0; i -= 4)
     {
-        drawLine(SSD1306_LCDWIDTH-1, SSD1306_LCDHEIGHT-1, 0, i, WHITE);
+        drawLine(0, SSD1306_LCDHEIGHT - 1, SSD1306_LCDWIDTH - 1, i, WHITE);
         Display();
         usleep(1000);
     }
     usleep(250000);
 
     clearDisplay();
-    for (i=0; i<SSD1306_LCDHEIGHT; i+=4)
+    for (i = SSD1306_LCDWIDTH - 1; i >= 0; i -= 4)
     {
-        drawLine(SSD1306_LCDWIDTH-1, 0, 0, i, WHITE);
+        drawLine(SSD1306_LCDWIDTH - 1, SSD1306_LCDHEIGHT - 1, i, 0, WHITE);
         Display();
         usleep(1000);
     }
-    for (i=0; i<SSD1306_LCDWIDTH; i+=4) {
-        drawLine(SSD1306_LCDWIDTH-1, 0, i, SSD1306_LCDHEIGHT-1, WHITE);
+    for (i = SSD1306_LCDHEIGHT - 1; i >= 0; i -= 4)
+    {
+        drawLine(SSD1306_LCDWIDTH - 1, SSD1306_LCDHEIGHT - 1, 0, i, WHITE);
+        Display();
+        usleep(1000);
+    }
+    usleep(250000);
+
+    clearDisplay();
+    for (i = 0; i < SSD1306_LCDHEIGHT; i += 4)
+    {
+        drawLine(SSD1306_LCDWIDTH - 1, 0, 0, i, WHITE);
+        Display();
+        usleep(1000);
+    }
+    for (i = 0; i < SSD1306_LCDWIDTH; i += 4)
+    {
+        drawLine(SSD1306_LCDWIDTH - 1, 0, i, SSD1306_LCDHEIGHT - 1, WHITE);
         Display();
         usleep(1000);
     }
@@ -156,26 +154,26 @@ void testdrawline()
 }
 
 /* draw rectangles */
-void testdrawrect() 
+void testdrawrect()
 {
     short i = 0;
-    for (i=0; i<SSD1306_LCDHEIGHT/2; i+=2)
+    for (i = 0; i < SSD1306_LCDHEIGHT / 2; i += 2)
     {
-        drawRect(i, i,SSD1306_LCDWIDTH-2*i, SSD1306_LCDHEIGHT-2*i, WHITE);
+        drawRect(i, i, SSD1306_LCDWIDTH - 2 * i, SSD1306_LCDHEIGHT - 2 * i, WHITE);
         Display();
         usleep(1000);
     }
 }
 
 /* draw multiple rectangles */
-void testfillrect() 
+void testfillrect()
 {
     unsigned char color = 1;
     short i = 0;
-    for (i=0; i<SSD1306_LCDHEIGHT/2; i+=3)
+    for (i = 0; i < SSD1306_LCDHEIGHT / 2; i += 3)
     {
         // alternate colors
-        fillRect(i, i, SSD1306_LCDWIDTH-i*2, SSD1306_LCDHEIGHT-i*2, color%2);
+        fillRect(i, i, SSD1306_LCDWIDTH - i * 2, SSD1306_LCDHEIGHT - i * 2, color % 2);
         Display();
         usleep(1000);
         color++;
@@ -186,32 +184,33 @@ void testfillrect()
 void testdrawcircle()
 {
     short i = 0;
-    for (i=0; i<SSD1306_LCDHEIGHT; i+=2)
+    for (i = 0; i < SSD1306_LCDHEIGHT; i += 2)
     {
-        drawCircle(SSD1306_LCDWIDTH/2,SSD1306_LCDHEIGHT/2, i, WHITE);
+        drawCircle(SSD1306_LCDWIDTH / 2, SSD1306_LCDHEIGHT / 2, i, WHITE);
         Display();
         usleep(1000);
     }
 }
 
 /*draw a white circle, 10 pixel radius */
-void testdrawroundrect() 
+void testdrawroundrect()
 {
     short i = 0;
-    for (i=0; i<SSD1306_LCDHEIGHT/2-2; i+=2) {
-        drawRoundRect(i, i,SSD1306_LCDWIDTH-2*i, SSD1306_LCDHEIGHT-2*i, SSD1306_LCDHEIGHT/4, WHITE);
+    for (i = 0; i < SSD1306_LCDHEIGHT / 2 - 2; i += 2)
+    {
+        drawRoundRect(i, i, SSD1306_LCDWIDTH - 2 * i, SSD1306_LCDHEIGHT - 2 * i, SSD1306_LCDHEIGHT / 4, WHITE);
         Display();
         usleep(1000);
     }
 }
 
 /* Fill the round rectangle */
-void testfillroundrect() 
+void testfillroundrect()
 {
-    short color = WHITE,i = 0;
-    for (i=0; i<SSD1306_LCDHEIGHT/2-2; i+=2)
+    short color = WHITE, i = 0;
+    for (i = 0; i < SSD1306_LCDHEIGHT / 2 - 2; i += 2)
     {
-        fillRoundRect(i, i, SSD1306_LCDWIDTH-2*i, SSD1306_LCDHEIGHT-2*i, SSD1306_LCDHEIGHT/4, color);
+        fillRoundRect(i, i, SSD1306_LCDWIDTH - 2 * i, SSD1306_LCDHEIGHT - 2 * i, SSD1306_LCDHEIGHT / 4, color);
         if (color == WHITE)
             color = BLACK;
         else
@@ -222,29 +221,29 @@ void testfillroundrect()
 }
 
 /* Draw triangles */
-void testdrawtriangle() 
+void testdrawtriangle()
 {
     short i = 0;
-    for (i=0; i<MIN(SSD1306_LCDWIDTH,SSD1306_LCDHEIGHT)/2; i+=5)
+    for (i = 0; i < MIN(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT) / 2; i += 5)
     {
-        drawTriangle(SSD1306_LCDWIDTH/2, SSD1306_LCDHEIGHT/2-i,
-                     SSD1306_LCDWIDTH/2-i,SSD1306_LCDHEIGHT /2+i,
-                     SSD1306_LCDWIDTH/2+i, SSD1306_LCDHEIGHT/2+i, WHITE);
+        drawTriangle(SSD1306_LCDWIDTH / 2, SSD1306_LCDHEIGHT / 2 - i,
+                     SSD1306_LCDWIDTH / 2 - i, SSD1306_LCDHEIGHT / 2 + i,
+                     SSD1306_LCDWIDTH / 2 + i, SSD1306_LCDHEIGHT / 2 + i, WHITE);
         Display();
         usleep(1000);
     }
 }
 
 /* Fill triangles */
-void testfilltriangle() 
+void testfilltriangle()
 {
     unsigned char color = WHITE;
     short i = 0;
-    for (i=MIN(SSD1306_LCDWIDTH,SSD1306_LCDHEIGHT)/2; i>0; i-=5)
+    for (i = MIN(SSD1306_LCDWIDTH, SSD1306_LCDHEIGHT) / 2; i > 0; i -= 5)
     {
-        fillTriangle(SSD1306_LCDWIDTH/2, SSD1306_LCDHEIGHT/2-i,
-                     SSD1306_LCDWIDTH/2-i, SSD1306_LCDHEIGHT/2+i,
-                     SSD1306_LCDWIDTH/2+i, SSD1306_LCDHEIGHT/2+i, WHITE);
+        fillTriangle(SSD1306_LCDWIDTH / 2, SSD1306_LCDHEIGHT / 2 - i,
+                     SSD1306_LCDWIDTH / 2 - i, SSD1306_LCDHEIGHT / 2 + i,
+                     SSD1306_LCDWIDTH / 2 + i, SSD1306_LCDHEIGHT / 2 + i, WHITE);
         if (color == WHITE)
             color = BLACK;
         else
@@ -260,9 +259,9 @@ void testdrawchar()
     unsigned char i = 0;
     setTextSize(1);
     setTextColor(WHITE);
-    setCursor(0,0);
+    setCursor(0, 0);
 
-    for (i=0; i < 168; i++)
+    for (i = 0; i < 168; i++)
     {
         if (i == '\n')
             continue;
@@ -275,12 +274,12 @@ void testdrawchar()
 }
 
 /* Display "scroll" and scroll around */
-void testscrolltext(char* str)
+void testscrolltext(char *str)
 {
     setTextSize(2);
     setTextColor(WHITE);
-    setCursor(10,8);
-    sprintf(buf,"%s",str);
+    setCursor(10, 8);
+    sprintf(buf, "%s", str);
     print_strln(buf);
     Display();
     usleep(1000);
@@ -299,17 +298,15 @@ void testscrolltext(char* str)
     stopscroll();
 }
 
-
- 
 /* Display Texts */
 void display_texts()
 {
     setTextSize(1);
     setTextColor(WHITE);
-    setCursor(10,0);
+    setCursor(10, 0);
     print_str("HELLO FELLAS!");
     println();
-    printFloat_ln(3.141592, 4); //Print 4 No's after the decimal Pt.
+    printFloat_ln(3.141592, 4); // Print 4 No's after the decimal Pt.
     printNumber_L_ln(-1234, DEC);
     printNumber_UC_ln(170, BIN);
     setTextSize(2);
@@ -321,7 +318,7 @@ void display_texts()
 /* Display miniature bitmap */
 void display_bitmap()
 {
-    drawBitmap(30, 16,  logo16_glcd_bmp, 16, 16, 1);
+    drawBitmap(30, 16, logo16_glcd_bmp, 16, 16, 1);
 }
 
 /* Invert Display and Normalize it */
@@ -339,25 +336,25 @@ void testdrawbitmap(const unsigned char *bitmap, unsigned char w, unsigned char 
     unsigned char icons[NUMFLAKES][3], f = 0;
 
     // initialize
-    for (f=0; f< NUMFLAKES; f++)
+    for (f = 0; f < NUMFLAKES; f++)
     {
         icons[f][XPOS] = rand() % SSD1306_LCDWIDTH;
         icons[f][YPOS] = 0;
         icons[f][DELTAY] = (rand() % 5) + 1;
 
         /* Looks kinna ugly to me - Un-Comment if you need it */
-        //print_str("x: ");
-        //printNumber_UC(icons[f][XPOS], DEC);
-        //print_str("y: ");
-        //printNumber_UC(icons[f][YPOS], DEC);
-        //print_str("dy: ");
-        //printNumber_UC(icons[f][DELTAY], DEC);
+        // print_str("x: ");
+        // printNumber_UC(icons[f][XPOS], DEC);
+        // print_str("y: ");
+        // printNumber_UC(icons[f][YPOS], DEC);
+        // print_str("dy: ");
+        // printNumber_UC(icons[f][DELTAY], DEC);
     }
 
     while (flag != 5)
     {
         // draw each icon
-        for (f=0; f< NUMFLAKES; f++)
+        for (f = 0; f < NUMFLAKES; f++)
         {
             drawBitmap(icons[f][XPOS], icons[f][YPOS], bitmap, w, h, WHITE);
         }
@@ -365,7 +362,7 @@ void testdrawbitmap(const unsigned char *bitmap, unsigned char w, unsigned char 
         usleep(200000);
 
         // then erase it + move it
-        for (f=0; f< NUMFLAKES; f++)
+        for (f = 0; f < NUMFLAKES; f++)
         {
             drawBitmap(icons[f][XPOS], icons[f][YPOS], bitmap, w, h, BLACK);
 
@@ -388,7 +385,7 @@ void testdrawbitmap_eg()
 {
     setTextSize(1);
     setTextColor(WHITE);
-    setCursor(10,0);
+    setCursor(10, 0);
     testdrawbitmap(logo16_glcd_bmp, LOGO16_GLCD_HEIGHT, LOGO16_GLCD_WIDTH);
 }
 
@@ -397,7 +394,7 @@ void deeplyembedded_credits()
 {
     setTextSize(1);
     setTextColor(WHITE);
-    setCursor(1,0);
+    setCursor(1, 0);
     print_strln("deeplyembedded.org");
     println();
     print_strln("Author:Vinay Divakar");
@@ -406,7 +403,6 @@ void deeplyembedded_credits()
     print_strln("THANK YOU");
 }
 
-
 void testdate(int mode, int y)
 {
     time_t rawtime;
@@ -414,145 +410,150 @@ void testdate(int mode, int y)
     uint8_t timebuff[TIMESIZE];
     curtime = time(NULL);
     time(&rawtime);
-    switch (mode) 
+    switch (mode)
     {
-	case CENTER:
-		setTextSize(2);
-        	strftime(timebuff,80,"%H:%M",localtime(&rawtime));
-        	sprintf(buf,"%s",timebuff);
-        	setCursor((127-strlen(buf)*11)/2-4, y);
-	break;    	
-	case FULL:
-		setTextSize(1);
-        	strftime(timebuff,80,"%Y-%m-%d %H:%M:%S",localtime(&rawtime));
-        	sprintf(buf,"%s",timebuff);
-		setCursor(display_offset, y);
+    case CENTER:
+        setTextSize(2);
+        strftime(timebuff, 80, "%H:%M", localtime(&rawtime));
+        sprintf(buf, "%s", timebuff);
+        setCursor((127 - strlen(buf) * 11) / 2 - 4, y);
+        break;
+    case FULL:
+        setTextSize(1);
+        strftime(timebuff, 80, "%Y-%m-%d %H:%M:%S", localtime(&rawtime));
+        sprintf(buf, "%s", timebuff);
+        setCursor(display_offset, y);
     }
     print_strln(buf);
 }
 
-
 void testlanip(int mode, int y)
 {
     setTextSize(1);
-    if((fp=popen(IPPATH,"r"))!=NULL)
+    if ((fp = popen(IPPATH, "r")) != NULL)
     {
-        fscanf(fp,"%s",content_buff);
+        fscanf(fp, "%s", content_buff);
         fclose(fp);
-        //ipbuff[strlen(ipbuff)-1]=32;
-        switch(mode) 
-	{
-	    case CENTER:
-		setTextSize(1);
-		sprintf(buf,"%s",content_buff);  
-		setCursor((127-strlen(buf)*6)/2, y+4);
-		break;
+        // ipbuff[strlen(ipbuff)-1]=32;
+        switch (mode)
+        {
+        case CENTER:
+            setTextSize(1);
+            sprintf(buf, "%s", content_buff);
+            setCursor((127 - strlen(buf) * 6) / 2, y + 4);
+            break;
 
-	    case FULL:
-		setTextSize(1);
-		sprintf(buf,"IP:%s",content_buff);
-		setCursor(display_offset, y);
-	}
+        case FULL:
+            setTextSize(1);
+            sprintf(buf, "IP:%s", content_buff);
+            setCursor(display_offset, y);
+        }
         print_strln(buf);
     }
-
 }
-
 
 void testcputemp(int mode, int y)
 {
-    if((fp=fopen(TEMPPATH,"r"))!=NULL)
+    if ((fp = fopen(TEMPPATH, "r")) != NULL)
     {
-        fgets(content_buff,TEMPSIZE,fp);
+        fgets(content_buff, TEMPSIZE, fp);
         fclose(fp);
-        switch (mode) 
-	{
-	    case CENTER:
-		setTextSize(2);
-		sprintf(buf, "%.2f",atoi(content_buff)/100.0); 
-		setCursor((127-(strlen(buf)+2)*11)/2-4, y);
-		print_str(buf);
-		oled_write(0);
-		oled_write(67);
-        	drawCircle(getCursorX()-16, getCursorY()+3, 2, WHITE);
-		break;
-	    case FULL:
-		setTextSize(1);
-		sprintf(buf,"CPU TEMP:%.2f",atoi(content_buff)/100.0); 
-		setCursor(display_offset, y);
-		print_str(buf); 
-		oled_write(0);
-		oled_write(67);
-       		drawCircle(getCursorX()-8, getCursorY()+1, 1, WHITE);
-	}
-        
+        switch (mode)
+        {
+        case CENTER:
+            setTextSize(2);
+            sprintf(buf, "%.2f", atoi(content_buff) / 100.0);
+            setCursor((127 - (strlen(buf) + 2) * 11) / 2 - 4, y);
+            print_str(buf);
+            oled_write(0);
+            oled_write(67);
+            drawCircle(getCursorX() - 16, getCursorY() + 3, 2, WHITE);
+            break;
+        case FULL:
+            setTextSize(1);
+            sprintf(buf, "CPU TEMP:%.2f", atoi(content_buff) / 100.0);
+            setCursor(display_offset, y);
+            print_str(buf);
+            oled_write(0);
+            oled_write(67);
+            drawCircle(getCursorX() - 8, getCursorY() + 1, 1, WHITE);
+        }
     }
-
 }
-
 
 void testcpufreq(int mode, int y)
 {
-    if((fp=popen(FREQPATH,"r")) != NULL)
+    if ((fp = popen(FREQPATH, "r")) != NULL)
     {
-        fgets(content_buff,FREQSIZE,fp);
+        fgets(content_buff, FREQSIZE, fp);
         fclose(fp);
-        switch(mode) 
-	{
-	    case CENTER:
-		setTextSize(2);
-		sprintf(buf,"%4dMHz",atoi(content_buff)/1000); 
-		setCursor((127-strlen(buf)*11)/2-4, y);
-		break;
-            case FULL:
-		setTextSize(1);
-		sprintf(buf,"CPU FREQ:%4dMHz",atoi(content_buff)/1000);
-		setCursor(display_offset, y);
-	}
+        switch (mode)
+        {
+        case CENTER:
+            setTextSize(2);
+            sprintf(buf, "%4dMHz", atoi(content_buff) / 1000);
+            setCursor((127 - strlen(buf) * 11) / 2 - 4, y);
+            break;
+        case FULL:
+            setTextSize(1);
+            sprintf(buf, "CPU FREQ:%4dMHz", atoi(content_buff) / 1000);
+            setCursor(display_offset, y);
+        }
         print_strln(buf);
     }
-
 }
 
 void testnetspeed(int mode, int y)
 {
-    int rx,tx;
-    if((fp=popen(NETPATH,"r")) != NULL)
+    int rx, tx;
+    if ((fp = popen(NETPATH, "r")) != NULL)
     {
-        fscanf(fp,"%d %d", &rx, &tx);
+        fscanf(fp, "%d %d", &rx, &tx);
         fclose(fp);
         rx = rx;
         tx = tx;
-        switch(mode)
+        switch (mode)
         {
         case SPLIT:
             setTextSize(2);
-            if (tx < 1000) sprintf(buf, "%03dB", tx);
-            else if (tx > 1000000) sprintf(buf, "%03dM", tx/1000000);
-            else sprintf(buf, "%03dK", tx/1000);
-            setCursor((127-(strlen(buf)+1)*11)/2,0);
+            if (tx < 1000)
+                sprintf(buf, "%03dB", tx);
+            else if (tx > 1000000)
+                sprintf(buf, "%03dM", tx / 1000000);
+            else
+                sprintf(buf, "%03dK", tx / 1000);
+            setCursor((127 - (strlen(buf) + 1) * 11) / 2, 0);
             oled_write(24);
             print_str(buf);
 
-            if (rx < 1000) sprintf(buf, "%03dB", rx);
-            else if (rx > 1000000) sprintf(buf, "%03dM", rx/1000000);
-            else sprintf(buf, "%03dK", rx/1000);
-            setCursor((127-(strlen(buf)+1)*11)/2,16);
+            if (rx < 1000)
+                sprintf(buf, "%03dB", rx);
+            else if (rx > 1000000)
+                sprintf(buf, "%03dM", rx / 1000000);
+            else
+                sprintf(buf, "%03dK", rx / 1000);
+            setCursor((127 - (strlen(buf) + 1) * 11) / 2, 16);
             oled_write(25);
             print_str(buf);
             break;
         case MERGE:
             setTextSize(1);
-            if (tx < 1000) sprintf(buf, "%03dB ", tx);
-            else if (tx > 1000000) sprintf(buf, "%03dM", tx/1000000);
-            else sprintf(buf, "%03dK ", tx/1000);
-            setCursor((127-(2*strlen(buf)-1)*6)/2-4, y+4);
+            if (tx < 1000)
+                sprintf(buf, "%03dB ", tx);
+            else if (tx > 1000000)
+                sprintf(buf, "%03dM", tx / 1000000);
+            else
+                sprintf(buf, "%03dK ", tx / 1000);
+            setCursor((127 - (2 * strlen(buf) - 1) * 6) / 2 - 4, y + 4);
             oled_write(24);
             print_str(buf);
 
-            if (rx < 1000) sprintf(buf, "%03dB", rx);
-            else if (rx > 1000000) sprintf(buf, "%03dM", rx/1000000);
-            else sprintf(buf, "%03dK", rx/1000);
+            if (rx < 1000)
+                sprintf(buf, "%03dB", rx);
+            else if (rx > 1000000)
+                sprintf(buf, "%03dM", rx / 1000000);
+            else
+                sprintf(buf, "%03dK", rx / 1000);
             oled_write(25);
             print_str(buf);
             break;
@@ -560,91 +561,92 @@ void testnetspeed(int mode, int y)
             setTextSize(1);
             setCursor(display_offset, y);
             oled_write(24);
-            if (tx < 1000) sprintf(buf, "%03dB ", tx);
-            else if (tx > 1000000) sprintf(buf, "%03dM", tx/1000000);
-            else sprintf(buf, "%03dK ", tx/1000);
+            if (tx < 1000)
+                sprintf(buf, "%03dB ", tx);
+            else if (tx > 1000000)
+                sprintf(buf, "%03dM", tx / 1000000);
+            else
+                sprintf(buf, "%03dK ", tx / 1000);
             print_str(buf);
 
             oled_write(25);
-            if (rx < 1000) sprintf(buf, "%03dB", rx);
-            else if (rx > 1000000) sprintf(buf, "%03dM", rx/1000000);
-            else sprintf(buf, "%03dK", rx/1000);
+            if (rx < 1000)
+                sprintf(buf, "%03dB", rx);
+            else if (rx > 1000000)
+                sprintf(buf, "%03dM", rx / 1000000);
+            else
+                sprintf(buf, "%03dK", rx / 1000);
             print_str(buf);
         }
     }
 }
 void testcpu(int y)
 {
-//freq
+    // freq
     setTextSize(1);
     setCursor(display_offset, y);
-    if((fp=popen(FREQPATH,"r")) != NULL)
+    if ((fp = popen(FREQPATH, "r")) != NULL)
     {
-        fgets(content_buff,FREQSIZE,fp);
+        fgets(content_buff, FREQSIZE, fp);
         fclose(fp);
-        sprintf(buf,"CPU:%4dMHz ", atoi(content_buff)/1000);
+        sprintf(buf, "CPU:%4dMHz ", atoi(content_buff) / 1000);
         print_str(buf);
     }
 
-
-//temp
-    if((fp=fopen(TEMPPATH,"r"))!=NULL)
+    // temp
+    if ((fp = fopen(TEMPPATH, "r")) != NULL)
     {
-        fgets(content_buff,TEMPSIZE,fp);
+        fgets(content_buff, TEMPSIZE, fp);
         fclose(fp);
-    	sprintf(buf, "%.2f",atoi(content_buff)/100.0); 
-    	print_str(buf);
-    	oled_write(0);
-    	oled_write(67);
-	drawCircle(getCursorX()-8, getCursorY()+1, 1, WHITE);
+        sprintf(buf, "%.2f", atoi(content_buff) / 100.0);
+        print_str(buf);
+        oled_write(0);
+        oled_write(67);
+        drawCircle(getCursorX() - 8, getCursorY() + 1, 1, WHITE);
     }
 }
 
 void testprintinfo()
 {
     setTextSize(1);
-    setTextColor(WHITE); 
-    setCursor(0,0);    
-//DATE
-   
+    setTextColor(WHITE);
+    setCursor(0, 0);
+    // DATE
+
     time_t rawtime;
     time_t curtime;
     uint8_t timebuff[TIMESIZE];
     curtime = time(NULL);
     time(&rawtime);
-    strftime(timebuff,80,"%Y-%m-%d_%w %H:%M:%S",localtime(&rawtime));
-    sprintf(buf,"%s",timebuff);
+    strftime(timebuff, 80, "%Y-%m-%d_%w %H:%M:%S", localtime(&rawtime));
+    sprintf(buf, "%s", timebuff);
     print_strln(buf);
-    
-    //br-lan ip
-    if((fp=popen(IPPATH,"r"))!=NULL)
+
+    // br-lan ip
+    if ((fp = popen(IPPATH, "r")) != NULL)
     {
-        fscanf(fp,"%s",content_buff);
+        fscanf(fp, "%s", content_buff);
         fclose(fp);
-        //ipbuff[strlen(ipbuff)-1]=32;
-        sprintf(buf,"IP:%s",content_buff);
+        // ipbuff[strlen(ipbuff)-1]=32;
+        sprintf(buf, "IP:%s", content_buff);
         print_strln(buf);
     }
 
-    //CPU temp
-    if((fp=popen(FREQPATH,"r")) != NULL)
+    // CPU temp
+    if ((fp = popen(FREQPATH, "r")) != NULL)
     {
-        fgets(content_buff,FREQSIZE,fp);
+        fgets(content_buff, FREQSIZE, fp);
         fclose(fp);
-        sprintf(buf,"CPU freq:%d MHz ",atoi(content_buff)/1000);
+        sprintf(buf, "CPU freq:%d MHz ", atoi(content_buff) / 1000);
         print_strln(buf);
     }
 
-    //cpu freq
-    if((fp=fopen(TEMPPATH,"r"))!=NULL)
+    // cpu freq
+    if ((fp = fopen(TEMPPATH, "r")) != NULL)
     {
-        fgets(content_buff,TEMPSIZE,fp);
+        fgets(content_buff, TEMPSIZE, fp);
         fclose(fp);
-        sprintf(buf,"CPU temp:%.2f C",atoi(content_buff)/100.0);
+        sprintf(buf, "CPU temp:%.2f C", atoi(content_buff) / 100.0);
         print_strln(buf);
     }
-
-
-
 }
-

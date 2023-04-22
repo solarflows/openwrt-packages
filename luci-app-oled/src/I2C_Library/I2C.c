@@ -31,9 +31,9 @@ SOFTWARE.
  */
 
 /*Libs Includes*/
-#include<stdio.h>
-#include<fcntl.h>
-#include<sys/ioctl.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/ioctl.h>
 #include <unistd.h>
 #include <linux/i2c-dev.h>
 // heuristic to guess what version of i2c-dev.h we have:
@@ -52,7 +52,6 @@ typedef char i2c_char_t;
 /* Header Files */
 #include "I2C.h"
 
-
 /* Exposed objects for i2c-x */
 I2C_DeviceT I2C_DEV_2;
 
@@ -65,12 +64,11 @@ I2C_DeviceT I2C_DEV_2;
  ****************************************************************/
 int Open_device(char *i2c_dev_path, int *fd)
 {
-	if((*fd = open(i2c_dev_path, O_RDWR))<0)
+	if ((*fd = open(i2c_dev_path, O_RDWR)) < 0)
 		return -1;
 	else
 		return 0;
 }
-
 
 /****************************************************************
  * Function Name : Close_device
@@ -80,12 +78,11 @@ int Open_device(char *i2c_dev_path, int *fd)
  ****************************************************************/
 int Close_device(int fd)
 {
-	if(close(fd) == -1)
+	if (close(fd) == -1)
 		return -1;
 	else
 		return 0;
 }
-
 
 /****************************************************************
  * Function Name : Set_slave_addr
@@ -97,12 +94,11 @@ int Close_device(int fd)
  ****************************************************************/
 int Set_slave_addr(int fd, unsigned char slave_addr)
 {
-	if(ioctl(fd, I2C_SLAVE, slave_addr) < 0)
+	if (ioctl(fd, I2C_SLAVE, slave_addr) < 0)
 		return -1;
 	else
 		return 0;
 }
-
 
 /****************************************************************
  * Function Name : i2c_write
@@ -115,12 +111,11 @@ int i2c_write(int fd, unsigned char data)
 {
 	int ret = 0;
 	ret = write(fd, &data, I2C_ONE_BYTE);
-	if((ret == -1) || (ret != 1))
+	if ((ret == -1) || (ret != 1))
 		return -1;
 	else
-		return(ret);
+		return (ret);
 }
-
 
 /****************************************************************
  * Function Name : i2c_read
@@ -134,13 +129,12 @@ int i2c_read(int fd, unsigned char *read_data)
 {
 	int ret = 0;
 	ret = read(fd, &read_data, I2C_ONE_BYTE);
-	if(ret == -1)
+	if (ret == -1)
 		perror("I2C: Failed to read |");
-	if(ret == 0)
+	if (ret == 0)
 		perror("I2C: End of FILE |");
-	return(ret);
+	return (ret);
 }
-
 
 /****************************************************************
  * Function Name : i2c_read_register
@@ -154,19 +148,18 @@ int i2c_read(int fd, unsigned char *read_data)
 int i2c_read_register(int fd, unsigned char read_addr, unsigned char *read_data)
 {
 	int ret = 0;
-	if(i2c_write(fd, read_addr) == -1)
+	if (i2c_write(fd, read_addr) == -1)
 	{
 		perror("I2C: Failed to write |");
 		return -1;
 	}
 	ret = read(fd, &read_data, I2C_ONE_BYTE);
-	if(ret == -1)
+	if (ret == -1)
 		perror("I2C: Failed to read |");
-	if(ret == 0)
+	if (ret == 0)
 		perror("I2C: End of FILE |");
-	return(ret);
+	return (ret);
 }
-
 
 /****************************************************************
  * Function Name : i2c_read_registers
@@ -179,22 +172,21 @@ int i2c_read_register(int fd, unsigned char read_addr, unsigned char *read_data)
  *               @buff_Ptr: Buffer to store the read bytes
  ****************************************************************/
 int i2c_read_registers(int fd, int num, unsigned char starting_addr,
-		unsigned char *buff_Ptr)
+					   unsigned char *buff_Ptr)
 {
 	int ret = 0;
-	if(i2c_write(fd, starting_addr) == -1)
+	if (i2c_write(fd, starting_addr) == -1)
 	{
 		perror("I2C: Failed to write |");
 		return -1;
 	}
 	ret = read(fd, buff_Ptr, num);
-	if(ret == -1)
+	if (ret == -1)
 		perror("I2C: Failed to read |");
-	if(ret == 0)
+	if (ret == 0)
 		perror("I2C: End of FILE |");
-	return(ret);
+	return (ret);
 }
-
 
 /****************************************************************
  * Function Name : i2c_multiple_writes
@@ -209,12 +201,11 @@ int i2c_multiple_writes(int fd, int num, unsigned char *Ptr_buff)
 {
 	int ret = 0;
 	ret = write(fd, Ptr_buff, num);
-	if((ret == -1) || (ret != num))
+	if ((ret == -1) || (ret != num))
 		return -1;
 	else
-		return(ret);
+		return (ret);
 }
-
 
 /****************************************************************
  * Function Name : i2c_write_register
@@ -233,12 +224,11 @@ int i2c_write_register(int fd, unsigned char reg_addr_or_cntrl, unsigned char va
 	buff[0] = reg_addr_or_cntrl;
 	buff[1] = val;
 	ret = write(fd, buff, I2C_TWO_BYTES);
-	if((ret == -1) || (ret != I2C_TWO_BYTES))
+	if ((ret == -1) || (ret != I2C_TWO_BYTES))
 		return -1;
 	else
-		return(ret);
+		return (ret);
 }
-
 
 /****************************************************************
  * Function Name : config_i2c_struct
@@ -255,7 +245,6 @@ void config_i2c_struct(char *i2c_dev_path, unsigned char slave_addr, I2C_DeviceP
 	i2c_dev->i2c_slave_addr = slave_addr;
 }
 
-
 /****************************************************************
  * Function Name : init_i2c_dev
  * Description   : Connect the i2c bus to the slave device
@@ -263,15 +252,15 @@ void config_i2c_struct(char *i2c_dev_path, unsigned char slave_addr, I2C_DeviceP
  * Params        @i2c_path: the path to the device
  *               @slave_addr: Slave device address
  ****************************************************************/
-int init_i2c_dev(const char* i2c_path, unsigned char slave_address)
+int init_i2c_dev(const char *i2c_path, unsigned char slave_address)
 {
-	config_i2c_struct((char*)i2c_path, slave_address, &I2C_DEV_2);
-	if(Open_device(I2C_DEV_2.i2c_dev_path, &I2C_DEV_2.fd_i2c) == -1)
+	config_i2c_struct((char *)i2c_path, slave_address, &I2C_DEV_2);
+	if (Open_device(I2C_DEV_2.i2c_dev_path, &I2C_DEV_2.fd_i2c) == -1)
 	{
 		perror("I2C: Failed to open device |");
 		return -1;
 	}
-	if(Set_slave_addr(I2C_DEV_2.fd_i2c, I2C_DEV_2.i2c_slave_addr) == -1)
+	if (Set_slave_addr(I2C_DEV_2.fd_i2c, I2C_DEV_2.i2c_slave_addr) == -1)
 	{
 		perror("I2C: Failed to connect to slave device |");
 		return -1;

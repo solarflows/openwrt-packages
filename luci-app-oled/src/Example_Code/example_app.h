@@ -1,5 +1,5 @@
-#define CENTER 0  //single item display
-#define SPLIT 1	//two items 
+#define CENTER 0 // single item display
+#define SPLIT 1  // two items
 #define MERGE 2
 #define FULL 3
 
@@ -26,5 +26,3 @@ void testcpufreq(int mode, int y);
 void testcputemp(int mode, int y);
 void testnetspeed(int mode, int y);
 void testcpu(int y);
-
- 

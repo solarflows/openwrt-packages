@@ -124,6 +124,9 @@ msgstr ""
 msgid "Network speed"
 msgstr "网速"
 
+msgid "Choice which i2c bus you connect ssd1306."
+msgstr "选择你连接ssd1306的i2c总线"
+
 #: ../../package/new/luci-app-oled/luasrc/controller/oled.lua:7
 #: ../../package/new/luci-app-oled/luasrc/model/cbi/oled/setting.lua:1
 #: ../../package/new/luci-app-oled/luasrc/model/cbi/oled/setting.lua:7
