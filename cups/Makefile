@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
 PKG_VERSION:=2.4.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
 PKG_SOURCE_URL:= https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
@@ -98,7 +98,7 @@ define Package/libcups
 $(call Package/cups/Default)
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl
+  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libgnutls
   TITLE:=Common UNIX Printing System - Core library
 endef
 
@@ -393,13 +393,12 @@ define Build/Configure
 		--disable-ldap \
 		--disable-pam \
 		--enable-slp \
-		--disable-gnutls \
+		--enable-gnutls \
 		--disable-openssl \
 		--disable-cdsassl \
-		--disable-ssl \
+		--enable-ssl \
 		--disable-gssapi \
 		--disable-tiff \
-		--with-pdftops=/usr/bin/gs, \
 		UNAME="Linux" \
 		LIBS="$(TARGET_LDFLAGS) -lz -lpng -ljpeg" \
 	)
