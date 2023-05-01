@@ -58,7 +58,7 @@ define Package/cups-client
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+libcups +libcupsimage +libcupsmime
+  DEPENDS:=+libcups +libcupsimage
   TITLE:=Common UNIX Printing System - Client commands
 endef
 
@@ -86,7 +86,7 @@ define Package/cups-ppdc
 $(call Package/cups/Default)
   SECTION:=net
   CATEGORY:=Network
-  DEPENDS:=+zlib +libcupsppdc +libcups +libjpeg +libpng +libstdcpp
+  DEPENDS:=+zlib +libcups +libjpeg +libpng +libstdcpp
   TITLE:=Common UNIX Printing System - PPDC utils
 endef
 
