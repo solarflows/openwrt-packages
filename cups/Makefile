@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
 PKG_VERSION:=2.4.2
-PKG_RELEASE:=2
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
 PKG_SOURCE_URL:= https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
@@ -393,10 +393,7 @@ define Build/Configure
 		--disable-ldap \
 		--disable-pam \
 		--enable-slp \
-		--disable-gnutls \
-		--disable-openssl \
-		--disable-cdsassl \
-		--disable-ssl \
+		--enable-openssl \
 		--disable-gssapi \
 		--disable-tiff \
 		UNAME="Linux" \
