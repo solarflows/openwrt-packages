@@ -98,7 +98,7 @@ define Package/libcups
 $(call Package/cups/Default)
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libgnutls
+  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi
   TITLE:=Common UNIX Printing System - Core library
 endef
 
@@ -393,10 +393,10 @@ define Build/Configure
 		--disable-ldap \
 		--disable-pam \
 		--enable-slp \
-		--enable-gnutls \
+		--disable-gnutls \
 		--disable-openssl \
 		--disable-cdsassl \
-		--enable-ssl \
+		--disable-ssl \
 		--disable-gssapi \
 		--disable-tiff \
 		UNAME="Linux" \
