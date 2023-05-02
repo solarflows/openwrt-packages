@@ -98,7 +98,7 @@ define Package/libcups
 $(call Package/cups/Default)
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi
+  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl
   TITLE:=Common UNIX Printing System - Core library
 endef
 
