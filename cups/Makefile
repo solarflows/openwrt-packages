@@ -11,9 +11,11 @@ PKG_NAME:=cups
 PKG_VERSION:=2.4.2
 PKG_RELEASE:=2
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
-PKG_SOURCE_URL:= https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
-PKG_MD5SUM:=be5241e2c165eeb83b58aa32de26fb16
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups.git
+PKG_SOURCE_DATE:=2023-05-02
+PKG_SOURCE_VERSION:=bae56da37d5ff10deb473331392659e3496e2446
+PKG_MIRROR_HASH:=3078aad506d455187fbeabdaf445dc9f32b6920115664059360ab038132503d9
 
 TARGET_LDFLAGS+=-Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
@@ -385,11 +387,9 @@ define Build/Configure
 		--enable-libusb \
 		--enable-dbus \
 		--with-dnssd=avahi \
-		--disable-launchd \
 		--disable-pam \
 		--with-tls=openssl \
 		--disable-gssapi \
-		--disable-tiff \
 		UNAME="Linux" \
 		LIBS="$(TARGET_LDFLAGS) -lz -lpng -ljpeg" \
 	)
