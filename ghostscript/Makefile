@@ -37,9 +37,7 @@ endef
 
 # $(RM) -r freetype
 define Build/Configure
-	cd $(PKG_BUILD_DIR)
-	$(RM) -r expat jasper lcms2 lcms libpng tiff zlib
-	sh ./autogen.sh
+	(cd $(PKG_BUILD_DIR) && $(RM) -r expat jasper lcms2 lcms libpng tiff zlib && ./autogen.sh)
 endef
 
 define Build/Compile
@@ -53,9 +51,7 @@ endef
 
 # Host build should also use system's zlib
 define Host/Configure
-	cd $(HOST_BUILD_DIR)
-	$(RM) -r zlib
-	sh ./autogen.sh
+	(cd $(HOST_BUILD_DIR) && $(RM) -r zlib && ./autogen.sh)
 endef
 
 # Patches cannot be applied to the host build
