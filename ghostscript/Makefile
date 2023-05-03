@@ -37,7 +37,19 @@ endef
 
 # $(RM) -r freetype
 define Build/Configure
-	(cd $(PKG_BUILD_DIR) && $(RM) -r expat jasper lcms2 lcms libpng tiff zlib && ./autogen.sh)
+	(cd $(PKG_BUILD_DIR) && $(RM) -r expat jasper lcms2 lcms libpng tiff zlib)
+	$(call Build/Configure/Default, \
+	CPPFLAGS="-I$(STAGING_DIR)/usr/include/freetype2 " \
+	LDFLAGS="-L$(STAGING_DIR)/usr/lib " \
+	--disable-gtk	\
+	--without-libidn \
+	--without-x \
+	--with-jbig2dec \
+	--with-fontpath /usr/share/fonts/ghostscript/fonts/:/usr/share/ghostscript/$(PKG_VERSION)/Resource/Font/:/usr/share/fonts/default/ghostscript/:/usr/share/fonts/default/TrueType/:/usr/share/fonts/default/Type1:/usr/share/cups/fonts/:/usr/share/fonts/:/usr/share/fonts/ubuntu/:/usr/share/fonts/truetype/liberation/ \
+	--with-system-libtiff \
+	--with-cups-serverbin="/usr/lib/cups" \
+	--with-cups-serverroot="/etc/cups" \
+	--with-cups-datadir="/usr/share/cups")
 endef
 
 define Build/Compile
