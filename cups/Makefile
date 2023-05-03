@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
 PKG_VERSION:=2.4.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
 PKG_SOURCE_URL:= https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
@@ -98,7 +98,7 @@ define Package/libcups
 $(call Package/cups/Default)
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl
+  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl +libtiff
   TITLE:=Common UNIX Printing System - Core library
 endef
 
@@ -381,19 +381,13 @@ define Build/Configure
 		--with-system-groups="root" \
 		--with-local_protocols='dnssd' \
 		--enable-default-shared \
-		--without-perl \
-		--without-python \
-		--without-php \
 		--enable-shared \
-		--enable-image \
 		--enable-libusb \
 		--enable-dbus \
-		--enable-avahi \
+		--with-dnssd=avahi \
 		--disable-launchd \
-		--disable-ldap \
 		--disable-pam \
-		--enable-slp \
-		--enable-openssl \
+		--with-tls=openssl \
 		--disable-gssapi \
 		--disable-tiff \
 		UNAME="Linux" \
@@ -436,7 +430,7 @@ define Package/cups/install
 		$(1)/usr/lib/cups/filter
 	$(INSTALL_DIR) $(1)/usr/share/cups
 	#$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
-	$(INSTALL_DIR) $(1)/usr/share/cups/templates 
+	$(INSTALL_DIR) $(1)/usr/share/cups/templates
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/templates/*.tmpl \
 		$(1)/usr/share/cups/templates/
 	$(INSTALL_DIR) $(1)/usr/share/cups/mime
