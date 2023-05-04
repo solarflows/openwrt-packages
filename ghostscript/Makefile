@@ -45,7 +45,7 @@ define Build/Configure
 	--without-libidn \
 	--without-x \
 	--with-jbig2dec \
-	--with-fontpath /usr/share/fonts/ghostscript/fonts/:/usr/share/ghostscript/9.53.3/Resource/Font/:/usr/share/fonts/default/ghostscript/:/usr/share/fonts/default/TrueType/:/usr/share/fonts/default/Type1:/usr/share/cups/fonts/:/usr/share/fonts/:/usr/share/fonts/ubuntu/:/usr/share/fonts/truetype/liberation/ \
+	--with-fontpath /usr/share/fonts/ghostscript/fonts/:/usr/share/ghostscript/$(PKG_VERSION)/Resource/Font/:/usr/share/fonts/default/ghostscript/:/usr/share/fonts/default/TrueType/:/usr/share/fonts/default/Type1:/usr/share/cups/fonts/:/usr/share/fonts/:/usr/share/fonts/ubuntu/:/usr/share/fonts/truetype/liberation/ \
 	--with-system-libtiff \
 	--with-cups-serverbin="/usr/lib/cups" \
 	--with-cups-serverroot="/etc/cups" \
@@ -63,15 +63,7 @@ endef
 
 # Host build should also use system's zlib
 define Host/Configure
-	(cd $(HOST_BUILD_DIR) && $(RM) -r zlib)
-	$(call Host/Configure/Default, \
-	--without-x \
-	--without-jasper \
-	--with-jbig2dec \
-	--without-pdftoraster \
-	--without-libpaper \
-	--disable-gtk	\
-	--without-libidn)
+	(cd $(HOST_BUILD_DIR) && $(RM) -r zlib && ./autogen.sh)
 endef
 
 # Patches cannot be applied to the host build

@@ -9,11 +9,13 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
 PKG_VERSION:=2.4.2
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
-PKG_SOURCE_URL:= https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
-PKG_MD5SUM:=be5241e2c165eeb83b58aa32de26fb16
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups.git
+PKG_SOURCE_DATE:=2023-05-02
+PKG_SOURCE_VERSION:=bae56da37d5ff10deb473331392659e3496e2446
+PKG_MIRROR_HASH:=5428db947c94f89efbf799e3e19b10dcc9e6bb91170b6b8e74ef522eba1ebfcd
 
 TARGET_LDFLAGS+=-Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 
@@ -98,7 +100,7 @@ define Package/libcups
 $(call Package/cups/Default)
   SECTION:=libs
   CATEGORY:=Libraries
-  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl
+  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl +libtiff
   TITLE:=Common UNIX Printing System - Core library
 endef
 
@@ -381,21 +383,13 @@ define Build/Configure
 		--with-system-groups="root" \
 		--with-local_protocols='dnssd' \
 		--enable-default-shared \
-		--without-perl \
-		--without-python \
-		--without-php \
 		--enable-shared \
-		--enable-image \
 		--enable-libusb \
 		--enable-dbus \
-		--enable-avahi \
-		--disable-launchd \
-		--disable-ldap \
+		--with-dnssd=avahi \
 		--disable-pam \
-		--enable-slp \
-		--enable-openssl \
+		--with-tls=openssl \
 		--disable-gssapi \
-		--disable-tiff \
 		UNAME="Linux" \
 		LIBS="$(TARGET_LDFLAGS) -lz -lpng -ljpeg" \
 	)
@@ -436,7 +430,7 @@ define Package/cups/install
 		$(1)/usr/lib/cups/filter
 	$(INSTALL_DIR) $(1)/usr/share/cups
 	#$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/* $(1)/usr/share/cups
-	$(INSTALL_DIR) $(1)/usr/share/cups/templates 
+	$(INSTALL_DIR) $(1)/usr/share/cups/templates
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/templates/*.tmpl \
 		$(1)/usr/share/cups/templates/
 	$(INSTALL_DIR) $(1)/usr/share/cups/mime
