@@ -1,5 +1,7 @@
---- a/ppdc/Makefile
-+++ b/ppdc/Makefile
+Index: cups-2.4.2/ppdc/Makefile
+===================================================================
+--- cups-2.4.2.orig/ppdc/Makefile
++++ cups-2.4.2/ppdc/Makefile
 @@ -182,13 +182,7 @@ local:	genstrings
  
  genstrings:		genstrings.o libcupsppdc.a ../cups/$(LIBCUPSSTATIC) \
