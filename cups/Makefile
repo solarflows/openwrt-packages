@@ -22,16 +22,16 @@ TARGET_LDFLAGS+=-Wl,-rpath-link=$(STAGING_DIR)/usr/lib
 include $(INCLUDE_DIR)/package.mk
 
 define Package/cups/Default
-  URL:=http://www.cups.org/
-  SUBMENU:=Printing
+	URL:=http://www.cups.org/
+	SUBMENU:=Printing
 endef
 
 define Package/cups
 $(call Package/cups/Default)
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+libcups +libusb-1.0 +libavahi-dbus-support +libavahi-client +libdbus +avahi-autoipd +avahi-dnsconfd +libstdcpp +libacl
-  TITLE:=Common UNIX Printing System (daemon)
+	SECTION:=utils
+	CATEGORY:=Utilities
+	DEPENDS:=+libcups +libusb-1.0 +libavahi-dbus-support +libavahi-client +libdbus +avahi-autoipd +avahi-dnsconfd +libstdcpp +libacl
+	TITLE:=Common UNIX Printing System (daemon)
 endef
 
 define Package/cups/description
@@ -46,10 +46,10 @@ endef
 
 define Package/cups-bsd
 $(call Package/cups/Default)
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+libcups
-  TITLE:=Common UNIX Printing System - BSD commands (old)
+	SECTION:=utils
+	CATEGORY:=Utilities
+	DEPENDS:=+libcups
+	TITLE:=Common UNIX Printing System - BSD commands (old)
 endef
 
 define Package/cups-bsd/description
@@ -58,10 +58,10 @@ endef
 
 define Package/cups-client
 $(call Package/cups/Default)
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+libcups +libcupsimage
-  TITLE:=Common UNIX Printing System - Client commands
+	SECTION:=utils
+	CATEGORY:=Utilities
+	DEPENDS:=+libcups +libcupsimage
+	TITLE:=Common UNIX Printing System - Client commands
 endef
 
 define Package/cups-client/conffiles
@@ -86,10 +86,10 @@ endef
 
 define Package/cups-ppdc
 $(call Package/cups/Default)
-  SECTION:=net
-  CATEGORY:=Network
-  DEPENDS:=+zlib +libcups +libjpeg +libpng +libstdcpp
-  TITLE:=Common UNIX Printing System - PPDC utils
+	SECTION:=utils
+	CATEGORY:=Utilities
+	DEPENDS:=+zlib +libcups +libjpeg +libpng +libstdcpp
+	TITLE:=Common UNIX Printing System - PPDC utils
 endef
 
 define Package/cups-ppdc/description
@@ -98,10 +98,10 @@ endef
 
 define Package/libcups
 $(call Package/cups/Default)
-  SECTION:=libs
-  CATEGORY:=Libraries
-  DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl +libtiff
-  TITLE:=Common UNIX Printing System - Core library
+	SECTION:=libs
+	CATEGORY:=Libraries
+	DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl +libtiff
+	TITLE:=Common UNIX Printing System - Core library
 endef
 
 define Package/libcups/description
@@ -110,10 +110,10 @@ endef
 
 define Package/libcupscgi
 $(call Package/cups/Default)
-  SECTION:=libs
-  CATEGORY:=Libraries
-  DEPENDS:=+libcups
-  TITLE:=Common UNIX Printing System - CGI library
+	SECTION:=libs
+	CATEGORY:=Libraries
+	DEPENDS:=+libcups
+	TITLE:=Common UNIX Printing System - CGI library
 endef
 
 define Package/libcupscgi/description
@@ -122,10 +122,10 @@ endef
 
 define Package/libcupsimage
 $(call Package/cups/Default)
-  SECTION:=libs
-  CATEGORY:=Libraries
-  DEPENDS:=+libcups
-  TITLE:=Common UNIX Printing System - Image library
+	SECTION:=libs
+	CATEGORY:=Libraries
+	DEPENDS:=+libcups
+	TITLE:=Common UNIX Printing System - Image library
 endef
 
 define Package/libcupsimage/description
@@ -134,10 +134,10 @@ endef
 
 define Package/libcupsmime
 $(call Package/cups/Default)
-  SECTION:=libs
-  CATEGORY:=Libraries
-  DEPENDS:=+libcups
-  TITLE:=Common UNIX Printing System - MIME library
+	SECTION:=libs
+	CATEGORY:=Libraries
+	DEPENDS:=+libcups
+	TITLE:=Common UNIX Printing System - MIME library
 endef
 
 define Package/libcupsmime/description
@@ -146,10 +146,10 @@ endef
 
 define Package/libcupsppdc
 $(call Package/cups/Default)
-  SECTION:=libs
-  CATEGORY:=Libraries
-  DEPENDS:=+libcups +libstdcpp
-  TITLE:=Common UNIX Printing System - PPDC library
+	SECTION:=libs
+	CATEGORY:=Libraries
+	DEPENDS:=+libcups +libstdcpp
+	TITLE:=Common UNIX Printing System - PPDC library
 endef
 
 define Package/libcupsppdc/description

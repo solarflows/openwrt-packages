@@ -1,4 +1,4 @@
-# 
+#
 # Copyright (C) 2010 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
@@ -20,12 +20,12 @@ PKG_BUILD_DEPENDS:=cups
 include $(INCLUDE_DIR)/package.mk
 
 define Package/cups-bjnp
-  SECTION:=net
-  CATEGORY:=Network
-  TITLE:=BJNP protocol backend for CUPS
-  URL:=http://sourceforge.net/projects/cups-bjnp/
-  DEPENDS:=cups
-  SUBMENU:=Printing
+	SECTION:=utils
+	CATEGORY:=Utilities
+	TITLE:=BJNP protocol backend for CUPS
+	URL:=http://sourceforge.net/projects/cups-bjnp/
+	DEPENDS:=cups
+	SUBMENU:=Printing
 endef
 
 define Package/cups-bjnp/description

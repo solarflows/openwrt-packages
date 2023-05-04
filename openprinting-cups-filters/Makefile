@@ -23,8 +23,8 @@ include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 
 define Package/openprinting-cups-filters
-	SECTION:=Net
-	CATEGORY:=Network
+	SECTION:=utils
+	CATEGORY:=Utilities
 	SUBMENU:=Printing
 	DEPENDS:=+cups +libpoppler +qpdf +glib2 +libdbus +libexif \
 	    +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono
