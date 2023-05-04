@@ -1,64 +1,75 @@
 #
-# Copyright (C) 2013 OpenWrt.org
+# Copyright (C) 2013 Francisco Borges
+# Copyright (C) 2011-2021 Entware
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
+# Makefile taken from http://github.com/FranciscoBorges/openwrt-printing-packages
+# New ImageEmbedding interface from 21.12.0 is inconsistent
 
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=poppler
-PKG_VERSION:=0.24.1
+PKG_VERSION:=21.08.0
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=http://poppler.freedesktop.org/
-PKG_MD5SUM:=b11cc0408b4ad3809fa455d7b3d5ade9
+PKG_SOURCE_URL:=https://poppler.freedesktop.org
+PKG_HASH:=e9cf5dc5964bce4bb0264d1c4f8122706c910588b421cfc30abc97d6b23e602d
 
-PKG_INSTALL:=1
+PKG_BUILD_DEPENDS:=boost
+
+CMAKE_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
+include $(INCLUDE_DIR)/nls.mk
+include $(INCLUDE_DIR)/cmake.mk
 
-define Package/poppler
-  SECTION:=utils
-  CATEGORY:=Utilities
-  TITLE:=Poppler PDF rendering library
-  DEPENDS:=+libpng +libtiff +libjpeg +zlib +lcms2 +fontconfig +libpthread +libfreetype +libstdcpp
-  URL:=http://poppler.freedesktop.org/
-  SUBMENU:=Printing
+define Package/libpoppler
+	SECTION:=libs
+	CATEGORY:=Libraries
+	DEPENDS:=+fontconfig +lcms +libpng +libtiff +libstdcpp $(ICONV_DEPENDS)
+	TITLE:=Poppler PDF rendering library
+	URL:=https://poppler.freedesktop.org/
+	MAINTAINER:=Entware team, https://entware.net
 endef
 
-define Package/poppler/description
-	Poppler is a PDF rendering library based on the xpdf-3.0 code base.
+define Package/poppler-utils
+	SECTION:=utils
+	CATEGORY:=Utilities
+	DEPENDS:=+libpoppler
+	TITLE:=Poppler PDF rendering utilities
+	URL:=https://poppler.freedesktop.org/
+	MAINTAINER:=Entware team, https://entware.net
 endef
 
-CONFIGURE_ARGS+= \
-	--without-x \
-	--disable-gtk-test \
-	--disable-poppler-qt4 \
-	--disable-poppler-qt5 \
-	--disable-gtk-doc-html \
-	--enable-gtk-doc-html=no \
-	--enable-poppler-cpp \
-	--enable-xpdf-headers \
-	--enable-zlib \
-	--enable-libjpeg \
-	--enable-cms=lcms2 \
-	--disable-poppler-cpp \
-	--with-font-configuration=fontconfig
-
-define Package/poppler/install
-	$(INSTALL_DIR) $(1)/usr/bin $(1)/usr/lib
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib/
+define Package/libpoppler/description
+ Poppler is a PDF rendering library based on the xpdf-3.0.
 endef
 
-define Build/InstallDev
-	$(INSTALL_DIR) $(1)/usr/include/cpp $(1)/usr/lib
-	$(CP) -r $(PKG_INSTALL_DIR)/usr/include/poppler $(1)/usr/include/
-	$(CP) -r $(PKG_BUILD_DIR)/cpp/poppler-version.h $(1)/usr/include/cpp
-	$(CP) -r $(PKG_BUILD_DIR)/cpp/poppler-global.h $(1)/usr/include/cpp
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/* $(1)/usr/lib
+define Package/poppler-utils/description
+ Poppler is a PDF rendering utilities based on the xpdf-3.0.
 endef
 
-$(eval $(call BuildPackage,poppler))
+CMAKE_OPTIONS += \
+	-DENABLE_XPDF_HEADERS=ON \
+	-DENABLE_LIBOPENJPEG=unmaintained \
+	-DENABLE_QT5=OFF \
+	-DENABLE_LIBCURL=OFF \
+	-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
+	-DICONV_INCLUDE_DIR=$(ICONV_PREFIX)/include \
+	-DICONV_LIBRARIES=$(ICONV_PREFIX)/lib/libiconv.$(if $(CONFIG_BUILD_NLS),so,a)
+
+define Package/libpoppler/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libpoppler*.so* $(1)/usr/lib
+endef
+
+define Package/poppler-utils/install
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin/pdf* $(1)/usr/bin
+endef
+
+$(eval $(call BuildPackage,libpoppler))
+$(eval $(call BuildPackage,poppler-utils))

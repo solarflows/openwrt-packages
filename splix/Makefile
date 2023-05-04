@@ -1,6 +1,10 @@
 #
 # Copyright (C) 2011-2021 Entware
 #
+# This is free software, licensed under the GNU General Public License v2.
+# See /LICENSE for more information.
+#
+# Abandoned in 2013
 
 include $(TOPDIR)/rules.mk
 
@@ -27,6 +31,7 @@ define Package/splix
 	DEPENDS:=+cups +libjbig
 	TITLE:=Samsung CUPS drivers
 	URL:=http://splix.ap2c.org/
+	MAINTAINER:=Entware team, https://entware.net
 endef
 
 define Package/splix/description

@@ -1,9 +1,11 @@
 #
 # Copyright (C) 2013 Francisco Borges
+# Copyright (C) 2011-2021 Entware
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
+# Makefile taken from http://github.com/FranciscoBorges/openwrt-printing-packages
 
 include $(TOPDIR)/rules.mk
 
@@ -26,6 +28,7 @@ define Package/qpdf
 	DEPENDS:=+libjpeg +libgnutls +zlib +libstdcpp
 	TITLE:=PDF transformations utility
 	URL:=http://qpdf.sourceforge.net/
+	MAINTAINER:=Entware team, https://entware.net
 endef
 
 define Package/qpdf/description
