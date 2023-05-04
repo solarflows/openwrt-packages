@@ -48,8 +48,7 @@ CONFIGURE_ARGS += \
 	--with-pdftops=gs \
 	--with-gs-path=/usr/bin/gs \
 	--with-pdftops-path=/usr/bin/gs \
-	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf \
-	--with-shell=/bin/sh
+	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf
 
 TARGET_CXXFLAGS += -std=c++17
 TARGET_LDFLAGS += -liconv -lqpdf -lpoppler-cpp
