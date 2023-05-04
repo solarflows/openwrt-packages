@@ -1,9 +1,11 @@
 #
 # Copyright (C) 2013 Francisco Borges
+# Copyright (C) 2011-2021 Entware
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
+# Makefile taken from http://github.com/FranciscoBorges/openwrt-printing-packages
 
 include $(TOPDIR)/rules.mk
 
@@ -12,7 +14,7 @@ PKG_VERSION:=1.28.17
 PKG_RELEASE:=1
 
 PKG_SOURCE:=cups-filters-$(PKG_VERSION).tar.xz
-PKG_SOURCE_URL:=https://www.openprinting.org/download/cups-filters/
+PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups-filters/releases/download/$(PKG_VERSION)
 PKG_HASH:=270a3752a960368aa99d431fb5d34f4039b2ac943c576d840612d1d8185c9bb9
 PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 PKG_FIXUP:=autoreconf
@@ -30,6 +32,7 @@ define Package/openprinting-cups-filters
 	    +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono
 	TITLE:=OpenPrinting CUPS filters
 	URL:=http://www.openprinting.org
+	MAINTAINER:=Entware team, https://entware.net
 endef
 
 define Package/openprinting-cups-filters/description
@@ -52,7 +55,7 @@ TARGET_CXXFLAGS += -std=c++17
 TARGET_LDFLAGS += -liconv -lqpdf -lpoppler-cpp
 
 define Package/openprinting-cups-filters/conffiles
-/etc/cups/cups-browsed.conf
+	/etc/cups/cups-browsed.conf
 endef
 
 define Package/openprinting-cups-filters/install

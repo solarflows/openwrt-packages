@@ -25,6 +25,7 @@ include $(INCLUDE_DIR)/cmake.mk
 define Package/qpdf
 	SECTION:=utils
 	CATEGORY:=Utilities
+	SUBMENU:=Printing
 	DEPENDS:=+libjpeg +libgnutls +zlib +libstdcpp
 	TITLE:=PDF transformations utility
 	URL:=http://qpdf.sourceforge.net/

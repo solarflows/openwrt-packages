@@ -18,8 +18,8 @@ PKG_HASH:=738669edff7f1469fe5e411202d87f93ba25b45f332a623fb607d49c59aa9531
 include $(INCLUDE_DIR)/package.mk
 
 define Package/cups-pdf
-	SECTION:=net
-	CATEGORY:=Network
+	SECTION:=utils
+	CATEGORY:=Utilities
 	SUBMENU:=Printing
 	DEPENDS:=+ghostscript +libcups
 	TITLE:=PDF printer software

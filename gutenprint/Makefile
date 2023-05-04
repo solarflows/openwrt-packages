@@ -25,8 +25,8 @@ include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 
 define Package/gutenprint
-	SECTION:=net
-	CATEGORY:=Network
+	SECTION:=utils
+	CATEGORY:=Utilities
 	SUBMENU:=Printing
 	DEPENDS:=+cups +libreadline +libncursesw
 	TITLE:=Gutenprint CUPS drivers

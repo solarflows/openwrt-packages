@@ -16,9 +16,8 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/liberation-fonts
   SECTION:=fonts
-  CATEGORY:=Network
+  CATEGORY:=Fonts
   TITLE:=liberation-fonts
-  SUBMENU:=Printing
   DEPENDS:=+fontconfig
 endef
 

@@ -18,9 +18,8 @@ PKG_UNPACK:=gzip -dc $(DL_DIR)/$(PKG_SOURCE) | $(TAR) -C $(PKG_BUILD_DIR) $(TAR_
 
 define Package/ghostscript-fonts-std
   SECTION:=fonts
-  CATEGORY:=Network
+  CATEGORY:=Fonts
   TITLE:=ghostscript-fonts-std
-  SUBMENU:=Printing
   DEPENDS:=+fontconfig
 endef
 

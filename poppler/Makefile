@@ -38,6 +38,7 @@ endef
 define Package/poppler-utils
 	SECTION:=utils
 	CATEGORY:=Utilities
+	SUBMENU:=Printing
 	DEPENDS:=+libpoppler
 	TITLE:=Poppler PDF rendering utilities
 	URL:=https://poppler.freedesktop.org/

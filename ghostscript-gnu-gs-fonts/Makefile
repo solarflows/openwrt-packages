@@ -20,9 +20,8 @@ PKG_UNPACK:=gzip -dc $(DL_DIR)/$(PKG_SOURCE) | $(TAR) -C $(PKG_BUILD_DIR) $(TAR_
 
 define Package/ghostscript-gnu-gs-fonts-other
   SECTION:=fonts
-  CATEGORY:=Network
+  CATEGORY:=Fonts
   TITLE:=ghostscript-gnu-gs-fonts-other
-  SUBMENU:=Printing
   DEPENDS:=+fontconfig
 endef
 
