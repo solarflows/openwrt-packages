@@ -116,7 +116,7 @@ CONFIGURE_ARGS+= \
 	--enable-default-shared \
 	--enable-shared \
 	--enable-libusb \
-	--disable-dbus \
+	--enable-dbus \
 	--disable-gssapi \
 	--disable-pam \
 	--with-dnssd=avahi \
