@@ -89,7 +89,7 @@ define Package/cups-ppdc
   	$(call Package/cups/Default)
 	SECTION:=utils
 	CATEGORY:=Utilities
-	DEPENDS+=+libstdcpp
+	DEPENDS+=+zlib +libcups +libjpeg +libpng +libstdcpp
 	TITLE:=Common UNIX Printing System - PPDC utils
 endef
 
@@ -97,7 +97,7 @@ define Package/libcups
 	$(call Package/cups/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
-	DEPENDS:=+libpthread +libpng +libjpeg +zlib
+	DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl +libtiff
 	TITLE:=Common UNIX Printing System - Core library
 endef
 
