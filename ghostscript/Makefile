@@ -42,24 +42,12 @@ endef
 
 GS_AUX_BINARIES:=echogs genarch genconf packps
 
-HOST_CONFIGURE_ARGS += \
-	--without-libtiff \
-	--disable-contrib \
-	--disable-fontconfig \
-	--disable-dbus \
-	--disable-cups \
-	--disable-openjpeg \
-	--disable-gtk \
-	--with-libiconv=no \
-	--without-libidn \
-	--without-libpaper \
-	--without-pdftoraster \
-	--without-ijs \
-	--without-jbig2dec \
-	--without-urf \
-	--without-tesseract \
-	--without-x \
-	--with-drivers=""
+define Host/Configure
+	(cd $(HOST_BUILD_DIR); \
+		./autogen.sh \
+	);
+	$(call Host/Configure/Default)
+endef
 
 define Host/Compile
 	$(foreach binary,$(GS_AUX_BINARIES),
