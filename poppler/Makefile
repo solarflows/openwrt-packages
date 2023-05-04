@@ -59,8 +59,8 @@ CMAKE_OPTIONS += \
 	-DENABLE_QT5=OFF \
 	-DENABLE_LIBCURL=OFF \
 	-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
-	-DICONV_INCLUDE_DIR=$(ICONV_PREFIX)/include \
-	-DICONV_LIBRARIES=$(ICONV_PREFIX)/lib/libiconv.$(if $(CONFIG_BUILD_NLS),so,a)
+	-DICONV_INCLUDE_DIR="$(ICONV_PREFIX)/include" \
+	-DICONV_LIBRARIES="$(ICONV_PREFIX)/lib/libiconv.$(if $(CONFIG_BUILD_NLS),so,a)"
 
 define Package/libpoppler/install
 	$(INSTALL_DIR) $(1)/usr/lib
