@@ -17,7 +17,7 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_PROTO:=svn
 PKG_SOURCE_VERSION:=$(PKG_REV)
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_URL:=http://svn.code.sf.net/p/splix/code/splix
+PKG_SOURCE_URL:=svn://svn.code.sf.net/p/splix/code/splix-code
 PKG_MIRROR_HASH:=07318c2da9101f1acbd8e93444bb2d6394df4f63d9f18a1fed220cb86d6d0cc8
 
 PKG_INSTALL:=1
