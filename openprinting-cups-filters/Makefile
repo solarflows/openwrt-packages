@@ -56,12 +56,12 @@ define Package/openprinting-cups-filters/conffiles
 endef
 
 define Package/openprinting-cups-filters/install
-	$(INSTALL_DIR) $(1)/usr
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin $(1)/usr
-	$(INSTALL_DIR) $(1)/usr/etc/cups
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/etc/cups
 	$(INSTALL_CONF) \
-	    $(PKG_INSTALL_DIR)/usr/etc/cups/cups-browsed.conf \
-	    $(1)/usr/etc/cups
+	    $(PKG_INSTALL_DIR)/etc/cups/cups-browsed.conf \
+	    $(1)/etc/cups
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/lib*.so* $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups $(1)/usr/lib

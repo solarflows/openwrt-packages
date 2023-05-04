@@ -75,8 +75,9 @@ define Build/Configure
 endef
 
 define Package/gutenprint/install
-	$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin $(1)/usr
+	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libgutenprint.so* $(1)/usr/lib
 	$(INSTALL_DIR) $(1)/usr/sbin
