@@ -43,7 +43,6 @@ define Package/openprinting-cups-filters/description
 endef
 
 CONFIGURE_ARGS += \
-	--disable-avahi \
 	--disable-ldap \
 	--disable-braille \
 	--with-pdftops=gs \
