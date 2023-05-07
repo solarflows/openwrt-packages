@@ -29,8 +29,8 @@ define Package/openprinting-cups-filters
 	SECTION:=utils
 	CATEGORY:=Utilities
 	SUBMENU:=Printing
-	DEPENDS:=+cups +libpoppler +qpdf +glib2 +libdbus +libexif \
-	    +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono
+	DEPENDS:=+cups +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono +glib2 +qpdf \
+		+libavahi +libavahi-client +libdbus +libexif +libpoppler
 	TITLE:=OpenPrinting CUPS filters
 	URL:=http://www.openprinting.org
 	MAINTAINER:=Entware team, https://entware.net
