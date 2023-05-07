@@ -46,7 +46,7 @@ define Package/cups-pdf/install
 	$(INSTALL_DIR) $(1)/usr/lib/cups/backend
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/cups-pdf $(1)/usr/lib/cups/backend
 	$(INSTALL_DIR) $(1)/usr/share/cups/model/generic
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/extra/CUPS-PDF_{usr,nousr}.ppd \
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/extra/CUPS-PDF_{opt,noopt}.ppd \
 		$(1)/usr/share/cups/model/generic
 	$(INSTALL_DIR) $(1)/etc/cups
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/extra/cups-pdf.conf $(1)/etc/cups
