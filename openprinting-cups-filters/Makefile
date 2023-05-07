@@ -20,12 +20,10 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
-PKG_BUILD_DEPENDS:=glib2/host libiconv-full
+PKG_BUILD_DEPENDS:=glib2/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
-
-EXTRA_CFLAGS+=-DHAVE_CPP_POPPLER_VERSION_H
 
 define Package/openprinting-cups-filters
 	SECTION:=utils
