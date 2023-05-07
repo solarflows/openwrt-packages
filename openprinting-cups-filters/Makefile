@@ -20,7 +20,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
-PKG_BUILD_DEPENDS:=glib2/host libiconv-full
+PKG_BUILD_DEPENDS:=glib2/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
@@ -58,7 +58,7 @@ CONFIGURE_VARS += \
 	POPPLER_CFLAGS=-I$(STAGING_DIR)/usr/include/poppler \
 	POPPLER_LIBS=-L$(STAGING_DIR)/usr/lib
 
-TARGET_LDFLAGS += -liconv -lqpdf -lpoppler-cpp
+TARGET_CXXFLAGS += -std=c++17
 
 define Package/openprinting-cups-filters/conffiles
 	/etc/cups/cups-browsed.conf
