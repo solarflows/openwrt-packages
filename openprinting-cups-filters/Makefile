@@ -54,11 +54,11 @@ CONFIGURE_ARGS += \
 	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf \
 	--with-shell=/bin/sh
 
-# CONFIGURE_VARS += \
-# 	LIBQPDF_CFLAGS=-I$(STAGING_DIR)/usr/include \
-# 	LIBQPDF_LIBS=-L$(STAGING_DIR)/usr/lib \
-# 	POPPLER_CFLAGS=-I$(STAGING_DIR)/usr/include/poppler \
-# 	POPPLER_LIBS=-L$(STAGING_DIR)/usr/lib
+CONFIGURE_VARS += \
+	LIBQPDF_CFLAGS=-I$(STAGING_DIR)/usr/include \
+	LIBQPDF_LIBS=-L$(STAGING_DIR)/usr/lib \
+	POPPLER_CFLAGS=-I$(STAGING_DIR)/usr/include/poppler \
+	POPPLER_LIBS=-L$(STAGING_DIR)/usr/lib
 
 TARGET_CXXFLAGS += -std=c++17
 TARGET_LDFLAGS += -liconv -lqpdf -lpoppler-cpp
