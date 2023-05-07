@@ -30,7 +30,7 @@ define Package/openprinting-cups-filters
 	CATEGORY:=Utilities
 	SUBMENU:=Printing
 	DEPENDS:=+cups +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono +glib2 +qpdf \
-		+libavahi +libavahi-client +libdbus +libexif +libpoppler
+		+libavahi-dbus-support +libavahi-client +avahi-autoipd +avahi-dnsconfd +libdbus +libexif +libpoppler
 	TITLE:=OpenPrinting CUPS filters
 	URL:=http://www.openprinting.org
 	MAINTAINER:=Entware team, https://entware.net
