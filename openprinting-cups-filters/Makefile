@@ -29,8 +29,8 @@ define Package/openprinting-cups-filters
 	SECTION:=utils
 	CATEGORY:=Utilities
 	SUBMENU:=Printing
-	DEPENDS:=+cups +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono +glib2 +qpdf \
-		+libavahi-dbus-support +libavahi-client +avahi-autoipd +avahi-dnsconfd +libdbus +libexif +libpoppler
+	DEPENDS:=+cups +libpoppler +qpdf +glib2 +libdbus +libexif \
+	    +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono
 	TITLE:=OpenPrinting CUPS filters
 	URL:=http://www.openprinting.org
 	MAINTAINER:=Entware team, https://entware.net
@@ -43,13 +43,13 @@ define Package/openprinting-cups-filters/description
 endef
 
 CONFIGURE_ARGS += \
+	--disable-avahi \
 	--disable-ldap \
 	--disable-braille \
 	--with-pdftops=gs \
 	--with-gs-path=/usr/bin/gs \
 	--with-pdftops-path=/usr/bin/gs \
-	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf \
-	--with-shell=/bin/sh
+	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf
 
 CONFIGURE_VARS += \
 	LIBQPDF_CFLAGS=-I$(STAGING_DIR)/usr/include \
