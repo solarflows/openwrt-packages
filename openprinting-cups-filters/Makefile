@@ -20,7 +20,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
-PKG_BUILD_DEPENDS:=glib2/host
+PKG_BUILD_DEPENDS:=glib2/host libiconv-full
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
@@ -51,15 +51,6 @@ CONFIGURE_ARGS += \
 	--with-pdftops-path=/usr/bin/gs \
 	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf \
 	--with-shell=/bin/sh
-
-CONFIGURE_VARS += \
-	LIBQPDF_CFLAGS=-I$(STAGING_DIR)/usr/include \
-	LIBQPDF_LIBS=-L$(STAGING_DIR)/usr/lib \
-	POPPLER_CFLAGS=-I$(STAGING_DIR)/usr/include/poppler \
-	POPPLER_LIBS=-L$(STAGING_DIR)/usr/lib
-
-TARGET_CXXFLAGS += -std=c++17
-TARGET_LDFLAGS += -liconv -lqpdf -lpoppler-cpp
 
 define Package/openprinting-cups-filters/conffiles
 	/etc/cups/cups-browsed.conf
