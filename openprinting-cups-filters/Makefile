@@ -58,6 +58,7 @@ CONFIGURE_VARS += \
 	POPPLER_LIBS=-L$(STAGING_DIR)/usr/lib
 
 TARGET_CXXFLAGS += -std=c++17
+TARGET_LDFLAGS += -lqpdf -lpoppler-cpp
 
 define Package/openprinting-cups-filters/conffiles
 	/etc/cups/cups-browsed.conf
