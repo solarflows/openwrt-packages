@@ -80,8 +80,8 @@ define Build/Install
 endef
 
 define Package/ghostscript/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/usr
+	$(CP) $(PKG_INSTALL_DIR)/usr/bin $(1)/usr
 	$(INSTALL_DIR) $(1)/usr/share
 	$(CP) $(PKG_INSTALL_DIR)/usr/share/ghostscript $(1)/usr/share
 endef

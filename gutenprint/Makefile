@@ -64,11 +64,6 @@ define Host/Install
 endef
 
 CONFIGURE_ARGS += \
-	--with-cups \
-	--enable-cups-level3-ppds \
-	--enable-globalized-cups-ppds \
-	--enable-cups-1_2-enhancements \
-	--disable-cups-ppds \
 	--disable-test
 
 define Build/Configure
