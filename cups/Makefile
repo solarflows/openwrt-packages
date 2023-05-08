@@ -20,8 +20,8 @@ PKG_RELEASE:=2
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups.git
-PKG_SOURCE_DATE:=2023-05-02
-PKG_SOURCE_VERSION:=bae56da37d5ff10deb473331392659e3496e2446
+PKG_SOURCE_DATE:=2023-05-06
+PKG_SOURCE_VERSION:=90e8a54d622b3ec502fd9bd2c48e5ac78e7963a0
 PKG_MIRROR_HASH:=5428db947c94f89efbf799e3e19b10dcc9e6bb91170b6b8e74ef522eba1ebfcd
 
 PKG_BUILD_PARALLEL:=1
@@ -97,7 +97,7 @@ define Package/libcups
 	$(call Package/cups/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
-	DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libopenssl +libtiff
+	DEPENDS:=+zlib +libpthread +libpng +libjpeg +libavahi-client +libavahi +libgnutls +libtiff
 	TITLE:=Common UNIX Printing System - Core library
 endef
 
@@ -111,16 +111,24 @@ endef
 CONFIGURE_ARGS+= \
 	--with-cups-user="nobody" \
 	--with-cups-group="nogroup" \
-	--with-system-groups="root" \
+	--with-error-policy=retry-job \
 	--with-local_protocols='dnssd' \
+	--with-system-groups="root" \
+	--enable-debug \
 	--enable-default-shared \
-	--enable-shared \
+	--enable-gssapi \
+	--enable-avahi \
+	--enable-dbus \
 	--enable-libusb \
 	--enable-dbus \
+	--enable-shared \
+	--enable-sync-on-close \
+	--disable-launchd \
 	--disable-gssapi \
 	--disable-pam \
 	--with-dnssd=avahi \
-	--with-tls=openssl \
+	--enable-ssl \
+	--with-tls=gnutls \
 	UNAME="Linux" \
 	LIBS="$(TARGET_LDFLAGS) -lz -lpng -ljpeg"
 
