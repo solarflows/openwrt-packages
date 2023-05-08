@@ -32,68 +32,65 @@ include $(INCLUDE_DIR)/package.mk
 STRIP:=true
 
 define Package/cups/Default
-  URL:=http://www.cups.org/
-  SUBMENU:=Printing
-  DEPENDS:=+libcups
+	URL:=http://www.cups.org/
+	SUBMENU:=Printing
+	DEPENDS:=+libcups2
 endef
 
 define Package/cups
-$(call Package/cups/Default)
+	$(call Package/cups/Default)
 	SECTION:=utils
 	CATEGORY:=Utilities
-	DEPENDS+=+libusb-1.0 +libavahi-dbus-support +libavahi-client +libdbus +avahi-autoipd +avahi-dnsconfd +libstdcpp +libacl
+	DEPENDS+=+libusb-1.0 +libavahi-dbus-support +libavahi-client +libdbus +avahi-autoipd +avahi-daemon-service-http +avahi-dnsconfd +libstdcpp +libacl
 	TITLE:=Common UNIX Printing System (daemon)
 endef
 
 define Package/cups/description
-  Common UNIX Printing System (daemon)
+	Common UNIX Printing System (daemon)
 endef
 
 define Package/cups/conffiles
-/etc/cups/classes.conf
-/etc/cups/cupsd.conf
-/etc/cups/printers.conf
+	/etc/cups/classes.conf
+	/etc/cups/cupsd.conf
+	/etc/cups/printers.conf
 endef
 
 define Package/cups-bsd
-  $(call Package/cups/Default)
+	$(call Package/cups/Default)
 	SECTION:=utils
 	CATEGORY:=Utilities
-  TITLE:=Common UNIX Printing System - BSD commands (old)
+	TITLE:=Common UNIX Printing System - BSD commands (old)
 endef
 
 define Package/cups-client
-$(call Package/cups/Default)
+	$(call Package/cups/Default)
 	SECTION:=utils
 	CATEGORY:=Utilities
-	DEPENDS+=+libcupsimage
+	DEPENDS+=+libcupsimage2
 	TITLE:=Common UNIX Printing System - Client commands
 endef
 
 define Package/cups-client/conffiles
-/etc/cups/client.conf
+	/etc/cups/client.conf
 endef
 
-define Package/cups-filters
-  	$(call Package/cups/Default)
+define Package/cups-ipp-utils
+	$(call Package/cups/Default)
 	SECTION:=utils
 	CATEGORY:=Utilities
-	DEPENDS+=+libcupsimage
-	TITLE:=Common UNIX Printing System - Filter
+	DEPENDS+=+libcups2
+	TITLE:=Common UNIX Printing System - IPP developer/admin utilities
 endef
 
-define Package/cups-filters/description
-	Common UNIX Printing System - Filter
-endef
 define Package/cups-ppdc
   	$(call Package/cups/Default)
 	SECTION:=utils
 	CATEGORY:=Utilities
-	DEPENDS+=+zlib +libcups +libjpeg +libpng +libstdcpp
+	DEPENDS+=+zlib +libcups2 +libjpeg +libpng +libstdcpp
 	TITLE:=Common UNIX Printing System - PPDC utils
 endef
 
-define Package/libcups
+define Package/libcups2
 	$(call Package/cups/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -101,7 +98,7 @@ define Package/libcups
 	TITLE:=Common UNIX Printing System - Core library
 endef
 
-define Package/libcupsimage
+define Package/libcupsimage2
 	$(call Package/cups/Default)
 	SECTION:=libs
 	CATEGORY:=Libraries
@@ -133,9 +130,12 @@ CONFIGURE_ARGS+= \
 	LIBS="$(TARGET_LDFLAGS) -lz -lpng -ljpeg"
 
 define Package/cups/install
+	# cups + cups-daemon + cups-core-drivers + cups-server-common
 	$(INSTALL_DIR) $(1)/etc/cups
 	$(CP) $(PKG_INSTALL_DIR)/etc/cups/* $(1)/etc/cups/
 	$(LN) /tmp $(1)/etc/cups/certs
+	# overwrite default config with our own
+	$(CP) ./files/etc/cups/* $(1)/etc/cups/
 
 	$(INSTALL_DIR) $(1)/usr/lib/cups
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/backend $(1)/usr/lib/cups
@@ -143,18 +143,20 @@ define Package/cups/install
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/daemon $(1)/usr/lib/cups
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/driver $(1)/usr/lib/cups
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/monitor $(1)/usr/lib/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/notifier $(1)/usr/lib/cups
 
 	$(INSTALL_DIR) $(1)/usr/lib/cups/filter
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/filter/{commandtops,pstops} \
 		$(PKG_INSTALL_DIR)/usr/lib/cups/filter/gziptoany \
+		$(PKG_INSTALL_DIR)/usr/lib/cups/filter/rasterto* \
 		$(1)/usr/lib/cups/filter
 
-	$(INSTALL_DIR) $(1)/usr/share/cups/templates
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/templates/*.tmpl \
-		$(1)/usr/share/cups/templates/
-
-	$(INSTALL_DIR) $(1)/usr/share/cups/mime
-	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/mime/* $(1)/usr/share/cups/mime/
+	$(INSTALL_DIR) $(1)/usr/share/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/data $(1)/usr/share/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/mime $(1)/usr/share/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/model $(1)/usr/share/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/templates $(1)/usr/share/cups
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/usb $(1)/usr/share/cups
 
 	### Do install docs: cups web interface relies on them
 	$(INSTALL_DIR) $(1)/usr/share/doc/cups
@@ -168,15 +170,12 @@ define Package/cups/install
 		$(1)/usr/share/doc/cups/
 
 	$(INSTALL_DIR) $(1)/usr/sbin
-	# overwrite default config with our own
-	$(CP) ./files/etc/cups/* $(1)/etc/cups/
+	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/cupsfilter $(1)/usr/sbin
+	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/cupsd $(1)/usr/sbin/
 
 	# install initscript with priority 60
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/cupsd.init $(1)/etc/init.d/cupsd
-	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/sbin/{cupsctl,cupsd} \
-		$(1)/usr/sbin/
 
 	# needed for cups to find usb printers per http://wiki.openwrt.org/doc/howto/cups.server
 	chmod 700 $(1)/usr/lib/cups/backend/usb
@@ -193,40 +192,47 @@ endef
 define Package/cups-client/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/bin/{lp,cancel,cupstestppd} \
-		$(PKG_INSTALL_DIR)/usr/bin/{ipptool,lpoptions,lpstat} \
+		$(PKG_INSTALL_DIR)/usr/bin/{cancel,cupstestppd} \
+		$(PKG_INSTALL_DIR)/usr/bin/{lp,lpoptions,lpstat} \
 		$(1)/usr/bin/
 
 	$(INSTALL_DIR) $(1)/usr/sbin
 	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/sbin/{cupsaccept,cupsfilter} \
+		$(PKG_INSTALL_DIR)/usr/sbin/{cupsaccept,cupsctl,cupsdisable,cupsenable,cupsreject} \
 		$(PKG_INSTALL_DIR)/usr/sbin/{lpadmin,lpinfo,lpmove} \
 		$(1)/usr/sbin/
-	$(LN) cupsaccept $(1)/usr/sbin/cupsenable
-	$(LN) cupsaccept $(1)/usr/sbin/cupsdisable
-	$(LN) cupsaccept $(1)/usr/sbin/cupsreject
 endef
 
-define Package/cups-filters/install
-	$(INSTALL_DIR) $(1)/usr/lib/cups/filter
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/cups/filter/{rastertoepson,rastertohp,rastertolabel,rastertopwg} \
-		$(1)/usr/lib/cups/filter
-	$(LN) rastertolabel $(1)/usr/lib/cups/filter/rastertodymo
+define Package/cups-ipp-utils/install
+	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_BIN) \
+		$(PKG_BUILD_DIR)/tools/{ippeveprinter,ippeveps,ippevepcl} \
+		$(1)/usr/sbin/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_BIN) \
+		$(PKG_INSTALL_DIR)/usr/bin/{ippfind,ipptool} \
+		$(1)/usr/bin/
 endef
 
 define Package/cups-ppdc/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) \
-		$(PKG_INSTALL_DIR)/usr/bin/{ppdc,ppdhtml,ppdi,ppdmerge,ppdpo} \
+		$(PKG_INSTALL_DIR)/usr/bin/ppd* \
 		$(1)/usr/bin/
+
+	$(INSTALL_DIR) $(1)/usr/share/cups/examples
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/examples/* $(1)/usr/share/cups/examples
+
+	$(INSTALL_DIR) $(1)/usr/share/cups/ppdc
+	$(CP) $(PKG_INSTALL_DIR)/usr/share/cups/ppdc/*.h $(1)/usr/share/cups/ppdc
 endef
 
-define Package/libcups/install
+define Package/libcups2/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libcups.so* $(1)/usr/lib/
 endef
 
-define Package/libcupsimage/install
+define Package/libcupsimage2/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/libcupsimage.so* $(1)/usr/lib/
 endef
@@ -243,9 +249,9 @@ define Build/InstallDev
 endef
 
 $(eval $(call BuildPackage,cups))
-$(eval $(call BuildPackage,libcups))
-$(eval $(call BuildPackage,libcupsimage))
+$(eval $(call BuildPackage,libcups2))
+$(eval $(call BuildPackage,libcupsimage2))
 $(eval $(call BuildPackage,cups-bsd))
 $(eval $(call BuildPackage,cups-client))
-$(eval $(call BuildPackage,cups-filters))
+$(eval $(call BuildPackage,cups-ipp-utils))
 $(eval $(call BuildPackage,cups-ppdc))

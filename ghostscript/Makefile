@@ -30,7 +30,7 @@ define Package/ghostscript
 	SECTION:=utils
 	CATEGORY:=Utilities
 	SUBMENU:=Printing
-	DEPENDS:=+fontconfig +libidn +libtiff +libcups
+	DEPENDS:=+fontconfig +libidn +libtiff +libcups2
 	TITLE:=interpreter for the PostScript language and for PDF
 	URL:=https://www.ghostscript.com/
 	MAINTAINER:=Entware team, https://entware.net

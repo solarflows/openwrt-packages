@@ -28,7 +28,7 @@ define Package/splix
 	SECTION:=utils
 	CATEGORY:=Utilities
 	SUBMENU:=Printing
-	DEPENDS:=+cups +libcupsimage +libjbig
+	DEPENDS:=+cups +libcupsimage2 +libjbig
 	TITLE:=Samsung CUPS drivers
 	URL:=http://splix.ap2c.org/
 	MAINTAINER:=Entware team, https://entware.net

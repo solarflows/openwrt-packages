@@ -9,7 +9,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=openprinting-cups-filters
+PKG_NAME:=cups-filters
 PKG_VERSION:=1.28.17
 PKG_RELEASE:=1
 
@@ -20,23 +20,23 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/cups-filters-$(PKG_VERSION)
 
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
-PKG_BUILD_DEPENDS:=glib2/host
+PKG_BUILD_DEPENDS:=glib2/host ghostscript/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/nls.mk
 
-define Package/openprinting-cups-filters
+define Package/cups-filters
 	SECTION:=utils
 	CATEGORY:=Utilities
 	SUBMENU:=Printing
-	DEPENDS:=+cups +libpoppler +qpdf +glib2 +libdbus +libexif \
+	DEPENDS:=+cups +poppler-utils +qpdf +glib2 +ghostscript +libdbus +libexif \
 	    +dejavu-fonts-ttf-DejaVuSans +dejavu-fonts-ttf-DejaVuSansMono
 	TITLE:=OpenPrinting CUPS filters
 	URL:=http://www.openprinting.org
 	MAINTAINER:=Entware team, https://entware.net
 endef
 
-define Package/openprinting-cups-filters/description
+define Package/cups-filters/description
 	CUPS filters maintained by OpenPrinting. The CUPS Filters package contains
 	backends, filters and other software that was once part of the core CUPS
 	distribution but is no longer maintained by Apple Inc.
@@ -49,7 +49,8 @@ CONFIGURE_ARGS += \
 	--with-pdftops=gs \
 	--with-gs-path=/usr/bin/gs \
 	--with-pdftops-path=/usr/bin/gs \
-	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf
+	--with-test-font-path=/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf \
+	--with-shell=/bin/sh
 
 CONFIGURE_VARS += \
 	LIBQPDF_CFLAGS=-I$(STAGING_DIR)/usr/include \
@@ -60,11 +61,11 @@ CONFIGURE_VARS += \
 TARGET_CXXFLAGS += -std=c++17
 TARGET_LDFLAGS += -lqpdf -lpoppler-cpp
 
-define Package/openprinting-cups-filters/conffiles
+define Package/cups-filters/conffiles
 	/etc/cups/cups-browsed.conf
 endef
 
-define Package/openprinting-cups-filters/install
+define Package/cups-filters/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) $(PKG_INSTALL_DIR)/usr/bin $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/etc/cups
@@ -82,4 +83,4 @@ define Package/openprinting-cups-filters/install
 	    $(1)/usr/share/cups
 endef
 
-$(eval $(call BuildPackage,openprinting-cups-filters))
+$(eval $(call BuildPackage,cups-filters))
