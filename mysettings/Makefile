@@ -26,7 +26,7 @@ define Package/mysettings-router
 $(call Package/mysettings/Default)
   TITLE:=Router packages select.
   DEPENDS:= \
-  +6rd +6to4 +kmod-shortcut-fe-cm +luci-app-adguardhome +luci-app-advanced \
+  +6rd +kmod-shortcut-fe-cm +luci-app-adguardhome +luci-app-advanced \
   +luci-app-argon-config +luci-app-autotimeset +luci-app-beardropper \
   +luci-app-cloudflarespeedtest +luci-app-commands +luci-app-design-config \
   +luci-app-ikoolproxy +luci-app-irqbalance +luci-app-msd_lite \
