@@ -11,18 +11,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=cups
-PKG_VERSION:=2.4.2
-PKG_RELEASE:=2
+PKG_VERSION:=2.4.6
+PKG_RELEASE:=1
 
-# PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
-# PKG_SOURCE_URL:= https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
-# PKG_HASH:=01a2acbd6bb78f09638047e4e9ce305d7e5ef4cb9ed6949672b5d901b7321dd4
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-source.tar.gz
+PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups/releases/download/v$(PKG_VERSION)
+PKG_HASH:=58e970cf1955e1cc87d0847c32526d9c2ccee335e5f0e3882b283138ba0e7262
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups.git
-PKG_SOURCE_DATE:=2023-05-06
-PKG_SOURCE_VERSION:=90e8a54d622b3ec502fd9bd2c48e5ac78e7963a0
-PKG_MIRROR_HASH:=5428db947c94f89efbf799e3e19b10dcc9e6bb91170b6b8e74ef522eba1ebfcd
+# PKG_SOURCE_PROTO:=git
+# PKG_SOURCE_URL:=https://github.com/OpenPrinting/cups.git
+# PKG_SOURCE_DATE:=2023-05-06
+# PKG_SOURCE_VERSION:=90e8a54d622b3ec502fd9bd2c48e5ac78e7963a0
+# PKG_MIRROR_HASH:=5428db947c94f89efbf799e3e19b10dcc9e6bb91170b6b8e74ef522eba1ebfcd
 
 PKG_BUILD_PARALLEL:=1
 PKG_INSTALL:=1

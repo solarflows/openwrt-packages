@@ -1,6 +1,6 @@
 --- a/cups/ppd-cache.c
 +++ b/cups/ppd-cache.c
-@@ -472,6 +472,8 @@
+@@ -504,6 +504,8 @@
    _pwg_print_color_mode_t print_color_mode;
  					/* Print color mode for preset */
    _pwg_print_quality_t print_quality;	/* Print quality for preset */
@@ -9,7 +9,7 @@
  
  
    DEBUG_printf(("_ppdCacheCreateWithFile(filename=\"%s\")", filename));
-@@ -897,6 +899,28 @@
+@@ -929,6 +931,28 @@
            cupsParseOptions(valueptr, 0,
  	                   pc->presets[print_color_mode] + print_quality);
      }
@@ -38,7 +38,7 @@
      else if (!_cups_strcasecmp(line, "SidesOption"))
        pc->sides_option = strdup(value);
      else if (!_cups_strcasecmp(line, "Sides1Sided"))
-@@ -1024,6 +1048,7 @@
+@@ -1056,6 +1080,7 @@
  			*ppd_option;	/* Other PPD option */
    ppd_choice_t		*choice;	/* Current InputSlot/MediaType */
    pwg_map_t		*map;		/* Current source/type map */
@@ -46,7 +46,7 @@
    ppd_attr_t		*ppd_attr;	/* Current PPD preset attribute */
    int			num_options;	/* Number of preset options and props */
    cups_option_t		*options;	/* Preset options and properties */
-@@ -1434,6 +1459,10 @@
+@@ -1512,6 +1537,10 @@
    if ((ppd_attr = ppdFindAttr(ppd, "APPrinterPreset", NULL)) != NULL)
    {
     /*
@@ -57,7 +57,7 @@
      * Copy and convert APPrinterPreset (output-mode + print-quality) data...
      */
  
-@@ -1533,114 +1562,133 @@
+@@ -1611,114 +1640,133 @@
  	      _ppdParseOptions(ppd_attr->value, 0,
  	                       pc->presets[pwg_print_color_mode] +
  			           pwg_print_quality, _PPD_PARSE_OPTIONS);
@@ -68,7 +68,7 @@
      }
      while ((ppd_attr = ppdFindNextAttr(ppd, "APPrinterPreset", NULL)) != NULL);
 -  }
--
+ 
 -  if (!pc->num_presets[_PWG_PRINT_COLOR_MODE_MONOCHROME][_PWG_PRINT_QUALITY_DRAFT] &&
 -      !pc->num_presets[_PWG_PRINT_COLOR_MODE_MONOCHROME][_PWG_PRINT_QUALITY_NORMAL] &&
 -      !pc->num_presets[_PWG_PRINT_COLOR_MODE_MONOCHROME][_PWG_PRINT_QUALITY_HIGH])
@@ -111,7 +111,7 @@
 -      color_option = "HPColorAsGray";
 -      gray_choice  = "True";
 -    }
- 
+-
 -    if (color_option && gray_choice)
 +    if (preset_added &&
 +	!pc->num_presets[_PWG_PRINT_COLOR_MODE_MONOCHROME][_PWG_PRINT_QUALITY_DRAFT] &&
@@ -176,18 +176,7 @@
 +
 +	cups_option_t	*coption,	/* Color option */
 +			*moption;	/* Monochrome option */
- 
--	  num_options = pc->num_presets[_PWG_PRINT_COLOR_MODE_COLOR]
--					[pwg_print_quality];
--	  options     = calloc(sizeof(cups_option_t), (size_t)num_options);
--
--	  if (options)
--	  {
--	    for (i = num_options, moption = options,
--		     coption = pc->presets[_PWG_PRINT_COLOR_MODE_COLOR]
--					   [pwg_print_quality];
--		 i > 0;
--		 i --, moption ++, coption ++)
++
 +	for (pwg_print_quality = _PWG_PRINT_QUALITY_DRAFT;
 +	     pwg_print_quality < _PWG_PRINT_QUALITY_MAX;
 +	     pwg_print_quality ++)
@@ -201,7 +190,18 @@
 +	    num_options = pc->num_presets[_PWG_PRINT_COLOR_MODE_COLOR]
 +	                                 [pwg_print_quality];
 +	    options     = calloc(sizeof(cups_option_t), (size_t)num_options);
-+
+ 
+-	  num_options = pc->num_presets[_PWG_PRINT_COLOR_MODE_COLOR]
+-					[pwg_print_quality];
+-	  options     = calloc((size_t)num_options, sizeof(cups_option_t));
+-
+-	  if (options)
+-	  {
+-	    for (i = num_options, moption = options,
+-		     coption = pc->presets[_PWG_PRINT_COLOR_MODE_COLOR]
+-					   [pwg_print_quality];
+-		 i > 0;
+-		 i --, moption ++, coption ++)
 +	    if (options)
  	    {
 -	      moption->name  = _cupsStrRetain(coption->name);
@@ -275,7 +275,7 @@
   /*
    * Copy and convert Duplex (sides) data...
    */
-@@ -1974,13 +2022,996 @@
+@@ -2052,13 +2100,996 @@
  
  
  /*
@@ -1273,7 +1273,7 @@
    pwg_map_t	*map;			/* Current map */
    pwg_size_t	*size;			/* Current size */
  
-@@ -2059,6 +3090,15 @@
+@@ -2137,6 +3168,15 @@
  
    cupsArrayDelete(pc->strings);
  
@@ -1289,7 +1289,7 @@
    free(pc);
  }
  
-@@ -2928,6 +3968,21 @@
+@@ -3025,6 +4065,21 @@
        }
  
   /*
@@ -1373,7 +1373,7 @@
  #    define strlcat _cups_strlcat
 --- a/cups/string.c
 +++ b/cups/string.c
-@@ -670,6 +670,36 @@
+@@ -671,6 +671,36 @@
      return (-1);
  }
  
@@ -1412,7 +1412,7 @@
  /*
 --- a/scheduler/job.c
 +++ b/scheduler/job.c
-@@ -3639,9 +3639,13 @@
+@@ -3653,9 +3653,13 @@
    cups_option_t		*pwgppds,	/* PWG->PPD options */
  			*pwgppd,	/* Current PWG->PPD option */
  			*preset;	/* Current preset option */
@@ -1428,7 +1428,7 @@
    const char		*ppd;		/* PPD option choice */
    int			exact;		/* Did we get an exact match? */
    static char		*options = NULL;/* Full list of options */
-@@ -3663,7 +3667,7 @@
+@@ -3677,7 +3681,7 @@
    if (pc &&
        !ippFindAttribute(job->attrs, "com.apple.print.DocumentTicket.PMSpoolFormat", IPP_TAG_ZERO) &&
        !ippFindAttribute(job->attrs, "APPrinterPreset", IPP_TAG_ZERO) &&
@@ -1437,7 +1437,7 @@
    {
     /*
      * Map print-color-mode and print-quality to a preset...
-@@ -3725,6 +3729,12 @@
+@@ -3739,6 +3743,12 @@
        }
      }
  
@@ -1450,7 +1450,7 @@
      if (pc->num_presets[print_color_mode][print_quality] > 0)
      {
       /*
-@@ -3739,7 +3749,72 @@
+@@ -3753,7 +3763,72 @@
        {
          if (!ippFindAttribute(job->attrs, preset->name, IPP_TAG_ZERO))
          {

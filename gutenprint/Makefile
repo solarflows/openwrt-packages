@@ -64,7 +64,17 @@ define Host/Install
 endef
 
 CONFIGURE_ARGS += \
-	--disable-test
+	--disable-nls \
+	--disable-test \
+	--without-doc \
+	--enable-test=no \
+	--disable-translated-cups-ppds \
+	--disable-globalized-cups-ppds \
+	--enable-simplified-cups-ppds \
+	--bindir=/usr/bin \
+	--sbindir=/usr/bin \
+	--prefix=/usr \
+	--exec-prefix=/usr
 
 define Build/Configure
 	$(call Build/Configure/Default)
@@ -72,6 +82,13 @@ define Build/Configure
 		$(PKG_BUILD_DIR)/src/xml/printers/check_duplicate_printers.test
 	ln -s $(HOST_BUILD_DIR)/src/xml/extract-strings \
 		$(PKG_BUILD_DIR)/src/xml/extract-strings
+	# Replace the cross-compiled "extract-string" by a shell-script that
+	# runs the host's own compiled version (gutenprint needs to run this)
+	(cd $(PKG_BUILD_DIR) && $(MAKE) -C src/xml extract-strings && \
+	$(RM) src/xml/extract-strings && \
+	echo '#!/bin/sh' > src/xml/extract-strings && \
+	echo 'exec $(HOST_BUILD_DIR)/src/xml/extract-strings  "$$$$@" ' \
+	>> src/xml/extract-strings && chmod +x src/xml/extract-strings && cp src/xml/extract-strings /tmp/)
 endef
 
 define Package/gutenprint/install
