@@ -1,0 +1,33 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2019 OpenWrt.org
+
+START=99
+USE_PROCD=1
+
+service_triggers()
+{
+	procd_add_reload_trigger wrtbwmon
+}
+
+start_service() {
+	if [ "$(uci get wrtbwmon.general.enabled 2>/dev/null)" == 1 ]; then
+	bandwidth=`uci get wrtbwmon.general.bandwidth 2>/dev/null |grep -o '[1-9][0-9]*M' |head -1`
+	[ -n "$bandwidth" -a "$bandwidth" != "$(grep -o 'value="[0-9]*M"' /usr/lib/lua/luci/view/wrtbwmon.htm |cut -d '"' -f 2 |head -1)" ] && sed -i 's/value=\"[0-9]*M\"/value=\"'"$bandwidth"'\"/g' /usr/lib/lua/luci/view/wrtbwmon.htm
+
+	for46=`uci get wrtbwmon.general.for46 2>/dev/null` || for46=46
+	db=`uci get wrtbwmon.general.path 2>/dev/null` || db="/tmp/usage.db"
+
+	procd_open_instance
+	procd_set_param command /usr/sbin/wrtbwmon -${for46} -f ${db} -p /tmp/usage.htm -u /etc/wrtbwmon.user -d
+	procd_set_param respawn
+	procd_set_param user root
+	procd_close_instance
+
+	/usr/sbin/wrtbwmon_chkipt ${for46} &
+	fi
+}
+
+stop_service() {
+	kill -CONT $(cat /var/run/wrtbwmon.pid 2>/dev/null) 2>/dev/null
+}
+
