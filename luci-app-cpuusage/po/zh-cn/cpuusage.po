@@ -1,0 +1,2 @@
+msgid "CPU Usage"
+msgstr "CPU使用率"
