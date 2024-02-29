@@ -6,11 +6,10 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-passwall
-PKG_VERSION:=4.74-1
+PKG_VERSION:=4.75-3
 PKG_RELEASE:=
-
-
 PKG_VERSION:=$(PKG_VERSION)-smartdns-dev
+
 PKG_CONFIG_DEPENDS:= \
 	CONFIG_PACKAGE_$(PKG_NAME)_Iptables_Transparent_Proxy \
 	CONFIG_PACKAGE_$(PKG_NAME)_Nftables_Transparent_Proxy \
@@ -40,6 +39,7 @@ LUCI_DEPENDS:=+coreutils +coreutils-base64 +coreutils-nohup +curl \
 
 define Package/$(PKG_NAME)/config
 menu "Configuration"
+	depends on PACKAGE_$(PKG_NAME)
 
 config PACKAGE_$(PKG_NAME)_Iptables_Transparent_Proxy
 	bool "Iptables Transparent Proxy"
@@ -53,7 +53,6 @@ config PACKAGE_$(PKG_NAME)_Iptables_Transparent_Proxy
 	select PACKAGE_iptables-mod-socket
 	select PACKAGE_iptables-mod-tproxy
 	select PACKAGE_kmod-ipt-nat
-	depends on PACKAGE_$(PKG_NAME)
 	default y if ! PACKAGE_firewall4
 
 config PACKAGE_$(PKG_NAME)_Nftables_Transparent_Proxy
@@ -64,7 +63,6 @@ config PACKAGE_$(PKG_NAME)_Nftables_Transparent_Proxy
 	select PACKAGE_kmod-nft-socket
 	select PACKAGE_kmod-nft-tproxy
 	select PACKAGE_kmod-nft-nat
-	depends on PACKAGE_$(PKG_NAME)
 	default y if PACKAGE_firewall4
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Haproxy
