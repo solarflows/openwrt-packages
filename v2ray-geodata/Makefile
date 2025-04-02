@@ -12,23 +12,39 @@ PKG_MAINTAINER:=Tianling Shen <cnsztl@immortalwrt.org>
 
 include $(INCLUDE_DIR)/package.mk
 
-GEOIP_VER:=202503281421
-GEOIP_FILE:=geoip.dat.$(GEOIP_VER)
-define Download/geoip
-  URL:=https://github.com/v2fly/geoip/releases/download/$(GEOIP_VER)/
+GEO_VER:=202503032212
+GEOIP_FILE:=geoip.dat.$(GEO_VER)
+define Download/geoip-full
+  URL:=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$(GEO_VER)/
   URL_FILE:=geoip.dat
   FILE:=$(GEOIP_FILE)
-  HASH:=83337c712b04d8c16351cf5a5394eae5cb9cfa257fb4773485945dce65dcea76
+  HASH:=3007b647066a1c79badcc9cc62f38a6ec3522d39dfc2997a72f1fa775832cc75
 endef
 
-GEOSITE_VER:=20250329145339
-GEOSITE_FILE:=dlc.dat.$(GEOSITE_VER)
-define Download/geosite
-  URL:=https://github.com/v2fly/domain-list-community/releases/download/$(GEOSITE_VER)/
-  URL_FILE:=dlc.dat
+GEOSITE_FILE:=geosite.dat.$(GEO_VER)
+define Download/geosite-full
+  URL:=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$(GEO_VER)/
+  URL_FILE:=geosite.dat
   FILE:=$(GEOSITE_FILE)
-  HASH:=d0f0e5c954f65775d1f5b34a813a64cb8868ad61a78ea183386d5bf84b3c8fca
+  HASH:=4de20eba4f17c82e27fdeabdcd34f4c15cf8f05b6891a5a5ec4aca72741dd002
 endef
+
+GEOIP_LITE_FILE:=geoip-lite.dat.$(GEO_VER)
+define Download/geoip-lite
+  URL:=https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/
+  URL_FILE:=geoip-lite.dat
+  FILE:=$(GEOIP_LITE_FILE)
+  HASH:=skip
+endef
+
+GEOSITE_LITE_FILE:=geosite-lite.dat.$(GEO_VER)
+define Download/geosite-lite
+  URL:=https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/
+  URL_FILE:=geosite-lite.dat
+  FILE:=$(GEOSITE_LITE_FILE)
+  HASH:=skip
+endef
+ 
 
 define Package/v2ray-geodata/template
   SECTION:=net
@@ -38,42 +54,88 @@ define Package/v2ray-geodata/template
   PKGARCH:=all
 endef
 
-define Package/v2ray-geoip
+define Package/v2ray-geoip-lite
+  $(call Package/v2ray-geodata/template)
+  TITLE:=meta-rules-dat GeoIP List for V2Ray
+  VERSION:=$(GEO_VER).$(PKG_RELEASE)
+  LICENSE:=CC-BY-SA-4.0
+  DEFAULT_VARIANT:=1
+  VARIANT:=v2ray-geoip-lite
+  PROVIDES:=v2ray-geoip
+  CONFLICTS:=v2ray-geoip-full
+endef
+
+define Package/v2ray-geosite-lite
+  $(call Package/v2ray-geodata/template)
+  TITLE:=meta-rules-dat Geosite List for V2Ray
+  VERSION:=$(GEO_VER).$(PKG_RELEASE)
+  LICENSE:=MIT
+  DEFAULT_VARIANT:=1
+  VARIANT:=v2ray-geosite-lite
+  PROVIDES:=v2ray-geosite
+  CONFLICTS:=v2ray-geosite-full
+endef
+
+define Package/v2ray-geoip-full
   $(call Package/v2ray-geodata/template)
   TITLE:=GeoIP List for V2Ray
   VERSION:=$(GEOIP_VER).$(PKG_RELEASE)
   LICENSE:=CC-BY-SA-4.0
+  VARIANT:=v2ray-geoip-full
+  PROVIDES:=v2ray-geoip
+  # CONFLICTS:=v2ray-geoip
 endef
 
-define Package/v2ray-geosite
+define Package/v2ray-geosite-full
   $(call Package/v2ray-geodata/template)
   TITLE:=Geosite List for V2Ray
-  VERSION:=$(GEOSITE_VER).$(PKG_RELEASE)
+  VERSION:=$(GEO_VER).$(PKG_RELEASE)
   LICENSE:=MIT
+  VARIANT:=v2ray-geosite-full
+  PROVIDES:=v2ray-geosite
+  # CONFLICTS:=v2ray-geosite
 endef
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
-ifneq ($(CONFIG_PACKAGE_v2ray-geoip),)
-	$(call Download,geoip)
+ifneq ($(CONFIG_PACKAGE_v2ray-geoip-lite),)
+	$(call Download,geoip-lite)
 endif
-ifneq ($(CONFIG_PACKAGE_v2ray-geosite),)
-	$(call Download,geosite)
+ifneq ($(CONFIG_PACKAGE_v2ray-geosite-lite),)
+	$(call Download,geosite-lite)
+endif
+ifneq ($(CONFIG_PACKAGE_v2ray-geoip-full),)
+	$(call Download,geoip-full)
+endif
+ifneq ($(CONFIG_PACKAGE_v2ray-geosite-full),)
+	$(call Download,geosite-full)
 endif
 endef
 
 define Build/Compile
 endef
 
-define Package/v2ray-geoip/install
+define Package/v2ray-geoip-lite/install
 	$(INSTALL_DIR) $(1)/usr/share/v2ray
 	$(INSTALL_DATA) $(DL_DIR)/$(GEOIP_FILE) $(1)/usr/share/v2ray/geoip.dat
 endef
 
-define Package/v2ray-geosite/install
+define Package/v2ray-geosite-lite/install
 	$(INSTALL_DIR) $(1)/usr/share/v2ray
 	$(INSTALL_DATA) $(DL_DIR)/$(GEOSITE_FILE) $(1)/usr/share/v2ray/geosite.dat
 endef
 
-$(eval $(call BuildPackage,v2ray-geoip))
-$(eval $(call BuildPackage,v2ray-geosite))
+define Package/v2ray-geoip-full/install
+	$(INSTALL_DIR) $(1)/usr/share/v2ray
+	$(INSTALL_DATA) $(DL_DIR)/$(GEOIP_LITE_FILE) $(1)/usr/share/v2ray/geoip.dat
+endef
+
+define Package/v2ray-geosite-full/install
+	$(INSTALL_DIR) $(1)/usr/share/v2ray
+	$(INSTALL_DATA) $(DL_DIR)/$(GEOSITE_LITE_FILE) $(1)/usr/share/v2ray/geosite.dat
+endef
+
+$(eval $(call BuildPackage,v2ray-geoip-lite))
+$(eval $(call BuildPackage,v2ray-geosite-lite))
+$(eval $(call BuildPackage,v2ray-geoip-full))
+$(eval $(call BuildPackage,v2ray-geosite-full))
