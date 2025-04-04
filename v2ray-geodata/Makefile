@@ -17,7 +17,7 @@ GEOIP_FULL_FILE:=geoip.dat.$(GEO_VER)
 define Download/geoip-full
   URL:=https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/$(GEO_VER)/
   URL_FILE:=geoip.dat
-  FILE:=$(GEOSITE_FULL_FILE)
+  FILE:=$(GEOIP_FULL_FILE)
   HASH:=03de747934cd239565c58b276b2dcd22d7add4137a3bf6c4e8327658aab62850
 endef
 
