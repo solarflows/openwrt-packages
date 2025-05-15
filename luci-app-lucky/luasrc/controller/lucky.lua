@@ -1,4 +1,3 @@
-
 module("luci.controller.lucky", package.seeall)
 
 function index()
@@ -6,16 +5,17 @@ function index()
 		return
 	end
 
-	entry({"admin",  "services", "lucky"}, alias("admin", "services", "lucky", "setting"),_("Lucky"), 57).dependent = true
-	entry({"admin", "services", "lucky", "setting"}, cbi("lucky/lucky"), _("Base Setting"), 20).leaf=true
+	local page = entry({"admin", "services", "lucky"}, alias("admin", "services", "lucky", "lucky"), _("Lucky"), 57)
+	page.dependent = true
+	page.acl_depends = { "luci-app-lucky" }
+
+	-- entry({"admin", "services", "lucky"}, alias("admin", "services", "lucky", "setting"),_("Lucky"), 57).dependent = true
+	entry({"admin", "services", "lucky", "lucky"}, cbi("lucky/lucky"), _("Base Setting"), 20).leaf=true
 	entry({"admin", "services", "lucky_status"}, call("act_status"))
 	entry({"admin", "services", "lucky_info"}, call("lucky_info"))
 	entry({"admin", "services", "lucky_set_config"}, call("lucky_set_config"))
 	entry({"admin", "services", "lucky_service"}, call("lucky_service"))
 end
-
-
-
 
 function act_status()
 	local sys  = require "luci.sys"
@@ -25,14 +25,9 @@ function act_status()
 	luci.http.write_json(e)
 end
 
-
-
-
-function lucky_info()	
+function lucky_info()
 	local e = { }
-	
 
-	
 	local luckyInfo = luci.sys.exec("/usr/bin/lucky -info")
 	if (luckyInfo~=nil)
 	then
@@ -46,12 +41,10 @@ function lucky_info()
 	end
 	e.luckyArch = luci.sys.exec("/usr/bin/luckyarch")
 	--e.runStatus = luci.sys.call("pidof lucky >/dev/null") == 0
-	
 
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e) 
-end 
-
+end
 
 function lucky_set_config()
 	local key = luci.http.formvalue("key") 
@@ -76,13 +69,11 @@ function lucky_set_config()
 		luci.sys.exec("/etc/init.d/lucky restart")
 		e.ret=0
 	end
+
 	if(key=="switch_Internetaccess")
 	then
 		e.ret =setLuckyConf("AllowInternetaccess",value)
 	end
-
-
-
 
 	luci.http.prepare_content("application/json")
 	luci.http.write_json(e) 
@@ -139,9 +130,6 @@ function setLuckyConf(key,value)
 		cmd = "/usr/bin/lucky ".." -setconf ".."-key "..key.." -cd "..configPath
 	end
 
-
 	luci.sys.exec(cmd)
-	
-
 	return 0
 end
