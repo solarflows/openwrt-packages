@@ -303,13 +303,13 @@ o = s:taboption("Main", Value, "tcp_node_socks_port", translate("TCP Node") .. "
 o.default = 1070
 o.datatype = "port"
 o:depends({ tcp_node = "", ["!reverse"] = true })
---[[
+
 if has_singbox or has_xray then
 	o = s:taboption("Main", Value, "tcp_node_http_port", translate("TCP Node") .. " HTTP " .. translate("Listen Port") .. " " .. translate("0 is not use"))
-	o.default = 0
+	o.default = 10708
 	o.datatype = "port"
 end
-]]--
+
 o = s:taboption("Main", Flag, "tcp_node_socks_bind_local", translate("TCP Node") .. " Socks " .. translate("Bind Local"), translate("When selected, it can only be accessed localhost."))
 o.default = "1"
 o:depends({ tcp_node = "", ["!reverse"] = true })
@@ -452,6 +452,21 @@ if api.is_finded("smartdns") then
 			t = { value }
 		end
 		return DynamicList.write(self, section, t)
+	end
+	function o.validate(self, value) --禁止私有IP
+		if type(value) == "table" then
+			for _, v in ipairs(value) do
+				if v:match("127%.0%.0%.") or
+				   v:match("192%.168%.") or
+				   v:match("10%.") or
+				   v:match("172%.1[6-9]%.") or
+				   v:match("172%.2[0-9]%.") or
+				   v:match("172%.3[0-1]%.") then
+					return nil, translatef("Private IPs are not allowed: %s", v)
+				end
+			end
+		end
+		return value
 	end
 end
 
