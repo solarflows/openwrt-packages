@@ -306,7 +306,7 @@ o:depends({ tcp_node = "", ["!reverse"] = true })
 
 if has_singbox or has_xray then
 	o = s:taboption("Main", Value, "tcp_node_http_port", translate("TCP Node") .. " HTTP " .. translate("Listen Port") .. " " .. translate("0 is not use"))
-	o.default = 10708
+	o.default = 0
 	o.datatype = "port"
 end
 
