@@ -1,3 +1,4 @@
+
 module("luci.controller.lucky", package.seeall)
 
 function index()
@@ -5,11 +6,10 @@ function index()
 		return
 	end
 
-	local page = entry({"admin", "services", "lucky"}, alias("admin", "services", "lucky", "lucky"), _("Lucky"), 57)
-	page.dependent = true
+	-- entry({"admin",  "services", "lucky"}, firstchild(),"Lucky", 57).dependent = true
+	local page = entry({"admin", "services", "lucky"}, firstchild(), _("Lucky"), 57)
+	page.dependent = false
 	page.acl_depends = { "luci-app-lucky" }
-
-	-- entry({"admin", "services", "lucky"}, alias("admin", "services", "lucky", "setting"),_("Lucky"), 57).dependent = true
 	entry({"admin", "services", "lucky", "lucky"}, cbi("lucky/lucky"), _("Base Setting"), 20).leaf=true
 	entry({"admin", "services", "lucky_status"}, call("act_status"))
 	entry({"admin", "services", "lucky_info"}, call("lucky_info"))
@@ -27,8 +27,8 @@ end
 
 function lucky_info()
 	local e = { }
-
 	local luckyInfo = luci.sys.exec("/usr/bin/lucky -info")
+
 	if (luckyInfo~=nil)
 	then
 		e.luckyInfo = luckyInfo
@@ -37,20 +37,19 @@ function lucky_info()
 		then
 			e.LuckyBaseConfigure = configObj["BaseConfigure"]
 		end
-
 	end
 	e.luckyArch = luci.sys.exec("/usr/bin/luckyarch")
 	--e.runStatus = luci.sys.call("pidof lucky >/dev/null") == 0
 
 	luci.http.prepare_content("application/json")
-	luci.http.write_json(e) 
+	luci.http.write_json(e)
 end
 
 function lucky_set_config()
-	local key = luci.http.formvalue("key") 
-	local value = luci.http.formvalue("value") 
-
+	local key = luci.http.formvalue("key")
+	local value = luci.http.formvalue("value")
 	local e = { }
+
 	e.ret = 1
 	if (key == "admin_http_port")
 	then
@@ -69,19 +68,18 @@ function lucky_set_config()
 		luci.sys.exec("/etc/init.d/lucky restart")
 		e.ret=0
 	end
-
 	if(key=="switch_Internetaccess")
 	then
 		e.ret =setLuckyConf("AllowInternetaccess",value)
 	end
 
 	luci.http.prepare_content("application/json")
-	luci.http.write_json(e) 
+	luci.http.write_json(e)
 end
 
-
 function lucky_service()
-	local action = luci.http.formvalue("action") 
+	local action = luci.http.formvalue("action")
+
 	if (action=="restart")
 	then
 		luci.sys.exec("uci set  lucky.@lucky[0].enabled=1")
@@ -105,11 +103,9 @@ function lucky_service()
 
 end
 
-
 function trim(s)
 	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
 end
-
 
 function GetLuckyConfigureObj()
 	configPath = trim(luci.sys.exec("uci get lucky.@lucky[0].configdir"))
@@ -120,11 +116,10 @@ function GetLuckyConfigureObj()
 end
 
 
-
 function setLuckyConf(key,value)
 	configPath = trim(luci.sys.exec("uci get lucky.@lucky[0].configdir"))
-
 	cmd = "/usr/bin/lucky ".." -setconf ".."-key "..key.." -value "..value.." -cd "..configPath
+
 	if (value=="")
 	then
 		cmd = "/usr/bin/lucky ".." -setconf ".."-key "..key.." -cd "..configPath

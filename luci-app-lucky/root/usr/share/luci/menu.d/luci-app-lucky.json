@@ -1,11 +1,10 @@
 {
     "admin/services/lucky": {
         "title": "Lucky",
-        "order": 60,
-        "action": {
-            "type": "view",
-            "path": "lucky"
-        },
+        "order": 57,
+		"action": {
+			"type": "firstchild"
+		},
         "depends": {
             "acl": ["luci-app-lucky"],
             "uci": {"lucky": true}
