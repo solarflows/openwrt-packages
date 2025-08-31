@@ -1,3 +1,4 @@
+--
 local m, s ,o
 
 local m = Map("lucky", translate("Lucky"), translate("ipv4/ipv6 portforward,ddns,reverseproxy proxy,wake on lan,IOT and more...") )
