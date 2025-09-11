@@ -1,7 +1,7 @@
 {
     "admin/services/lucky": {
         "title": "Lucky",
-        "order": 57,
+       "order": 57,
 		"action": {
 			"type": "firstchild"
 		},

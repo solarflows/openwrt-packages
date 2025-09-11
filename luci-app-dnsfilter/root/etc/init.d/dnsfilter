@@ -3,7 +3,7 @@ START=99
 STOP=10
 B=0
 CRON_FILE=/etc/crontabs/root
-D=/tmp/dnsmasq.d/dnsmasq.dnsfilter
+D=/tmp/dnsmasq.dnsfilter
 E="date +'%Y-%m-%d %H:%M:%S'"
 L=/etc/dnsfilter
 P=/usr/share/dnsfilter
@@ -40,10 +40,8 @@ add_dns(){
 		if [ $flash = 1 ];then
 			ln -sf $L/rules/rules.conf $T/rules.conf
 			ln -sf $L/rules/url $T/url
- 			cp -f $L/rules/rules.conf $D/rules.conf
- 		else
- 			mv -f $T/rules.conf $D/rules.conf
 		fi
+		ln -sf $T/rules.conf $D/rules.conf
 	fi
 	[ $block_ios = 1 ] && echo 'mesu.apple.com' > $D/black.conf
 	if [ $block_cnshort = 1 ];then
