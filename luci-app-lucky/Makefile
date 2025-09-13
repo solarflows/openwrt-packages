@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 #
-# Copyright (C) 2022-2023  gdy  
-# 
+# Copyright (C) 2022-2023  gdy
+#
 # This is free software, licensed under the Apache License, Version 2.0 .
 #
 include $(TOPDIR)/rules.mk
