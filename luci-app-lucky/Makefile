@@ -10,7 +10,7 @@ PKG_NAME:=luci-app-lucky
 PKG_VERSION:=2.2.2
 PKG_RELEASE:=1
 
-LUCI_TITLE:=LuCI Support for  lucky
+LUCI_TITLE:=LuCI Support for lucky
 LUCI_DEPENDS:=+lucky +luci-compat
 LUCI_PKGARCH:=all
 
