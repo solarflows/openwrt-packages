@@ -1,14 +1,13 @@
-﻿local m, s, o
+-- 
+local m, s ,o
 
-m = Map("lucky", translate("Lucky"), translate("ipv4/ipv6 portforward, ddns, reverseproxy proxy, wake on lan, IOT and more..."))
+local m = Map("lucky", translate("Lucky"), translate("ipv4/ipv6 portforward,ddns,reverseproxy proxy,wake on lan,IOT and more...") )
 
--- 状态显示部分
-m:section(SimpleSection).template = "lucky/lucky_status"
+m:section(SimpleSection).template  = "lucky/lucky_status"
 
--- 基本设置部分
-s = m:section(TypedSection, "lucky")
-s.anonymous = true
-s.addremove = false
+s = m:section(TypedSection, "lucky", translate("Basic Settings"))
+s.addremove=false
+s.anonymous=true
 
 --o=s:option(Flag,"enabled",translate("Enable"))
 --o.default=0
@@ -16,6 +15,7 @@ s.addremove = false
 o = s:option( Value, "configdir", translate("Config dir path"),
 	translate("The path to store the config file"))
 o.placeholder = "/etc/config/lucky.daji"
+
 
 m.apply_on_parse = true
 m.on_after_apply = function(self,map)

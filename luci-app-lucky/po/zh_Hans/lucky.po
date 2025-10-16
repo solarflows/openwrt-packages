@@ -22,7 +22,7 @@ msgstr "配置文件夹位置"
 msgid "Lucky"
 msgstr "Lucky"
 
-msgid "ipv4/ipv6 portforward, ddns, reverseproxy proxy, wake on lan, IOT and more..."
+msgid "ipv4/ipv6 portforward,ddns,reverseproxy proxy,wake on lan,IOT and more..."
 msgstr "IPv4/IPv6端口转发,动态域名服务,http/https反向代理，网络唤醒(可通过第三方物联网平台接入各大语音助手实现语音控制开关电脑)"
 
 msgid "Running state"
