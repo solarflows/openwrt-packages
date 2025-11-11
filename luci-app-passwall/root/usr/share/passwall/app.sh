@@ -872,7 +872,7 @@ run_redir() {
 		tcp_node_socks_bind="127.0.0.1"
 		[ "${tcp_node_socks_bind_local}" != "1" ] && tcp_node_socks_bind="0.0.0.0"
 		tcp_node_socks_port=$(get_new_port $(config_t_get global tcp_node_socks_port 1070))
-		tcp_node_http_port=$(config_t_get global tcp_node_http_port 0)
+		tcp_node_http_port=$(config_t_get global tcp_node_http_port 10708)
 		[ "$tcp_node_http_port" != "0" ] && tcp_node_http=1
 		if [ $PROXY_IPV6 == "1" ]; then
 			echolog "开启实验性IPv6透明代理(TProxy)，请确认您的节点及类型支持IPv6！"
@@ -913,7 +913,7 @@ run_redir() {
 			}
 			[ "$tcp_node_http" = "1" ] && {
 				tcp_node_http_flag=1
-				_args="${_args} http_port=${tcp_node_http_port}"
+				_args="${_args} http_address=${tcp_node_socks_bind} http_port=${tcp_node_http_port}"
 				config_file="${config_file//TCP/TCP_HTTP}"
 			}
 			[ "$TCP_UDP" = "1" ] && {
@@ -993,7 +993,7 @@ run_redir() {
 			}
 			[ "$tcp_node_http" = "1" ] && {
 				tcp_node_http_flag=1
-				_args="${_args} http_port=${tcp_node_http_port}"
+				_args="${_args} http_address=${tcp_node_socks_bind} http_port=${tcp_node_http_port}"
 				config_file="${config_file//TCP/TCP_HTTP}"
 			}
 			[ "$TCP_UDP" = "1" ] && {
@@ -1110,7 +1110,7 @@ run_redir() {
 			[ "$tcp_node_http" = "1" ] && {
 				tcp_node_http_flag=1
 				config_file="${config_file//TCP/TCP_HTTP}"
-				_extra_param="${_extra_param} -local_http_port ${tcp_node_http_port}"
+				_extra_param="${_extra_param} -local_http_address ${tcp_node_socks_bind} -local_http_port ${tcp_node_http_port}"
 			}
 			[ "$TCP_UDP" = "1" ] && {
 				config_file="${config_file//TCP/TCP_UDP}"
@@ -1133,7 +1133,7 @@ run_redir() {
 			[ "$tcp_node_http" = "1" ] && {
 				tcp_node_http_flag=1
 				config_file="${config_file//TCP/TCP_HTTP}"
-				_extra_param="${_extra_param} -local_http_port ${tcp_node_http_port}"
+				_extra_param="${_extra_param} -local_http_address ${tcp_node_socks_bind} -local_http_port ${tcp_node_http_port}"
 			}
 			[ "$TCP_UDP" = "1" ] && {
 				config_file="${config_file//TCP/TCP_UDP}"
