@@ -134,6 +134,7 @@ function link_add_node()
 	local chunk = http.formvalue("chunk")
 	local chunk_index = tonumber(http.formvalue("chunk_index"))
 	local total_chunks = tonumber(http.formvalue("total_chunks"))
+	local group = http.formvalue("group") or "default"
 
 	if chunk and chunk_index ~= nil and total_chunks ~= nil then
 		-- 按顺序拼接到文件
@@ -148,7 +149,7 @@ function link_add_node()
 		end
 		-- 如果是最后一片，才执行
 		if chunk_index + 1 == total_chunks then
-			luci.sys.call("lua /usr/share/passwall2/subscribe.lua add log")
+			luci.sys.call("lua /usr/share/passwall2/subscribe.lua add " .. group)
 		end
 	end
 end
@@ -494,10 +495,24 @@ end
 function get_node()
 	local id = http.formvalue("id")
 	local result = {}
+	local show_node_info = api.uci_get_type("global_other", "show_node_info", "0")
+
+	function add_is_ipv6_key(o)
+		if o and o.address and show_node_info == "1" then
+			local f = api.get_ipv6_full(o.address)
+			if f ~= "" then
+				o.ipv6 = true
+				o.full_address = f
+			end
+		end
+	end
+
 	if id then
 		result = uci:get_all(appname, id)
+		add_is_ipv6_key(result)
 	else
 		uci:foreach(appname, "nodes", function(t)
+			add_is_ipv6_key(t)
 			result[#result + 1] = t
 		end)
 	end
