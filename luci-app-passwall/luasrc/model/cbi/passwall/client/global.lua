@@ -275,13 +275,14 @@ o = s:taboption("Main", Value, "tcp_node_socks_port", translate("TCP Node") .. "
 o.default = 1070
 o.datatype = "port"
 o:depends({ tcp_node = "", ["!reverse"] = true })
---[[
+
 if has_singbox or has_xray then
 	o = s:taboption("Main", Value, "tcp_node_http_port", translate("TCP Node") .. " HTTP " .. translate("Listen Port") .. " " .. translate("0 is not use"))
 	o.default = 0
 	o.datatype = "port"
 end
-]]--
+o:depends({ tcp_node = "", ["!reverse"] = true })
+
 o = s:taboption("Main", Flag, "tcp_node_socks_bind_local", translate("TCP Node") .. " Socks " .. translate("Bind Local"), translate("When selected, it can only be accessed localhost."))
 o.default = "1"
 o:depends({ tcp_node = "", ["!reverse"] = true })
