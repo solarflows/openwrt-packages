@@ -92,6 +92,8 @@ function index()
 	entry({"admin", "services", appname, "subscribe_manual"}, call("subscribe_manual")).leaf = true
 	entry({"admin", "services", appname, "subscribe_manual_all"}, call("subscribe_manual_all")).leaf = true
 	entry({"admin", "services", appname, "flush_set"}, call("flush_set")).leaf = true
+	-- 新增IP信息查询路由
+	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
 
 	--[[rule_list]]
 	entry({"admin", "services", appname, "read_rulelist"}, call("read_rulelist")).leaf = true
@@ -364,6 +366,114 @@ function connect_status()
 		end
 	end
 	http_write_json(e)
+end
+
+-- IP信息查询接口（新增独立函数）
+function ip_info()
+    local e = {}
+    local url = "https://ip.api.skk.moe/cf-geoip"
+
+    -- 获取代理配置
+    local localhost_proxy = uci:get(appname, "@global[0]", "localhost_proxy") or "1"
+    local socks_server = (localhost_proxy == "0") and api.get_cache_var("GLOBAL_TCP_SOCKS_server") or ""
+
+    -- 构建curl命令
+    local curl_cmd = '/usr/bin/curl --max-time 10 -s '
+
+	-- 模拟浏览器请求
+	curl_cmd = curl_cmd .. [[ -H 'accept: */*' \
+	-H 'accept-language: zh-CN,zh;q=0.9,en;q=0.8' \
+	-H 'cache-control: no-cache' \
+	-H 'dnt: 1' \
+	-H 'origin: https://ip.skk.moe' \
+	-H 'pragma: no-cache' \
+	-H 'referer: https://ip.skk.moe/' \
+	-H 'sec-ch-ua: \"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"' \
+	-H 'sec-ch-ua-mobile: ?0' \
+	-H 'sec-ch-ua-platform: \"Windows\"' \
+	-H 'sec-fetch-dest: empty' \
+	-H 'sec-fetch-mode: cors' \
+	-H 'sec-fetch-site: same-site' \
+	-H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0' \
+	]]
+
+    -- 强制使用代理（如果有代理配置）
+    if socks_server and socks_server ~= "" then
+        curl_cmd = curl_cmd .. '--socks5-hostname ' .. socks_server .. ' '
+    end
+
+    curl_cmd = curl_cmd .. "'" .. url .. "'"
+
+    -- 执行命令
+    local result = luci.sys.exec(curl_cmd)
+
+    if result and result ~= "" then
+        -- 方法1：尝试使用luci.jsonc解析（如果可用）
+        local success, data = false, nil
+
+        -- 首先尝试使用luci.jsonc
+        if pcall(require, "luci.jsonc") then
+            local jsonc = require("luci.jsonc")
+            success, data = pcall(jsonc.parse, result)
+        end
+
+        -- 如果luci.jsonc不可用或解析失败，尝试使用luci.json
+        if not success and pcall(require, "luci.json") then
+            local json = require("luci.json")
+            success, data = pcall(json.parse, result)
+        end
+
+        -- 如果上面的方法都失败，使用简单的字符串匹配（作为备用方案）
+        if not success then
+            -- 使用简单的模式匹配提取JSON字段
+            local ip_match = result:match('"ip"%s*:%s*"([^"]+)"')
+            local country_match = result:match('"country"%s*:%s*"([^"]+)"')
+            local city_match = result:match('"city"%s*:%s*"([^"]+)"')
+            local region_match = result:match('"region"%s*:%s*"([^"]+)"')
+
+            if ip_match and country_match then
+                data = {
+                    ip = ip_match,
+                    country = country_match,
+                    city = city_match or "",
+                    region = region_match or ""
+                }
+                success = true
+            end
+        end
+
+        if success and data then
+            e.ip = data.ip or ""
+            e.country = data.country or ""
+            e.city = data.city or ""
+            e.region = data.region or ""
+
+            -- 可选：添加asn和asOrg信息
+            if data.asn then
+                e.asn = data.asn
+            end
+            if data.asOrg then
+                e.asOrg = data.asOrg
+            end
+
+            -- 记录代理使用情况
+            if socks_server and socks_server ~= "" then
+                e.proxy_used = true
+            end
+
+            -- 如果返回了测试数据（114.5.1.4），添加注释
+            if e.ip == "114.5.1.4" and e.country == "SB" then
+                e.note = "This appears to be test data from proxy server"
+            end
+        else
+            e.error = "Failed to parse JSON response"
+            e.raw_response = result:sub(1, 200) -- 返回前200个字符用于调试
+        end
+    else
+        e.error = "No response from API"
+    end
+
+    http_write_json(e)
 end
 
 function ping_node()
