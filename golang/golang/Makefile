@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 GO_VERSION_MAJOR_MINOR:=1.25
-GO_VERSION_PATCH:=5
+GO_VERSION_PATCH:=6
 
 PKG_NAME:=golang
 PKG_VERSION:=$(GO_VERSION_MAJOR_MINOR)$(if $(GO_VERSION_PATCH),.$(GO_VERSION_PATCH))
@@ -20,7 +20,7 @@ GO_SOURCE_URLS:=https://dl.google.com/go/ \
 
 PKG_SOURCE:=go$(PKG_VERSION).src.tar.gz
 PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
-PKG_HASH:=22a5fd0a91efcd28a1b0537106b9959b2804b61f59c3758b51e8e5429c1a954f
+PKG_HASH:=58cbf771e44d76de6f56d19e33b77d745a1e489340922875e46585b975c2b059
 
 PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
 PKG_LICENSE:=BSD-3-Clause
@@ -30,6 +30,7 @@ PKG_CPE_ID:=cpe:/a:golang:go
 PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_DIR:=$(BUILD_DIR)/go-$(PKG_VERSION)
 PKG_BUILD_PARALLEL:=1
+PKG_USE_MIPS16:=0
 PKG_BUILD_FLAGS:=no-mips16
 
 PKG_GO_PREFIX:=/usr
@@ -194,6 +195,21 @@ endef
 # Bootstrap
 
 BOOTSTRAP_ROOT_DIR:=$(call qstrip,$(CONFIG_GOLANG_EXTERNAL_BOOTSTRAP_ROOT))
+ifeq ($(BOOTSTRAP_ROOT_DIR)$(GO_HOST_OS_ARCH),darwin_arm64)
+#C-Bootstrap doesn't work on darwin/arm64 host: https://go.dev/doc/install/source#bootstrapFromSource
+#so let's use host installed golang if BOOTSTRAP_ROOT_DIR is not defined
+  BOOTSTRAP_ROOT_DIR:=$(shell go env GOROOT)
+
+  ifeq ($(BOOTSTRAP_ROOT_DIR),)
+    $(warning CONFIG_GOLANG_EXTERNAL_BOOTSTRAP_ROOT is not defined, host golang \
+    not found. Please download golang binaries and define external bootstrap \
+    or install golang (should be accessible form PATH). \
+    Normal bootstrap is not supported on darwin/arm64 host)
+  else
+    $(info host golang will be used for bootstrap: $(BOOTSTRAP_ROOT_DIR))
+  endif
+
+endif
 
 ifeq ($(BOOTSTRAP_ROOT_DIR),)
   BOOTSTRAP_ROOT_DIR:=$(BOOTSTRAP_BUILD_DIR)
