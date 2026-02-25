@@ -1,0 +1,17 @@
+#!/bin/sh
+
+for46=$1
+[ "$for46" = 4 -o "$for46" = 46 ] && IPT=iptables
+[ "$for46" = 6 ] && IPT=ip6tables
+[ -n "$IPT" ] || exit
+
+sleep 2
+		     $IPT -w -t mangle -L RRDIPT_FORWARD -nv >/dev/null 2>&1 || rst=1
+[ "$rst" != 1 ] && { $IPT -w -t mangle -L RRDIPT_INPUT -nv   >/dev/null 2>&1 || rst=1 ; }
+[ "$rst" != 1 ] && { $IPT -w -t mangle -L RRDIPT_OUTPUT -nv  >/dev/null 2>&1 || rst=1 ; }
+[ "$rst" == 1 ] || exit
+
+/etc/init.d/wrtbwmon stop
+kill -9 $(busybox ps -w | grep 'wrtbwmon' | grep -v 'grep' | cut -d ' ' -f 1) 2>/dev/null
+/etc/init.d/wrtbwmon start &
+
