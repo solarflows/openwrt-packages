@@ -1,0 +1,17 @@
+#!/bin/sh
+
+[ "$(uci get wrtbwmon.general.persist   2>/dev/null)" == 1 ] && exit 0
+[ "$(uci get wrtbwmon.general.resetdata 2>/dev/null)" == 1 ] || exit 0
+
+dbpath=`uci get wrtbwmon.general.path 2>/dev/null |sed 's/\/usage.db/\//g'`
+[ -z "$dbpath" ] && dbpath="/tmp/ /etc/config"
+
+for i in $dbpath
+do
+echo "#" > ${dbpath}usage.db
+echo "#" > ${dbpath}usage.6.db
+echo "#" > ${dbpath}usage.46.db
+done
+
+echo "" > /tmp/usage.htm
+

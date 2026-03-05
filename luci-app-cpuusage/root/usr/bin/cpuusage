@@ -1,0 +1,10 @@
+#!/bin/bash
+# Copyright (C) 2023 wulishui <wulishui@msn.com>
+
+All=`sar -P ALL 1 1 |grep '^Average:' |tr -s ' '`
+line="--------------------------------------------------------------------------------------------------------------------"
+head1=`head -1 <<< $All |cut -d ' ' -f 3-8 |awk '{print "cpu "$0" %usage"}'`
+head2=`head -2 <<< $All |tail -1 |cut -d ' ' -f 3-8 |awk '{print "Avg "$0" "(100-$6)}'`
+head3=`tail +3 <<< $All |cut -d ' ' -f 2-8 |awk '{print "CPU"$0" "(100-$7)}'`
+echo -e "\n$head1\n$line\n$head3\n$line\n$head2\n" |sed 's/ /\t\t/g' |sed 's/^/  /g'
+
