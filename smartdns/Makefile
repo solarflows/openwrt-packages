@@ -57,6 +57,10 @@ endef
 
 define Package/smartdns/conffiles
 /etc/config/smartdns
+/etc/smartdns/domain-set
+/etc/smartdns/conf.d
+/etc/smartdns/ip-set
+/etc/smartdns/download
 /etc/smartdns/address.conf
 /etc/smartdns/blacklist-ip.conf
 /etc/smartdns/custom.conf
