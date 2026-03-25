@@ -1,0 +1,399 @@
+:root {
+    /* Terminal color variables for consistency and theming */
+    --podman-terminal-bg: #1a1a1a;
+    --podman-terminal-fg: #0f0;
+    --warn-background-color-dark: rgba(166, 141, 69, 0.2);
+}
+
+/* --- Base Components & Helper Classes --- */
+.tooltip {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+.loading-gray {
+    color: var(--text-color-medium);
+}
+
+.list-toolbar {
+    margin-bottom: 10px;
+}
+
+/* --- Text Utility Classes --- */
+.text-muted {
+    color: var(--text-color-medium);
+}
+
+.text-secondary {
+    color: var(--text-color-high);
+}
+
+.text-success {
+    color: var(--success-color-high);
+}
+
+.text-warning {
+    color: var(--warn-color-high);
+}
+
+.text-error {
+    color: var(--error-color-high);
+}
+
+/* --- Spacing Utilities --- */
+.mr-xs {
+    margin-right: 5px;
+}
+
+.mr-sm {
+    margin-right: 10px;
+}
+
+.mr-md {
+    margin-right: 15px;
+}
+
+.ml-xs {
+    margin-left: 5px;
+}
+
+.ml-sm {
+    margin-left: 10px;
+}
+
+.ml-md {
+    margin-left: 15px;
+}
+
+.mt-sm {
+    margin-top: 10px;
+}
+
+.mt-md {
+    margin-top: 15px;
+}
+
+.mt-lg {
+    margin-top: 20px;
+}
+
+.mb-sm {
+    margin-bottom: 10px;
+}
+
+.mb-md {
+    margin-bottom: 15px;
+}
+
+.mb-lg {
+    margin-bottom: 20px;
+}
+
+.p-md {
+    padding: 20px;
+}
+
+/* --- Text Utilities --- */
+.text-bold {
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-mono {
+    font-family: monospace;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+.text-break {
+    word-break: break-word;
+}
+
+.text-break-all {
+    word-break: break-all;
+}
+
+.text-sm {
+    font-size: 0.9em;
+}
+
+/* --- Layout Utilities --- */
+.d-block {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.gap-sm {
+    gap: 10px;
+}
+
+/* --- Form Elements --- */
+.editable-field {
+    width: 100%;
+    display: flex;
+}
+
+.input-xs {
+    width: 80px;
+}
+
+.input-sm {
+    width: 30%;
+}
+
+.input-md {
+    width: 40%;
+}
+
+.input-lg {
+    width: 60%;
+}
+
+.input-full {
+    width: 100%;
+}
+
+/* --- Code Inline --- */
+.code-inline {
+    font-family: monospace;
+    background: var(--background-color-low);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.text-truncate {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* --- Command Display --- */
+.command-display {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.command-code {
+    flex: 1;
+    word-break: break-all;
+    white-space: pre-wrap;
+    background: var(--background-color-low);
+    padding: 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* --- Warning Box --- */
+.warning-box {
+    background: var(--warn-color-low);
+    padding: 10px;
+    border-left: 4px solid var(--warn-color-high);
+    border-radius: 4px;
+}
+
+[data-darkmode="true"] .warning-box {
+    background: var(--warn-background-color-dark);
+}
+
+/* --- Link Utilities --- */
+.alert-link {
+    color: var(--warn-color-high);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Table Styling --- */
+.table-list > tr > td:first-of-type {
+    width: 33%;
+    font-weight: bold;
+}
+
+.table-list-overview > tr > td:last-of-type {
+    word-break: break-word;
+}
+
+/* --- Code & Terminal Areas --- */
+.code-area,
+.terminal-area {
+    padding: 1rem;
+    max-height: 600px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    font-weight: 100;
+    line-height: 1.25;
+    white-space: pre !important;
+    overflow: auto !important;
+    border-radius: 0.25rem;
+}
+
+.code-area {
+    background: var(--background-color-low);
+    border: 1px solid var(--border-color-medium);
+    color: var(--text-color-highest);
+}
+
+.terminal-area {
+    background: var(--podman-terminal-bg);
+    color: var(--podman-terminal-fg);
+}
+
+.logs-output {
+    background: var(--podman-terminal-bg);
+    color: var(--podman-terminal-fg);
+    padding: 10px;
+    height: 600px;
+    overflow: auto;
+    font-family: monospace;
+    font-size: 12px;
+    white-space: pre;
+    resize: vertical;
+}
+
+/* Dark mode: slightly lighter terminal background for contrast */
+[data-darkmode="true"] .terminal-area,
+[data-darkmode="true"] .logs-output {
+    background: #0a0a0a;
+}
+
+/* --- Modals --- */
+.modal .terminal-area {
+    max-width: 800px;
+    min-height: 100px;
+}
+
+.modal .modal-buttons {
+    margin-top: 1rem;
+}
+
+/* --- Status Indicators --- */
+.autostart-enabled {
+    color: var(--success-color-high);
+}
+
+.autostart-disabled {
+    color: var(--text-color-medium);
+}
+
+.autostart-warning {
+    color: var(--warn-color-high);
+    cursor: pointer;
+}
+
+.autostart-error {
+    color: var(--error-color-high);
+}
+
+/* --- Modal & Dialog Elements --- */
+.loading-placeholder {
+    text-align: center;
+    padding: 30px;
+}
+
+.checkbox-item {
+    display: block;
+    margin: 8px 0;
+}
+
+.modal-heading {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* --- Column Widths --- */
+.col-third {
+    width: 33%;
+}
+
+/* --- Badges --- */
+.badge {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    border-radius: 0.25rem;
+    font-size: 0.85em;
+}
+
+.status-healthy {
+    color: var(--success-color-high);
+}
+
+.status-unhealthy {
+    color: var(--error-color-high);
+}
+
+.status-starting {
+    color: var(--warn-color-high);
+}
+
+/* Desktop / Large Screens */
+@media (min-width: 600px) {
+    .hide-not-mobile,
+    [data-widget="CBI.ContainerMobileActionsValue"] {
+        display: none !important;
+    }
+}
+
+@media screen and (max-device-width: 600px) {
+    .podman-view-list .list-toolbar .cbi-button {
+        margin-top: 5px;
+    }
+
+    /* Flex-basis adjustments for table cells on mobile */
+    .podman-view-list td[data-name="Name"],
+    .podman-view-list td[data-name="Names"],
+    .podman-view-list td[data-name="VolumeName"],
+    .podman-view-list td[data-name="Repository"] {
+        flex-basis: 80% !important;
+        order: -1;
+    }
+
+    .podman-view-list td[data-name="Name"] > div,
+    .podman-view-list td[data-name="Names"] > div,
+    .podman-view-list td[data-name="Repository"] > div,
+    .podman-view-list td[data-name="VolumeName"] > div {
+        font-size: 16px;
+    }
+
+    .podman-view-list td[data-name="ID"] {
+        flex-basis: 20% !important;
+    }
+
+    .podman-view-list td[data-name="ID"] .cbi-checkbox {
+        margin-top: 5px;
+        text-align: right;
+    }
+
+    .podman-view-list td[data-name="State"],
+    .podman-view-list td[data-name="Health"],
+    .podman-view-list td[data-name="Created"],
+    .podman-view-list td[data-name="CreatedAt"],
+    .podman-view-list td[data-name="InitScript"],
+    .podman-view-list td[data-name="Driver"],
+    .podman-view-list td[data-name="Size"],
+    .podman-view-list td[data-name="Image"],
+    .podman-view-list td[data-name="ImageId"],
+    .podman-view-list td[data-name="Tag"],
+    .podman-view-list td[data-name="Mountpoint"] {
+        flex-basis: 50% !important;
+    }
+}
