@@ -7,7 +7,7 @@
 //
 // RPC Methods (line 228+)
 //   Containers:   list inspect start stop restart remove stats create rename
-//                 update healthcheck top recreate
+//                 update healthcheck top
 //   Images:       list inspect remove manifest_inspect pull
 //   Networks:     list inspect remove create connect disconnect
 //   Volumes:      list inspect remove create import
@@ -15,65 +15,71 @@
 //   Secrets:      list inspect create remove
 //   System:       df prune version info debug
 //   Init Scripts: generate show status set_enabled remove
-//                 (exempt from socket check — operate on /etc/init.d/ only)
+//                 (exempt from socket check - operate on /etc/init.d/ only)
 //
 // Socket wrapper (end of file)
 
 import { connect } from 'socket';
 import { readfile, writefile, popen, stat, chmod, unlink, glob, access } from 'fs';
 import { cursor } from 'uci';
-import { urlencode, ENCODE_FULL } from 'lucihttp';
-import { init_enabled, init_action } from 'luci.sys';
+import { urlencode, ENCODE_FULL } from 'lucihttp'; // ucode-lsp disable
+import { init_enabled, init_action } from 'luci.sys'; // ucode-lsp disable
 
 // --- Configuration ---
 
 const uci = cursor();
 const SOCKET = uci.get('podman', 'globals', 'socket_path') || '/run/podman/podman.sock';
 const _prio = uci.get('podman', 'globals', 'init_start_priority');
-const INIT_START_PRIORITY = (_prio && match(_prio, /^([0-9]|[1-9][0-9]|100)$/)) ? _prio : '100';
+const INIT_START_PRIORITY = (type(_prio) === 'string' && match(_prio, /^([0-9]|[1-9][0-9]|100)$/)) ? _prio : '100';
 uci.unload('podman');
 
 const API_BASE = '/v5.0.0/libpod';
 
 // --- Validation ---
 
+/** @param {string} id */
 function validate_id(id) {
-	if (!id || !match(id, /^[a-zA-Z0-9_.:-]+$/))
+	if (!id || type(id) !== 'string' || !match(id, /^[a-zA-Z0-9_.:-]+$/))
 		return 'Invalid id format';
 }
 
-function validate_container_name(name) {
-	if (!name || !match(name, /^[a-zA-Z0-9_.-]+$/))
-		return 'Invalid container name format';
+/** @param {string} name */
+function validate_name(name) {
+	if (!name || type(name) !== 'string' || !match(name, /^[a-zA-Z0-9_.-]+$/))
+		return 'Invalid name format';
 }
 
-function validate_resource_name(name) {
-	if (!name || !match(name, /^[a-zA-Z0-9_.-]+$/))
-		return 'Invalid resource name format';
-}
-
-function validate_volume_name(name) {
-	if (!name || !match(name, /^[a-zA-Z0-9_.-]+$/))
-		return 'Invalid volume name format';
-}
-
+/** @param {string} ref */
 function validate_image_ref(ref) {
-	if (!ref || !match(ref, /^[a-zA-Z0-9_.:\/@-]+$/))
+	if (!ref || type(ref) !== 'string' || !match(ref, /^[a-zA-Z0-9_.:\/@-]+$/))
 		return 'Invalid image reference';
 }
 
+/** @param {string} query */
 function validate_query_params(query) {
-	if (!query || !match(query, /^[a-zA-Z0-9=&_.,-]+$/))
+	if (!query || type(query) !== 'string' || !match(query, /^[a-zA-Z0-9=&_.,-]+$/))
 		return 'Invalid query parameters';
 }
 
 const VALID_RESTART_POLICIES = { 'no': true, 'always': true, 'on-failure': true, 'unless-stopped': true };
 
+const CONTAINER_BODY_KEYS = {
+	CpuPeriod: true, CpuQuota: true, CpuShares: true,
+	Memory: true, MemorySwap: true, MemoryReservation: true,
+	BlkioWeight: true, BlkioWeightDevice: true,
+	HealthConfig: true, NoHealthcheck: true
+};
+
+/** @param {string} policy */
 function validate_restart_policy(policy) {
 	if (policy && !(policy in VALID_RESTART_POLICIES))
 		return 'Invalid restart policy';
 }
 
+/**
+ * @param {string} name
+ * @param {any} value
+ */
 function require_param(name, value) {
 	if (value == null || value === ''
 		|| (type(value) === 'object' && length(keys(value)) === 0))
@@ -82,38 +88,44 @@ function require_param(name, value) {
 
 // --- HTTP Client ---
 
+/**
+ * @param {string} method
+ * @param {string} path
+ * @param {string} body
+ * @param {bool} raw
+ */
 function podman_request(method, path, body, raw) {
 	let sock = connect(SOCKET);
 	if (!sock)
 		return { error: 'Failed to connect to Podman socket' };
 
+	let body_s = `${body}`;
 	let request = `${method} ${path} HTTP/1.0\r\nHost: localhost\r\n`;
-	if (body) {
-		request += `Content-Type: application/json\r\nContent-Length: ${length(body)}\r\n`;
+	if (body_s) {
+		request += `Content-Type: application/json\r\nContent-Length: ${length(body_s)}\r\n`;
 	}
 	request += '\r\n';
-	if (body)
-		request += body;
+	if (body_s)
+		request += body_s;
 
 	sock.send(request);
 
 	// Read response headers (until \r\n\r\n separator)
 	let header_buf = '';
 	let body_remainder = '';
-	let chunk;
+	let chunk = '';
 
 	while (true) {
 		chunk = sock.recv(65536);
-		if (!chunk || length(chunk) === 0)
+		if (!chunk)
 			break;
 
-		header_buf += chunk;
+		header_buf += `${chunk}`;
 		let sep = index(header_buf, '\r\n\r\n');
-		if (sep >= 0) {
-			body_remainder = substr(header_buf, sep + 4);
-			header_buf = substr(header_buf, 0, sep);
-			break;
-		}
+		if (type(sep) !== 'int' || sep < 0) continue;
+		body_remainder = substr(header_buf, sep + 4);
+		header_buf = substr(header_buf, 0, sep);
+		break;
 	}
 
 	if (!header_buf) {
@@ -137,23 +149,22 @@ function podman_request(method, path, body, raw) {
 	let content_length = cl_match ? +cl_match[1] : -1;
 
 	// Read body
-	let resp_body = body_remainder;
-
+	let resp_body = `${body_remainder}`;
 	if (content_length >= 0) {
 		// Read exactly content_length bytes
 		while (length(resp_body) < content_length) {
 			chunk = sock.recv(65536);
-			if (!chunk || length(chunk) === 0)
+			if (!chunk)
 				break;
-			resp_body += chunk;
+			resp_body += `${chunk}`;
 		}
 	} else {
-		// No Content-Length — read until EOF
+		// No Content-Length - read until EOF
 		while (true) {
 			chunk = sock.recv(65536);
-			if (!chunk || length(chunk) === 0)
+			if (!chunk)
 				break;
-			resp_body += chunk;
+			resp_body += `${chunk}`;
 		}
 	}
 
@@ -163,11 +174,11 @@ function podman_request(method, path, body, raw) {
 	if (raw) {
 		if (status_code >= 400)
 			return { error: trim(resp_body || `HTTP ${status_code}`) };
-		return { status: status_code, body: resp_body || '' };
+		return { status: status_code, body: resp_body };
 	}
 
 	// Try to parse JSON body
-	if (resp_body != null && resp_body !== '') {
+	if (resp_body !== '') {
 		let parsed = null;
 		try { parsed = json(resp_body); } catch(e) {}
 
@@ -189,17 +200,17 @@ function podman_request(method, path, body, raw) {
 	return {};
 }
 
-// Helper: validate + urlencode an ID parameter
+/**
+ * @param {string} id
+ */
 function encode_id(id) {
 	return urlencode(id, ENCODE_FULL);
 }
 
-// Helper: append ?force=true if force flag is set
-function add_force(path, force) {
-	return (force === true || force === 1) ? `${path}?force=true` : path;
-}
 
-// Helper: build query string from boolean flags
+/**
+ * @param {object} params
+ */
 function build_bool_query(params) {
 	let parts = [];
 	for (let k in params) {
@@ -209,8 +220,16 @@ function build_bool_query(params) {
 	return length(parts) ? '?' + join('&', parts) : '';
 }
 
+/** @param {any} data */
+function to_json_body(data) {
+	return (type(data) === 'string') ? data : sprintf('%J', data);
+}
+
 // --- Init Script Helpers ---
 
+/**
+ * @param {string} name
+ */
 function init_script_path(name) {
 	return `/etc/init.d/container-${name}`;
 }
@@ -294,7 +313,7 @@ const methods = {
 			let data = req.args.data;
 			let err = require_param('data', data);
 			if (err) return { error: err };
-			let body = (type(data) === 'string') ? data : sprintf('%J', data);
+			let body = to_json_body(data);
 			return podman_request('POST', `${API_BASE}/containers/create`, body);
 		}
 	},
@@ -303,7 +322,7 @@ const methods = {
 		args: { id: '', name: '' },
 		call: function(req) {
 			let err = require_param('id', req.args.id) || validate_id(req.args.id)
-				|| require_param('name', req.args.name) || validate_container_name(req.args.name);
+				|| require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			let name_enc = encode_id(req.args.name);
 			return podman_request('POST', `${API_BASE}/containers/${encode_id(req.args.id)}/rename?name=${name_enc}`);
@@ -333,13 +352,16 @@ const methods = {
 				push(query_parts, `restartPolicy=${data.RestartPolicy}`);
 			}
 			if (data.RestartRetries != null)
-				push(query_parts, `restartRetries=${data.RestartRetries}`);
+				push(query_parts, `restartRetries=${+data.RestartRetries | 0}`);
 
 			let query = length(query_parts) ? '?' + join('&', query_parts) : '';
 
 			// Determine if body is needed (resource/health updates)
 			let body_str = sprintf('%J', data);
-			let has_body_fields = match(body_str, /(cpu|memory|blockIO|health|no_healthcheck)/i);
+			let has_body_fields = false;
+			for (let k in data) {
+				if (k in CONTAINER_BODY_KEYS) { has_body_fields = true; break; }
+			}
 
 			return podman_request('POST', `${API_BASE}/containers/${id_enc}/update${query}`,
 				has_body_fields ? body_str : '{}');
@@ -390,7 +412,7 @@ const methods = {
 		call: function(req) {
 			let err = require_param('id', req.args.id) || validate_image_ref(req.args.id);
 			if (err) return { error: err };
-			return podman_request('DELETE', add_force(`${API_BASE}/images/${encode_id(req.args.id)}`, req.args.force));
+			return podman_request('DELETE', `${API_BASE}/images/${encode_id(req.args.id)}${build_bool_query({ force: req.args.force })}`);
 		}
 	},
 
@@ -415,15 +437,17 @@ const methods = {
 
 			// Response is newline-delimited JSON: {"stream":"..."} lines
 			// Last line contains {"images":[...],"id":"..."}
-			let body = resp.body || '';
+			let body = `${resp.body || ''}`;
 			let output = '';
 			let images = null;
 			let id = null;
 
 			let lines = split(body, '\n');
 			for (let i = 0; i < length(lines); i++) {
-				let line = trim(lines[i]);
-				if (line === '') continue;
+				let raw = lines[i];
+				if (type(raw) !== 'string') continue;
+				let line = trim(raw);
+				if (!line) continue;
 				let parsed = null;
 				try { parsed = json(line); } catch(e) {}
 				if (!parsed) continue;
@@ -454,7 +478,7 @@ const methods = {
 	network_inspect: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('GET', `${API_BASE}/networks/${encode_id(req.args.name)}/json`);
 		}
@@ -463,9 +487,9 @@ const methods = {
 	network_remove: {
 		args: { name: '', force: false },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
-			return podman_request('DELETE', add_force(`${API_BASE}/networks/${encode_id(req.args.name)}`, req.args.force));
+			return podman_request('DELETE', `${API_BASE}/networks/${encode_id(req.args.name)}${build_bool_query({ force: req.args.force })}`);
 		}
 	},
 
@@ -475,7 +499,7 @@ const methods = {
 			let data = req.args.data;
 			let err = require_param('data', data);
 			if (err) return { error: err };
-			let body = (type(data) === 'string') ? data : sprintf('%J', data);
+			let body = to_json_body(data);
 			return podman_request('POST', `${API_BASE}/networks/create`, body);
 		}
 	},
@@ -483,10 +507,10 @@ const methods = {
 	network_connect: {
 		args: { name: '', data: {} },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name)
+			let err = require_param('name', req.args.name) || validate_name(req.args.name)
 				|| require_param('data', req.args.data);
 			if (err) return { error: err };
-			let body = (type(req.args.data) === 'string') ? req.args.data : sprintf('%J', req.args.data);
+			let body = to_json_body(req.args.data);
 			return podman_request('POST', `${API_BASE}/networks/${encode_id(req.args.name)}/connect`, body);
 		}
 	},
@@ -494,10 +518,10 @@ const methods = {
 	network_disconnect: {
 		args: { name: '', data: {} },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name)
+			let err = require_param('name', req.args.name) || validate_name(req.args.name)
 				|| require_param('data', req.args.data);
 			if (err) return { error: err };
-			let body = (type(req.args.data) === 'string') ? req.args.data : sprintf('%J', req.args.data);
+			let body = to_json_body(req.args.data);
 			return podman_request('POST', `${API_BASE}/networks/${encode_id(req.args.name)}/disconnect`, body);
 		}
 	},
@@ -514,7 +538,7 @@ const methods = {
 	volume_inspect: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_volume_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('GET', `${API_BASE}/volumes/${encode_id(req.args.name)}/json`);
 		}
@@ -523,9 +547,9 @@ const methods = {
 	volume_remove: {
 		args: { name: '', force: false },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_volume_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
-			return podman_request('DELETE', add_force(`${API_BASE}/volumes/${encode_id(req.args.name)}`, req.args.force));
+			return podman_request('DELETE', `${API_BASE}/volumes/${encode_id(req.args.name)}${build_bool_query({ force: req.args.force })}`);
 		}
 	},
 
@@ -535,7 +559,7 @@ const methods = {
 			let data = req.args.data;
 			let err = require_param('data', data);
 			if (err) return { error: err };
-			let body = (type(data) === 'string') ? data : sprintf('%J', data);
+			let body = to_json_body(data);
 			return podman_request('POST', `${API_BASE}/volumes/create`, body);
 		}
 	},
@@ -544,20 +568,18 @@ const methods = {
 		args: { name: '', compressed: false },
 		call: function(req) {
 			let name = req.args.name;
-			let err = require_param('name', name) || validate_volume_name(name);
+			let err = require_param('name', name) || validate_name(name);
 			if (err) return { error: err };
 
 			let filepath = '/tmp/podman-import';
 			if (!stat(filepath))
 				return { error: 'Upload file not found' };
 
-			let p = popen(sprintf('/usr/bin/podman volume exists "%s" 2>/dev/null; echo $?', name), 'r');
-			let rc = trim(p.read('all') || '');
-			p.close();
-
-			if (rc !== '0') {
-				p = popen(sprintf('/usr/bin/podman volume create "%s" 2>/dev/null', name), 'r');
-				if (p) { p.read('all'); p.close(); }
+			let existing = podman_request('GET', `${API_BASE}/volumes/${encode_id(name)}/json`);
+			if (!existing.Name) {
+				let created = podman_request('POST', `${API_BASE}/volumes/create`,
+					sprintf('%J', { Name: name }));
+				if (created.error) return created;
 			}
 
 			let cmd;
@@ -566,7 +588,7 @@ const methods = {
 			else
 				cmd = sprintf('/usr/bin/podman volume import "%s" "%s" 2>&1', name, filepath);
 
-			p = popen(cmd, 'r');
+			let p = popen(cmd, 'r');
 			let output = p ? trim(p.read('all') || '') : '';
 			let exit_code = p ? p.close() : 1;
 
@@ -591,7 +613,7 @@ const methods = {
 	pod_inspect: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('GET', `${API_BASE}/pods/${encode_id(req.args.name)}/json`);
 		}
@@ -600,7 +622,7 @@ const methods = {
 	pod_start: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('POST', `${API_BASE}/pods/${encode_id(req.args.name)}/start`);
 		}
@@ -609,7 +631,7 @@ const methods = {
 	pod_stop: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('POST', `${API_BASE}/pods/${encode_id(req.args.name)}/stop`);
 		}
@@ -618,7 +640,7 @@ const methods = {
 	pod_restart: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('POST', `${API_BASE}/pods/${encode_id(req.args.name)}/restart`);
 		}
@@ -627,7 +649,7 @@ const methods = {
 	pod_pause: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('POST', `${API_BASE}/pods/${encode_id(req.args.name)}/pause`);
 		}
@@ -636,7 +658,7 @@ const methods = {
 	pod_unpause: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('POST', `${API_BASE}/pods/${encode_id(req.args.name)}/unpause`);
 		}
@@ -645,9 +667,9 @@ const methods = {
 	pod_remove: {
 		args: { name: '', force: false },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
-			return podman_request('DELETE', add_force(`${API_BASE}/pods/${encode_id(req.args.name)}`, req.args.force));
+			return podman_request('DELETE', `${API_BASE}/pods/${encode_id(req.args.name)}${build_bool_query({ force: req.args.force })}`);
 		}
 	},
 
@@ -657,7 +679,7 @@ const methods = {
 			let data = req.args.data;
 			let err = require_param('data', data);
 			if (err) return { error: err };
-			let body = (type(data) === 'string') ? data : sprintf('%J', data);
+			let body = to_json_body(data);
 			return podman_request('POST', `${API_BASE}/pods/create`, body);
 		}
 	},
@@ -665,7 +687,7 @@ const methods = {
 	pod_stats: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('GET', `${API_BASE}/pods/stats?stream=false&namesOrIDs=${encode_id(req.args.name)}`);
 		}
@@ -683,7 +705,7 @@ const methods = {
 	secret_inspect: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('GET', `${API_BASE}/secrets/${encode_id(req.args.name)}/json`);
 		}
@@ -692,19 +714,18 @@ const methods = {
 	secret_create: {
 		args: { name: '', data: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name)
+			let err = require_param('name', req.args.name) || validate_name(req.args.name)
 				|| require_param('data', req.args.data);
 			if (err) return { error: err };
-			let data_b64 = b64enc(req.args.data);
 			let name_enc = encode_id(req.args.name);
-			return podman_request('POST', `${API_BASE}/secrets/create?name=${name_enc}`, `"${data_b64}"`);
+			return podman_request('POST', `${API_BASE}/secrets/create?name=${name_enc}`, `${req.args.data}`);
 		}
 	},
 
 	secret_remove: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_resource_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 			return podman_request('DELETE', `${API_BASE}/secrets/${encode_id(req.args.name)}`);
 		}
@@ -751,9 +772,9 @@ const methods = {
 			// 1. Podman binary
 			let podman_stat = stat('/usr/bin/podman');
 			if (podman_stat) {
-				let p = popen('/usr/bin/podman --version 2>/dev/null', 'r');
-				let ver = p ? trim(p.read('line') || '') : '';
-				if (p) p.close();
+				let proc = popen('/usr/bin/podman --version 2>/dev/null', 'r');
+				let ver = proc ? trim(proc.read('line') || '') : '';
+				if (proc) proc.close();
 				push(checks, { name: 'podman_binary', label: 'Podman Binary', status: 'ok', detail: '/usr/bin/podman', message: ver });
 			} else {
 				push(checks, { name: 'podman_binary', label: 'Podman Binary', status: 'error', detail: '/usr/bin/podman', message: 'Not found or not executable' });
@@ -812,7 +833,7 @@ const methods = {
 				push(checks, { name: 'startup_template', label: 'Startup Template', status: 'warn', detail: template, message: 'Not found - init script generation will fail' });
 			}
 
-			// 7. RPC plugin (self-check — if we're running, we exist)
+			// 7. RPC plugin (self-check - if we're running, we exist)
 			push(checks, { name: 'rpc_plugin', label: 'RPC Plugin', status: 'ok', detail: '/usr/share/rpcd/ucode/podman.uc', message: 'Running (ucode)' });
 
 			// 8. Podman API helper
@@ -865,11 +886,11 @@ const methods = {
 	init_script_generate: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_container_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 
-			let name = req.args.name;
-			let start_priority = INIT_START_PRIORITY;
+			let name = `${req.args.name}`;
+			let start_priority = `${INIT_START_PRIORITY}`;
 			let script_name = `container-${name}`;
 			let script_path = init_script_path(name);
 
@@ -894,7 +915,7 @@ const methods = {
 	init_script_show: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_container_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 
 			let path = init_script_path(req.args.name);
@@ -909,7 +930,7 @@ const methods = {
 	init_script_status: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_container_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 
 			let script_path = init_script_path(req.args.name);
@@ -926,7 +947,7 @@ const methods = {
 	init_script_set_enabled: {
 		args: { name: '', enabled: false },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_container_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 
 			let script_path = init_script_path(req.args.name);
@@ -945,7 +966,7 @@ const methods = {
 	init_script_remove: {
 		args: { name: '' },
 		call: function(req) {
-			let err = require_param('name', req.args.name) || validate_container_name(req.args.name);
+			let err = require_param('name', req.args.name) || validate_name(req.args.name);
 			if (err) return { error: err };
 
 			let script_path = init_script_path(req.args.name);

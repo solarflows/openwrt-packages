@@ -1,4 +1,6 @@
-import { stdout, open, stat, unlink } from 'fs';
+'use strict';
+
+import { open, stat, unlink } from 'fs';
 import * as socket from 'socket';
 import * as uloop from 'uloop';
 import * as struct from 'struct';
@@ -9,27 +11,37 @@ const PODMAN_SOCKET = '/run/podman/podman.sock';
 const API_BASE = '/v5.0.0/libpod';
 const BLOCKSIZE = 4096;
 
+const _uci_timeouts = (() => {
+	let c = cursor();
+	let s = c.get('uhttpd', 'main', 'script_timeout');
+	let n = c.get('uhttpd', 'main', 'network_timeout');
+	c.unload('uhttpd');
+	return { script: s ? +s : 60, network: n ? +n : 30 };
+})();
+
+
+/**
+ * @param {string} id
+ */
 function validate_id(id) {
 	return id && match(id, /^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$/);
 }
 
+/**
+ * @param {int} code
+ * @param {string} message
+ */
 function error_response(code, message) {
-	if (http.eoh) return;
+	if (http.eoh) return; // ucode-lsp disable
 	http.status(code, message);
 	http.header('Content-Type', 'text/plain');
 	http.write(message + '\n');
 }
 
-function get_timeouts() {
-	let c = cursor();
-	let script = c.get('uhttpd', 'main', 'script_timeout');
-	let network = c.get('uhttpd', 'main', 'network_timeout');
-	return {
-		script: script ? +script : 60,
-		network: network ? +network : 30,
-	};
-}
 
+/**
+ * @param {string} sid
+ */
 function session_timer(sid) {
 	let uci = cursor();
 	let script_timeout = +(uci.get('uhttpd', 'main', 'script_timeout') ?? 60);
@@ -46,15 +58,11 @@ function session_timer(sid) {
 	let deadline  = +(sdat?.values?.podman_stream_deadline  ?? 0);
 	let last_seen = +(sdat?.values?.podman_stream_last_seen ?? 0);
 
-	// Fresh start if: no deadline yet, OR the stream was interrupted long enough
-	// that the gap exceeds script_timeout (normal reconnects fire every
-	// timeout_ms = script_timeout-5s, so their gap is always below this threshold).
 	let is_fresh = !deadline || (now - last_seen > script_timeout);
 
 	if (is_fresh)
 		deadline = now + sessiontime;
 
-	// Always persist deadline + last_seen so future calls can measure the gap.
 	uconn.call('session', 'set', {
 		ubus_rpc_session: sid,
 		values: { podman_stream_deadline: deadline, podman_stream_last_seen: now }
@@ -81,6 +89,12 @@ function session_timer(sid) {
 	};
 }
 
+/**
+ * @param {string} api_path
+ * @param {function} on_data
+ * @param {boolean} early_headers
+ * @param {int} timer
+ */
 function stream_podman(api_path, on_data, early_headers, timer) {
 	let sock = socket.connect(PODMAN_SOCKET);
 	if (!sock) {
@@ -90,20 +104,11 @@ function stream_podman(api_path, on_data, early_headers, timer) {
 
 	sock.send(sprintf('GET %s HTTP/1.0\r\nHost: localhost\r\n\r\n', api_path));
 
-	let t = get_timeouts();
-	// ka_ms: one keepalive write just before network_timeout would kill the connection.
-	// This gives the browser a clean done:true close every ~50s (with defaults),
-	// enabling session-expiry detection (403 on reconnect) without self-rearming timers.
+	let t = _uci_timeouts;
 	let ka_ms = (t.network - 5) * 1000;
 
 	uloop.init();
 
-	// For logs (early_headers=true): send our response headers to the browser
-	// immediately, before Podman responds. Podman deliberately holds its own
-	// headers until it has data (follow=true), which would leave the browser's
-	// fetch() pending for up to 50s. Starting our response now lets the browser
-	// start reading the stream right away; log data arrives as Podman sends it.
-	// For stats: Podman always responds instantly, so we wait for it first.
 	let response_started = early_headers;
 	if (early_headers) {
 		http.status(200, 'OK');
@@ -117,7 +122,7 @@ function stream_podman(api_path, on_data, early_headers, timer) {
 
 	let handle = uloop.handle(sock, () => {
 		let chunk = sock.recv(BLOCKSIZE);
-		if (chunk === null) return; // EAGAIN — keep waiting
+		if (type(chunk) !== 'string') return; // EAGAIN - keep waiting
 
 		if (!podman_headers_done) {
 			// Phase 1: consuming Podman's HTTP response headers
@@ -129,8 +134,9 @@ function stream_podman(api_path, on_data, early_headers, timer) {
 				return;
 			}
 			buf += chunk;
+			if (type(buf) !== 'string') return;
 			let sep = index(buf, '\r\n\r\n');
-			if (sep < 0) return; // headers not complete yet
+			if (type(sep) !== 'int' || sep < 0) return; // headers not complete yet
 
 			let m = match(buf, /^HTTP\/[0-9.]+ ([0-9]+)/);
 			let code = m ? +m[1] : 502;
@@ -141,7 +147,8 @@ function stream_podman(api_path, on_data, early_headers, timer) {
 				return;
 			}
 
-			let body_start = substr(buf, sep + 4);
+			sep = sep + 4;
+			let body_start = substr(buf, sep);
 			buf = '';
 			podman_headers_done = true;
 
@@ -164,11 +171,6 @@ function stream_podman(api_path, on_data, early_headers, timer) {
 		}
 	}, uloop.ULOOP_READ);
 
-	// Single keepalive write at ka_ms resets uhttpd's idle timer and unblocks
-	// reader.read() in the browser, ensuring a clean done:true on final close.
-	// For logs (early_headers): cap the stream at ka_ms*2 so our close always
-	// beats uhttpd's network_timeout (keepalive at ka_ms + network_timeout = 55s,
-	// we fire at 50s — 5s margin). Stats sends data every few seconds so no cap needed.
 	if (early_headers)
 		uloop.timer(ka_ms, () => http.write('\n'));
 
@@ -188,25 +190,25 @@ return {
 	container_logs: (id) => {
 		if (!validate_id(id)) { error_response(400, 'Invalid container ID'); return; }
 
-		let timer = session_timer(ctx?.authsession);
+		let timer = session_timer(ctx?.authsession); // ucode-lsp disable
 		if (!timer) { error_response(403, 'Session expired'); return; }
 
-		let tail   = http.formvalue('tail') || '100';
-		let since  = http.formvalue('since');
-		let until  = http.formvalue('until');
+		let tail   = http.formvalue('tail')   || '100';
+		let since  = http.formvalue('since')  || '';
+		let until  = http.formvalue('until')  || '';
 		let follow = http.formvalue('follow') !== 'false';
 
-		if (tail !== 'all' && !match(tail, /^[0-9]+$/)) {
+		if (tail !== 'all' && !match(`${tail}`, /^[0-9]+$/)) {
 			error_response(400, 'Invalid tail parameter');
 			return;
 		}
 
-		if (since && !match(since, /^[0-9]+(\.[0-9]+)?$/)) {
+		if (since && !match(`${since}`, /^[0-9]+(\.[0-9]+)?$/)) {
 			error_response(400, 'Invalid since parameter');
 			return;
 		}
 
-		if (until && !match(until, /^[0-9]+(\.[0-9]+)?$/)) {
+		if (until && !match(`${until}`, /^[0-9]+(\.[0-9]+)?$/)) {
 			error_response(400, 'Invalid until parameter');
 			return;
 		}
@@ -222,19 +224,18 @@ return {
 		let framebuf = '';
 
 		stream_podman(api_path, (chunk) => {
-			framebuf += chunk;
+			framebuf += `${chunk}`;
 			while (length(framebuf) >= 8) {
 				let hdr = struct.unpack('!BxxxI', substr(framebuf, 0, 8));
 				if (!hdr) break;
 				let stream_type = hdr[0];
-				let payload_len = hdr[1];
+				let payload_len = int(`${hdr[1]}`);
 				if (length(framebuf) < 8 + payload_len) break; // wait for more data
 				let payload = substr(framebuf, 8, payload_len);
 				framebuf = substr(framebuf, 8 + payload_len);
 				// Emit stdout (1) and stderr (2); skip others
 				if (stream_type >= 1 && stream_type <= 2) {
-					if (!stdout.write(payload)) return false; // client disconnected
-					stdout.flush();
+					http.write(payload);
 				}
 			}
 			return true;
@@ -244,68 +245,67 @@ return {
 	container_top: (id) => {
 		if (!validate_id(id)) { error_response(400, 'Invalid container ID'); return; }
 
-		let timer = session_timer(ctx?.authsession);
+		let timer = session_timer(ctx?.authsession); // ucode-lsp disable
 		if (!timer) { error_response(403, 'Session expired'); return; }
 
 		let delay = http.formvalue('delay') || '5';
-		if (!match(delay, /^[0-9]+$/) || +delay < 2) {
+		let ps_args = http.formvalue('ps_args') || '';
+
+		if (!match(`${delay}`, /^[0-9]+$/) || +delay < 2) {
 			error_response(400, 'Invalid delay parameter');
 			return;
 		}
 
-		let ps_args = http.formvalue('ps_args');
-		if (ps_args && !match(ps_args, /^[-a-zA-Z0-9_, ]+$/)) {
+		if (ps_args && !match(`${ps_args}`, /^[-a-zA-Z0-9_, ]+$/)) {
 			error_response(400, 'Invalid ps_args parameter');
 			return;
 		}
 
-		let api_path = sprintf('%s/containers/%s/top?stream=true&delay=%s',
-			API_BASE, id, delay);
+		let api_path = sprintf('%s/containers/%s/top?stream=true&delay=%s', API_BASE, id, delay);
+
 		if (ps_args)
-			api_path += sprintf('&ps_args=%s', ps_args);
+			api_path += sprintf('&ps_args=%s', replace(ps_args, / /g, '%20'));
 
 		stream_podman(api_path, (chunk) => {
-			let ok = stdout.write(chunk);
-			stdout.flush();
-			return ok;
+			return http.write(chunk);
 		}, false, timer);
 	},
 
 	container_stats: (id) => {
 		if (!validate_id(id)) { error_response(400, 'Invalid container ID'); return; }
 
-		let timer = session_timer(ctx?.authsession);
+		let timer = session_timer(ctx?.authsession); // ucode-lsp disable
 		if (!timer) { error_response(403, 'Session expired'); return; }
 
-		let interval = http.formvalue('interval') || '3';
+		let interval = `${http.formvalue('interval') || '3'}`;
+		if (!match(interval, /^[0-9]+$/) || +interval < 1) {
+			error_response(400, 'Invalid interval parameter');
+			return;
+		}
 		let api_path = sprintf('%s/containers/stats?containers=%s&stream=true&interval=%s',
 			API_BASE, id, interval);
 
 		stream_podman(api_path, (chunk) => {
-			let ok = stdout.write(chunk);
-			stdout.flush();
-			return ok;
+			return http.write(chunk);
 		}, false, timer);
 	},
 
 	image_pull: () => {
-		let timer = session_timer(ctx?.authsession);
+		let timer = session_timer(ctx?.authsession); // ucode-lsp disable
 		if (!timer) { error_response(403, 'Session expired'); return; }
 
-		let reference = http.formvalue('reference');
+		let reference = `${http.formvalue('reference')}`;
 		if (!reference || !match(reference, /^[a-zA-Z0-9._/:@-]+$/)) {
 			error_response(400, 'Invalid or missing reference parameter');
 			return;
 		}
-		// A valid registry reference must contain at least one separator (/, : or @).
-		// Bare hex strings are local image IDs — they cannot be pulled from a registry
-		// and would cause a 10-minute worker timeout loop. Reject them early.
+
 		if (!match(reference, /[/:@]/)) {
 			error_response(400, 'Reference must be a registry reference (e.g. name:tag), not a raw image ID');
 			return;
 		}
 
-		let sid     = ctx?.authsession;
+		let sid     = ctx?.authsession; // ucode-lsp disable
 		let ref_id  = replace(reference, /[/:@]/g, '-');
 		let logfile = '/tmp/podman-pull-' + ref_id + '.ndjson';
 		let pidfile = '/tmp/podman-pull-' + ref_id + '.pid';
@@ -329,11 +329,6 @@ return {
 		let lstat      = stat(logfile);
 		let has_unread = lstat && offset < lstat.size;
 
-		// If the worker has exited and the logfile ends with a completion marker
-		// ("images" or "error"), the previous pull finished.  Any new request for the same
-		// reference must start a fresh pull — resuming the old logfile would deliver the
-		// old image ID again.  (The logfile is NOT deleted when the client aborts the fetch
-		// after receiving chunk.images, so it survives between pull sessions.)
 		let is_completed_pull = false;
 		if (!is_running && lstat && lstat.size > 0) {
 			let f = open(logfile, 'r');
@@ -377,7 +372,7 @@ return {
 		http.write_headers();
 		http.write('\n');
 
-		let t          = get_timeouts();
+		let t          = _uci_timeouts;
 		let ka_ms      = (t.network - 5) * 1000;
 		let last_saved = offset;
 
@@ -386,14 +381,13 @@ return {
 		let poll_fn;
 		poll_fn = () => {
 			// Read and forward any new bytes written to the logfile
-			let f = open(logfile, 'r');
-			if (f) {
-				if (offset > 0) f.seek(offset);
-				let chunk = f.read(8192);
-				f.close();
+			let lf = open(logfile, 'r');
+			if (lf) {
+				if (offset > 0) lf.seek(offset);
+				let chunk = lf.read(8192);
+				lf.close();
 				if (chunk && length(chunk)) {
-					if (!stdout.write(chunk)) { uloop.end(); return; }
-					stdout.flush();
+					if (!http.write(chunk)) { uloop.end(); return; }
 					offset += length(chunk);
 					// Persist offset to session (rate-limited)
 					if (uconn_rw && offset - last_saved >= 1024) {
@@ -422,12 +416,12 @@ return {
 		};
 		uloop.timer(0, poll_fn);
 
-		// Self-rearming keepalive — prevents network_timeout during slow layer downloads
+		// Self-rearming keepalive - prevents network_timeout during slow layer downloads
 		let ka;
 		ka = () => { http.write('\n'); uloop.timer(ka_ms, ka); };
 		uloop.timer(ka_ms, ka);
 
-		// Session expiry timer — same pattern as other streams
+		// Session expiry timer - same pattern as other streams
 		uloop.timer(timer.timeout_ms, timer.on_expire);
 
 		uloop.run();

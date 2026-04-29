@@ -118,10 +118,11 @@ const Container = Model.base.extend({
 	},
 
 	getAutoUpdateLabel() {
-		if (!this.Config?.Labels) {
+		const labels = this.Config?.Labels || this.Labels;
+		if (!labels) {
 			return false;
 		}
-		return this.Config?.Labels['io.containers.autoupdate'] || false;
+		return labels['io.containers.autoupdate'] || false;
 	},
 
 	getCmdString() {
@@ -234,7 +235,7 @@ const Container = Model.base.extend({
 			}
 		}
 
-		// Resource limits — use CFS quota/period directly (most precise)
+		// Resource limits - use CFS quota/period directly (most precise)
 		if (hostConfig.Memory > 0 || hostConfig.CpuQuota > 0) {
 			spec.resource_limits = {};
 			if (hostConfig.Memory > 0)
@@ -529,7 +530,8 @@ const Container = Model.base.extend({
 	},
 
 	streamTop(onChunk, delay, psargs) {
-		const params = new URLSearchParams({ delay: String(delay || 2), psargs: psargs || [] });
+		const params = new URLSearchParams({ delay: String(delay || 2) });
+		if (psargs) params.set('ps_args', psargs);
 		const url = L.url('admin/podman/stream/top', this.getID()) + '?' + params;
 		return this._stream(
 			() => url,
@@ -666,13 +668,13 @@ const Container = Model.base.extend({
 
 		const imageRef = image.getDisplayTag();
 		if (!imageRef || imageRef === '<none>:<none>')
-			throw new Error(_('Container image has no tag — cannot update'));
+			throw new Error(_('Container image has no tag - cannot update'));
 
 		const oldImageId = image.getID();
 		const newImageId = await image.update();
 
 		if (!newImageId)
-			throw new Error(_('Pull did not return an image ID — pull may have failed'));
+			throw new Error(_('Pull did not return an image ID - pull may have failed'));
 
 		if (newImageId === oldImageId)
 			throw new Error(_('Image is already up-to-date'));
