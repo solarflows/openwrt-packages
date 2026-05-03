@@ -191,6 +191,15 @@ msgstr ""
 msgid "Unsupported component"
 msgstr ""
 
+msgid "Missing xz support"
+msgstr ""
+
+msgid "naive binary not found in archive"
+msgstr ""
+
+msgid "The online upgrade tracks the latest NaiveProxy release and prefers OpenWrt static archives matching the current ARCH before falling back to other release assets."
+msgstr ""
+
 #: applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/control.lua:39
 msgid "Allow all except listed"
 msgstr ""
@@ -2062,6 +2071,10 @@ msgstr ""
 
 #: applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/servers.lua:235
 msgid "Subscribe URL"
+msgstr ""
+
+#: applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/servers.lua:469
+msgid "Manage multiple subscribe URLs, including Clash subscriptions. Each entry can be edited and refreshed independently."
 msgstr ""
 
 #: applications/luci-app-ssr-plus/luasrc/model/cbi/shadowsocksr/servers.lua:304
