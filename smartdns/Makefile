@@ -30,7 +30,7 @@ PKG_BUILD_PARALLEL:=1
 # PACKAGE_smartdns-ui:node/host
 PKG_BUILD_DEPENDS:=PACKAGE_smartdns-ui:rust/host 
 
-include ../../lang/rust/rust-package.mk
+include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
 include $(INCLUDE_DIR)/package.mk
 
 MAKE_VARS += VER=$(PKG_VERSION) 
@@ -57,6 +57,10 @@ endef
 
 define Package/smartdns/conffiles
 /etc/config/smartdns
+/etc/smartdns/domain-set
+/etc/smartdns/conf.d
+/etc/smartdns/ip-set
+/etc/smartdns/download
 /etc/smartdns/address.conf
 /etc/smartdns/blacklist-ip.conf
 /etc/smartdns/custom.conf
