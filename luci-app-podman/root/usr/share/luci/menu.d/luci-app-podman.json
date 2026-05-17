@@ -41,6 +41,12 @@
 			"path": "podman/pods"
 		}
 	},
+	"admin/podman/pod/*": {
+		"action": {
+			"type": "view",
+			"path": "podman/pod"
+		}
+	},
 	"admin/podman/images": {
 		"title": "Images",
 		"order": 30,
@@ -111,6 +117,28 @@
 			"type": "function",
 			"module": "luci.controller.podman",
 			"function": "image_pull"
+		},
+		"auth": {
+			"methods": ["cookie:sysauth_https", "cookie:sysauth_http"],
+			"login": true
+		}
+	},
+	"admin/podman/stream/pod_top/*": {
+		"action": {
+			"type": "function",
+			"module": "luci.controller.podman",
+			"function": "pod_top"
+		},
+		"auth": {
+			"methods": ["cookie:sysauth_https", "cookie:sysauth_http"],
+			"login": true
+		}
+	},
+	"admin/podman/stream/pod_stats/*": {
+		"action": {
+			"type": "function",
+			"module": "luci.controller.podman",
+			"function": "pod_stats"
 		},
 		"auth": {
 			"methods": ["cookie:sysauth_https", "cookie:sysauth_http"],

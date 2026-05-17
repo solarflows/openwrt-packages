@@ -26,24 +26,17 @@ return podmanView.list.extend({
 		this.section.toolbarExtraButtons = [
 			new podmanUI.Button('&#9658;', ui.createHandlerFn(this, 'handleStart')).render(),
 			new podmanUI.Button('&#9724;', ui.createHandlerFn(this, 'handleStop')).render(),
-			new podmanUI.Button('&#8635;', ui.createHandlerFn(this, 'handleRestart'))
-		.render(),
-			new podmanUI.Button('&#10074;&#10074;', ui.createHandlerFn(this, 'handlePause'))
-			.render(),
-			new podmanUI.Button('&#9655;', ui.createHandlerFn(this, 'handleUnpause'))
-		.render(),
+			new podmanUI.Button('&#8635;', ui.createHandlerFn(this, 'handleRestart')).render(),
+			new podmanUI.Button('&#10074;&#10074;', ui.createHandlerFn(this, 'handlePause')).render(),
 		];
 
 		let o;
 
-		o = this.section.option(podmanForm.field.LinkDummyValue, 'Name', _('Name'));
-		o.click = (_value, pod) => this.section.handleInspect(pod);
+		o = this.section.option(podmanForm.field.DummyValue, 'Name', _('Name'));
 
 		o = this.section.option(podmanForm.field.DummyValue, 'Id', _('ID'));
-		o.cfgdatavalue = (pod) => pod.getID();
-		o.cfgformatter = (id) => utils.truncate(id, 10);
-		o.cfgtt = (id) => id.length > 10 ? id : '';
-		o.width = '12%';
+		o.cfgdatavalue = (pod) => pod.getDetailLink(utils.truncate(pod.getID(), 16));
+		o.width = '20%';
 
 		o = this.section.option(podmanForm.field.DummyValue, 'Status', _('Status'));
 		o.cfgdatavalue = (pod) => pod.getStatusBadge();
@@ -120,7 +113,10 @@ return podmanView.list.extend({
 	},
 
 	handleStart() {
-		return this.runOnSelected((pod) => pod.start(), _('Starting pod'));
+		return this.runOnSelected(
+			(pod) => pod.isPaused() ? pod.unpause() : pod.start(),
+			_('Starting pod')
+		);
 	},
 
 	handleStop() {
@@ -133,10 +129,6 @@ return podmanView.list.extend({
 
 	handlePause() {
 		return this.runOnSelected((pod) => pod.pause(), _('Pausing pod'));
-	},
-
-	handleUnpause() {
-		return this.runOnSelected((pod) => pod.unpause(), _('Unpausing pod'));
 	},
 
 	async runOnSelected(action, textLoad) {

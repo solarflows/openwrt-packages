@@ -600,8 +600,8 @@ msgstr "行数"
 msgid "OK"
 msgstr "确定"
 
-msgid "Old image %s could not be removed - still in use by another container"
-msgstr "旧镜像 %s 无法移除 - 仍被另一个容器使用"
+msgid "Old image still used by other containers"
+msgstr ""
 
 msgid "On Failure"
 msgstr "失败时"
@@ -819,7 +819,7 @@ msgstr "开始流"
 msgid "Started"
 msgstr "已启动"
 
-msgid "StartedAt"
+msgid "Started At"
 msgstr "启动时间"
 
 msgid "Starting pod"
@@ -891,9 +891,6 @@ msgstr "更新"
 msgid "Update Resources"
 msgstr "更新资源"
 
-msgid "Update image and re-create container: %s/%s"
-msgstr "更新镜像并重新创建容器：%s/%s"
-
 msgid "Update name"
 msgstr "更新名称"
 
@@ -959,3 +956,132 @@ msgstr "正在运行"
 
 msgid "total"
 msgstr "总计"
+
+msgid "Are you sure to remove pod?"
+msgstr ""
+
+msgid "Cgroup parent"
+msgstr ""
+
+msgid "CID"
+msgstr ""
+
+msgid "CPU %"
+msgstr ""
+
+msgid "CPU period"
+msgstr ""
+
+msgid "CPU quota"
+msgstr ""
+
+msgid "CPU set"
+msgstr ""
+
+msgid "CPU shares"
+msgstr ""
+
+msgid "DNS options"
+msgstr ""
+
+msgid "DNS search"
+msgstr ""
+
+msgid "DNS servers"
+msgstr ""
+
+msgid "Exit policy"
+msgstr ""
+
+msgid "Extra hosts"
+msgstr ""
+
+msgid "Host network"
+msgstr ""
+
+msgid "Infra container"
+msgstr ""
+
+msgid "Memory limit"
+msgstr ""
+
+msgid "Net I/O"
+msgstr ""
+
+msgid "Pause pod"
+msgstr ""
+
+msgid "Pod is not running"
+msgstr ""
+
+msgid "Remove pod"
+msgstr ""
+
+msgid "Restart policy"
+msgstr ""
+
+msgid "Restart pod"
+msgstr ""
+
+msgid "Shared namespaces"
+msgstr ""
+
+msgid "Start pod"
+msgstr ""
+
+msgid "Static IPv4"
+msgstr ""
+
+msgid "Static MAC"
+msgstr ""
+
+msgid "Stop pod"
+msgstr ""
+
+msgid "Unlimited"
+msgstr ""
+
+msgid "Unpause pod"
+msgstr ""
+
+msgid "Stopping container"
+msgstr ""
+
+msgid "Stop failed: %s"
+msgstr ""
+
+msgid "Removing container"
+msgstr ""
+
+msgid "Remove failed: %s"
+msgstr ""
+
+msgid "Creating container"
+msgstr ""
+
+msgid "Create failed: %s"
+msgstr ""
+
+msgid "Starting container"
+msgstr ""
+
+msgid "Start failed: %s"
+msgstr ""
+
+msgid "Reinstating init script"
+msgstr ""
+
+msgid "Init script reinstate failed: %s"
+msgstr ""
+
+msgid "Updated to %s"
+msgstr ""
+
+msgid "Update image: %d/%d - %s"
+msgstr ""
+
+msgid "Removed old image %s"
+msgstr ""
+
+msgid "Done."
+msgstr ""
