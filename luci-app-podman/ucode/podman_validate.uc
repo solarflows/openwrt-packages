@@ -51,6 +51,12 @@ export function validate_restart_policy(policy) {
 		return 'Invalid restart policy';
 };
 
+/** @param {string} val */
+export function validate_int(val) {
+	if (!val || type(val) !== 'string' || !match(val, /^[0-9]+$/))
+		return 'Invalid number';
+};
+
 /**
  * @param {string} name
  * @param {any} value
@@ -61,5 +67,4 @@ export function require_param(name, value) {
 		return `Missing required parameter: ${name}`;
 };
 
-export const RESTART_POLICIES = VALID_RESTART_POLICIES;
 export const BODY_KEYS = CONTAINER_BODY_KEYS;
