@@ -21,7 +21,7 @@ PKG_CPE_ID:=cpe:/a:pymumu:smartdns
 PKG_CONFIG_DEPENDS:=CONFIG_PACKAGE_smartdns-ui
 # node compile is slow, so do not use it, download node manually.
 # PKG_BUILD_DEPENDS:=PACKAGE_smartdns-ui:node/host PACKAGE_smartdns-ui:rust-bindgen/host
-PKG_BUILD_DEPENDS:=PACKAGE_smartdns-ui:rust-bindgen/host
+PKG_BUILD_DEPENDS:=PACKAGE_smartdns-ui:rust/host
 PKG_BUILD_PARALLEL:=1
 
 RUST_PKG_FEATURES:=build-release
