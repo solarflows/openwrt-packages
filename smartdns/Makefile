@@ -5,13 +5,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=smartdns
-PKG_VERSION:=47.1
-PKG_RELEASE:=6
+PKG_VERSION:=48
+PKG_RELEASE:=1
 
-PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://www.github.com/pymumu/smartdns.git
-PKG_MIRROR_HASH:=7da8819e659074f64c206c81c69ebbabe4b8ee8b7ea9105f5254404324b40e7b
-PKG_SOURCE_VERSION:=c13c62a5b5ec24398c6748cc6615170f085c57fd
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://codeload.github.com/pymumu/smartdns/tar.gz/Release$(PKG_VERSION)?
+PKG_HASH:=84cd4ff3effe195a24fa5c10f2d72068d7debdbe2babce0fb3255b52e72d8c30
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-Release$(PKG_VERSION)
 
 PKG_MAINTAINER:=Nick Peng <pymumu@gmail.com>
 PKG_LICENSE:=GPL-3.0-or-later
@@ -56,7 +56,7 @@ endef
 define Package/smartdns-ui
   $(call Package/smartdns/Default)
   TITLE+= dashboard
-  DEPENDS:=+smartdns $(RUST_ARCH_DEPENDS) @!(TARGET_x86_geode||TARGET_x86_legacy)
+  DEPENDS:=+smartdns $(RUST_ARCH_DEPENDS) @!i386
 endef
 
 define Package/smartdns-ui/description
