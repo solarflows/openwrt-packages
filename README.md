@@ -8,5 +8,5 @@
 
 ```Brach
     # 在feeds.conf.default加入
-    src-git pkg https://github.com/hyy-666/openwrt-packages
+    src-git pkg https://github.com/solarflows/openwrt-packages
  ```
