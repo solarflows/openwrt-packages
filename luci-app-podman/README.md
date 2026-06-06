@@ -1,7 +1,8 @@
-[![OpenWrt](https://img.shields.io/badge/OpenWrt-25.12%20%7C%2024.10-darkgreen.svg)](https://openwrt.org/)
-[![GitHub Release](https://img.shields.io/github/v/release/Zerogiven-OpenWRT-Packages/luci-app-podman)](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases)
-[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/Zerogiven-OpenWRT-Packages/luci-app-podman)](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/issues)
-<!-- [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Zerogiven-OpenWRT-Packages/luci-app-podman/total?color=blue)](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases) -->
+[![OpenWrt](https://img.shields.io/badge/OpenWrt-25.12-darkgreen.svg?logo=openwrt&color=002B49)](https://openwrt.org/)
+[![OpenWrt](https://img.shields.io/badge/OpenWrt-24.10-darkgreen.svg?logo=openwrt&color=002B49)](https://openwrt.org/)
+[![GitHub Release](https://img.shields.io/github/v/release/Zerogiven-OpenWRT-Packages/luci-app-podman?logo=github)](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases)
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Zerogiven-OpenWRT-Packages/luci-app-podman/total?color=blue&logo=github)](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/Zerogiven-OpenWRT-Packages/luci-app-podman?logo=github)](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/issues)
 
 # LuCI App Podman
 
@@ -72,14 +73,14 @@ You can setup this package feed to install and update it with apk/opkg:
 
 **OpenWrt 25.12** (apk):
 ```bash
-wget https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases/download/v2.3.2/luci-app-podman_2.3.2-r1_all.apk
-apk update && apk add --allow-untrusted luci-app-podman_2.3.2-r1_all.apk
+wget https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases/download/v2.3.3/luci-app-podman_2.3.3-r1_all.apk
+apk update && apk add --allow-untrusted luci-app-podman_2.3.3-r1_all.apk
 ```
 
 **OpenWrt 24.10** (opkg):
 ```bash
-wget https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases/download/v2.3.2/luci-app-podman_2.3.2-r1_all.ipk
-opkg update && opkg install luci-app-podman_2.3.2-r1_all.ipk
+wget https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/releases/download/v2.3.3/luci-app-podman_2.3.3-r1_all.ipk
+opkg update && opkg install luci-app-podman_2.3.3-r1_all.ipk
 ```
 
 ### From Source
