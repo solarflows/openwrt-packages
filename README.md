@@ -37,7 +37,6 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `app-store-ui` | [linkease/istore-ui](https://github.com/linkease/istore-ui) | `main`, `qt6`
 | `arp-scan` | [immortalwrt/packages](https://github.com/immortalwrt/packages) | `mt798x`
 | `cdnspeedtest` | [immortalwrt/packages](https://github.com/immortalwrt/packages) | `main`, `mt798x`, `qt6`
-| `ddnsto` | [linkease/nas-packages](https://github.com/linkease/nas-packages) | `mt798x`, `qualcommax`
 | `filebrowser` | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) | `main`, `qt6`
 | `homeproxy` | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) | `main`, `qt6`
 | `irqbalance` | [openwrt/packages](https://github.com/openwrt/packages) | `main`, `qt6`
@@ -53,7 +52,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-beardropper` | [NateLol/luci-app-beardropper](https://github.com/NateLol/luci-app-beardropper) | `main`, `qt6`
 | `luci-app-cloudflarespeedtest` | [mingxiaoyu/luci-app-cloudflarespeedtest](https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest) | `main`, `qt6`, `mt798x`, `qualcommax`
 | `luci-app-control-guest-wifi` | [zxlhhyccc/bf-package-master](https://github.com/zxlhhyccc/bf-package-master) | `main`, `qt6`
-| `luci-app-ddnsto` | [linkease/nas-packages-luci](https://github.com/linkease/nas-packages-luci) | `mt798x`, `qualcommax`
+| `luci-app-ddnsto` | [linkease/ddnsto-openwrt-package](https://github.com/linkease/ddnsto-openwrt-package) | `mt798x`, `qualcommax`
 | `luci-app-dnsfilter` | [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter) | `main`, `mt798x`, `qt6`, `qualcommax`
 | `luci-app-dockerman` | [lisaac/luci-app-dockerman](https://github.com/lisaac/luci-app-dockerman) | `main`, `qt6`
 | `luci-app-filebrowser` | [immortalwrt/luci/](https://github.com/immortalwrt/luci/) | `main`, `qt6`
@@ -118,7 +117,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-06-14 10:41
+**最近更新**: 2026-06-14 11:01
 
 ## 🙏 致谢
 
