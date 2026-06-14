@@ -123,6 +123,168 @@ local function fetch_device_id(index)
   return parse_device_id(get_command(cmd))
 end
 
+local function shell_quote(value)
+  local raw = tostring(value or "")
+  return "'" .. raw:gsub("'", [['"'"']]) .. "'"
+end
+
+local function read_file(path, binary)
+  local mode = binary and "rb" or "r"
+  local fp = io.open(path, mode)
+  if not fp then
+    return nil
+  end
+  local data = fp:read("*a")
+  fp:close()
+  return data
+end
+
+local function remove_file(path)
+  if path and #path > 0 then
+    os.remove(path)
+  end
+end
+
+local function temp_path(suffix)
+  local random = tostring(math.random(100000, 999999))
+  return string.format("/tmp/ddnsto-luci-%d-%s%s", os.time(), random, suffix or "")
+end
+
+local function file_exists(path)
+  local fp = io.open(path, "rb")
+  if fp then
+    fp:close()
+    return true
+  end
+  return false
+end
+
+local function run_capture(cmd)
+  local sys = require "luci.sys"
+  local stdout_path = temp_path(".stdout")
+  local stderr_path = temp_path(".stderr")
+  local wrapped = string.format("%s >%s 2>%s", cmd, shell_quote(stdout_path), shell_quote(stderr_path))
+  local rc = sys.call(wrapped)
+  local stdout = read_file(stdout_path, true) or ""
+  local stderr = read_file(stderr_path, true) or ""
+  remove_file(stdout_path)
+  remove_file(stderr_path)
+  return rc, stdout, stderr
+end
+
+local function diagnostics_logs_via_cli(lines)
+  local jsonc = require "luci.jsonc"
+  local cmd = string.format("/usr/sbin/ddnsto diagnostics logs --tail %d", tonumber(lines) or 200)
+  local rc, stdout = run_capture(cmd)
+  if rc ~= 0 or stdout == "" then
+    return nil
+  end
+  local ok, parsed = pcall(jsonc.parse, stdout)
+  if not ok or type(parsed) ~= "table" or type(parsed.lines) ~= "table" then
+    return nil
+  end
+  return parsed.lines
+end
+
+local function diagnostics_bundle_via_cli(output_path)
+  local cmd = string.format(
+    "/usr/sbin/ddnsto diagnostics bundle --output %s --reason %s",
+    shell_quote(output_path),
+    shell_quote("luci-support")
+  )
+  local rc, stdout, stderr = run_capture(cmd)
+  if rc == 0 and file_exists(output_path) then
+    return true, stdout
+  end
+  return false, stderr ~= "" and stderr or stdout
+end
+
+local function diagnostics_bundle_via_http(output_path)
+  local jsonc = require "luci.jsonc"
+  local request_body = [[{"reason":"luci-support","tail":500}]]
+  local request_cmd = string.format(
+    "curl -fsS -X POST -H 'Content-Type: application/json' --data %s %s",
+    shell_quote(request_body),
+    shell_quote("http://127.0.0.1:18333/diagnostics/bundle")
+  )
+  local rc, stdout, stderr = run_capture(request_cmd)
+  if rc ~= 0 or stdout == "" then
+    return false, stderr ~= "" and stderr or stdout
+  end
+
+  local ok, parsed = pcall(jsonc.parse, stdout)
+  local download_path = ok and type(parsed) == "table" and parsed.downloadPath or nil
+  if type(download_path) ~= "string" or download_path == "" then
+    return false, "missing downloadPath"
+  end
+
+  local download_cmd = string.format(
+    "curl -fsS %s -o %s",
+    shell_quote("http://127.0.0.1:18333" .. download_path),
+    shell_quote(output_path)
+  )
+  local download_rc, _, download_stderr = run_capture(download_cmd)
+  if download_rc == 0 and file_exists(output_path) then
+    return true, "http"
+  end
+
+  return false, download_stderr ~= "" and download_stderr or "bundle download failed"
+end
+
+local function offline_diagnosis_via_http()
+  local jsonc = require "luci.jsonc"
+  local cmd = string.format("curl -fsS %s", shell_quote("http://127.0.0.1:18333/offline-diagnosis"))
+  local rc, stdout, stderr = run_capture(cmd)
+  if rc ~= 0 or stdout == "" then
+    return nil, stderr ~= "" and stderr or stdout
+  end
+
+  local ok, parsed = pcall(jsonc.parse, stdout)
+  if not ok or type(parsed) ~= "table" then
+    return nil, "invalid offline diagnosis response"
+  end
+  return parsed, "http_status"
+end
+
+local function offline_diagnosis_via_cli()
+  local jsonc = require "luci.jsonc"
+  local rc, stdout, stderr = run_capture("/usr/sbin/ddnsto offline-diagnosis --json")
+  if rc ~= 0 or stdout == "" then
+    return nil, stderr ~= "" and stderr or stdout
+  end
+
+  local ok, parsed = pcall(jsonc.parse, stdout)
+  if not ok or type(parsed) ~= "table" then
+    return nil, "invalid offline diagnosis response"
+  end
+  return parsed, "cli_fallback"
+end
+
+local function stream_download(path, filename, content_type)
+  local http = require "luci.http"
+  local fp = io.open(path, "rb")
+  if not fp then
+    http.status(500, "open failed")
+    http.prepare_content("application/json")
+    http.write('{"ok":false,"error":"bundle open failed"}')
+    return
+  end
+
+  http.header("Content-Disposition", string.format('attachment; filename="%s"', filename))
+  http.header("Cache-Control", "no-store")
+  http.prepare_content(content_type or "application/octet-stream")
+
+  while true do
+    local chunk = fp:read(8192)
+    if not chunk then
+      break
+    end
+    http.write(chunk)
+  end
+
+  fp:close()
+end
+
 local function param(body, key)
   local http = require "luci.http"
   if type(body) == "table" and body[key] ~= nil then
@@ -296,6 +458,8 @@ function index()
   entry({"admin", "services", "ddnsto", "api", "connectivity"},  call("api_connectivity")).leaf = true
   entry({"admin", "services", "ddnsto", "api", "status"},  call("api_status")).leaf = true
   entry({"admin", "services", "ddnsto", "api", "logs"},    call("api_logs")).leaf = true
+  entry({"admin", "services", "ddnsto", "api", "offline_diagnosis"}, call("api_offline_diagnosis")).leaf = true
+  entry({"admin", "services", "ddnsto", "api", "support_bundle"}, call("api_support_bundle")).leaf = true
 end
 
 function action_page()
@@ -696,6 +860,12 @@ function api_logs()
   if lines < 10 then lines = 10 end
   if lines > 2000 then lines = 2000 end
 
+  local cli_lines = diagnostics_logs_via_cli(lines)
+  if cli_lines ~= nil then
+    write_json({ ok = true, data = { lines = cli_lines, total = #cli_lines, source = "diagnostics_cli" } })
+    return
+  end
+
   local cmd = string.format("logread 2>/dev/null | grep -E 'ddnsto|ddnstod' | tail -n %d", lines)
   local out = sys.exec(cmd) or ""
   local arr = {}
@@ -706,7 +876,57 @@ function api_logs()
     end
   end
 
-  write_json({ ok = true, data = { lines = arr, total = #arr } })
+  write_json({ ok = true, data = { lines = arr, total = #arr, source = "logread_fallback" } })
+end
+
+function api_offline_diagnosis()
+  local http = require "luci.http"
+  local method = http.getenv("REQUEST_METHOD") or ""
+
+  if method ~= "GET" then
+    method_not_allowed()
+    return
+  end
+
+  local data, source = offline_diagnosis_via_http()
+  if data ~= nil then
+    write_json({ ok = true, data = data, source = source })
+    return
+  end
+
+  data, source = offline_diagnosis_via_cli()
+  if data ~= nil then
+    write_json({ ok = true, data = data, source = source })
+    return
+  end
+
+  write_json({ ok = false, error = "offline diagnosis unavailable" })
+end
+
+function api_support_bundle()
+  local http = require "luci.http"
+  local method = http.getenv("REQUEST_METHOD") or ""
+
+  if method ~= "GET" then
+    method_not_allowed()
+    return
+  end
+
+  local output_path = temp_path(".zip")
+  local ok, err = diagnostics_bundle_via_http(output_path)
+  if not ok then
+    ok, err = diagnostics_bundle_via_cli(output_path)
+  end
+  if not ok then
+    remove_file(output_path)
+    http.status(500, "bundle failed")
+    write_json({ ok = false, error = "diagnostics bundle unavailable", detail = err or "" })
+    return
+  end
+
+  local filename = string.format("ddnsto-openwrt-support-%d.zip", os.time())
+  stream_download(output_path, filename, "application/zip")
+  remove_file(output_path)
 end
 
 function action_ddnsto_dev()
