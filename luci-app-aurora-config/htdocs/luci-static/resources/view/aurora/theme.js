@@ -673,7 +673,8 @@ const createColorEditor = (themeConfig, presetColors) => {
     if (mapRoot) ui.tabs.updateTabs(null, mapRoot);
   };
 
-  const updateField = (mode, key, result) => {
+  const updateField = (mode, key, result, options = {}) => {
+    const shouldValidate = options.validateKeys?.has(key) ?? false;
     const field = fields[mode].get(key);
     const state = stateFor(mode, key);
     state.pending = false;
@@ -686,7 +687,7 @@ const createColorEditor = (themeConfig, presetColors) => {
 
     if (!state.valid) {
       field.status.textContent = state.error;
-      triggerValidation(field);
+      if (shouldValidate) triggerValidation(field);
       return;
     }
 
@@ -711,11 +712,13 @@ const createColorEditor = (themeConfig, presetColors) => {
       field.element.classList.add("cbi-value-error");
       field.status.textContent = state.error;
     }
-    triggerValidation(field);
+    if (shouldValidate) triggerValidation(field);
   };
 
-  const refresh = (mode) =>
-    colorLibraryReady
+  const refresh = (mode, options = {}) => {
+    const validateKeys = options.validateKeys || new Set();
+
+    return colorLibraryReady
       .then(() => {
         const automatic = automaticForMode(mode);
         syncDerivedInitialState(mode, automatic);
@@ -732,7 +735,7 @@ const createColorEditor = (themeConfig, presetColors) => {
       })
       .then((results) => {
         COLOR_TOKENS.forEach(({ key }) => {
-          updateField(mode, key, results.results.get(key));
+          updateField(mode, key, results.results.get(key), { validateKeys });
         });
 
         DERIVED_COLOR_TOKENS.forEach(({ key }) => {
@@ -741,7 +744,7 @@ const createColorEditor = (themeConfig, presetColors) => {
             updateField(mode, key, {
               ...result,
               autoValue: results.automatic?.[key] || "",
-            });
+            }, { validateKeys });
             return;
           }
 
@@ -751,7 +754,9 @@ const createColorEditor = (themeConfig, presetColors) => {
             : {
                 valid: false,
                 error: _("Unable to generate the automatic derived value."),
-              });
+              },
+            { validateKeys },
+          );
         });
         applyPreview(mode);
       })
@@ -760,18 +765,34 @@ const createColorEditor = (themeConfig, presetColors) => {
           updateField(mode, key, {
             valid: false,
             error: error?.message || _("Unable to resolve color expressions."),
-          });
+          }, { validateKeys });
         });
       })
       .finally(() => refreshTabErrors(mode));
+  };
 
-  const schedule = (mode) => {
+  const affectedKeysFor = (key) => {
+    if (!key) return ALL_COLOR_TOKENS.map((token) => token.key);
+    if (isInputToken(key))
+      return COLOR_TOKENS.concat(DERIVED_COLOR_TOKENS).map(
+        (token) => token.key,
+      );
+    return [key];
+  };
+
+  const schedule = (mode, key, options = {}) => {
+    const affectedKeys = affectedKeysFor(key);
+    const validateKeys = new Set(options.validate ? [key].filter(Boolean) : []);
+
     window.clearTimeout(timers[mode]);
-    ALL_COLOR_TOKENS.forEach(({ key }) => {
-      const state = stateFor(mode, key);
+    affectedKeys.forEach((affectedKey) => {
+      const state = stateFor(mode, affectedKey);
       state.pending = true;
     });
-    timers[mode] = window.setTimeout(() => refresh(mode), 120);
+    timers[mode] = window.setTimeout(
+      () => refresh(mode, { validateKeys }),
+      120,
+    );
   };
 
   const register = (
@@ -794,7 +815,7 @@ const createColorEditor = (themeConfig, presetColors) => {
     input.addEventListener("input", () => {
       themeConfig[colorOptionName(mode, token.key)] = input.value;
       if (token.derived) setDerivedOverride(mode, token.key, Boolean(input.value.trim()));
-      schedule(mode);
+      schedule(mode, token.key, { validate: true });
     });
     schedule(mode);
   };
@@ -802,7 +823,8 @@ const createColorEditor = (themeConfig, presetColors) => {
   const validate = (mode, key, value) => {
     if (!value?.trim()) return true;
     const state = stateFor(mode, key);
-    if (state.pending) return _("Color expression is still resolving.");
+    if (state.pending)
+      return state.valid || state.error == null ? true : state.error;
     return state.valid
       ? true
       : state.error || _("Invalid color expression.");
@@ -832,10 +854,17 @@ const createColorEditor = (themeConfig, presetColors) => {
     resolver.destroy();
   };
 
+  const flush = () => {
+    window.clearTimeout(timers.light);
+    window.clearTimeout(timers.dark);
+    return Promise.all([refresh("light"), refresh("dark")]);
+  };
+
   return {
     attach,
     cleanupPreview,
     destroy,
+    flush,
     presetColors,
     register,
     resolvedForMode,
@@ -895,8 +924,7 @@ const renderColorField = function (optionIndex, sectionId, inTable) {
     picker.addEventListener("change", () => {
       try {
         input.value = picker.value;
-        input.dispatchEvent(new Event("input", { bubbles: true }));
-        input.dispatchEvent(new Event("change", { bubbles: true }));
+        input.dispatchEvent(new Event("input"));
       } catch (error) {
         input.setCustomValidity(_("Unable to convert the selected color."));
       }
@@ -933,11 +961,6 @@ const addColorInputs = (section, mode, tokens, editor) => {
       editor.validate(mode, token.key, value);
     option.write = (sectionId, value) => {
       const trimmed = value?.trim();
-      if (token.derived) {
-        if (trimmed)
-          uci.set("aurora", sectionId, optionKey, toRuntimeColor(trimmed));
-        return;
-      }
       if (trimmed) {
         uci.set("aurora", sectionId, optionKey, toRuntimeColor(trimmed));
       } else {
@@ -945,7 +968,6 @@ const addColorInputs = (section, mode, tokens, editor) => {
       }
     };
     option.remove = (sectionId) => {
-      if (token.derived) return;
       uci.unset("aurora", sectionId, optionKey);
     };
   });
@@ -1311,6 +1333,7 @@ const runSavePipeline = function (ev, after) {
   const save = L.bind(function () {
     return colorLibraryReady
       .catch(() => {})
+      .then(() => this.colorEditor?.flush?.())
       .then(() => persistDerivedTokens(this.colorEditor))
       .then(() => this.super("handleSave", [ev]));
   }, this);
