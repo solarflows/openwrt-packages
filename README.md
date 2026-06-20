@@ -117,7 +117,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-06-20 19:16
+**最近更新**: 2026-06-20 21:28
 
 ## 🙏 致谢
 
