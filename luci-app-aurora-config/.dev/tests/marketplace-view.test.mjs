@@ -194,12 +194,88 @@ test("gallery view: external toolbar URLs are surfaced in plaintext before apply
   assert.ok(src.includes("createTextNode"), "external URLs must render via textContent, not innerHTML");
 });
 
-test("gallery view: rollback banner reads hub_applied and offers callHubRestore", async () => {
+// 横幅没了。「正在使用什么」由卡上的钩子回答,「怎么回去」由「我的配置」那张
+// 卡回答 —— 两个问题各有归属,顶部不需要再压一条把其中一个说第二遍。
+test("store view: the banner and the standing rollback button are gone", async () => {
+  const src = await readFile(SRC, "utf8");
+  assert.ok(!src.includes("renderBanner"), "renderBanner must be gone");
+  assert.ok(!src.includes("aurora-hub-banner"), "the banner element must be gone");
+  assert.ok(!src.includes("aurora-store-applied"), "the banner styles must be gone");
+  assert.ok(
+    !/_\("Restore previous configuration"\)/.test(src),
+    "rolling back is clicking your own card, not a button of its own",
+  );
+});
+
+test("store view: rolling back still goes through callHubRestore, from the card", async () => {
   const src = await readFile(SRC, "utf8");
   assert.match(src, /require uci/);
-  assert.match(src, /hub_applied/);
   assert.ok(src.includes("callHubRestore"), "missing callHubRestore usage");
   assert.ok(src.includes("window.location.reload"), "missing reload after restore");
+  assert.match(
+    src,
+    /apply: \(\) => confirmRestore\(\)/,
+    "the My-configuration card's apply action is the rollback",
+  );
+  // 引号内的才算读取:注释里提到它是允许的,那句话正是在解释为什么不再读。
+  assert.ok(
+    !/"hub_applied"/.test(src),
+    "matching must not read hub_applied any more -- it holds a name, not an id",
+  );
+});
+
+// 三类卡的选中态出自同一个比较。社区卡曾经写死 current:false,所以它永远不可能
+// 被选中 —— 那正是应用了社区主题、钩子却留在内置卡上的原因之一。
+test("store view: every card's tick comes from active_source plus modified", async () => {
+  const src = await readFile(SRC, "utf8");
+  assert.match(src, /callHubLocalState/);
+  assert.match(src, /activeSource === "builtin:" \+ preset\.id/);
+  assert.match(src, /activeSource === "hub:" \+ item\.id/);
+  assert.ok(
+    !/current: false/.test(src),
+    "a community card must be able to hold the tick",
+  );
+  assert.ok(
+    !/preset\.id === activePreset/.test(src),
+    "matching must not read active_preset any more",
+  );
+});
+
+// 「我的配置」和另两类卡共用同一套预览访问器 —— 三种卡,一套访问器,同一个外观
+// 不可能被画成两个样子。
+test("store view: the My-configuration card draws through the shared accessors", async () => {
+  const src = await readFile(SRC, "utf8");
+  const start = src.indexOf("const buildMineModel");
+  assert.ok(start !== -1, "buildMineModel is missing");
+  const block = src.slice(start, start + 900);
+  assert.match(block, /paletteOf\(/);
+  assert.match(block, /previewOpts\(/);
+  assert.match(block, /buildCardGlyphs\(/);
+  assert.match(block, /name: _\("My configuration"\)/);
+  assert.match(block, /current: modified/);
+});
+
+test("store view: one slot -- current uci when modified, the backup when not", async () => {
+  const src = await readFile(SRC, "utf8");
+  assert.match(src, /modified \? currentPreview\(\) : backupPreview/);
+  assert.match(
+    src,
+    /if \(!modified && !backupPreview\) return null;/,
+    "with nothing of your own and nothing to go back to, the section must not render",
+  );
+});
+
+test("store view: Mine comes before Built-in and Community", async () => {
+  const src = await readFile(SRC, "utf8");
+  const render = src.slice(src.indexOf("const renderContent"));
+  const mine = render.indexOf("buildMineGrid");
+  const builtin = render.indexOf("buildBuiltinGrid");
+  const online = render.indexOf("buildOnlineGrid");
+  assert.ok(mine !== -1, "the Mine section is missing");
+  assert.ok(
+    mine < builtin && mine < online,
+    "the card you are using should be the first one you see",
+  );
 });
 
 test("gallery view: apply/restore error copy stays result-only (no mechanism words)", async () => {
@@ -238,14 +314,6 @@ test("gallery view: the store survives a phone", async () => {
   assert.ok(
     src.includes("@media (hover:none){.aurora-store-acts{opacity:1;}}"),
     "the card's quick-apply button must be reachable without a hover",
-  );
-
-  // ✓ 和它所在的那句话必须是同一个 flex item。分成两个的时候,窄屏上句子换行
-  // 到第二行,留一个光秃秃的 ✓ 吊在上面。
-  assert.match(
-    src,
-    /E\("span", \{ class: "msg" \}, \[\s*buildCurrentTick\(\),/,
-    "the banner tick must travel inside the sentence it belongs to",
   );
 });
 
@@ -408,7 +476,7 @@ test("gallery view: only a hub without preview degrades to assets_status", async
 // 问题所在。标签那一半是有意反转的:下划线选中态在深色主题下读作"没有",
 // 一块有底色的实心分段在任何主题色下都成立。
 // 见 docs/specs/2026-08-04-theme-store-visual-redesign.md 的"明确反转"一节。
-test("gallery view: a two-row header with a segmented filter row", async () => {
+test("gallery view: a one-row header with a segmented filter row", async () => {
   const src = await readFile(SRC, "utf8");
   assert.match(src, /class: "cbi-input-text"/, "search must stay a standard LuCI input");
   assert.ok(!src.includes("🔍"), "emoji glyph must go");
@@ -431,6 +499,19 @@ test("gallery view: a two-row header with a segmented filter row", async () => {
   );
   assert.match(src, /const buildSectionTitle = /, "section subtitle builder missing");
   assert.match(src, /const renderTabLabel = /, "tab label/count builder missing");
+
+  // 一行,不是两行:tabs、弹性间隔、搜索框是同一个 .aurora-store-head 的三个
+  // 子元素。之前搜索框自己占一行,而它左边什么都没有,那一整条就是空白。
+  assert.match(
+    src,
+    /const headEl = E\(\s*"div",\s*\{ class: "aurora-store-head" \},\s*\[\s*tabsEl,\s*E\("span", \{ class: "sp" \}\),\s*searchInput,/,
+    "tabs, spacer and search must sit in one .aurora-store-head row, in that order",
+  );
+  // margin-top 会把胶囊组从搜索框的中线上推开 —— 行距归 .aurora-store-head 管。
+  assert.ok(
+    !/\.aurora-store-filters\{[^}]*margin-top/.test(src),
+    "the filter pills must not carry their own top margin inside the shared row",
+  );
 });
 
 test("gallery view: sharing says what gets shared, inline rather than in a modal", async () => {
@@ -881,7 +962,9 @@ test("gallery load() waits on nothing but local sources", async () => {
 
 test("gallery paints from cache first, then goes to the network", async () => {
   const src = await readFile(SRC, "utf8");
-  const tail = src.slice(src.lastIndexOf("renderBanner();"));
+  // 锚点是首屏挂载前的最后一件事:从缓存取一份列表先画上。横幅没了之后
+  // renderBanner() 不再能当锚。
+  const tail = src.slice(src.lastIndexOf("hubApi.listCache.getStale()"));
   assert.ok(tail.includes("meCache.getStale"), "my shares must paint from cache");
   assert.ok(tail.includes("appendChild"), "the tail should mount the DOM");
   // 顺序要求:两个请求都在 DOM 挂载之后
