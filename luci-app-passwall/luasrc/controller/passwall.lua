@@ -51,14 +51,14 @@ function index()
 	entry({"admin", "services", appname, "socks_config"}, cbi(appname .. "/client/socks_config")).leaf = true
 	entry({"admin", "services", appname, "acl"}, cbi(appname .. "/client/acl"), _("Access control"), 98).leaf = true
 	entry({"admin", "services", appname, "acl_config"}, cbi(appname .. "/client/acl_config")).leaf = true
-	entry({"admin", "services", appname, "log"}, form(appname .. "/client/log"), _("Runtime Logs"), 999).leaf = true
+	entry({"admin", "services", appname, "log"}, template(appname .. "/log/log"), _("Runtime Logs"), 999).leaf = true
 
 	--[[ Server ]]
 	entry({"admin", "services", appname, "server"}, cbi(appname .. "/server/index"), _("Server-Side"), 99).leaf = true
 	entry({"admin", "services", appname, "server_user"}, cbi(appname .. "/server/user")).leaf = true
 
 	--[[ API ]]
-	entry({"admin", "services", appname, "server_user_update"}, call("server_user_update")).leaf = true
+	entry({"admin", "services", appname, "server_update_config"}, call("server_update_config")).leaf = true
 	entry({"admin", "services", appname, "server_user_status"}, call("server_user_status")).leaf = true
 	entry({"admin", "services", appname, "server_user_log"}, call("server_user_log")).leaf = true
 	entry({"admin", "services", appname, "server_get_log"}, call("server_get_log")).leaf = true
@@ -79,8 +79,8 @@ function index()
 	entry({"admin", "services", appname, "connect_status"}, call("connect_status")).leaf = true
 	entry({"admin", "services", appname, "ping_node"}, call("ping_node")).leaf = true
 	entry({"admin", "services", appname, "urltest_node"}, call("urltest_node")).leaf = true
+	entry({"admin", "services", appname, "update_config"}, call("update_config")).leaf = true
 	entry({"admin", "services", appname, "add_node"}, call("add_node")).leaf = true
-	entry({"admin", "services", appname, "update_node"}, call("update_node")).leaf = true
 	entry({"admin", "services", appname, "set_node"}, call("set_node")).leaf = true
 	entry({"admin", "services", appname, "copy_node"}, call("copy_node")).leaf = true
 	entry({"admin", "services", appname, "clear_all_nodes"}, call("clear_all_nodes")).leaf = true
@@ -96,6 +96,10 @@ function index()
 	entry({"admin", "services", appname, "subscribe_manual"}, call("subscribe_manual")).leaf = true
 	entry({"admin", "services", appname, "subscribe_manual_all"}, call("subscribe_manual_all")).leaf = true
 	entry({"admin", "services", appname, "flush_set"}, call("flush_set")).leaf = true
+	entry({"admin", "services", appname, "get_shunt_rules"}, call("get_shunt_rules")).leaf = true
+	entry({"admin", "services", appname, "add_shunt_rule"}, call("add_shunt_rule")).leaf = true
+	entry({"admin", "services", appname, "delete_select_shunt_rules"}, call("delete_select_shunt_rules")).leaf = true
+	entry({"admin", "services", appname, "save_shunt_rule_order"}, call("save_shunt_rule_order")).leaf = true
 	-- 新增IP信息查询路由
 	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
 
@@ -306,7 +310,7 @@ end
 
 function get_socks_log()
 	local name = http.formvalue("name")
-	local path = "/tmp/etc/passwall/SOCKS_" .. name .. ".log"
+	local path = "/tmp/etc/passwall/" .. name .. ".log"
 	if fs.access(path) then
 		local content = luci.sys.exec("cat ".. path)
 		content = content:gsub("\n", "<br />")
@@ -387,7 +391,7 @@ function socks_status()
 	local index = http.formvalue("index")
 	local id = http.formvalue("id")
 	e.index = index
-	e.socks_status = luci.sys.call(string.format("/bin/busybox top -bn1 | grep -v 'grep' | grep '/tmp/etc/passwall/bin/' | grep -v '_acl_' | grep '%s' | grep 'SOCKS_' > /dev/null", id)) == 0
+	e.socks_status = luci.sys.call(string.format("/bin/busybox top -bn1 | grep -v -E 'grep|acl/|acl_' | grep '%s/bin/' | grep '%s' > /dev/null", appname, id)) == 0
 	local use_http = uci:get(appname, id, "http_port") or 0
 	e.use_http = 0
 	if tonumber(use_http) > 0 then
@@ -434,115 +438,39 @@ function connect_status()
 	http_write_json(e)
 end
 
--- IP信息查询接口（新增独立函数）
+-- IP信息查询接口
 function ip_info()
-    local e = {}
-    local url = "https://ip.api.skk.moe/cf-geoip"
+	local e = {}
+	local args = {
+		"-skfL",
+		"--connect-timeout 3",
+		"--max-time 10",
+		"-H 'Accept: application/json'",
+		"-A 'passwall-ip-check'"
+	}
+	local return_code, result = api.curl_auto("https://ip.api.skk.moe/cf-geoip", nil, args)
 
-    -- 获取代理配置
-    local localhost_proxy = uci:get(appname, "@global[0]", "localhost_proxy") or "1"
-    local socks_server = (localhost_proxy == "0") and api.get_cache_var("GLOBAL_TCP_SOCKS_server") or ""
+	if return_code ~= 0 or not result or result == "" then
+		e.error = "Network request failed"
+	else
+		local ok, data = pcall(jsonParse, result)
+		if not ok or type(data) ~= "table" or not data.ip or not data.country then
+			e.error = "Invalid API response"
+		else
+			e.ip = data.ip
+			e.country = data.country
+			e.city = data.city or ""
+			e.region = data.region or ""
+			e.asn = data.asn
+			e.asOrg = data.asOrg
+		end
+	end
 
-    -- 构建curl命令
-    local curl_cmd = '/usr/bin/curl --max-time 10 -s '
-
-	-- 模拟浏览器请求
-	curl_cmd = curl_cmd .. [[ -H 'accept: */*' \
-	-H 'accept-language: zh-CN,zh;q=0.9,en;q=0.8' \
-	-H 'cache-control: no-cache' \
-	-H 'dnt: 1' \
-	-H 'origin: https://ip.skk.moe' \
-	-H 'pragma: no-cache' \
-	-H 'referer: https://ip.skk.moe/' \
-	-H 'sec-ch-ua: \"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"' \
-	-H 'sec-ch-ua-mobile: ?0' \
-	-H 'sec-ch-ua-platform: \"Windows\"' \
-	-H 'sec-fetch-dest: empty' \
-	-H 'sec-fetch-mode: cors' \
-	-H 'sec-fetch-site: same-site' \
-	-H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0' \
-	]]
-
-    -- 强制使用代理（如果有代理配置）
-    if socks_server and socks_server ~= "" then
-        curl_cmd = curl_cmd .. '--socks5-hostname ' .. socks_server .. ' '
-    end
-
-    curl_cmd = curl_cmd .. "'" .. url .. "'"
-
-    -- 执行命令
-    local result = luci.sys.exec(curl_cmd)
-
-    if result and result ~= "" then
-        -- 方法1：尝试使用luci.jsonc解析（如果可用）
-        local success, data = false, nil
-
-        -- 首先尝试使用luci.jsonc
-        if pcall(require, "luci.jsonc") then
-            local jsonc = require("luci.jsonc")
-            success, data = pcall(jsonc.parse, result)
-        end
-
-        -- 如果luci.jsonc不可用或解析失败，尝试使用luci.json
-        if not success and pcall(require, "luci.json") then
-            local json = require("luci.json")
-            success, data = pcall(json.parse, result)
-        end
-
-        -- 如果上面的方法都失败，使用简单的字符串匹配（作为备用方案）
-        if not success then
-            -- 使用简单的模式匹配提取JSON字段
-            local ip_match = result:match('"ip"%s*:%s*"([^"]+)"')
-            local country_match = result:match('"country"%s*:%s*"([^"]+)"')
-            local city_match = result:match('"city"%s*:%s*"([^"]+)"')
-            local region_match = result:match('"region"%s*:%s*"([^"]+)"')
-
-            if ip_match and country_match then
-                data = {
-                    ip = ip_match,
-                    country = country_match,
-                    city = city_match or "",
-                    region = region_match or ""
-                }
-                success = true
-            end
-        end
-
-        if success and data then
-            e.ip = data.ip or ""
-            e.country = data.country or ""
-            e.city = data.city or ""
-            e.region = data.region or ""
-
-            -- 可选：添加asn和asOrg信息
-            if data.asn then
-                e.asn = data.asn
-            end
-            if data.asOrg then
-                e.asOrg = data.asOrg
-            end
-
-            -- 记录代理使用情况
-            if socks_server and socks_server ~= "" then
-                e.proxy_used = true
-            end
-
-            -- 如果返回了测试数据（114.5.1.4），添加注释
-            if e.ip == "114.5.1.4" and e.country == "SB" then
-                e.note = "This appears to be test data from proxy server"
-            end
-        else
-            e.error = "Failed to parse JSON response"
-            e.raw_response = result:sub(1, 200) -- 返回前200个字符用于调试
-        end
-    else
-        e.error = "No response from API"
-    end
-
-    http_write_json(e)
+	http_write_json(e)
 end
 
 function ping_node()
+-- IP信息查询接口
 	local index = http.formvalue("index")
 	local address = http.formvalue("address")
 	local port = http.formvalue("port")
@@ -581,29 +509,7 @@ function urltest_node()
 	http_write_json(e)
 end
 
-function add_node()
-	local redirect = http.formvalue("redirect")
-
-	local uuid = api.gen_short_uuid()
-	uci:section(appname, "nodes", uuid)
-
-	local group = http.formvalue("group")
-	if group and group ~= "default" then
-		uci:set(appname, uuid, "group", group)
-	end
-
-	uci:set(appname, uuid, "type", "Socks")
-
-	if redirect == "1" then
-		api.uci_save(uci, appname)
-		http.redirect(api.url("node_config", uuid))
-	else
-		api.uci_save(uci, appname, true, true)
-		http_write_json({result = uuid})
-	end
-end
-
-function update_node()
+function update_config()
 	local id = http.formvalue("id") -- Node id
 	local data = http.formvalue("data") -- json new Data
 	if id and data then
@@ -618,6 +524,28 @@ function update_node()
 		end
 	end
 	http_write_json_error()
+end
+
+function add_node()
+	local redirect = http.formvalue("redirect")
+
+	local uid = api.gen_random_char()
+	uci:section(appname, "nodes", uid)
+
+	local group = http.formvalue("group")
+	if group and group ~= "default" then
+		uci:set(appname, uid, "group", group)
+	end
+
+	uci:set(appname, uid, "type", "Socks")
+
+	if redirect == "1" then
+		api.uci_save(uci, appname)
+		http.redirect(api.url("node_config", uid))
+	else
+		api.uci_save(uci, appname, true, true)
+		http_write_json({result = uid})
+	end
 end
 
 function set_node()
@@ -644,23 +572,23 @@ end
 
 function copy_node()
 	local section = http.formvalue("section")
-	local uuid = api.gen_short_uuid()
-	uci:section(appname, "nodes", uuid)
+	local uid = api.gen_random_char()
+	uci:section(appname, "nodes", uid)
 	for k, v in pairs(uci:get_all(appname, section)) do
 		if not k:match("^%.") and k ~= "group" then
 			if k == "remarks" then v = (v or "") .. "(1)" end
-			uci:set(appname, uuid, k, v)
+			uci:set(appname, uid, k, v)
 		end
 	end
-	uci:set(appname, uuid, "add_mode", 1)
+	uci:set(appname, uid, "add_mode", 1)
 	api.uci_save(uci, appname)
-	http.redirect(api.url("node_config", uuid))
+	http.redirect(api.url("node_config", uid))
 end
 
 function clear_all_nodes()
 	uci:set(appname, '@global[0]', "enabled", "0")
 	uci:set(appname, '@global[0]', "socks_enabled", "0")
-	uci:set(appname, '@haproxy_config[0]', "balancing_enable", "0")
+	uci:set(appname, '@global_haproxy[0]', "balancing_enable", "0")
 	uci:delete(appname, '@global[0]', "tcp_node")
 	uci:delete(appname, '@global[0]', "udp_node")
 	uci:foreach(appname, "socks", function(t)
@@ -890,7 +818,7 @@ function rollback_rules()
 	http_write_json_ok()
 end
 
-function server_user_update()
+function server_update_config()
 	local id = http.formvalue("id") -- Node id
 	local data = http.formvalue("data") -- json new Data
 	if id and data then
@@ -1243,4 +1171,88 @@ function fetch_certsha256()
 	end
 	local data = api.fetch_cert_sha256(address, port, sni, timeout, h3)
 	http_write_json(data ~= "" and { code = 1, data = data } or { code = 0 })
+end
+
+function get_shunt_rules()
+	local id = http.formvalue("id")
+	local result = {}
+
+	if id then
+		result = uci:get_all(appname, id)
+	else
+		local default_items = {}
+		local other_items = {}
+		uci:foreach(appname, "shunt_rules", function(t)
+			if not t.group or t.group == "" then
+				default_items[#default_items + 1] = t
+			else
+				other_items[#other_items + 1] = t
+			end
+		end)
+		for i = 1, #default_items do result[#result + 1] = default_items[i] end
+		for i = 1, #other_items do result[#result + 1] = other_items[i] end
+	end
+	http_write_json(result)
+end
+
+function add_shunt_rule()
+	local add_name = http.formvalue("add_name")
+	local redirect = http.formvalue("redirect")
+
+	local uid = add_name
+	if add_name then
+		local has = uci:get(appname, uid)
+		if has then
+			http_write_json_error({ message = "This ID already exists." })
+			return
+		end
+	else
+		uid = api.gen_random_char()
+	end
+	uci:section(appname, "shunt_rules", uid)
+
+	local group = http.formvalue("group")
+	if group and group ~= "default" then
+		uci:set(appname, uid, "group", group)
+	end
+
+	if redirect == "1" then
+		api.uci_save(uci, appname)
+		http.redirect(api.url("shunt_rules", uid))
+	else
+		api.uci_save(uci, appname)
+		http_write_json_ok({uid = uid, redirect_url = api.url("shunt_rules", uid)})
+	end
+end
+
+function delete_select_shunt_rules()
+	local ids = http.formvalue("ids")
+	local redirect = http.formvalue("redirect")
+	string.gsub(ids, '[^' .. "," .. ']+', function(w)
+		uci:foreach(appname, "nodes", function(s)
+			if s["protocol"] and s["protocol"] == "_shunt" then
+				uci:delete(appname, s[".name"], w)
+			end
+		end)
+		uci:delete(appname, w)
+	end)
+	if redirect == "1" then
+		api.uci_save(uci, appname)
+		http.redirect(api.url("rule"))
+	else
+		api.uci_save(uci, appname, true, true)
+	end
+end
+
+function save_shunt_rule_order()
+	local ids = http.formvalue("ids") or ""
+	local new_order = {}
+	for id in ids:gmatch("([^,]+)") do
+		new_order[#new_order + 1] = id
+	end
+	for idx, name in ipairs(new_order) do
+		luci.sys.call(string.format("uci -q reorder %s.%s=%d", appname, name, idx - 1))
+	end
+	api.sh_uci_commit(appname)
+	http_write_json({ status = "ok" })
 end
