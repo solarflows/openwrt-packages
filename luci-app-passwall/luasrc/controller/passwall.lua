@@ -56,6 +56,7 @@ function index()
 	--[[ Server ]]
 	entry({"admin", "services", appname, "server"}, cbi(appname .. "/server/index"), _("Server-Side"), 99).leaf = true
 	entry({"admin", "services", appname, "server_config"}, cbi(appname .. "/server/server_config")).leaf = true
+	entry({"admin", "services", appname, "server_user_config"}, cbi(appname .. "/server/user_config")).leaf = true
 
 	--[[ API ]]
 	entry({"admin", "services", appname, "server_update_config"}, call("server_update_config")).leaf = true
@@ -100,9 +101,9 @@ function index()
 	entry({"admin", "services", appname, "delete_select_shunt_rules"}, call("delete_select_shunt_rules")).leaf = true
 
 	--[[rule_list]]
-	entry({"admin", "services", appname, "read_rulelist"}, call("read_rulelist")).leaf = true
 	-- 新增IP信息查询路由
 	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
+	entry({"admin", "services", appname, "read_rulelist"}, call("read_rulelist")).leaf = true
 
 	--[[Components update]]
 	entry({"admin", "services", appname, "check_passwall"}, call("app_check")).leaf = true
