@@ -270,9 +270,9 @@ if DEFAULT_DNS_GROUP then
 		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no -no-serve-expired"
 		domain_rules_str = domain_rules_str .. " -address " .. (NO_PROXY_IPV6 == "1" and "#6" or "-6")
 	elseif DEFAULT_DNS_GROUP == LOCAL_GROUP then
-		domain_rules_str = domain_rules_str .. " -no-ip-alias"
 		domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
 	end
+	domain_rules_str = domain_rules_str .. " -no-ip-alias"
 	table.insert(config_lines, domain_rules_str)
 end
 
@@ -469,9 +469,9 @@ if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
 	local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
 	domain_rules_str = domain_rules_str .. " -speed-check-mode none"
 	domain_rules_str = domain_rules_str .. " -no-serve-expired"
+	domain_rules_str = domain_rules_str .. " -no-ip-alias"
 	local sets = {
 		"#4:" .. setflag .. "psw_black"
-	domain_rules_str = domain_rules_str .. " -no-ip-alias"
 	}
 	if NO_PROXY_IPV6 == "1" then
 		domain_rules_str = domain_rules_str .. " -address #6 " .. set_type .. " " .. table.concat(sets, ",")
@@ -493,9 +493,9 @@ if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
 	local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
 	domain_rules_str = domain_rules_str .. " -speed-check-mode none"
 	domain_rules_str = domain_rules_str .. " -no-serve-expired"
+	domain_rules_str = domain_rules_str .. " -no-ip-alias"
 	local sets = {
 		"#4:" .. setflag .. "psw_gfw"
-	domain_rules_str = domain_rules_str .. " -no-ip-alias"
 	}
 	if NO_PROXY_IPV6 == "1" then
 		domain_rules_str = domain_rules_str .. " -address #6 " .. set_type .. " " .. table.concat(sets, ",")
@@ -533,9 +533,9 @@ if CHN_LIST ~= "0" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 		local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
 		domain_rules_str = domain_rules_str .. " -speed-check-mode none"
 		domain_rules_str = domain_rules_str .. " -no-serve-expired"
+		domain_rules_str = domain_rules_str .. " -no-ip-alias"
 		local sets = {
 			"#4:" .. setflag .. "psw_chn"
-		domain_rules_str = domain_rules_str .. " -no-ip-alias"
 		}
 		if NO_PROXY_IPV6 == "1" then
 			domain_rules_str = domain_rules_str .. " -address #6 " .. set_type .. " " .. table.concat(sets, ",")
@@ -665,9 +665,9 @@ if IS_SHUNT_NODE then
 		local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
 		domain_rules_str = domain_rules_str .. " -speed-check-mode none"
 		domain_rules_str = domain_rules_str .. " -no-serve-expired"
+		domain_rules_str = domain_rules_str .. " -no-ip-alias"
 		local sets = {
 			"#4:" .. setflag .. "psw_shunt"
-		domain_rules_str = domain_rules_str .. " -no-ip-alias"
 		}
 		if NO_PROXY_IPV6 == "1" then
 			domain_rules_str = domain_rules_str .. " -address #6 " .. set_type .. " " .. table.concat(sets, ",")
