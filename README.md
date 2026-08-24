@@ -38,6 +38,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `arp-scan` | [immortalwrt/packages](https://github.com/immortalwrt/packages) | `mt798x`
 | `cdnspeedtest` | [immortalwrt/packages](https://github.com/immortalwrt/packages) | `main`, `mt798x`, `qt6`
 | `filebrowser` | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) | `main`, `qt6`
+| `geo2txt` | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) | `main`, `mt798x`, `qt6`, `qualcommax`
 | `homeproxy` | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) | `main`, `qt6`
 | `irqbalance` | [openwrt/packages](https://github.com/openwrt/packages) | `main`, `qt6`
 | `libtorrent-rasterbar` | [immortalwrt/packages](https://github.com/immortalwrt/packages) | `main`, `qt6`
@@ -106,7 +107,6 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `smartdns` | [immortalwrt/packages](https://github.com/immortalwrt/packages) | `main`, `qt6`
 | `sms-tool` | [4IceG/packages](https://github.com/4IceG/packages) | `main`, `qt6`
 | `tailscale` | [openwrt/packages/](https://github.com/openwrt/packages/) | `mt798x`
-| `v2dat` | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) | `main`, `mt798x`, `qt6`, `qualcommax`
 | `wrtbwmon` | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) | `mt798x`
 | `xmurp-ua` | [CHN-beta/xmurp-ua](https://github.com/CHN-beta/xmurp-ua) | `main`, `qt6`
 | `zerotier` | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) | `mt798x`
@@ -117,7 +117,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-08-24 14:56
+**最近更新**: 2026-08-24 20:53
 
 ## 🙏 致谢
 
