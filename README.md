@@ -66,7 +66,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-netdata` | [sirpdboy/luci-app-netdata](https://github.com/sirpdboy/luci-app-netdata) | `main`, `qt6`
 | `luci-app-nodogsplash` | [tty228/luci-app-nodogsplash](https://github.com/tty228/luci-app-nodogsplash) | `main`, `qt6`
 | `luci-app-openclash` | [vernesong/OpenClash](https://github.com/vernesong/OpenClash) | `main`, `qt6`
-| `luci-app-passwall` | [Openwrt-Passwall/openwrt-passwall](https://github.com/Openwrt-Passwall/openwrt-passwall) | `main`, `mt798x`, `qt6`, `qualcommax`
+| `luci-app-passwall` | [Openwrt-Passwall/openwrt-passwall](https://github.com/Openwrt-Passwall/openwrt-passwall) | `qt6`, `main`, `mt798x`, `qualcommax`
 | `luci-app-passwall2` | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) | `main`, `mt798x`, `qt6`, `qualcommax`
 | `luci-app-podman` | [Zerogiven-OpenWRT-Packages/luci-app-podman](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman) | `qualcommax`
 | `luci-app-poweroff` | [esirplayground/luci-app-poweroff](https://github.com/esirplayground/luci-app-poweroff) | `main`, `qt6`
@@ -117,7 +117,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-09-13 23:18
+**最近更新**: 2026-09-13 23:20
 
 ## 🙏 致谢
 
