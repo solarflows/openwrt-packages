@@ -117,9 +117,9 @@ o.default = "1"
 o:value("0", "Iptables")
 o:value("1", "Nftables")
 
----- NFTables Optimization Toggle
-o = s:option(Flag, "nft_optimize", translate("NFTables Rules Optimization"),
-	translate("Optimize nftables rule order, short-circuit return, clean chain teardown, and rp_filter for performance."))
+---- Fork Performance Toolkit Toggle
+o = s:option(Flag, "fork_optimize", translate("Fork Performance Toolkit"),
+	translate("Enable Fork-optimized scripts: nftables fast-return rules, millisecond-level incremental node filtering, native C-based ultra-fast subscription processing, and network tuning."))
 o.default = 0
 o.rmempty = false
 o:depends("prefer_nft", "1")
