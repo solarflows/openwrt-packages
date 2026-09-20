@@ -1,0 +1,106 @@
+{
+  "targets": {
+    "mt798x": {
+      "luci-theme-argon": {
+        "repo": "https://github.com/solarflows/luci-theme-argon",
+        "branch": "21.02",
+        "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64"
+      },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "8509f551edb7beb4a6324afca4d84b2bea404b66"
+      },
+      "luci-app-dnsfilter": {
+        "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
+        "branch": null,
+        "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf"
+      },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "c1730565c6df4ab30d345cf73584f03f5cc7bc8f"
+      },
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
+      },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "03c57c1255a72f09c06cb4866025e07491de7d53"
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "59b3456b4cb884d5e4222cdba2ead895069d7b85"
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "eb635e913f665b73dd468a812498f8a442b6a518"
+      },
+      "luci-app-wechatpush": {
+        "repo": "https://github.com/tty228/luci-app-wechatpush",
+        "branch": null,
+        "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "6e46ddbe2ddaee2b4381dbf1a5046ef942b8265b"
+      },
+      "wrtbwmon": {
+        "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
+        "branch": null,
+        "commit": "ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8"
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "8509f551edb7beb4a6324afca4d84b2bea404b66"
+      },
+      "luci-app-cloudflarespeedtest": {
+        "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
+        "branch": null,
+        "commit": "aebbcbd686d61e0c9a0c44456d65bc5144395e01"
+      },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "08d39bd1993712f647002b097e589ef67fa8e7d8"
+      },
+      "smartdns": {
+        "repo": "https://github.com/pymumu/openwrt-smartdns",
+        "branch": null,
+        "commit": "4be700dc3366275605a2a1996865d83ea9bb9a18"
+      },
+      "luci-app-smartdns": {
+        "repo": "https://github.com/pymumu/luci-app-smartdns",
+        "branch": "master",
+        "commit": "581e5e816d92d3a663b1b2e331e3f21685968cf1"
+      },
+      "luci-app-taskplan": {
+        "repo": "https://github.com/sirpdboy/luci-app-taskplan",
+        "branch": null,
+        "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
+      },
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+        "branch": null,
+        "commit": "3e099a37c3f71d0de677f1b6b0f4bffd57d91dac"
+      },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "0a3c1c1d100f1234c9269f7547e5482822a0845e"
+      },
+      "luci-app-zerotier": {
+        "repo": "https://github.com/zhengmz/luci-app-zerotier",
+        "branch": null,
+        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
+      }
+    }
+  }
+}
