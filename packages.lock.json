@@ -1,0 +1,81 @@
+{
+  "targets": {
+    "qualcommax": {
+      "luci-app-dnsfilter": {
+        "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
+        "branch": null,
+        "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf"
+      },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "c1730565c6df4ab30d345cf73584f03f5cc7bc8f"
+      },
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
+      },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "03c57c1255a72f09c06cb4866025e07491de7d53"
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "59b3456b4cb884d5e4222cdba2ead895069d7b85"
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "eb635e913f665b73dd468a812498f8a442b6a518"
+      },
+      "luci-app-cloudflarespeedtest": {
+        "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
+        "branch": null,
+        "commit": "aebbcbd686d61e0c9a0c44456d65bc5144395e01"
+      },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "08d39bd1993712f647002b097e589ef67fa8e7d8"
+      },
+      "luci-app-smartdns": {
+        "repo": "https://github.com/pymumu/luci-app-smartdns",
+        "branch": "master",
+        "commit": "581e5e816d92d3a663b1b2e331e3f21685968cf1"
+      },
+      "luci-app-taskplan": {
+        "repo": "https://github.com/sirpdboy/luci-app-taskplan",
+        "branch": null,
+        "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
+      },
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+        "branch": null,
+        "commit": "3e099a37c3f71d0de677f1b6b0f4bffd57d91dac"
+      },
+      "luci-app-podman": {
+        "repo": "https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman",
+        "branch": null,
+        "commit": "994eac10504f5673615d241b3ebd9d886670d5da"
+      },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "182294b07f985088b40610f80ec867fe167e41db"
+      },
+      "luci-theme-aurora": {
+        "repo": "https://github.com/eamonxg/luci-theme-aurora",
+        "branch": null,
+        "commit": "84c27b66952e6fc4be60128067a6b88bfd34afb5"
+      },
+      "luci-app-aurora-config": {
+        "repo": "https://github.com/eamonxg/luci-app-aurora-config",
+        "branch": null,
+        "commit": "a5299ce0144859f47683ec3bc40805bf616f534f"
+      }
+    }
+  }
+}
