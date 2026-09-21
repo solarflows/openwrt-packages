@@ -349,7 +349,7 @@
       "luci-app-pushbot": {
         "repo": "https://github.com/zzsj0928/luci-app-pushbot",
         "branch": null,
-        "commit": "25be8521ec8d271fd48c6cb4cadb63eb54076c06"
+        "commit": "dd44dbb6a7464051ee428b49236d7ba4aa9c0be1"
       }
     }
   }
