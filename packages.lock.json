@@ -34,7 +34,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "fa83f52308239443d5e1deac1077a871a2ab6cff"
+        "commit": "e8b684746eeff558bd69b6ed1f13ee76cbed503b"
       },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
@@ -49,7 +49,7 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "4faf9d37e928b7d4ef3ee7865d5d90eb5e78c294"
+        "commit": "9f462c360f6039f679d4d2ef20dabf4d4e643f58"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
