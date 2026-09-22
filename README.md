@@ -39,7 +39,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `filebrowser` | filebrowser 文件管理器 | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) ([`6d68ffe`](https://github.com/immortalwrt/packages//commit/6d68ffeb270860be5d73ee2898d58e7c6019d9a4)) | `main`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`bd40245`](https://github.com/sbwml/luci-app-mosdns/commit/bd40245303cd0ba56804d49eed5dbc4be2a082ca)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `homeproxy` | HomeProxy Tianling Shen主导的FQ | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) ([`edece28`](https://github.com/immortalwrt/homeproxy/commit/edece28a0085f36d469ec82c8d45f562f602db53)) | `main`, `qt6` |
-| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`4faf9d3`](https://github.com/openwrt/packages/commit/4faf9d37e928b7d4ef3ee7865d5d90eb5e78c294)) | `main`, `qt6` |
+| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`9f462c3`](https://github.com/openwrt/packages/commit/9f462c360f6039f679d4d2ef20dabf4d4e643f58)) | `main`, `qt6` |
 | `istore` | linkease 易有云官方软件(易有云ddnsto,linkshare) | [linkease/istore](https://github.com/linkease/istore) ([`3fca15b`](https://github.com/linkease/istore/commit/3fca15b30aeed9ecacb3efc8b4a8b9c2584ad5c7)) | `main`, `qt6` |
 | `libtorrent-rasterbar` | libtorrent-rasterbar | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`6d68ffe`](https://github.com/immortalwrt/packages/commit/6d68ffeb270860be5d73ee2898d58e7c6019d9a4)) | `main`, `qt6` |
 | `luci-app-advanced` | advanced 配置文件级别的设置修改插件 | [sirpdboy/luci-app-advanced](https://github.com/sirpdboy/luci-app-advanced) ([`6a5adf2`](https://github.com/sirpdboy/luci-app-advanced/commit/6a5adf2c962e9130c973b038ffbc4e46fb018d17)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-09-22 16:35
+**最近更新**: 2026-09-22 17:43
 
 ## 🙏 致谢
 

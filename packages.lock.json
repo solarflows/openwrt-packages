@@ -144,7 +144,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "4faf9d37e928b7d4ef3ee7865d5d90eb5e78c294"
+        "commit": "9f462c360f6039f679d4d2ef20dabf4d4e643f58"
       },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
