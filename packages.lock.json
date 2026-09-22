@@ -76,6 +76,11 @@
         "branch": null,
         "commit": "e0280b19010f2ac8ec616b5cde429825d1466872"
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -91,10 +96,10 @@
         "branch": null,
         "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf"
       },
-      "luci-app-dockerman": {
-        "repo": "https://github.com/lisaac/luci-app-dockerman",
+      "filebrowser": {
+        "repo": "https://github.com/immortalwrt/packages/",
         "branch": null,
-        "commit": "3b25f72861c47ad67f658ec589d999c23a833090"
+        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
       },
       "luci-app-filebrowser": {
         "repo": "https://github.com/immortalwrt/luci/",
@@ -131,6 +136,11 @@
         "branch": null,
         "commit": "6e46ddbe2ddaee2b4381dbf1a5046ef942b8265b"
       },
+      "libtorrent-rasterbar": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
+      },
       "app-store-ui": {
         "repo": "https://github.com/linkease/istore-ui",
         "branch": null,
@@ -166,6 +176,11 @@
         "branch": null,
         "commit": "f6bce58ba4870d4317e43b1ce39d438fca8d9b6e"
       },
+      "ngrokc": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
+      },
       "luci-app-nodogsplash": {
         "repo": "https://github.com/tty228/luci-app-nodogsplash",
         "branch": null,
@@ -200,6 +215,11 @@
         "repo": "https://github.com/pymumu/luci-app-smartdns",
         "branch": "lede",
         "commit": "cddf8cd04869ffd69c8aa9b01eb58b10f7ba41ca"
+      },
+      "smartdns": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
       },
       "luci-app-smartinfo": {
         "repo": "https://github.com/huajijam/luci-app-smartinfo",
@@ -261,25 +281,20 @@
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "luci-app-passwall": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
+        "commit": "70761ef13d98cf08161e7d80d15737c8b76b264b"
       },
-      "filebrowser": {
-        "repo": "https://github.com/immortalwrt/packages/",
+      "luci-app-dockerman": {
+        "repo": "https://github.com/lisaac/luci-app-dockerman",
         "branch": null,
-        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
+        "commit": "6fd9937954e0b080bf07967182d714ea21fe7eb1"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
-      },
-      "libtorrent-rasterbar": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -301,11 +316,6 @@
         "branch": null,
         "commit": "f9ff58d097558ef0a9c9ac2c39f1e0e247179db2"
       },
-      "ngrokc": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
-      },
       "OpenAppFilter": {
         "repo": "https://github.com/destan19/OpenAppFilter",
         "branch": null,
@@ -315,11 +325,6 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "8809eaf16367a7315620f1373aed3403bbc52eb0"
-      },
-      "smartdns": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
@@ -341,15 +346,10 @@
         "branch": "qt6",
         "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
-        "branch": null,
-        "commit": "70761ef13d98cf08161e7d80d15737c8b76b264b"
-      },
       "luci-app-pushbot": {
         "repo": "https://github.com/zzsj0928/luci-app-pushbot",
         "branch": null,
-        "commit": "c92ce9e4aefb19409ad2c2f9c5e83466a76f44af"
+        "commit": "c9a01c269ecef8f74d5d74a0096cc1dd6c5d17d0"
       }
     }
   }
