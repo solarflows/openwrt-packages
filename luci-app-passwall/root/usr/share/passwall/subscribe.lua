@@ -3,12 +3,6 @@
 ------------------------------------------------
 -- @author William Chan <root@williamchan.me>
 ------------------------------------------------
-local _uci = require("uci").cursor()
-if _uci:get("passwall", "@global_forwarding[0]", "fork_optimize") == "1" then
-	local f = loadfile("/usr/share/passwall/subscribe_optimized.lua")
-	if f then return f(...) end
-end
-
 require 'luci.util'
 require 'luci.jsonc'
 require 'luci.sys'
@@ -24,6 +18,43 @@ local jsonParse, jsonStringify = api.jsonc.parse, api.jsonc.stringify
 local UrlEncode, UrlDecode = api.UrlEncode, api.UrlDecode
 local fs = api.fs
 local uci, uci_get, uci_set, uci_del, uci_foreach, uci_save = api.uci, api.uci_get_c, api.uci_set_c, api.uci_del_c, api.uci_foreach_c, api.uci_save_c
+
+if (uci_get("@global_forwarding[0]", "fork_optimize") or "1") == "1" then
+	local native_uci = require("uci").cursor()
+	uci = native_uci
+	local mt = getmetatable(native_uci)
+	mt.section = function(self, config, stype, name, values)
+		local sid = name or api.gen_random_char()
+		self:set(config, sid, stype)
+		if values then
+			for k, v in pairs(values) do self:set(config, sid, k, v) end
+		end
+		return sid
+	end
+	uci_get = function(section, option)
+		if not section then return uci:get_all(c_config)
+		elseif option then return uci:get(c_config, section, option)
+		else return uci:get_all(c_config, section) end
+	end
+	uci_set = function(section, option, value)
+		if type(value) == "number" then value = tostring(value) end
+		if value and #value > 0 then
+			if option then return uci:set(c_config, section, option, value)
+			else return uci:set(c_config, section, value) end
+		else
+			if option then return uci:delete(c_config, section, option)
+			else return uci:delete(c_config, section) end
+		end
+	end
+	uci_del = function(section, option)
+		if option then return uci:delete(c_config, section, option)
+		else return uci:delete(c_config, section) end
+	end
+	uci_foreach = function(stype, func) return uci:foreach(c_config, stype, func) end
+	uci_save = function(commit)
+		if commit then uci:commit(c_config) else uci:save(c_config) end
+	end
+end
 
 -- these global functions are accessed all the time by the event handler
 -- so caching them is worth the effort
@@ -755,6 +786,11 @@ local function processData(szType, content, add_mode, group, sub_cfg)
 				if idx_pn then
 					result.plugin = plugin_info:sub(1, idx_pn - 1)
 					result.plugin_opts = plugin_info:sub(idx_pn + 1, #plugin_info)
+					-- 部分订阅 ShadowTLS 采用 SIP003
+					result.plugin_opts = result.plugin_opts:gsub("^password=", "passwd=")
+					result.plugin_opts = result.plugin_opts:gsub(";password=", ";passwd=")
+					result.plugin_opts = result.plugin_opts:gsub("^version=([123])", "v%1=1")
+					result.plugin_opts = result.plugin_opts:gsub(";version=([123])", ";v%1=1")
 				else
 					result.plugin = plugin_info
 				end
@@ -861,10 +897,22 @@ local function processData(szType, content, add_mode, group, sub_cfg)
 						result.plugin_opts = nil
 					end
 				elseif result.type == 'sing-box' then
-					if result.plugin ~= "obfs-local" and result.plugin ~= "v2ray-plugin" then
+					if result.plugin ~= "obfs-local" and result.plugin ~= "v2ray-plugin" and result.plugin ~= "shadow-tls" then
 						result.error_msg = "Sing-Box 不支持 SS " .. result.plugin .. " 插件。"
 					else
 						result.plugin_enabled = "1"
+						-- 部分订阅 ShadowTLS 采用 SIP003
+						if result.plugin == "shadow-tls" then
+							for item in result.plugin_opts:gmatch("[^;]+") do
+								local key, value = item:match("^([^=]+)=(.*)$")
+								if key == "host" then result.shadowtls_serverName = value end
+								if key == "passwd" then result.shadowtls_password = value end
+								if key:match("^v[123]$") then result.shadowtls_version = key:sub(2) end
+							end
+							result.shadowtls = "1"
+							result.plugin_opts = nil
+							result.plugin_enabled = nil
+						end
 					end
 				else
 					result.plugin_enabled = "1"
@@ -973,7 +1021,7 @@ local function processData(szType, content, add_mode, group, sub_cfg)
 				if result.type ~= "sing-box" and result.type ~= "SS-Rust" then
 					result.error_msg =  sub_ss_type .. " 不支持 shadow-tls 插件。"
 				else
-					-- 解析SS Shadow-TLS 插件参数
+					-- 解析SS Shadow-TLS 专用参数
 					local function parseShadowTLSParams(b64str, out)
 						local ok, data = pcall(jsonParse, base64Decode(b64str))
 						if not ok or type(data) ~= "table" then return "" end
