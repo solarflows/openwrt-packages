@@ -136,40 +136,15 @@
         "branch": null,
         "commit": "20cc8734b71419fc86dff71f36138a0e256aaa9d"
       },
-      "openwrt-iptvhelper": {
-        "repo": "https://github.com/riverscn/openwrt-iptvhelper",
-        "branch": null,
-        "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "49f3441ee51bf7fac1eee70caee83fcc446ace7c"
-      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
         "commit": "6d68ffeb270860be5d73ee2898d58e7c6019d9a4"
       },
-      "istore": {
-        "repo": "https://github.com/linkease/istore",
-        "branch": null,
-        "commit": "3fca15b30aeed9ecacb3efc8b4a8b9c2584ad5c7"
-      },
-      "nas-packages-luci": {
-        "repo": "https://github.com/linkease/nas-packages-luci",
-        "branch": null,
-        "commit": "a57f31af44a8ae3d154b3aa27dea54daf1fdf642"
-      },
       "app-store-ui": {
         "repo": "https://github.com/linkease/istore-ui",
         "branch": null,
         "commit": "a595baefa686fdd2f5b5f64820fb1b5a38749165"
-      },
-      "nas-packages": {
-        "repo": "https://github.com/linkease/nas-packages",
-        "branch": null,
-        "commit": "3541c863822af39e17a3b45178885bb4dd6863a4"
       },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
@@ -196,11 +171,6 @@
         "branch": null,
         "commit": "c03c4008c69d92c218644ee5a3b9a750982c59ef"
       },
-      "openwrt-nezha": {
-        "repo": "https://github.com/Erope/openwrt_nezha",
-        "branch": null,
-        "commit": "f9ff58d097558ef0a9c9ac2c39f1e0e247179db2"
-      },
       "luci-app-netdata": {
         "repo": "https://github.com/sirpdboy/luci-app-netdata",
         "branch": null,
@@ -216,20 +186,10 @@
         "branch": null,
         "commit": "d45e61be490962325d2da11ce34346d1adc857c4"
       },
-      "OpenAppFilter": {
-        "repo": "https://github.com/destan19/OpenAppFilter",
-        "branch": null,
-        "commit": "b88fcb082597486a816187ec1e02812082161d5e"
-      },
       "luci-app-openclash": {
         "repo": "https://github.com/vernesong/OpenClash",
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "8809eaf16367a7315620f1373aed3403bbc52eb0"
       },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
@@ -281,11 +241,6 @@
         "branch": null,
         "commit": "db7e943ed311548b44b28ed00784975d3f481093"
       },
-      "openwrt-subconverter": {
-        "repo": "https://github.com/WYC-2020/openwrt-subconverter",
-        "branch": null,
-        "commit": "c725d7142ddb0d5100f1e06a4eb0e3cab622b52c"
-      },
       "luci-app-wolplus": {
         "repo": "https://github.com/sundaqiang/openwrt-packages",
         "branch": null,
@@ -306,11 +261,6 @@
         "branch": null,
         "commit": "abc4530f1d01d4c8b515248a014a83b55ed319ef"
       },
-      "tencentcloud_ddns": {
-        "repo": "https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns",
-        "branch": null,
-        "commit": "537a537436663cb1595a49db44989fac4314d83c"
-      },
       "luci-app-tcpdump": {
         "repo": "https://github.com/KFERMercer/luci-app-tcpdump",
         "branch": null,
@@ -321,35 +271,85 @@
         "branch": null,
         "commit": "899bbbeefe7169da5ac18228158c0ed0219d7259"
       },
-      "luci-wifidog": {
-        "repo": "https://github.com/walkingsky/luci-wifidog",
-        "branch": null,
-        "commit": "3a2fdff5584ef8ecb143f0ad254f2972ec5f2f2d"
-      },
       "xmurp-ua": {
         "repo": "https://github.com/CHN-beta/xmurp-ua",
         "branch": null,
         "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d"
-      },
-      "my-diy": {
-        "repo": "https://github.com/hyy-666/my-diy",
-        "branch": "qt6",
-        "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524"
       },
       "lucky": {
         "repo": "https://github.com/sirpdboy/luci-app-lucky",
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
+      "openwrt-iptvhelper": {
+        "repo": "https://github.com/riverscn/openwrt-iptvhelper",
+        "branch": null,
+        "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "4acd6e13fdbe85a1d5163145b9afacab418f3b75"
+      },
+      "istore": {
+        "repo": "https://github.com/linkease/istore",
+        "branch": null,
+        "commit": "3fca15b30aeed9ecacb3efc8b4a8b9c2584ad5c7"
+      },
+      "nas-packages-luci": {
+        "repo": "https://github.com/linkease/nas-packages-luci",
+        "branch": null,
+        "commit": "1500469a3ada68cf2f3dd61b30ec0bfa70e6ef74"
+      },
+      "nas-packages": {
+        "repo": "https://github.com/linkease/nas-packages",
+        "branch": null,
+        "commit": "c0e2279c4950af86618c8aacdf816f05587d73ed"
+      },
+      "openwrt-nezha": {
+        "repo": "https://github.com/Erope/openwrt_nezha",
+        "branch": null,
+        "commit": "f9ff58d097558ef0a9c9ac2c39f1e0e247179db2"
+      },
+      "OpenAppFilter": {
+        "repo": "https://github.com/destan19/OpenAppFilter",
+        "branch": null,
+        "commit": "b88fcb082597486a816187ec1e02812082161d5e"
+      },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "8809eaf16367a7315620f1373aed3403bbc52eb0"
+      },
+      "openwrt-subconverter": {
+        "repo": "https://github.com/WYC-2020/openwrt-subconverter",
+        "branch": null,
+        "commit": "c725d7142ddb0d5100f1e06a4eb0e3cab622b52c"
+      },
+      "tencentcloud_ddns": {
+        "repo": "https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns",
+        "branch": null,
+        "commit": "537a537436663cb1595a49db44989fac4314d83c"
+      },
+      "luci-wifidog": {
+        "repo": "https://github.com/walkingsky/luci-wifidog",
+        "branch": null,
+        "commit": "3a2fdff5584ef8ecb143f0ad254f2972ec5f2f2d"
+      },
+      "my-diy": {
+        "repo": "https://github.com/hyy-666/my-diy",
+        "branch": "qt6",
+        "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524"
+      },
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "8043c1fbb18bd268dfb2667e1442da1f2a126621"
+        "commit": "75d166abe319553b9fc46377488155ff96d84bd3"
       },
       "luci-app-pushbot": {
         "repo": "https://github.com/zzsj0928/luci-app-pushbot",
         "branch": null,
-        "commit": "58d60966972a07d625cba914f0f5f05f1738b5f8"
+        "commit": "6bc8d83790a166fb1e5debc5968c5a298886a813"
       }
     }
   }
