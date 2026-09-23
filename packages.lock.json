@@ -39,7 +39,7 @@
       "luci-app-ddnsto": {
         "repo": "https://github.com/linkease/ddnsto-openwrt-package",
         "branch": null,
-        "commit": "08d39bd1993712f647002b097e589ef67fa8e7d8"
+        "commit": "9cf4305b5789286569fcfd81f5149316203f7c29"
       },
       "luci-app-smartdns": {
         "repo": "https://github.com/pymumu/luci-app-smartdns",
