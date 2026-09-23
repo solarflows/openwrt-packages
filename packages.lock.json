@@ -49,7 +49,7 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "9f462c360f6039f679d4d2ef20dabf4d4e643f58"
+        "commit": "49f3441ee51bf7fac1eee70caee83fcc446ace7c"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
