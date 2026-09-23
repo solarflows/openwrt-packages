@@ -21,6 +21,10 @@ PKG_BUILD_DEPENDS:=rust/host
 PKG_BUILD_PARALLEL:=1
 
 RUST_PKG_FEATURES:=local-redir
+# 加密后端为 ring（见 patches/100-use-ring-crypto-backend.patch），上游
+# Cargo.lock 只含 aws-lc-rs/aws-lc-sys 无 ring-compat，--locked 会因依赖
+# 树变化失败，禁用锁定让 cargo 自行解析。
+RUST_PKG_LOCKED:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/rust/rust-package.mk
