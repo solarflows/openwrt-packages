@@ -144,7 +144,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "9f462c360f6039f679d4d2ef20dabf4d4e643f58"
+        "commit": "49f3441ee51bf7fac1eee70caee83fcc446ace7c"
       },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
@@ -159,7 +159,7 @@
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "7eac499c8983d814c36dc87785aabfc630c66716"
+        "commit": "a57f31af44a8ae3d154b3aa27dea54daf1fdf642"
       },
       "app-store-ui": {
         "repo": "https://github.com/linkease/istore-ui",
@@ -169,7 +169,7 @@
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "eccb7386ec14d2af36e9643f8f6118dc92ac702a"
+        "commit": "3541c863822af39e17a3b45178885bb4dd6863a4"
       },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
