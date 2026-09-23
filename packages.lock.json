@@ -64,7 +64,7 @@
       "luci-theme-argon": {
         "repo": "https://github.com/jerrykuku/luci-theme-argon",
         "branch": null,
-        "commit": "182294b07f985088b40610f80ec867fe167e41db"
+        "commit": "110ca1ac7b2c139275ee70cfeff32f824917e242"
       },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
