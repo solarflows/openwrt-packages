@@ -56,6 +56,11 @@
         "branch": null,
         "commit": "ee370717f2dd261a4f375ce3a14f81921949b8c8"
       },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "0546f975a66796a89ff988524290c4a2e2d01855"
+      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -70,11 +75,6 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "8809eaf16367a7315620f1373aed3403bbc52eb0"
-      },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "0546f975a66796a89ff988524290c4a2e2d01855"
       }
     }
   }
