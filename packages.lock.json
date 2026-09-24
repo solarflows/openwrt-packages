@@ -74,7 +74,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "8809eaf16367a7315620f1373aed3403bbc52eb0"
+        "commit": "3b6510f110fd1ce7abf67bd1d2518021797e80a0"
       }
     }
   }

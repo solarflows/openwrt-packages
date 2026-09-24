@@ -47,7 +47,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-theme-argon` | luci-theme-argon | [jerrykuku/luci-theme-argon](https://github.com/jerrykuku/luci-theme-argon) ([`0546f97`](https://github.com/jerrykuku/luci-theme-argon/commit/0546f975a66796a89ff988524290c4a2e2d01855)) | `qualcommax` |
 | `luci-theme-aurora` | luci-theme-aurora | [eamonxg/luci-theme-aurora](https://github.com/eamonxg/luci-theme-aurora) ([`84c27b6`](https://github.com/eamonxg/luci-theme-aurora/commit/84c27b66952e6fc4be60128067a6b88bfd34afb5)) | `qualcommax` |
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`c173056`](https://github.com/gdy666/luci-app-lucky/commit/c1730565c6df4ab30d345cf73584f03f5cc7bc8f)) | `main`, `mt798x`, `qualcommax` |
-| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`8809eaf`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/8809eaf16367a7315620f1373aed3403bbc52eb0)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`3b6510f`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/3b6510f110fd1ce7abf67bd1d2518021797e80a0)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 
 > 📌 仅列出各分支中实际采集的插件，已注释/归档的不在此列。
 
@@ -55,7 +55,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-09-24 08:55
+**最近更新**: 2026-09-24 16:22
 
 ## 🙏 致谢
 
