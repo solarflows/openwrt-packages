@@ -289,7 +289,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "4acd6e13fdbe85a1d5163145b9afacab418f3b75"
+        "commit": "10f1f42ef46f7a8e81394ca0066ebf9806faff1d"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -304,7 +304,7 @@
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "c0e2279c4950af86618c8aacdf816f05587d73ed"
+        "commit": "8ad5a844faf397232e2b82686323900c0334a16d"
       },
       "openwrt-nezha": {
         "repo": "https://github.com/Erope/openwrt_nezha",
@@ -344,12 +344,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "75d166abe319553b9fc46377488155ff96d84bd3"
+        "commit": "e72dc6245743adb78854ea51560643ff0dd8bae3"
       },
       "luci-app-pushbot": {
         "repo": "https://github.com/zzsj0928/luci-app-pushbot",
         "branch": null,
-        "commit": "6bc8d83790a166fb1e5debc5968c5a298886a813"
+        "commit": "d2ed2fa82ea865988c7702670f78345ce4972d46"
       }
     }
   }
