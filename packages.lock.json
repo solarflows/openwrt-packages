@@ -196,11 +196,6 @@
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "e8b684746eeff558bd69b6ed1f13ee76cbed503b"
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -304,7 +299,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "4acd6e13fdbe85a1d5163145b9afacab418f3b75"
+        "commit": "10f1f42ef46f7a8e81394ca0066ebf9806faff1d"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -319,7 +314,7 @@
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "c0e2279c4950af86618c8aacdf816f05587d73ed"
+        "commit": "8ad5a844faf397232e2b82686323900c0334a16d"
       },
       "openwrt-nezha": {
         "repo": "https://github.com/Erope/openwrt_nezha",
@@ -335,6 +330,11 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "8809eaf16367a7315620f1373aed3403bbc52eb0"
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "10c28e6d45a3c4fc8330cb85b146d62e3005d179"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
