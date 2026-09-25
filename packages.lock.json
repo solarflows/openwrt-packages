@@ -46,6 +46,11 @@
         "branch": null,
         "commit": "6a5adf2c962e9130c973b038ffbc4e46fb018d17"
       },
+      "airconnect": {
+        "repo": "https://github.com/sbwml/luci-app-airconnect",
+        "branch": null,
+        "commit": "221a8a7613909578959b3feb27458299f978557d"
+      },
       "luci-app-amlogic": {
         "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
@@ -126,10 +131,10 @@
         "branch": null,
         "commit": "85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5"
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "4206464bc04ef3dde58218e515e86ab93ea2850c"
+        "commit": "b86482a4d8510a2b84f2cd94ac02f4848baef2ab"
       },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
@@ -191,10 +196,10 @@
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "10c28e6d45a3c4fc8330cb85b146d62e3005d179"
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "ab1e812ec57ac7be0e213532f60ef4c46e76d962"
       },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
@@ -235,11 +240,6 @@
         "repo": "https://github.com/4IceG/packages",
         "branch": null,
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34"
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "db611bd022c7830637bbee0aeda4939d2ffe6b77"
       },
       "luci-app-wolplus": {
         "repo": "https://github.com/sundaqiang/openwrt-packages",
@@ -286,25 +286,20 @@
         "branch": "main",
         "commit": "b942c8131ebb30dd7fa57437fe8fe1c191bf88cd"
       },
-      "airconnect": {
-        "repo": "https://github.com/sbwml/luci-app-airconnect",
-        "branch": null,
-        "commit": "221a8a7613909578959b3feb27458299f978557d"
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "b86482a4d8510a2b84f2cd94ac02f4848baef2ab"
-      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
       },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "99d036fa779811b7b39e7caebc9a57ea85fd67be"
+      },
       "istore": {
         "repo": "https://github.com/linkease/istore",
         "branch": null,
-        "commit": "3fca15b30aeed9ecacb3efc8b4a8b9c2584ad5c7"
+        "commit": "a97ace34f2da358a015b094d326bba2697697f2e"
       },
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
@@ -329,12 +324,17 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "89c7d9c1bbed410ec92ff01c418c9bfe82ac6ff5"
+        "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "d43151c51319ebc7fe5e686d8fd6eef52abc7ee6"
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "ab1e812ec57ac7be0e213532f60ef4c46e76d962"
+        "commit": "a6b31a53e36b48fa1cecfff6e02cce1e59998c15"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
