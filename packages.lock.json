@@ -46,11 +46,6 @@
         "branch": null,
         "commit": "6a5adf2c962e9130c973b038ffbc4e46fb018d17"
       },
-      "airconnect": {
-        "repo": "https://github.com/sbwml/luci-app-airconnect",
-        "branch": null,
-        "commit": "78b28485f9947381db52733f5ca664d3168c8e09"
-      },
       "luci-app-amlogic": {
         "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
@@ -85,6 +80,11 @@
         "repo": "https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest",
         "branch": null,
         "commit": "4229177d5349dda8703271e08816b6b46130630a"
+      },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "397d9f3d07d9e1c03f613789e3997074d7dc9a30"
       },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
@@ -125,6 +125,11 @@
         "repo": "https://github.com/1wrt/luci-app-ikoolproxy",
         "branch": null,
         "commit": "85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5"
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "4206464bc04ef3dde58218e515e86ab93ea2850c"
       },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
@@ -181,11 +186,6 @@
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "eb635e913f665b73dd468a812498f8a442b6a518"
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -225,6 +225,11 @@
         "repo": "https://github.com/4IceG/packages",
         "branch": null,
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34"
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "db611bd022c7830637bbee0aeda4939d2ffe6b77"
       },
       "luci-app-wolplus": {
         "repo": "https://github.com/sundaqiang/openwrt-packages",
@@ -266,30 +271,20 @@
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
-      "luci-app-pushbot": {
-        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+      "airconnect": {
+        "repo": "https://github.com/sbwml/luci-app-airconnect",
         "branch": null,
-        "commit": "d2ed2fa82ea865988c7702670f78345ce4972d46"
-      },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "397d9f3d07d9e1c03f613789e3997074d7dc9a30"
+        "commit": "221a8a7613909578959b3feb27458299f978557d"
       },
       "luci-app-iperf": {
         "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "63f4d2acc73c6ca50ca5a6013c4b59552ab67332"
+        "commit": "b86482a4d8510a2b84f2cd94ac02f4848baef2ab"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "4206464bc04ef3dde58218e515e86ab93ea2850c"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -319,12 +314,12 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "3b6510f110fd1ce7abf67bd1d2518021797e80a0"
+        "commit": "89c7d9c1bbed410ec92ff01c418c9bfe82ac6ff5"
       },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "db611bd022c7830637bbee0aeda4939d2ffe6b77"
+        "commit": "ab1e812ec57ac7be0e213532f60ef4c46e76d962"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
@@ -349,7 +344,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "0086f8bc2bea001c3c615a4d3de26cbbb18a1bb0"
+        "commit": "db7a6f0ae221dd80e7c68cb89e97bca31fd0844d"
+      },
+      "luci-app-pushbot": {
+        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+        "branch": null,
+        "commit": "e6d45b0cb2da3c741bdd588993abe3fa311bc6a0"
       }
     }
   }
