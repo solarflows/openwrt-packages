@@ -26,20 +26,15 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "10c28e6d45a3c4fc8330cb85b146d62e3005d179"
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "ab1e812ec57ac7be0e213532f60ef4c46e76d962"
       },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "4206464bc04ef3dde58218e515e86ab93ea2850c"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -81,6 +76,11 @@
         "branch": null,
         "commit": "3e099a37c3f71d0de677f1b6b0f4bffd57d91dac"
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "6bc2a94782a71906f4343f07f7bf4bf1b8788fd3"
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -89,17 +89,17 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "89c7d9c1bbed410ec92ff01c418c9bfe82ac6ff5"
+        "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "ab1e812ec57ac7be0e213532f60ef4c46e76d962"
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "27213900ca77619fa3c0bb1ae11ef8dd0d34fe73"
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "6bc2a94782a71906f4343f07f7bf4bf1b8788fd3"
+        "commit": "55a465f3583b160258d735af063599324e6b7bff"
       }
     }
   }
