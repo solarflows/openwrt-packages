@@ -344,7 +344,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "f597926624e82415b8e78b0239b2bb53ae92d15a"
+        "commit": "453fc10ad8d819df1b2fa3d9ab9852ac30163846"
       },
       "luci-app-pushbot": {
         "repo": "https://github.com/zzsj0928/luci-app-pushbot",
