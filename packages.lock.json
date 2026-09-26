@@ -289,7 +289,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "99d036fa779811b7b39e7caebc9a57ea85fd67be"
+        "commit": "4a69a0b76759dcd6e2164c81d7260b5280d833c1"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -324,7 +324,7 @@
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "a6b31a53e36b48fa1cecfff6e02cce1e59998c15"
+        "commit": "69fd3c8eb32194ae0b76e8f30437711fccde76d0"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
@@ -349,7 +349,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "792d9d000545f30694bcd21887c130c7e4a39096"
+        "commit": "c139608d2f23da49946f3d3c4e69d051f261948c"
       }
     }
   }
