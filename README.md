@@ -51,7 +51,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-autotimeset` | autotimeset 设置OpenWRT按时执行某个操作 | [sirpdboy/luci-app-autotimeset](https://github.com/sirpdboy/luci-app-autotimeset) ([`babd67a`](https://github.com/sirpdboy/luci-app-autotimeset/commit/babd67a496a592ad9bd625fbc08db804cff45ab9)) | `main`, `qt6` |
 | `luci-app-beardropper` | beardropper 控制dropbear的登录 | [NateLol/luci-app-beardropper](https://github.com/NateLol/luci-app-beardropper) ([`e0280b1`](https://github.com/NateLol/luci-app-beardropper/commit/e0280b19010f2ac8ec616b5cde429825d1466872)) | `main`, `qt6` |
 | `luci-app-cloudflarespeedtest` | luci-app-cloudflarespeedtest | [mingxiaoyu/luci-app-cloudflarespeedtest](https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest) ([`4229177`](https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest/commit/4229177d5349dda8703271e08816b6b46130630a)) | `main`, `qt6` |
-| `luci-app-control-guest-wifi` | control-guest-wifi 访客wifi | [zxlhhyccc/bf-package-master](https://github.com/zxlhhyccc/bf-package-master) ([`397d9f3`](https://github.com/zxlhhyccc/bf-package-master/commit/397d9f3d07d9e1c03f613789e3997074d7dc9a30)) | `main`, `qt6` |
+| `luci-app-control-guest-wifi` | control-guest-wifi 访客wifi | [zxlhhyccc/bf-package-master](https://github.com/zxlhhyccc/bf-package-master) ([`06fa6c6`](https://github.com/zxlhhyccc/bf-package-master/commit/06fa6c6393b90bb1732db5d1c7ce4bfbd62cfaa7)) | `main`, `qt6` |
 | `luci-app-dnsfilter` | dnsfilter 基于dnsmasq的去广告程序 | [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter) ([`3a49542`](https://github.com/kiddin9/luci-app-dnsfilter/commit/3a49542e566d8a95cb81b664a05aae29e1f534cf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-dockerman` | dockerman Docker管理界面 | [lisaac/luci-app-dockerman](https://github.com/lisaac/luci-app-dockerman) ([`6fd9937`](https://github.com/lisaac/luci-app-dockerman/commit/6fd9937954e0b080bf07967182d714ea21fe7eb1)) | `main`, `qt6` |
 | `luci-app-filebrowser` | luci-app-filebrowser | [immortalwrt/luci/](https://github.com/immortalwrt/luci/) ([`6d4e767`](https://github.com/immortalwrt/luci//commit/6d4e76757f4b6eb3ee4da74a97a8edecef3c481e)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-09-27 03:18
+**最近更新**: 2026-09-27 16:16
 
 ## 🙏 致谢
 
