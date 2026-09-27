@@ -86,11 +86,6 @@
         "branch": null,
         "commit": "4229177d5349dda8703271e08816b6b46130630a"
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "397d9f3d07d9e1c03f613789e3997074d7dc9a30"
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -286,10 +281,10 @@
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
-      "luci-app-pushbot": {
-        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "a75d29b577a20fe35bdc71dd6111605c225ea975"
+        "commit": "06fa6c6393b90bb1732db5d1c7ce4bfbd62cfaa7"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
@@ -349,7 +344,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "9f4ff7ade97095d302414f08318c6822fd203d04"
+        "commit": "ad780d9a555dade35449533aff97f50364f41454"
+      },
+      "luci-app-pushbot": {
+        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+        "branch": null,
+        "commit": "909ca16f4bda7e6aaa4b82f4dcbf3073f7c67a9b"
       }
     }
   }
