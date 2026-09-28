@@ -26,6 +26,16 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "ba420c11bbc221f515b1385b97dfb51b5d7f64f0"
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -35,6 +45,11 @@
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "f108c5ff17af754fa48e9dce8c40e2b5396b94c7"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -50,6 +65,11 @@
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
         "commit": "aebbcbd686d61e0c9a0c44456d65bc5144395e01"
+      },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "1e884ddab9135d2a42d73cedd98de606b8a6907c"
       },
       "smartdns": {
         "repo": "https://github.com/pymumu/openwrt-smartdns",
@@ -71,35 +91,15 @@
         "branch": null,
         "commit": "3e099a37c3f71d0de677f1b6b0f4bffd57d91dac"
       },
-      "luci-app-zerotier": {
-        "repo": "https://github.com/zhengmz/luci-app-zerotier",
-        "branch": null,
-        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "ba420c11bbc221f515b1385b97dfb51b5d7f64f0"
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "f108c5ff17af754fa48e9dce8c40e2b5396b94c7"
-      },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
-        "branch": null,
-        "commit": "1e884ddab9135d2a42d73cedd98de606b8a6907c"
-      },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
         "commit": "91498daa9de570b08cf5d5a711897b40a8c36b38"
+      },
+      "luci-app-zerotier": {
+        "repo": "https://github.com/zhengmz/luci-app-zerotier",
+        "branch": null,
+        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
       }
     }
   }
