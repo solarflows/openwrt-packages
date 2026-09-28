@@ -86,6 +86,11 @@
         "branch": null,
         "commit": "4229177d5349dda8703271e08816b6b46130630a"
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "06fa6c6393b90bb1732db5d1c7ce4bfbd62cfaa7"
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -130,11 +135,6 @@
         "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
         "commit": "b86482a4d8510a2b84f2cd94ac02f4848baef2ab"
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "4a69a0b76759dcd6e2164c81d7260b5280d833c1"
       },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
@@ -281,15 +281,20 @@
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+      "luci-app-pushbot": {
+        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
         "branch": null,
-        "commit": "06fa6c6393b90bb1732db5d1c7ce4bfbd62cfaa7"
+        "commit": "909ca16f4bda7e6aaa4b82f4dcbf3073f7c67a9b"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "ce188c6505f932db88efc356f3161cb31068de43"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -344,12 +349,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall",
         "branch": null,
-        "commit": "ad780d9a555dade35449533aff97f50364f41454"
-      },
-      "luci-app-pushbot": {
-        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
-        "branch": null,
-        "commit": "909ca16f4bda7e6aaa4b82f4dcbf3073f7c67a9b"
+        "commit": "6b3c321c774adf9b3a890c977c6738850933c645"
       }
     }
   }
