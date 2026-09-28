@@ -38,9 +38,9 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`bd40245`](https://github.com/sbwml/luci-app-mosdns/commit/bd40245303cd0ba56804d49eed5dbc4be2a082ca)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-argon-config` | luci-app-argon-conf | [jerrykuku/luci-app-argon-config](https://github.com/jerrykuku/luci-app-argon-config) ([`3e099a3`](https://github.com/jerrykuku/luci-app-argon-config/commit/3e099a37c3f71d0de677f1b6b0f4bffd57d91dac)) | `mt798x`, `qualcommax` |
 | `luci-app-cloudflarespeedtest` | CloudflareSpeedtest Cloudflare Speedtest 插件 | [stevenjoezhang/luci-app-cloudflarespeedtest](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest) ([`aebbcbd`](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest/commit/aebbcbd686d61e0c9a0c44456d65bc5144395e01)) | `mt798x`, `qualcommax` |
-| `luci-app-ddnsto` | luci-app-ddnsto | [linkease/ddnsto-openwrt-package](https://github.com/linkease/ddnsto-openwrt-package) ([`9cf4305`](https://github.com/linkease/ddnsto-openwrt-package/commit/9cf4305b5789286569fcfd81f5149316203f7c29)) | `mt798x`, `qualcommax` |
+| `luci-app-ddnsto` | luci-app-ddnsto | [linkease/ddnsto-openwrt-package](https://github.com/linkease/ddnsto-openwrt-package) ([`1e884dd`](https://github.com/linkease/ddnsto-openwrt-package/commit/1e884ddab9135d2a42d73cedd98de606b8a6907c)) | `mt798x`, `qualcommax` |
 | `luci-app-dnsfilter` | dnsfilter 基于dnsmasq的去广告程序 | [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter) ([`3a49542`](https://github.com/kiddin9/luci-app-dnsfilter/commit/3a49542e566d8a95cb81b664a05aae29e1f534cf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
-| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`53a3eb7`](https://github.com/solarflows/openwrt-passwall/commit/53a3eb788889d81be1c366265539bab6a729619a)) | `main`, `mt798x`, `qualcommax` |
+| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`ba420c1`](https://github.com/solarflows/openwrt-passwall/commit/ba420c11bbc221f515b1385b97dfb51b5d7f64f0)) | `main`, `mt798x`, `qualcommax` |
 | `luci-app-passwall2` | 规范化 PKG_RELEASE: 统一 release 为整数规范 | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) ([`ab1e812`](https://github.com/Openwrt-Passwall/openwrt-passwall2/commit/ab1e812ec57ac7be0e213532f60ef4c46e76d962)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-smartdns` | SmartDNS | [pymumu/luci-app-smartdns](https://github.com/pymumu/luci-app-smartdns) ([`581e5e8`](https://github.com/pymumu/luci-app-smartdns/commit/581e5e816d92d3a663b1b2e331e3f21685968cf1)) | `mt798x`, `qualcommax` |
 | `luci-app-taskplan` | TaskPlan 定时任务计划管理器 | [sirpdboy/luci-app-taskplan](https://github.com/sirpdboy/luci-app-taskplan) ([`babd67a`](https://github.com/sirpdboy/luci-app-taskplan/commit/babd67a496a592ad9bd625fbc08db804cff45ab9)) | `mt798x`, `qualcommax` |
@@ -50,9 +50,9 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`c173056`](https://github.com/gdy666/luci-app-lucky/commit/c1730565c6df4ab30d345cf73584f03f5cc7bc8f)) | `main`, `mt798x`, `qualcommax` |
 | `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`c6d4772`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/c6d4772cea9bec6adc66261be2c3e6679a595250)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`4be700d`](https://github.com/pymumu/openwrt-smartdns/commit/4be700dc3366275605a2a1996865d83ea9bb9a18)) | `mt798x` |
-| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`ce188c6`](https://github.com/openwrt/packages//commit/ce188c6505f932db88efc356f3161cb31068de43)) | `mt798x` |
+| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`f108c5f`](https://github.com/openwrt/packages//commit/f108c5ff17af754fa48e9dce8c40e2b5396b94c7)) | `mt798x` |
 | `wrtbwmon` | wrtbwmon | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) ([`ec9ef10`](https://github.com/padavanonly/immortalwrt-mt798x-24.10/commit/ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8)) | `mt798x` |
-| `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`d376de0`](https://github.com/coolsnowwolf/packages/commit/d376de0bb5b05ccf1cb51cabdb1687726cfa6aad)) | `mt798x` |
+| `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`91498da`](https://github.com/coolsnowwolf/packages/commit/91498daa9de570b08cf5d5a711897b40a8c36b38)) | `mt798x` |
 
 > 📌 仅列出各分支中实际采集的插件，已注释/归档的不在此列。
 
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-09-28 03:15
+**最近更新**: 2026-09-28 09:46
 
 ## 🙏 致谢
 
