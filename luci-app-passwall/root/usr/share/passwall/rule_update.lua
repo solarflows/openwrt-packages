@@ -800,14 +800,11 @@ if not rollback then
 end
 
 if reboot == 1 then
-	if arg3 == "cron" then
-		local f = io.open(api.LOCK_PREFIX .. "_cron.lock", "w")
-		if f then f:close() end
-	end
-
 	log("重启服务，应用新的规则。")
 	uci_set("@global[0]", "flush_set", "1")
-	uci_save(true, true)
+	uci_save(true)
+	local action = (arg3 == "cron") and " cron" or ""
+	luci.sys.call("/etc/init.d/passwall restart%s > /dev/null 2>&1 &" % action)
 end
 log("规则更新完毕...\n")
 
