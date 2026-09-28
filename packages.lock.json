@@ -26,11 +26,6 @@
         "branch": null,
         "commit": "aebbcbd686d61e0c9a0c44456d65bc5144395e01"
       },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
-        "branch": null,
-        "commit": "9cf4305b5789286569fcfd81f5149316203f7c29"
-      },
       "luci-app-smartdns": {
         "repo": "https://github.com/pymumu/luci-app-smartdns",
         "branch": "master",
@@ -74,7 +69,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "53a3eb788889d81be1c366265539bab6a729619a"
+        "commit": "ba420c11bbc221f515b1385b97dfb51b5d7f64f0"
+      },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "1e884ddab9135d2a42d73cedd98de606b8a6907c"
       }
     }
   }
