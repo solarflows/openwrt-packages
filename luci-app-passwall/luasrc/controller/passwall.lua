@@ -20,6 +20,7 @@ function index()
 			luci.sys.call('cp -f /usr/share/passwall/0_default_config /etc/config/passwall')
 		else return end
 	end
+	luci.sys.call("mkdir -p /etc/passwall/rules")
 	local api = require "luci.passwall.api"
 	local appname = api.appname		-- global definitions not available
 	local fs = api.fs
@@ -100,13 +101,9 @@ function index()
 	entry({"admin", "services", appname, "add_shunt_rule"}, call("add_shunt_rule")).leaf = true
 	entry({"admin", "services", appname, "delete_select_shunt_rules"}, call("delete_select_shunt_rules")).leaf = true
 
+	-- 新增IP信息查询路由
+	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
 	--[[rule_list]]
-	-- 新增IP信息查询路由
-	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
-	-- 新增IP信息查询路由
-	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
-	-- 新增IP信息查询路由
-	entry({"admin", "services", appname, "ip_info"}, call("ip_info")).leaf = true
 	entry({"admin", "services", appname, "read_rulelist"}, call("read_rulelist")).leaf = true
 
 	--[[Components update]]
@@ -415,68 +412,6 @@ function connect_status()
 			e.ping_type = "curl"
 		end
 	end
-	http_write_json(e)
-end
-
--- IP信息查询接口
-function ip_info()
-	local e = {}
-	local args = {
-		"-skfL",
-		"--connect-timeout 3",
-		"--max-time 10",
-		"-H 'Accept: application/json'",
-		"-A 'passwall-ip-check'"
-	}
-	local return_code, result = api.curl_auto("https://ip.api.skk.moe/cf-geoip", nil, args)
-
-	if return_code ~= 0 or not result or result == "" then
-		e.error = "Network request failed"
-	else
-		local ok, data = pcall(jsonParse, result)
-		if not ok or type(data) ~= "table" or not data.ip or not data.country then
-			e.error = "Invalid API response"
-		else
-			e.ip = data.ip
-			e.country = data.country
-			e.city = data.city or ""
-			e.region = data.region or ""
-			e.asn = data.asn
-			e.asOrg = data.asOrg
-		end
-	end
-
-	http_write_json(e)
-end
-
--- IP信息查询接口
-function ip_info()
-	local e = {}
-	local args = {
-		"-skfL",
-		"--connect-timeout 3",
-		"--max-time 10",
-		"-H 'Accept: application/json'",
-		"-A 'passwall-ip-check'"
-	}
-	local return_code, result = api.curl_auto("https://ip.api.skk.moe/cf-geoip", nil, args)
-
-	if return_code ~= 0 or not result or result == "" then
-		e.error = "Network request failed"
-	else
-		local ok, data = pcall(jsonParse, result)
-		if not ok or type(data) ~= "table" or not data.ip or not data.country then
-			e.error = "Invalid API response"
-		else
-			e.ip = data.ip
-			e.country = data.country
-			e.city = data.city or ""
-			e.region = data.region or ""
-			e.asn = data.asn
-			e.asOrg = data.asOrg
-		end
-	end
-
 	http_write_json(e)
 end
 
@@ -966,13 +901,15 @@ end
 local backup_files = {
     "/etc/config/passwall",
     "/etc/config/passwall_server",
-    "/usr/share/passwall/rules/block_host",
-    "/usr/share/passwall/rules/block_ip",
-    "/usr/share/passwall/rules/direct_host",
-    "/usr/share/passwall/rules/direct_ip",
-    "/usr/share/passwall/rules/proxy_host",
-    "/usr/share/passwall/rules/proxy_ip",
-    "/usr/share/passwall/rules/domains_excluded"
+    "/etc/passwall/rules/block_host",
+    "/etc/passwall/rules/block_ip",
+    "/etc/passwall/rules/direct_host",
+    "/etc/passwall/rules/direct_ip",
+    "/etc/passwall/rules/proxy_host",
+    "/etc/passwall/rules/proxy_ip",
+    "/etc/passwall/rules/lanlist_ipv4",
+    "/etc/passwall/rules/lanlist_ipv6",
+    "/etc/passwall/rules/domains_excluded"
 }
 
 function create_backup()
@@ -1077,6 +1014,13 @@ function reset_config()
 		luci.sys.call('/etc/init.d/passwall stop')
 		if luci.sys.call('[ -s "/usr/share/passwall/0_default_config" ]') == 0 then
 			luci.sys.call('cp -f /usr/share/passwall/0_default_config /etc/config/passwall')
+			local files = {
+				"direct_host", "direct_ip", "proxy_host", "proxy_ip", "block_host", "block_ip",
+				"lanlist_ipv4", "lanlist_ipv6", "domains_excluded"
+			}
+			for _, f in ipairs(files) do
+				luci.sys.call("cp -f /usr/share/passwall/rules/" .. f .. " /etc/passwall/rules/" .. f)
+			end
 			api.log(" * 恢复默认配置成功。")
 		else
 			api.log(" * 找不到默认配置文件，重置失败！")
