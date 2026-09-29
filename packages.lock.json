@@ -99,7 +99,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "4d9440548e5cbad4c5da9ab43a8dd685fc6b1cfe"
+        "commit": "fae78aa67e5a4876680eec44a60a6b18d89a17ec"
       }
     }
   }
