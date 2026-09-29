@@ -41,11 +41,6 @@
         "branch": null,
         "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "75438c8934f2a506eb6a75b0f0e017c5ca70bccf"
-      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
@@ -100,6 +95,11 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "059ba7d4fda5cb00f429f49b1061fb81e121456c"
       }
     }
   }
