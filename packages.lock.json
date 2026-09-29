@@ -196,11 +196,6 @@
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "ed30d0abe4abf54cecc5f59b0b254e1c64dd424f"
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -304,7 +299,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "75438c8934f2a506eb6a75b0f0e017c5ca70bccf"
+        "commit": "6e7270bc8e23481084818ece6e93107f9d6fae5e"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -335,6 +330,11 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "fae78aa67e5a4876680eec44a60a6b18d89a17ec"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
