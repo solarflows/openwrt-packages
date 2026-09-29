@@ -46,6 +46,11 @@
         "branch": null,
         "commit": "6a5adf2c962e9130c973b038ffbc4e46fb018d17"
       },
+      "airconnect": {
+        "repo": "https://github.com/sbwml/luci-app-airconnect",
+        "branch": null,
+        "commit": "b0dfd0689356d634191e77a25ff4f8c92763df4a"
+      },
       "luci-app-amlogic": {
         "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
@@ -186,6 +191,11 @@
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "ed30d0abe4abf54cecc5f59b0b254e1c64dd424f"
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -276,16 +286,6 @@
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
-      "luci-app-pushbot": {
-        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
-        "branch": null,
-        "commit": "c363def730c42d96551efd86ab9aa4a658a2cea8"
-      },
-      "airconnect": {
-        "repo": "https://github.com/sbwml/luci-app-airconnect",
-        "branch": null,
-        "commit": "b0dfd0689356d634191e77a25ff4f8c92763df4a"
-      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -294,7 +294,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "8f9ad5085e0e401e4327638a4e05258e1c5d4569"
+        "commit": "75438c8934f2a506eb6a75b0f0e017c5ca70bccf"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -326,11 +326,6 @@
         "branch": null,
         "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "ed30d0abe4abf54cecc5f59b0b254e1c64dd424f"
-      },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
         "branch": null,
@@ -350,6 +345,11 @@
         "repo": "https://github.com/hyy-666/my-diy",
         "branch": "qt6",
         "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524"
+      },
+      "luci-app-pushbot": {
+        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+        "branch": null,
+        "commit": "7b9a47cb374f9ce2a80b0b548782e7ce8b86c2bc"
       }
     }
   }
