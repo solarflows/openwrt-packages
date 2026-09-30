@@ -136,6 +136,11 @@
         "branch": null,
         "commit": "b86482a4d8510a2b84f2cd94ac02f4848baef2ab"
       },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "6e7270bc8e23481084818ece6e93107f9d6fae5e"
+      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -281,15 +286,15 @@
         "branch": null,
         "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
       },
+      "luci-app-pushbot": {
+        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+        "branch": null,
+        "commit": "8cdb242a4e3449665f99749b149ea2fc36cc040c"
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "6e7270bc8e23481084818ece6e93107f9d6fae5e"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -324,7 +329,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "fae78aa67e5a4876680eec44a60a6b18d89a17ec"
+        "commit": "e629d802c58bfcdcf415195a8b970e2aed2cf430"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
@@ -345,11 +350,6 @@
         "repo": "https://github.com/hyy-666/my-diy",
         "branch": "qt6",
         "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524"
-      },
-      "luci-app-pushbot": {
-        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
-        "branch": null,
-        "commit": "8cdb242a4e3449665f99749b149ea2fc36cc040c"
       }
     }
   }
