@@ -136,11 +136,6 @@
         "branch": null,
         "commit": "b86482a4d8510a2b84f2cd94ac02f4848baef2ab"
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "6e7270bc8e23481084818ece6e93107f9d6fae5e"
-      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -201,10 +196,10 @@
         "branch": null,
         "commit": "c3a33c1d3407956fdf8f0e0b7c1a4c52e6ad9593"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "ab1e812ec57ac7be0e213532f60ef4c46e76d962"
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "e629d802c58bfcdcf415195a8b970e2aed2cf430"
       },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
@@ -301,6 +296,11 @@
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
       },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "95d73ebcc95ade2ea78b0a281898cf8b6ec7b7f9"
+      },
       "istore": {
         "repo": "https://github.com/linkease/istore",
         "branch": null,
@@ -309,12 +309,12 @@
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "29373c7a27a952cd8906e249edc964256db31248"
+        "commit": "a3115f25d9d3b005d726ae92e3beba9c82f2c390"
       },
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "ecd9c7ede3a39ae3f2e49716bea1d325585481ac"
+        "commit": "d403745fa48744dc48f5db3b6040b0230d478c3a"
       },
       "openwrt-nezha": {
         "repo": "https://github.com/Erope/openwrt_nezha",
@@ -329,12 +329,12 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "c6d4772cea9bec6adc66261be2c3e6679a595250"
+        "commit": "cadc39bc5cfc67098de4797d52b1f12673351f09"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "e629d802c58bfcdcf415195a8b970e2aed2cf430"
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "39d491e68a9d3c5287ef86e93a623ad857013750"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
