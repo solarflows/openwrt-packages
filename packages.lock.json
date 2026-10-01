@@ -16,10 +16,10 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "e629d802c58bfcdcf415195a8b970e2aed2cf430"
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "39d491e68a9d3c5287ef86e93a623ad857013750"
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
@@ -71,10 +71,10 @@
         "branch": null,
         "commit": "cadc39bc5cfc67098de4797d52b1f12673351f09"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "39d491e68a9d3c5287ef86e93a623ad857013750"
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "93800f1c042cb8d403ea6ad479f550f6b631f211"
       }
     }
   }
