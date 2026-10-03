@@ -39,9 +39,6 @@ local function get_remote_rule_extra()
 	elseif CACHE_MODE == "60" then
 		extra = extra .. " -rr-ttl-max 60"
 	end
-	if NO_RULE_ADDR == "1" then
-		extra = extra .. " -no-rule-addr"
-	end
 	return extra
 end
 
@@ -207,7 +204,7 @@ end
 local force_https_soa = api.uci_get_c("@global[0]", "force_https_soa") or 0
 local proxy_server_name = "psw-proxy-server"
 config_lines = {
-	tonumber(LISTEN_PORT) ~= 0 and "bind [::]:" .. LISTEN_PORT .. "@lo" or "",
+	tonumber(LISTEN_PORT) ~= 0 and ("bind [::]:" .. LISTEN_PORT .. "@lo" .. (NO_RULE_ADDR == "1" and " -no-rule-addr" or "")) or "",
 	(tonumber(LOCAL_PORT) ~= 0 and LOCAL_GROUP) and "bind [::]:" .. LOCAL_PORT .. "@lo -group " ..  LOCAL_GROUP or "",
 	tonumber(force_https_soa) == 1 and "force-qtype-SOA 65" or "force-qtype-SOA -,65",
 	"server 223.5.5.5 -bootstrap-dns",
@@ -305,8 +302,9 @@ end
 --屏蔽列表
 local file_block_host = CACHE_RULES_PATH .. "/block_host"
 if not fs.access(file_block_host .. "_ok") then
-	api.remove(file_block_host)
+	api.remove(file_block_host .. "*")
 end
+local block_geosite_flag = fs.access(file_block_host) and fs.access(file_block_host .. "_ok") and fs.access(file_block_host .. "_geo")
 if USE_BLOCK_LIST == "1" and not fs.access(file_block_host) then
 	local block_domain, lookup_block_domain = {}, {}
 	local geosite_arg = ""
@@ -337,6 +335,7 @@ if USE_BLOCK_LIST == "1" and not fs.access(file_block_host) then
 		local code, out = get_geosite(geosite_arg, file_block_host)
 		if code == 0 then
 			log("  - 解析[屏蔽列表] Geosite 到屏蔽域名表(blocklist)完成")
+			sys.call("touch " .. file_block_host .. "_geo")
 		else
 			log("  - 解析[屏蔽列表] Geosite 到屏蔽域名表(blocklist)失败！[" .. out .. "]")
 			success = false
@@ -347,6 +346,9 @@ if USE_BLOCK_LIST == "1" and not fs.access(file_block_host) then
 	end
 end
 if USE_BLOCK_LIST == "1" and is_file_nonzero(file_block_host) then
+	if block_geosite_flag then
+		log("  - [屏蔽列表] Geosite 使用缓存结果，跳过重复解析")
+	end
 	local domain_set_name = "psw-block"
 	tmp_lines = {
 		string.format("domain-set -name %s -file %s", domain_set_name, file_block_host),
@@ -404,8 +406,9 @@ end
 --直连（白名单）列表
 local file_direct_host = CACHE_RULES_PATH .. "/direct_host"
 if not fs.access(file_direct_host .. "_ok") then
-	api.remove(file_direct_host)
+	api.remove(file_direct_host .. "*")
 end
+local direct_geosite_flag = fs.access(file_direct_host) and fs.access(file_direct_host .. "_ok") and fs.access(file_direct_host .. "_geo")
 if USE_DIRECT_LIST == "1" and not fs.access(file_direct_host) then
 	local direct_domain, lookup_direct_domain = {}, {}
 	local geosite_arg = ""
@@ -436,6 +439,7 @@ if USE_DIRECT_LIST == "1" and not fs.access(file_direct_host) then
 		local code, out = get_geosite(geosite_arg, file_direct_host)
 		if code == 0 then
 			log("  - 解析[直连列表] Geosite 到域名白名单(whitelist)完成")
+			sys.call("touch " .. file_direct_host .. "_geo")
 		else
 			log("  - 解析[直连列表] Geosite 到域名白名单(whitelist)失败！[" .. out .. "]")
 			success = false
@@ -446,6 +450,9 @@ if USE_DIRECT_LIST == "1" and not fs.access(file_direct_host) then
 	end
 end
 if USE_DIRECT_LIST == "1" and is_file_nonzero(file_direct_host) then
+	if direct_geosite_flag then
+		log("  - [直连列表] Geosite 使用缓存结果，跳过重复解析")
+	end
 	local domain_set_name = "psw-directlist"
 	tmp_lines = {
 		string.format("domain-set -name %s -file %s", domain_set_name, file_direct_host)
@@ -465,8 +472,9 @@ end
 --代理（黑名单）列表
 local file_proxy_host = CACHE_RULES_PATH .. "/proxy_host"
 if not fs.access(file_proxy_host .. "_ok") then
-	api.remove(file_proxy_host)
+	api.remove(file_proxy_host .. "*")
 end
+local proxy_geosite_flag = fs.access(file_proxy_host) and fs.access(file_proxy_host .. "_ok") and fs.access(file_proxy_host .. "_geo")
 if USE_PROXY_LIST == "1" and not fs.access(file_proxy_host) then
 	local proxy_domain, lookup_proxy_domain = {}, {}
 	local geosite_arg = ""
@@ -497,6 +505,7 @@ if USE_PROXY_LIST == "1" and not fs.access(file_proxy_host) then
 		local code, out = get_geosite(geosite_arg, file_proxy_host)
 		if code == 0 then
 			log("  - 解析[代理列表] Geosite 到代理域名表(blacklist)完成")
+			sys.call("touch " .. file_proxy_host .. "_geo")
 		else
 			log("  - 解析[代理列表] Geosite 到代理域名表(blacklist)失败！[" .. out .. "]")
 			success = false
@@ -507,6 +516,9 @@ if USE_PROXY_LIST == "1" and not fs.access(file_proxy_host) then
 	end
 end
 if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
+	if proxy_geosite_flag then
+		log("  - [代理列表] Geosite 使用缓存结果，跳过重复解析")
+	end
 	local domain_set_name = "psw-proxylist"
 	tmp_lines = {
 		string.format("domain-set -name %s -file %s", domain_set_name, file_proxy_host)
@@ -711,6 +723,10 @@ if IS_SHUNT_NODE and not only_global then
 		else
 			api.remove(MD5_FILE)
 		end
+	end
+
+	if USE_CACHE and USE_GEOVIEW == "1" and (geosite_direct_arg ~= "" or geosite_proxy_arg ~= "" or geosite_black_arg ~= "") then
+		log("  - [分流节点] Geosite 使用缓存结果，跳过重复解析")
 	end
 
 	if is_file_nonzero(shunt_direct_host) then
