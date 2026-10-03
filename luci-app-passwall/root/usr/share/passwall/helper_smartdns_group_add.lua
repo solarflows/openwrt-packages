@@ -39,9 +39,6 @@ local function get_remote_rule_extra()
 	elseif CACHE_MODE == "60" then
 		extra = extra .. " -rr-ttl-max 60"
 	end
-	if NO_RULE_ADDR == "1" then
-		extra = extra .. " -no-rule-addr"
-	end
 	return extra
 end
 
@@ -89,15 +86,14 @@ end
 
 local function get_geosite(list_arg, out_path)
 	local geosite_path = api.uci_get_c("@global_rules[0]", "v2ray_location_asset") or "/usr/share/v2ray/"
-	local geosite_file = geosite_path .. "geosite.dat"
-	if not fs.access(geosite_file) then
-		geosite_file = "/usr/share/passwall/rules/geosite.dat"
-	end
-	local cmd = string.format("geoview -f %s %s >> %s", geosite_file, list_arg, out_path)
-	if fs.access(geosite_file) then
-		return sys.call(cmd)
-	end
-	return 1
+	geosite_path = geosite_path:match("^(.*)/") .. "/geosite.dat"
+	if not is_file_nonzero(geosite_path) then return 1, "File geosite.dat not found" end
+	if not list_arg or list_arg == "" then return 1, "Site list cannot be empty" end
+	if not out_path or out_path == "" then return 1, "Output path cannot be empty" end
+	local bin = api.finded_com("geoview")
+	local cmd = string.format("%q -type geosite -append=true -input %q -list %q -output %q -lowmem=true",
+		bin, geosite_path, list_arg, out_path)
+	return api.exec_call(cmd)
 end
 
 sys.call("mkdir -p %s" % FLAG_PATH)
@@ -160,7 +156,7 @@ local proxy_server_name = "psw-proxy-server"
 -- 基础绑定与服务配置
 config_lines = {
 	"# ── PassWall SmartDNS Group Rules Configuration ──",
-	tonumber(LISTEN_PORT) ~= 0 and "bind [::]:" .. LISTEN_PORT .. "@lo" or "",
+	tonumber(LISTEN_PORT) ~= 0 and ("bind [::]:" .. LISTEN_PORT .. "@lo" .. (NO_RULE_ADDR == "1" and " -no-rule-addr" or "")) or "",
 	(tonumber(LOCAL_PORT) ~= 0 and LOCAL_GROUP) and "bind [::]:" .. LOCAL_PORT .. "@lo -group " ..  LOCAL_GROUP or "",
 	tonumber(force_https_soa) == 1 and "force-qtype-SOA 65" or "force-qtype-SOA -,65",
 	"server 223.5.5.5 -bootstrap-dns",
@@ -171,8 +167,12 @@ config_lines = {
 local setflag = (NFTFLAG == "1") and "inet#passwall#" or ""
 local set_type = (NFTFLAG == "1") and "-nftset" or "-ipset"
 
--- 屏蔽列表 (直连拦截)
+-- 1. 屏蔽列表文件准备
 local file_block_host = CACHE_RULES_PATH .. "/block_host"
+if not fs.access(file_block_host .. "_ok") then
+	api.remove(file_block_host .. "*")
+end
+local block_geosite_flag = fs.access(file_block_host) and fs.access(file_block_host .. "_ok") and fs.access(file_block_host .. "_geo")
 if USE_BLOCK_LIST == "1" and not fs.access(file_block_host) then
 	local block_domain, lookup_block_domain = {}, {}
 	local geosite_arg = ""
@@ -198,17 +198,23 @@ if USE_BLOCK_LIST == "1" and not fs.access(file_block_host) then
 		end
 		f_out:close()
 	end
+	local success = true
 	if USE_GEOVIEW == "1" and geosite_arg ~= "" then
-		get_geosite(geosite_arg, file_block_host)
+		local code, out = get_geosite(geosite_arg, file_block_host)
+		if code == 0 then
+			log("  - 解析[屏蔽列表] Geosite 到屏蔽域名表(blocklist)完成")
+			sys.call("touch " .. file_block_host .. "_geo")
+		else
+			log("  - 解析[屏蔽列表] Geosite 到屏蔽域名表(blocklist)失败！[" .. out .. "]")
+			success = false
+		end
+	end
+	if success and fs.access(file_block_host) then
+		sys.call("touch " .. file_block_host .. "_ok")
 	end
 end
-if USE_BLOCK_LIST == "1" and is_file_nonzero(file_block_host) then
-	local domain_set_name = "psw-block"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, file_block_host))
-	table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -a #", domain_set_name))
-end
 
--- 始终用国内DNS解析节点域名 (vpslist)
+-- 2. 节点域名列表文件准备 (vpslist)
 local file_vpslist = TMP_PATH .. "/vpslist"
 if not is_file_nonzero(file_vpslist) then
 	local f_out = io.open(file_vpslist, "w")
@@ -222,18 +228,13 @@ if not is_file_nonzero(file_vpslist) then
 	end)
 	f_out:close()
 end
-if is_file_nonzero(file_vpslist) then
-	local domain_set_name = "psw-vpslist"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, file_vpslist))
-	local sets = { "#4:" .. setflag .. "psw_vps" }
-	local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s", domain_set_name, LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "", set_type, table.concat(sets, ","))
-	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
-	table.insert(config_lines, domain_rules_str)
-	log(string.format("  - 节点列表中的域名(vpslist)使用分组：%s", LOCAL_GROUP or "默认"))
-end
 
--- 直连（白名单）列表
+-- 3. 直连（白名单）列表文件准备
 local file_direct_host = CACHE_RULES_PATH .. "/direct_host"
+if not fs.access(file_direct_host .. "_ok") then
+	api.remove(file_direct_host .. "*")
+end
+local direct_geosite_flag = fs.access(file_direct_host) and fs.access(file_direct_host .. "_ok") and fs.access(file_direct_host .. "_geo")
 if USE_DIRECT_LIST == "1" and not fs.access(file_direct_host) then
 	local direct_domain, lookup_direct_domain = {}, {}
 	local geosite_arg = ""
@@ -259,33 +260,28 @@ if USE_DIRECT_LIST == "1" and not fs.access(file_direct_host) then
 		end
 		f_out:close()
 	end
+	local success = true
 	if USE_GEOVIEW == "1" and geosite_arg ~= "" then
-		get_geosite(geosite_arg, file_direct_host)
+		local code, out = get_geosite(geosite_arg, file_direct_host)
+		if code == 0 then
+			log("  - 解析[直连列表] Geosite 到域名白名单(whitelist)完成")
+			sys.call("touch " .. file_direct_host .. "_geo")
+		else
+			log("  - 解析[直连列表] Geosite 到域名白名单(whitelist)失败！[" .. out .. "]")
+			success = false
+		end
+	end
+	if success and fs.access(file_direct_host) then
+		sys.call("touch " .. file_direct_host .. "_ok")
 	end
 end
-if USE_DIRECT_LIST == "1" and is_file_nonzero(file_direct_host) then
-	local domain_set_name = "psw-directlist"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, file_direct_host))
-	local sets = { "#4:" .. setflag .. "psw_white", "#6:" .. setflag .. "psw_white6" }
-	local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s", domain_set_name, LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "", set_type, table.concat(sets, ","))
-	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
-	table.insert(config_lines, domain_rules_str)
-	log(string.format("  - 域名白名单(whitelist)使用分组：%s", LOCAL_GROUP or "默认"))
-end
 
--- 中国域名列表 (直连模式)
-if CHN_LIST == "direct" and is_file_nonzero(RULES_PATH .. "/chnlist") then
-	local domain_set_name = "psw-chnlist"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, RULES_PATH .. "/chnlist"))
-	local sets = { "#4:" .. setflag .. "psw_chn", "#6:" .. setflag .. "psw_chn6" }
-	local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s", domain_set_name, LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "", set_type, table.concat(sets, ","))
-	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
-	table.insert(config_lines, domain_rules_str)
-	log(string.format("  - 中国域名表(chnlist)使用分组：%s", LOCAL_GROUP or "默认"))
-end
-
--- 代理（黑名单）列表
+-- 4. 代理（黑名单）列表文件准备
 local file_proxy_host = CACHE_RULES_PATH .. "/proxy_host"
+if not fs.access(file_proxy_host .. "_ok") then
+	api.remove(file_proxy_host .. "*")
+end
+local proxy_geosite_flag = fs.access(file_proxy_host) and fs.access(file_proxy_host .. "_ok") and fs.access(file_proxy_host .. "_geo")
 if USE_PROXY_LIST == "1" and not fs.access(file_proxy_host) then
 	local proxy_domain, lookup_proxy_domain = {}, {}
 	local geosite_arg = ""
@@ -311,12 +307,23 @@ if USE_PROXY_LIST == "1" and not fs.access(file_proxy_host) then
 		end
 		f_out:close()
 	end
+	local success = true
 	if USE_GEOVIEW == "1" and geosite_arg ~= "" then
-		get_geosite(geosite_arg, file_proxy_host)
+		local code, out = get_geosite(geosite_arg, file_proxy_host)
+		if code == 0 then
+			log("  - 解析[代理列表] Geosite 到代理域名表(blacklist)完成")
+			sys.call("touch " .. file_proxy_host .. "_geo")
+		else
+			log("  - 解析[代理列表] Geosite 到代理域名表(blacklist)失败！[" .. out .. "]")
+			success = false
+		end
+	end
+	if success and fs.access(file_proxy_host) then
+		sys.call("touch " .. file_proxy_host .. "_ok")
 	end
 end
 
--- 分流规则解析
+-- 5. 分流规则列表文件准备
 local only_global = (DEFAULT_PROXY_MODE == "proxy" and CHN_LIST == "0" and USE_GFW_LIST == "0") and 1
 local shunt_direct_host, shunt_proxy_host, shunt_black_host
 if IS_SHUNT_NODE and not only_global then
@@ -340,7 +347,7 @@ if IS_SHUNT_NODE and not only_global then
 			end
 			local domain_list = s.domain_list or ""
 			for line in string.gmatch(domain_list, "[^\r\n]+") do
-				if line ~= "" and not line:find("#") then
+				if line ~= "" and not line:find("#") and not line:find("regexp:") and not line:find("ext:") and not line:find("rule-set:") and not line:find("rs:") then
 					if line:find("geosite:") then
 						line = string.match(line, ":([^:]+)$")
 						if _node_id == "_direct" then
@@ -351,6 +358,9 @@ if IS_SHUNT_NODE and not only_global then
 							geosite_proxy_arg = geosite_proxy_arg .. (geosite_proxy_arg ~= "" and "," or "") .. line
 						end
 					else
+						if line:find("domain:") or line:find("full:") then
+							line = string.match(line, ":([^:]+)$")
+						end
 						line = api.get_std_domain(line)
 						if line ~= "" and not line:find("#") then
 							if _node_id == "_direct" then
@@ -400,14 +410,107 @@ if IS_SHUNT_NODE and not only_global then
 	end
 
 	if not USE_CACHE and USE_GEOVIEW == "1" then
-		if geosite_direct_arg ~= "" then get_geosite(geosite_direct_arg, shunt_direct_host) end
-		if geosite_proxy_arg ~= "" then get_geosite(geosite_proxy_arg, shunt_proxy_host) end
-		if geosite_black_arg ~= "" then get_geosite(geosite_black_arg, shunt_black_host) end
+		local ok = true
+		local function resolve(arg, dest)
+			if arg == "" then return end
+			local code, out = get_geosite(arg, dest)
+			if code ~= 0 then
+				ok = false
+				log("  - 解析[分流节点] Geosite 失败！[" .. out .. "]")
+			end
+		end
+		resolve(geosite_direct_arg, shunt_direct_host)
+		resolve(geosite_proxy_arg,  shunt_proxy_host)
+		resolve(geosite_black_arg,  shunt_black_host)
+		if ok then
+			log("  - 解析[分流节点] Geosite 完成")
+		else
+			api.remove(MD5_FILE)
+		end
+	end
+
+	if USE_CACHE and USE_GEOVIEW == "1" and (geosite_direct_arg ~= "" or geosite_proxy_arg ~= "" or geosite_black_arg ~= "") then
+		log("  - [分流节点] Geosite 使用缓存结果，跳过重复解析")
 	end
 end
 
 -- ════════════════════════════════════════════════════════════
--- SmartDNS 现代规则组沙盒 (group-begin ... group-end)
+-- 6. 统一预先注册域名集 (domain-set)
+-- 保证所有 rules/matches 查找 domain-set 时均已在内存哈希表中就绪
+-- ════════════════════════════════════════════════════════════
+table.insert(config_lines, "")
+table.insert(config_lines, "# ── 域名集注册 (domain-set) ──")
+if USE_BLOCK_LIST == "1" and is_file_nonzero(file_block_host) then
+	if block_geosite_flag then
+		log("  - [屏蔽列表] Geosite 使用缓存结果，跳过重复解析")
+	end
+	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-block", file_block_host))
+end
+if is_file_nonzero(file_vpslist) then
+	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-vpslist", file_vpslist))
+end
+if USE_DIRECT_LIST == "1" and is_file_nonzero(file_direct_host) then
+	if direct_geosite_flag then
+		log("  - [直连列表] Geosite 使用缓存结果，跳过重复解析")
+	end
+	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-directlist", file_direct_host))
+end
+if CHN_LIST ~= "0" and is_file_nonzero(RULES_PATH .. "/chnlist") then
+	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-chnlist", RULES_PATH .. "/chnlist"))
+end
+if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
+	if proxy_geosite_flag then
+		log("  - [代理列表] Geosite 使用缓存结果，跳过重复解析")
+	end
+	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-proxylist", file_proxy_host))
+end
+if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
+	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-gfwlist", RULES_PATH .. "/gfwlist"))
+end
+if IS_SHUNT_NODE and not only_global then
+	if is_file_nonzero(shunt_direct_host) then
+		table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-direct", shunt_direct_host))
+	end
+	if is_file_nonzero(shunt_proxy_host) then
+		table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-proxy", shunt_proxy_host))
+	end
+	if is_file_nonzero(shunt_black_host) then
+		table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-black", shunt_black_host))
+	end
+end
+
+-- ════════════════════════════════════════════════════════════
+-- 7. 国内与直连规则 (默认组)
+-- ════════════════════════════════════════════════════════════
+table.insert(config_lines, "")
+table.insert(config_lines, "# ── 国内与直连规则 (默认组) ──")
+if USE_BLOCK_LIST == "1" and is_file_nonzero(file_block_host) then
+	table.insert(config_lines, "domain-rules /domain-set:psw-block/ -a #")
+end
+if is_file_nonzero(file_vpslist) then
+	local sets = { "#4:" .. setflag .. "psw_vps" }
+	local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s", "psw-vpslist", LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "", set_type, table.concat(sets, ","))
+	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
+	table.insert(config_lines, domain_rules_str)
+	log(string.format("  - 节点列表中的域名(vpslist)使用分组：%s", LOCAL_GROUP or "默认"))
+end
+if USE_DIRECT_LIST == "1" and is_file_nonzero(file_direct_host) then
+	local sets = { "#4:" .. setflag .. "psw_white", "#6:" .. setflag .. "psw_white6" }
+	local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s", "psw-directlist", LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "", set_type, table.concat(sets, ","))
+	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
+	table.insert(config_lines, domain_rules_str)
+	log(string.format("  - 域名白名单(whitelist)使用分组：%s", LOCAL_GROUP or "默认"))
+end
+if CHN_LIST == "direct" and is_file_nonzero(RULES_PATH .. "/chnlist") then
+	local sets = { "#4:" .. setflag .. "psw_chn", "#6:" .. setflag .. "psw_chn6" }
+	local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s", "psw-chnlist", LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "", set_type, table.concat(sets, ","))
+	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
+	table.insert(config_lines, domain_rules_str)
+	log(string.format("  - 中国域名表(chnlist)使用分组：%s", LOCAL_GROUP or "默认"))
+end
+
+-- ════════════════════════════════════════════════════════════
+-- 8. SmartDNS 现代规则组沙盒 (group-begin ... group-end)
 -- ════════════════════════════════════════════════════════════
 table.insert(config_lines, "")
 table.insert(config_lines, "# ── 代理规则组沙盒: " .. REMOTE_GROUP .. " ──")
@@ -470,10 +573,35 @@ end
 -- 组内通用策略配置
 table.insert(config_lines, "speed-check-mode none")
 
--- 代理域名规则与防火墙打标 (在组沙盒内注册)
+-- 规则组路由匹配 (必须位于 group-begin 内部，domain-set 无斜杠)
+table.insert(config_lines, "")
+table.insert(config_lines, "# 组路由匹配 (group-match)")
+if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
+	table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-proxylist"))
+end
+if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
+	table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-gfwlist"))
+end
+if CHN_LIST == "proxy" and is_file_nonzero(RULES_PATH .. "/chnlist") then
+	table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-chnlist"))
+end
+if IS_SHUNT_NODE and not only_global then
+	if is_file_nonzero(shunt_direct_host) then
+		table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-direct"))
+	end
+	if is_file_nonzero(shunt_proxy_host) then
+		table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-proxy"))
+	end
+	if is_file_nonzero(shunt_black_host) then
+		table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-black"))
+	end
+end
+
+-- 组内域名规则与防火墙打标 (在组沙盒内生效)
+table.insert(config_lines, "")
+table.insert(config_lines, "# 组内域名规则 (domain-rules)")
 if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
 	local domain_set_name = "psw-proxylist"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, file_proxy_host))
 	local sets = { "#4:" .. setflag .. "psw_black" }
 	if NO_PROXY_IPV6 == "1" then
 		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address #6 %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
@@ -486,7 +614,6 @@ end
 
 if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
 	local domain_set_name = "psw-gfwlist"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, RULES_PATH .. "/gfwlist"))
 	local sets = { "#4:" .. setflag .. "psw_gfw" }
 	if NO_PROXY_IPV6 == "1" then
 		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address #6 %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
@@ -499,7 +626,6 @@ end
 
 if CHN_LIST == "proxy" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 	local domain_set_name = "psw-chnlist"
-	table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, RULES_PATH .. "/chnlist"))
 	local sets = { "#4:" .. setflag .. "psw_chn" }
 	if NO_PROXY_IPV6 == "1" then
 		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address #6 %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
@@ -513,19 +639,16 @@ end
 if IS_SHUNT_NODE and not only_global then
 	if is_file_nonzero(shunt_direct_host) then
 		local domain_set_name = "psw-shunt-direct"
-		table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, shunt_direct_host))
 		local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
 		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address -6 -d no %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	end
 	if is_file_nonzero(shunt_proxy_host) then
 		local domain_set_name = "psw-shunt-proxy"
-		table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, shunt_proxy_host))
 		local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
 		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address -6 -d no %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	end
 	if is_file_nonzero(shunt_black_host) then
 		local domain_set_name = "psw-shunt-black"
-		table.insert(config_lines, string.format("domain-set -name %s -file %s", domain_set_name, shunt_black_host))
 		local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
 		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address -6 -d no %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	end
@@ -537,36 +660,12 @@ if is_file_nonzero("/etc/passwall/smartdns-user.conf") then
 end
 
 table.insert(config_lines, "group-end")
+
+-- ════════════════════════════════════════════════════════════
+-- 9. 默认托底 DNS
+-- ════════════════════════════════════════════════════════════
 table.insert(config_lines, "")
-
--- ════════════════════════════════════════════════════════════
--- 规则组路由匹配 (group-match)
--- ════════════════════════════════════════════════════════════
-table.insert(config_lines, "# ── 代理规则组匹配 (group-match) ──")
-if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
-	table.insert(config_lines, string.format("group-match -d /domain-set:%s/ -g %s", "psw-proxylist", REMOTE_GROUP))
-end
-if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
-	table.insert(config_lines, string.format("group-match -d /domain-set:%s/ -g %s", "psw-gfwlist", REMOTE_GROUP))
-end
-if CHN_LIST == "proxy" and is_file_nonzero(RULES_PATH .. "/chnlist") then
-	table.insert(config_lines, string.format("group-match -d /domain-set:%s/ -g %s", "psw-chnlist", REMOTE_GROUP))
-end
-if IS_SHUNT_NODE and not only_global then
-	if is_file_nonzero(shunt_direct_host) then
-		table.insert(config_lines, string.format("group-match -d /domain-set:%s/ -g %s", "psw-shunt-direct", REMOTE_GROUP))
-	end
-	if is_file_nonzero(shunt_proxy_host) then
-		table.insert(config_lines, string.format("group-match -d /domain-set:%s/ -g %s", "psw-shunt-proxy", REMOTE_GROUP))
-	end
-	if is_file_nonzero(shunt_black_host) then
-		table.insert(config_lines, string.format("group-match -d /domain-set:%s/ -g %s", "psw-shunt-black", REMOTE_GROUP))
-	end
-end
-
--- ════════════════════════════════════════════════════════════
--- 默认托底 DNS
--- ════════════════════════════════════════════════════════════
+table.insert(config_lines, "# ── 默认托底 DNS ──")
 local DEFAULT_DNS_GROUP = (USE_DEFAULT_DNS == "direct" and LOCAL_GROUP) or (USE_DEFAULT_DNS == "remote" and REMOTE_GROUP)
 if only_global == 1 then
 	DEFAULT_DNS_GROUP = REMOTE_GROUP
