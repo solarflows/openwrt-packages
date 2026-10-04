@@ -6,11 +6,6 @@
         "branch": "21.02",
         "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64"
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "a56eb4ce1bea9f6793b3bafc566e4064dfda4e2b"
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -36,20 +31,10 @@
         "branch": null,
         "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "0774799a271fc22724fae6f7ee32f5df932cc08a"
-      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
         "commit": "ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8"
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "a56eb4ce1bea9f6793b3bafc566e4064dfda4e2b"
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
@@ -86,20 +71,35 @@
         "branch": null,
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "e731ba76764082d9db71de60f1ddac43f4114101"
+      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "3ba85f8264c82211b49f0655677ab3a0727a68cc"
+        "commit": "e0d0f37bce7dd7a72df5de74059e9ef3f7330bc2"
       },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "67a86ffb63f159f28afeac829439c71084e25be8"
+        "commit": "4608cb3e807d2fa2cc4e63183afc1840a5457b1a"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "dee4f5f48defb47580df932ec1c8ab9244bf57d4"
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "e731ba76764082d9db71de60f1ddac43f4114101"
       },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "72cec443a2db1d9e76e47c2be059d50a7abcff03"
+        "commit": "7ebfdb3570cb465deaa7543236c5b7cc0c16fdde"
       }
     }
   }
