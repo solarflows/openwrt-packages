@@ -6,6 +6,11 @@
         "branch": "21.02",
         "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64"
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "a56eb4ce1bea9f6793b3bafc566e4064dfda4e2b"
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -40,6 +45,11 @@
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
         "commit": "ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8"
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "a56eb4ce1bea9f6793b3bafc566e4064dfda4e2b"
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
@@ -76,11 +86,6 @@
         "branch": null,
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "a56eb4ce1bea9f6793b3bafc566e4064dfda4e2b"
-      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
@@ -89,17 +94,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "5b07a34a67d0a5ce5343ec1534d10d565e096e4c"
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "a56eb4ce1bea9f6793b3bafc566e4064dfda4e2b"
+        "commit": "67a86ffb63f159f28afeac829439c71084e25be8"
       },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "14b7a42a2f51faf642284af7d11663f443c79893"
+        "commit": "72cec443a2db1d9e76e47c2be059d50a7abcff03"
       }
     }
   }
