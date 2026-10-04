@@ -19,7 +19,7 @@ local UrlEncode, UrlDecode = api.UrlEncode, api.UrlDecode
 local fs = api.fs
 local uci, uci_get, uci_set, uci_del, uci_foreach, uci_save = api.uci, api.uci_get_c, api.uci_set_c, api.uci_del_c, api.uci_foreach_c, api.uci_save_c
 
-if (uci_get("@global_forwarding[0]", "fork_optimize") or "1") == "1" then
+if (uci_get("@global_optimize[0]", "fork_optimize") or uci_get("@global_forwarding[0]", "fork_optimize") or "1") == "1" then
 	local native_uci = require("uci").cursor()
 	uci = native_uci
 	local mt = getmetatable(native_uci)
@@ -1813,7 +1813,7 @@ local function curl(url, file, ua, mode)
 	}
 
 	ua = (ua and ua ~= "") and ua or "passwall"
-	ua = (ua == "passwall") and ("passwall/" .. api.get_version()) or ua
+	ua = (ua == "passwall") and ("passwall/" .. api.get_version():match("^([^-]+)")) or ua
 	curl_args[#curl_args + 1] = '--user-agent "' .. ua .. '"'
 
 	local cookie_file = "/tmp/cookie_" .. api.gen_random_char(5)
