@@ -26,9 +26,14 @@ local LOCAL_PORT = var["-LOCAL_PORT"]
 local NO_IP_ALIAS = var["-NO_IP_ALIAS"] or "1"
 local CACHE_MODE = var["-CACHE_MODE"] or "default"
 local NO_RULE_ADDR = var["-NO_RULE_ADDR"] or "0"
+local SPLIT_SHUNT = var["-SPLIT_SHUNT"] or "0"
+local SERVE_EXPIRED = var["-SERVE_EXPIRED"] or "1"
 
 local function get_remote_rule_extra()
 	local extra = ""
+	if SERVE_EXPIRED == "0" then
+		extra = extra .. " -no-serve-expired"
+	end
 	if NO_IP_ALIAS == "1" then
 		extra = extra .. " -no-ip-alias"
 	end
@@ -54,6 +59,7 @@ local FLAG_PATH = TMP_PATH .. "/acl/" .. FLAG
 local TMP_CONF_FILE = FLAG_PATH .. "/smartdns.conf"
 local config_lines = {}
 local tmp_lines = {}
+local split_rules_map = {}
 local USE_GEOVIEW = api.uci_get_c("@global_rules[0]", "enable_geoview")
 local IS_SHUNT_NODE = api.uci_get_c(NODE, "protocol") == "_shunt"
 
@@ -104,13 +110,24 @@ if LOCAL_GROUP == "null" or LOCAL_GROUP == "" then
 	LOCAL_GROUP = nil
 else
 	local options = {
-		{ key = "auto_set_dnsmasq", arg_yes = "", arg_no = "" },
-		{ key = "force_aaaa_soa", config_key = "force_aaaa_soa", arg = "-address #6" },
-		{ key = "tcp_server", config_key = "tcp_server", arg = "-d no" },
-		{ key = "ipv6_server", config_key = "ipv6_server", arg = "-6" },
-		{ key = "dualstack_ip_selection", config_key = "dualstack_ip_selection", arg_yes = "-d yes", arg_no = "-d no", yes_no = true },
-		{ key = "speed_check_mode", config_key = "speed_check_mode", prefix = "-speed-check-mode " },
-		{ key = "response_mode", config_key = "response_mode", prefix = "-response-mode " }
+		{ key = "dualstack_ip_selection", config_key = "dualstack-ip-selection", yes_no = true, arg_yes = "-d yes", arg_no = "-d no", default = "yes" },
+		{ key = "speed_check_mode", config_key = "speed-check-mode", prefix = "-speed-check-mode ", default = "ping,tcp:80,tcp:443" },
+		{ key = "response_mode", config_key = "response-mode", prefix = "-response-mode ", default = "first-ping" },
+		{ key = "rr_ttl", config_key = "rr-ttl", prefix = "-rr-ttl " },
+		{ key = "rr_ttl_min", config_key = "rr-ttl-min", prefix = "-rr-ttl-min " },
+		{ key = "rr_ttl_max", config_key = "rr-ttl-max", prefix = "-rr-ttl-max " },
+		{
+			key = "force_aaaa_soa",
+			config_key = "force-qtype-SOA",
+			prefix = "-address ",
+			get_value = function(custom_config)
+				local soa = custom_config["force-qtype-SOA"]
+				return ((soa and soa:match("(^|%s)28(%s|$)"))
+					or custom_config["force-AAAA-SOA"] == "yes"
+					or api.uci_get("smartdns", "@smartdns[0]", "force_aaaa_soa") == "1")
+					and "#6" or nil
+			end
+		}
 	}
 	local custom_config = {}
 	local f_in = io.open("/etc/smartdns/custom.conf", "r")
@@ -375,6 +392,17 @@ if IS_SHUNT_NODE and not only_global then
 				end
 			end
 			SHUNT_LIST = SHUNT_LIST .. domain_list .. (_node_id:sub(1, 1) == "_" and "not-node" or "node")
+				if SPLIT_SHUNT == "1" then
+					split_rules_map[s[".name"]] = {
+						name = s[".name"],
+						remarks = s.remarks or s[".name"],
+						node_id = _node_id,
+						host_file = CACHE_FLAG_PATH .. "/shunt_" .. s[".name"] .. "_host",
+						group = s.smartdns_group or "",
+						serve_expired = s.smartdns_serve_expired or "",
+						force_ipv4 = s.smartdns_force_ipv4 or "0"
+					}
+				end
 			log(string.format("  - Sing-Box/Xray分流规则(%s)使用分组：%s", s.remarks, REMOTE_GROUP or "默认"))
 		end
 	end)
@@ -422,6 +450,35 @@ if IS_SHUNT_NODE and not only_global then
 		resolve(geosite_direct_arg, shunt_direct_host)
 		resolve(geosite_proxy_arg,  shunt_proxy_host)
 		resolve(geosite_black_arg,  shunt_black_host)
+		if SPLIT_SHUNT == "1" and USE_GEOVIEW == "1" and not USE_CACHE then
+			api.uci_foreach_c("shunt_rules", function(s)
+				local r_geosite = ""
+				local dlist = s.domain_list or ""
+				for line in string.gmatch(dlist, '[^\\r\\n]+') do
+					if line:find("geosite:") then
+						local gl = string.match(line, ":([^:]+)$")
+						if gl then r_geosite = r_geosite .. (r_geosite ~= "" and "," or "") .. gl end
+					end
+				end
+				local r_file = CACHE_FLAG_PATH .. "/shunt_" .. s[".name"] .. "_host"
+				local r_doms, r_lookup = {}, {}
+				for line in string.gmatch(dlist, '[^\\r\\n]+') do
+					if line ~= "" and not line:find("#") and not line:find("geosite:") and not line:find("regexp:") and not line:find("ext:") and not line:find("rule-set:") and not line:find("rs:") then
+						if line:find("domain:") or line:find("full:") then line = string.match(line, ":([^:]+)$") end
+						line = api.get_std_domain(line)
+						if line ~= "" and not line:find("#") then insert_unique(r_doms, line, r_lookup) end
+					end
+				end
+				if #r_doms > 0 then
+					local fo = io.open(r_file, "w")
+					for i = 1, #r_doms do fo:write(r_doms[i] .. '\n') end
+					fo:close()
+				end
+				if r_geosite ~= "" then
+					resolve(r_geosite, r_file)
+				end
+			end)
+		end
 		if ok then
 			log("  - 解析[分流节点] Geosite 完成")
 		else
@@ -468,14 +525,22 @@ if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
 	table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-gfwlist", RULES_PATH .. "/gfwlist"))
 end
 if IS_SHUNT_NODE and not only_global then
-	if is_file_nonzero(shunt_direct_host) then
-		table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-direct", shunt_direct_host))
-	end
-	if is_file_nonzero(shunt_proxy_host) then
-		table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-proxy", shunt_proxy_host))
-	end
-	if is_file_nonzero(shunt_black_host) then
-		table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-black", shunt_black_host))
+	if SPLIT_SHUNT == "1" then
+		for rname, rdata in pairs(split_rules_map) do
+			if is_file_nonzero(rdata.host_file) then
+				table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-" .. rname, rdata.host_file))
+			end
+		end
+	else
+		if is_file_nonzero(shunt_direct_host) then
+			table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-direct", shunt_direct_host))
+		end
+		if is_file_nonzero(shunt_proxy_host) then
+			table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-proxy", shunt_proxy_host))
+		end
+		if is_file_nonzero(shunt_black_host) then
+			table.insert(config_lines, string.format("domain-set -name %s -file %s", "psw-shunt-black", shunt_black_host))
+		end
 	end
 end
 
@@ -507,6 +572,17 @@ if CHN_LIST == "direct" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 	domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
 	table.insert(config_lines, domain_rules_str)
 	log(string.format("  - 中国域名表(chnlist)使用分组：%s", LOCAL_GROUP or "默认"))
+end
+
+if IS_SHUNT_NODE and not only_global and SPLIT_SHUNT == "1" then
+	for rname, rdata in pairs(split_rules_map) do
+		if rdata.group == "cn" and is_file_nonzero(rdata.host_file) then
+			local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
+			local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s -speed-check-mode tcp-syn:443,tcp-syn:80,ping", "psw-shunt-" .. rname, LOCAL_GROUP and "-nameserver " .. LOCAL_GROUP or "-nameserver cn", set_type, table.concat(sets, ","))
+			table.insert(config_lines, domain_rules_str)
+			log(string.format("  - 分流规则(%s)使用国内高速分组：%s", rdata.remarks, LOCAL_GROUP or "cn"))
+		end
+	end
 end
 
 -- ════════════════════════════════════════════════════════════
@@ -586,14 +662,22 @@ if CHN_LIST == "proxy" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 	table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-chnlist"))
 end
 if IS_SHUNT_NODE and not only_global then
-	if is_file_nonzero(shunt_direct_host) then
-		table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-direct"))
-	end
-	if is_file_nonzero(shunt_proxy_host) then
-		table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-proxy"))
-	end
-	if is_file_nonzero(shunt_black_host) then
-		table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-black"))
+	if SPLIT_SHUNT == "1" then
+		for rname, rdata in pairs(split_rules_map) do
+			if rdata.group ~= "cn" and is_file_nonzero(rdata.host_file) then
+				table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-" .. rname))
+			end
+		end
+	else
+		if is_file_nonzero(shunt_direct_host) then
+			table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-direct"))
+		end
+		if is_file_nonzero(shunt_proxy_host) then
+			table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-proxy"))
+		end
+		if is_file_nonzero(shunt_black_host) then
+			table.insert(config_lines, string.format("group-match -domain domain-set:%s", "psw-shunt-black"))
+		end
 	end
 end
 
@@ -637,20 +721,34 @@ if CHN_LIST == "proxy" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 end
 
 if IS_SHUNT_NODE and not only_global then
-	if is_file_nonzero(shunt_direct_host) then
-		local domain_set_name = "psw-shunt-direct"
-		local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address -6 -d no %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
-	end
-	if is_file_nonzero(shunt_proxy_host) then
-		local domain_set_name = "psw-shunt-proxy"
-		local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address -6 -d no %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
-	end
-	if is_file_nonzero(shunt_black_host) then
-		local domain_set_name = "psw-shunt-black"
-		local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none -no-serve-expired%s -address -6 -d no %s %s", domain_set_name, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+	local sets = { "#4:" .. setflag .. "psw_shunt", "#6:" .. setflag .. "psw_shunt6" }
+	local default_ipv6_rule = (NO_PROXY_IPV6 == "1" and " -address #6" or "")
+	if SPLIT_SHUNT == "1" then
+		for rname, rdata in pairs(split_rules_map) do
+			if rdata.group ~= "cn" and is_file_nonzero(rdata.host_file) then
+				local domain_set_name = "psw-shunt-" .. rname
+				local expired_rule = ""
+				local extra = get_remote_rule_extra()
+				if rdata.serve_expired == "1" or rdata.serve_expired == "yes" then
+					expired_rule = ""
+					extra = extra:gsub("%%s*-no-serve-expired", "")
+				elseif rdata.serve_expired == "0" or rdata.serve_expired == "no" then
+					expired_rule = " -no-serve-expired"
+				end
+				local rule_ipv6 = (rdata.force_ipv4 == "1" or NO_PROXY_IPV6 == "1") and " -address #6" or ""
+				table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none%s%s%s %s %s", domain_set_name, expired_rule, extra, rule_ipv6, set_type, table.concat(sets, ",")))
+			end
+		end
+	else
+		if is_file_nonzero(shunt_direct_host) then
+			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none%s%s %s %s", "psw-shunt-direct", get_remote_rule_extra(), default_ipv6_rule, set_type, table.concat(sets, ",")))
+		end
+		if is_file_nonzero(shunt_proxy_host) then
+			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none%s%s %s %s", "psw-shunt-proxy", get_remote_rule_extra(), default_ipv6_rule, set_type, table.concat(sets, ",")))
+		end
+		if is_file_nonzero(shunt_black_host) then
+			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -speed-check-mode none%s%s %s %s", "psw-shunt-black", get_remote_rule_extra(), default_ipv6_rule, set_type, table.concat(sets, ",")))
+		end
 	end
 end
 

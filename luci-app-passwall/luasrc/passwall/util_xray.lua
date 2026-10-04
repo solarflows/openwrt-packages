@@ -364,7 +364,9 @@ function gen_outbound(flag, node, tag, proxy_table)
 								t = tonumber(tostring(t or "0"):match("^%d+"))
 								return (t and t >= 2 and t <= 60) and t or nil
 							end)(node.hysteria2_keep_alive_period),
-							disablePathMTUDiscovery = tonumber(node.hysteria2_disable_mtu_discovery) == 1
+							disablePathMTUDiscovery = node.hysteria2_disable_mtu_discovery == "1",
+							initStreamReceiveWindow = node.hysteria2_stream_recv_win and tonumber(node.hysteria2_stream_recv_win) or nil,
+							initConnectionReceiveWindow = node.hysteria2_conn_recv_win and tonumber(node.hysteria2_conn_recv_win) or nil,
 						}
 					end
 					if fragment and fragment_table and ({raw=1, ws=1, httpupgrade=1, grpc=1, xhttp=1})[TP] then
@@ -2076,7 +2078,7 @@ function gen_config(var)
 		else
 			table.insert(outbounds, blackhole_outbound)
 		end
-		local fork_optimize = ((api.uci_get_c("@global_forwarding[0]", "fork_optimize") or "1") == "1")
+		local fork_optimize = ((api.uci_get_c("@global_optimize[0]", "fork_optimize") or api.uci_get_c("@global_forwarding[0]", "fork_optimize") or "1") == "1")
 		local direct_node_ids = fork_optimize and {} or nil
 		for index, value in ipairs(config.outbounds) do
 			local pt = value.protocol

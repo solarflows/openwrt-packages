@@ -623,7 +623,9 @@ function gen_outbound(flag, node, tag, proxy_table)
 					t = tonumber(tostring(t or "0"):match("^%d+"))
 					return (t and t >= 2 and t <= 60) and t .. "s" or nil
 				end)(node.hysteria2_keep_alive_period),
-				disable_path_mtu_discovery = version_ge_1_14_0 and (tonumber(node.hysteria2_disable_mtu_discovery) == 1) or nil,
+				stream_receive_window = tonumber(node.hysteria2_stream_recv_win) and tonumber(node.hysteria2_stream_recv_win)/1048576 .. " MB" or nil,
+				connection_receive_window = tonumber(node.hysteria2_conn_recv_win) and tonumber(node.hysteria2_conn_recv_win)/1048576 .. " MB" or nil,
+				disable_path_mtu_discovery = version_ge_1_14_0 and (node.hysteria2_disable_mtu_discovery == "1") or nil,
 				tls = tls,
 				realm = node.hysteria2_realms and (function()
 					result.server = nil
@@ -1197,7 +1199,7 @@ function gen_config(var)
 	local COMMON = {}
 	local rules = {}
 	local inner_fakedns = "0"
-	local fork_optimize = ((api.uci_get_c("@global_forwarding[0]", "fork_optimize") or "1") == "1")
+	local fork_optimize = ((api.uci_get_c("@global_optimize[0]", "fork_optimize") or api.uci_get_c("@global_forwarding[0]", "fork_optimize") or "1") == "1")
 	local ut_outbound_tags = {}
 	local urltest_outbounds = {}
 
