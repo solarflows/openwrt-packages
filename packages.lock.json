@@ -16,6 +16,11 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "2c19a8e4e5a523d55203192bc48f21c039f60e53"
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -70,11 +75,6 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "e0d0f37bce7dd7a72df5de74059e9ef3f7330bc2"
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "2c19a8e4e5a523d55203192bc48f21c039f60e53"
       }
     }
   }
