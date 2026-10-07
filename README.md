@@ -39,7 +39,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `filebrowser` | filebrowser 文件管理器 | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) ([`e731ba7`](https://github.com/immortalwrt/packages//commit/e731ba76764082d9db71de60f1ddac43f4114101)) | `main`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`bd40245`](https://github.com/sbwml/luci-app-mosdns/commit/bd40245303cd0ba56804d49eed5dbc4be2a082ca)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `homeproxy` | HomeProxy Tianling Shen主导的FQ | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) ([`98a6ad9`](https://github.com/immortalwrt/homeproxy/commit/98a6ad9e71484528008ff435694fd107591f3a1d)) | `main`, `qt6` |
-| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`670a7b3`](https://github.com/openwrt/packages/commit/670a7b3b0ebee25b76d78d6387be1bcb7ae9e676)) | `main`, `qt6` |
+| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`24d2074`](https://github.com/openwrt/packages/commit/24d2074662472662eb3a540b535b0cab8f7d7460)) | `main`, `qt6` |
 | `istore` | linkease 易有云官方软件(易有云ddnsto,linkshare) | [linkease/istore](https://github.com/linkease/istore) ([`a97ace3`](https://github.com/linkease/istore/commit/a97ace34f2da358a015b094d326bba2697697f2e)) | `main`, `qt6` |
 | `libtorrent-rasterbar` | libtorrent-rasterbar | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`e731ba7`](https://github.com/immortalwrt/packages/commit/e731ba76764082d9db71de60f1ddac43f4114101)) | `main`, `qt6` |
 | `luci-app-advanced` | advanced 配置文件级别的设置修改插件 | [sirpdboy/luci-app-advanced](https://github.com/sirpdboy/luci-app-advanced) ([`6a5adf2`](https://github.com/sirpdboy/luci-app-advanced/commit/6a5adf2c962e9130c973b038ffbc4e46fb018d17)) | `main`, `qt6` |
@@ -57,7 +57,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-filebrowser` | luci-app-filebrowser | [immortalwrt/luci/](https://github.com/immortalwrt/luci/) ([`6d4e767`](https://github.com/immortalwrt/luci//commit/6d4e76757f4b6eb3ee4da74a97a8edecef3c481e)) | `main`, `qt6` |
 | `luci-app-homebridge` | homebridge 米家的智能家居到Apple HomeKit的桥接 | [shanglanxin/luci-app-homebridge](https://github.com/shanglanxin/luci-app-homebridge) ([`91cc402`](https://github.com/shanglanxin/luci-app-homebridge/commit/91cc4028fed3080f7b6c6b1e3b1ef3feb75fd1df)) | `main`, `qt6` |
 | `luci-app-ikoolproxy` | ikoolproxy 广告过滤 | [1wrt/luci-app-ikoolproxy](https://github.com/1wrt/luci-app-ikoolproxy) ([`85f663c`](https://github.com/1wrt/luci-app-ikoolproxy/commit/85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5)) | `main`, `qt6` |
-| `luci-app-iperf` | iperf 测速软件的luci界面 | [Ysurac/openmptcprouter-feeds](https://github.com/Ysurac/openmptcprouter-feeds) ([`86640ed`](https://github.com/Ysurac/openmptcprouter-feeds/commit/86640ed9c2931d9f4a5f58b9dd501378daef3ce4)) | `main`, `qt6` |
+| `luci-app-iperf` | iperf 测速软件的luci界面 | [Ysurac/openmptcprouter-feeds](https://github.com/Ysurac/openmptcprouter-feeds) ([`7cad305`](https://github.com/Ysurac/openmptcprouter-feeds/commit/7cad305b22ab01e8026ee936ef61dcfeb89fc9c2)) | `main`, `qt6` |
 | `luci-app-mmconfig` | mmconfig 3G/LTE 解调器设置 | [erdoukki/luci-app-mmconfig](https://github.com/erdoukki/luci-app-mmconfig) ([`1b4fa94`](https://github.com/erdoukki/luci-app-mmconfig/commit/1b4fa94b3e0e6a06d2fde59f4e07032dce62db01)) | `main`, `qt6` |
 | `luci-app-modeminfo` | modeminfo 3G/LTE 解调器信息 | [4IceG/luci-app-modeminfo](https://github.com/4IceG/luci-app-modeminfo) ([`cf80a0c`](https://github.com/4IceG/luci-app-modeminfo/commit/cf80a0c876db67bbd0d19b54fa7f4b197d989fcd)) | `main`, `qt6` |
 | `luci-app-msd_lite` | msd_lite 新一代IPTV转发 | [ximiTech/luci-app-msd_lite](https://github.com/ximiTech/luci-app-msd_lite) ([`d44eac8`](https://github.com/ximiTech/luci-app-msd_lite/commit/d44eac82ac4f59540bfe468161c30134c93d7c7f)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-10-06 17:49
+**最近更新**: 2026-10-07 03:57
 
 ## 🙏 致谢
 

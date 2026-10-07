@@ -86,6 +86,11 @@
         "branch": null,
         "commit": "4229177d5349dda8703271e08816b6b46130630a"
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "0b78c13f68c72e11e37940ecda2b50ba600c5ce8"
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -125,11 +130,6 @@
         "repo": "https://github.com/1wrt/luci-app-ikoolproxy",
         "branch": null,
         "commit": "85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5"
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "86640ed9c2931d9f4a5f58b9dd501378daef3ce4"
       },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
@@ -236,6 +236,11 @@
         "branch": null,
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34"
       },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "c39f1e350105f5fc6445506f03363c5bfa44273b"
+      },
       "luci-app-wolplus": {
         "repo": "https://github.com/sundaqiang/openwrt-packages",
         "branch": null,
@@ -281,10 +286,10 @@
         "branch": null,
         "commit": "d52f746df1daa3ecfabb59b6a61e6b4a4ff09f20"
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "0b78c13f68c72e11e37940ecda2b50ba600c5ce8"
+        "commit": "7cad305b22ab01e8026ee936ef61dcfeb89fc9c2"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
@@ -294,7 +299,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "670a7b3b0ebee25b76d78d6387be1bcb7ae9e676"
+        "commit": "24d2074662472662eb3a540b535b0cab8f7d7460"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -325,11 +330,6 @@
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "6841a0c6b65459537e1bfde7c6b68d3fc987f8f3"
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "c39f1e350105f5fc6445506f03363c5bfa44273b"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
