@@ -26,6 +26,11 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "3e854e91ffad50f53e2f6910fb10ff2620babda9"
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -35,6 +40,11 @@
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "457a7cd0780009389dccaded5f92f77a66edc6d9"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -71,10 +81,10 @@
         "branch": null,
         "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
       },
-      "luci-app-argon-config": {
-        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "3e099a37c3f71d0de677f1b6b0f4bffd57d91dac"
+        "commit": "c72b546658797bd02c5281cde23178db162d98d5"
       },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
@@ -86,20 +96,10 @@
         "branch": null,
         "commit": "f4d7ad4ca9101a076e2c774ac9c5004ecfb42fb9"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "3e854e91ffad50f53e2f6910fb10ff2620babda9"
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
         "branch": null,
-        "commit": "457a7cd0780009389dccaded5f92f77a66edc6d9"
-      },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "c72b546658797bd02c5281cde23178db162d98d5"
+        "commit": "9bafffa885135fc78fb4c0106196f98d91d4dae7"
       }
     }
   }
