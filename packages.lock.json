@@ -16,11 +16,6 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "cc23abfa655d01e67aa62520ad957072dfd20ac1"
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -46,10 +41,20 @@
         "branch": null,
         "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
       },
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+        "branch": null,
+        "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
+      },
       "luci-app-podman": {
         "repo": "https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman",
         "branch": null,
         "commit": "ee370717f2dd261a4f375ce3a14f81921949b8c8"
+      },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "ee60fd61a6c5fa7a240fcd69dbb66f1651b27d9f"
       },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
@@ -64,17 +69,12 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "f4d7ad4ca9101a076e2c774ac9c5004ecfb42fb9"
+        "commit": "9178f2e627a1a104b0b35d1c47a7672dff42c970"
       },
-      "luci-app-argon-config": {
-        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
-        "branch": null,
-        "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
-      },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "ee60fd61a6c5fa7a240fcd69dbb66f1651b27d9f"
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "41d7e1e41ee65f7a2fd8d4dc7a2c645d60ebec8c"
       }
     }
   }
