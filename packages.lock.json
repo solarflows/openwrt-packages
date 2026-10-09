@@ -26,25 +26,10 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "cc23abfa655d01e67aa62520ad957072dfd20ac1"
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
         "commit": "2de5aee7a4c704a5b689fdab47b97a18ad11c1a2"
-      },
-      "luci-app-wechatpush": {
-        "repo": "https://github.com/tty228/luci-app-wechatpush",
-        "branch": null,
-        "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "607b3dd1b5bb9c4f01f724eb3788fd21517f2250"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -81,10 +66,10 @@
         "branch": null,
         "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
         "branch": null,
-        "commit": "6c2ee823016a70799fbf6e1583c9569086a1fc2b"
+        "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
       },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
@@ -94,12 +79,27 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "f4d7ad4ca9101a076e2c774ac9c5004ecfb42fb9"
+        "commit": "9178f2e627a1a104b0b35d1c47a7672dff42c970"
       },
-      "luci-app-argon-config": {
-        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "41d7e1e41ee65f7a2fd8d4dc7a2c645d60ebec8c"
+      },
+      "luci-app-wechatpush": {
+        "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
-        "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
+        "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "dbd1a89a059fb3a92cbfebc66bd2f1c0f084fe22"
+      },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "1add1d0c6a81af1e9b56b7a512bcc6201ab32ec5"
       }
     }
   }
