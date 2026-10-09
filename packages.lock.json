@@ -26,6 +26,11 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "cc23abfa655d01e67aa62520ad957072dfd20ac1"
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -35,6 +40,11 @@
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "d9cba373436f7e96592496f8ea392bf74d7fe0c2"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "607b3dd1b5bb9c4f01f724eb3788fd21517f2250"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -71,6 +81,11 @@
         "branch": null,
         "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "6c2ee823016a70799fbf6e1583c9569086a1fc2b"
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -81,25 +96,10 @@
         "branch": null,
         "commit": "f4d7ad4ca9101a076e2c774ac9c5004ecfb42fb9"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "cc23abfa655d01e67aa62520ad957072dfd20ac1"
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "607b3dd1b5bb9c4f01f724eb3788fd21517f2250"
-      },
       "luci-app-argon-config": {
         "repo": "https://github.com/jerrykuku/luci-app-argon-config",
         "branch": null,
-        "commit": "92de4fe133d2a364ef33fcdae50d116ec99d6b52"
-      },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "6c2ee823016a70799fbf6e1583c9569086a1fc2b"
+        "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
       }
     }
   }
