@@ -6,11 +6,6 @@
         "branch": "21.02",
         "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64"
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "e731ba76764082d9db71de60f1ddac43f4114101"
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -31,15 +26,15 @@
         "branch": null,
         "commit": "2de5aee7a4c704a5b689fdab47b97a18ad11c1a2"
       },
+      "luci-app-wechatpush": {
+        "repo": "https://github.com/tty228/luci-app-wechatpush",
+        "branch": null,
+        "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09"
+      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
         "commit": "ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8"
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "e731ba76764082d9db71de60f1ddac43f4114101"
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
@@ -71,10 +66,20 @@
         "branch": null,
         "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "1add1d0c6a81af1e9b56b7a512bcc6201ab32ec5"
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
+      },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "011c2ee4f0cc82d6887eb50789dc221331c08895"
       },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
@@ -84,22 +89,17 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "41d7e1e41ee65f7a2fd8d4dc7a2c645d60ebec8c"
-      },
-      "luci-app-wechatpush": {
-        "repo": "https://github.com/tty228/luci-app-wechatpush",
-        "branch": null,
-        "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09"
+        "commit": "d5d5a5c544e53a121010b5501a78b78275dca0b7"
       },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "dbd1a89a059fb3a92cbfebc66bd2f1c0f084fe22"
+        "commit": "05a5b4be8d95dd8239350da0a8ef1befe8ed2e4b"
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "1add1d0c6a81af1e9b56b7a512bcc6201ab32ec5"
+        "commit": "011c2ee4f0cc82d6887eb50789dc221331c08895"
       }
     }
   }
