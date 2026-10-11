@@ -170,10 +170,9 @@ end
 
 if not REMOTE_GROUP or REMOTE_GROUP == "nil" then
 	REMOTE_GROUP = "passwall_proxy"
-	if REMOTE_DNS then
-		REMOTE_DNS = REMOTE_DNS:gsub("#", ":")
-	end
-	sys.call('sed -i "/passwall/d" /etc/smartdns/custom.conf >/dev/null 2>&1')
+end
+if REMOTE_DNS then
+	REMOTE_DNS = REMOTE_DNS:gsub("#", ":")
 end
 
 local SANDBOX_GROUP = "passwall"
@@ -495,21 +494,21 @@ if IS_SHUNT_NODE and not only_global then
 				resolved_group = LOCAL_GROUP or "cn"
 			end
 
+			local rdata = {
+				name = s[".name"],
+				remarks = s.remarks or s[".name"],
+				node_id = _node_id,
+				host_file = CACHE_FLAG_PATH .. "/shunt_" .. s[".name"] .. "_host",
+				group = cfg_group,
+				resolved_group = resolved_group,
+				serve_expired = s.smartdns_serve_expired or "",
+				force_ipv4 = s.smartdns_force_ipv4 or "0",
+				doms = r_doms,
+				geosite = r_geosite
+			}
+			table.insert(split_rules_list, rdata)
+			split_rules_map[s[".name"]] = rdata
 			if SPLIT_SHUNT == "1" then
-				local rdata = {
-					name = s[".name"],
-					remarks = s.remarks or s[".name"],
-					node_id = _node_id,
-					host_file = CACHE_FLAG_PATH .. "/shunt_" .. s[".name"] .. "_host",
-					group = cfg_group,
-					resolved_group = resolved_group,
-					serve_expired = s.smartdns_serve_expired or "",
-					force_ipv4 = s.smartdns_force_ipv4 or "0",
-					doms = r_doms,
-					geosite = r_geosite
-				}
-				table.insert(split_rules_list, rdata)
-				split_rules_map[s[".name"]] = rdata
 				log(string.format("  - Sing-Box/Xray分流规则(%s)使用分组：%s", rdata.remarks, resolved_group))
 			else
 				log(string.format("  - Sing-Box/Xray分流规则(%s)使用分组：%s", s.remarks or s[".name"], (_node_id == "_direct" and (LOCAL_GROUP or "默认")) or (_node_id == "_blackhole" and "屏蔽") or (REMOTE_GROUP or "默认")))
@@ -583,14 +582,15 @@ if IS_SHUNT_NODE and not only_global then
 				log("  - 解析[分流节点] Geosite 失败！[" .. out .. "]")
 			end
 		end
-		if SPLIT_SHUNT == "1" then
-			for _, rdata in ipairs(split_rules_list) do
-				if rdata.geosite ~= "" then
-					resolve(rdata.geosite, rdata.host_file)
-				end
+		for _, rdata in ipairs(split_rules_list) do
+			if rdata.geosite ~= "" then
+				resolve(rdata.geosite, rdata.host_file)
 			end
-			if ok then
-				local claimed = {}
+		end
+		if ok then
+			local claimed = {}
+			for k, v in pairs(seen_shunt_domain) do claimed[k] = v end
+			if SPLIT_SHUNT == "1" then
 				for _, rdata in ipairs(split_rules_list) do
 					if is_file_nonzero(rdata.host_file) then
 						local kept = {}
@@ -608,11 +608,35 @@ if IS_SHUNT_NODE and not only_global then
 						end
 					end
 				end
+			else
+				local kept_direct, kept_proxy, kept_black = {}, {}, {}
+				for _, rdata in ipairs(split_rules_list) do
+					local target_kept = (rdata.node_id == "_direct" and kept_direct)
+						or (rdata.node_id == "_blackhole" and kept_black)
+						or kept_proxy
+					if is_file_nonzero(rdata.host_file) then
+						for line in io.lines(rdata.host_file) do
+							local d = clean_domain_line(line)
+							if d and not claimed[d] then
+								claimed[d] = true
+								target_kept[#target_kept + 1] = d
+							end
+						end
+					end
+				end
+				local function append_kept(dest, items)
+					if #items > 0 then
+						local fo = io.open(dest, "a")
+						if fo then
+							for i = 1, #items do fo:write(items[i] .. "\n") end
+							fo:close()
+						end
+					end
+				end
+				append_kept(shunt_direct_host, kept_direct)
+				append_kept(shunt_proxy_host,  kept_proxy)
+				append_kept(shunt_black_host,  kept_black)
 			end
-		else
-			resolve(geosite_direct_arg, shunt_direct_host)
-			resolve(geosite_proxy_arg,  shunt_proxy_host)
-			resolve(geosite_black_arg,  shunt_black_host)
 		end
 		if ok then
 			log("  - 解析[分流节点] Geosite 完成")
@@ -702,7 +726,7 @@ end
 if DEFAULT_DNS_GROUP then
 	local domain_rules_str = "domain-rules /./ -nameserver " .. DEFAULT_DNS_GROUP
 	if DEFAULT_DNS_GROUP == REMOTE_GROUP then
-		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no -no-serve-expired" .. get_remote_rule_extra()
+		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no" .. get_remote_rule_extra()
 		domain_rules_str = domain_rules_str .. ((not (only_global and IS_SHUNT_NODE) and NO_PROXY_IPV6 == "1") and " -address #6" or "")
 	elseif DEFAULT_DNS_GROUP == LOCAL_GROUP then
 		domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
@@ -723,10 +747,10 @@ if CHN_LIST ~= "0" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 	elseif CHN_LIST == "proxy" then
 		local sets = { "#4:" .. setflag .. "psw_chn" }
 		if NO_PROXY_IPV6 == "1" then
-			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none -no-serve-expired%s -address #6 %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s -address #6 %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 		else
 			table.insert(sets, "#6:" .. setflag .. "psw_chn6")
-			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none -no-serve-expired%s -d no %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+			table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s -d no %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 		end
 		log(string.format("  - 中国域名表(chnlist)使用分组：%s", REMOTE_GROUP or "默认"))
 	end
@@ -808,10 +832,10 @@ if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
 	local domain_set_name = "psw-gfwlist"
 	local sets = { "#4:" .. setflag .. "psw_gfw" }
 	if NO_PROXY_IPV6 == "1" then
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none -no-serve-expired%s -address #6 %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s -address #6 %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	else
 		table.insert(sets, "#6:" .. setflag .. "psw_gfw6")
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none -no-serve-expired%s -d no %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s -d no %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	end
 	log(string.format("  - 防火墙域名表(gfwlist)使用分组：%s", REMOTE_GROUP or "默认"))
 end
@@ -821,10 +845,10 @@ if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
 	local domain_set_name = "psw-proxylist"
 	local sets = { "#4:" .. setflag .. "psw_black" }
 	if NO_PROXY_IPV6 == "1" then
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none -no-serve-expired%s -address #6 %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s -address #6 %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	else
 		table.insert(sets, "#6:" .. setflag .. "psw_black6")
-		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none -no-serve-expired%s -d no %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
+		table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s -d no %s %s", domain_set_name, REMOTE_GROUP, get_remote_rule_extra(), set_type, table.concat(sets, ",")))
 	end
 	log(string.format("  - 代理域名表(blacklist)使用分组：%s", REMOTE_GROUP or "默认"))
 end
@@ -873,6 +897,12 @@ if #config_lines > 0 then
 	f_out:close()
 end
 
+api.remove(SMARTDNS_CONF)
 fs.symlink(TMP_CONF_FILE, SMARTDNS_CONF)
-sys.call(string.format('echo "conf-file %s" >> /etc/smartdns/custom.conf', string.gsub(SMARTDNS_CONF, "passwall", "passwall*")))
+sys.call("mkdir -p /etc/smartdns && touch /etc/smartdns/custom.conf")
+local conf_line = string.format("conf-file %s", string.gsub(SMARTDNS_CONF, "passwall", "passwall*"))
+if sys.call(string.format('grep -q "%s" /etc/smartdns/custom.conf', conf_line)) ~= 0 then
+	sys.call('sed -i "/passwall/d" /etc/smartdns/custom.conf >/dev/null 2>&1')
+	sys.call(string.format('echo "%s" >> /etc/smartdns/custom.conf', conf_line))
+end
 log("  - SmartDNS (规则组沙盒模式) 已作为上游启动！")
