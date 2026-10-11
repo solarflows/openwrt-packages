@@ -893,7 +893,7 @@ filter_node() {
 }
 
 insert_fast_return_rules() {
-	[ "$FORK_OPTIMIZE" != "1" ] && return
+	[ "$NFT_OPTIMIZE" != "1" ] && return
 	local chain h handles
 	for chain in "PSW_OUTPUT_MANGLE" "PSW_OUTPUT_MANGLE_V6" "PSW_OUTPUT_NAT"; do
 		nft list chain "$NFTABLE_NAME" "$chain" >/dev/null 2>&1 || continue
@@ -916,7 +916,7 @@ insert_fast_return_rules() {
 
 filter_direct_node_list() {
 	[ ! -s "$TMP_PATH/direct_node_list" ] && {
-		[ "$FORK_OPTIMIZE" = "1" ] && insert_fast_return_rules
+		insert_fast_return_rules
 		return
 	}
 	local _is_tproxy
@@ -996,7 +996,6 @@ filter_direct_node_list() {
 			end
 			f:close()
 		'
-		insert_fast_return_rules
 	else
 		awk '!seen[$0]++' "$TMP_PATH/direct_node_list" | while read -r _node_id; do
 			filter_node "$_node_id" TCP "$_is_tproxy"
@@ -1004,6 +1003,7 @@ filter_direct_node_list() {
 			unset _node_id
 		done
 	fi
+	insert_fast_return_rules
 }
 
 del_script_mwan3() {
@@ -1072,7 +1072,7 @@ update_wan_sets() {
 
 set_tproxy_sysctl() {
 	local rp_val=0
-	[ "$FORK_OPTIMIZE" = "1" ] && rp_val=2
+	[ "$NFT_OPTIMIZE" = "1" ] && rp_val=2
 	# Disable IPv4 rp_filter for TPROXY compatibility, or use loose mode (2) when optimized
 	sysctl -w net.ipv4.conf.all.rp_filter=$rp_val >/dev/null 2>&1
 	sysctl -w net.ipv4.conf.default.rp_filter=$rp_val >/dev/null 2>&1
@@ -1312,7 +1312,7 @@ add_firewall_rule() {
 	nft "flush chain $NFTABLE_NAME PSW_MANGLE"
 	nft "add rule $NFTABLE_NAME PSW_MANGLE ip daddr @$NFTSET_LAN counter return"
 	nft "add rule $NFTABLE_NAME PSW_MANGLE ip daddr @$NFTSET_VPS counter return"
-	[ "$FORK_OPTIMIZE" != "1" ] && nft "add rule $NFTABLE_NAME PSW_MANGLE ct direction reply counter return"
+	[ "$NFT_OPTIMIZE" != "1" ] && nft "add rule $NFTABLE_NAME PSW_MANGLE ct direction reply counter return"
 
 	nft "add chain $NFTABLE_NAME PSW_OUTPUT_MANGLE"
 	nft "flush chain $NFTABLE_NAME PSW_OUTPUT_MANGLE"
@@ -1320,7 +1320,7 @@ add_firewall_rule() {
 	nft "add rule $NFTABLE_NAME PSW_OUTPUT_MANGLE ip daddr @$NFTSET_VPS counter return"
 	[ "${USE_BLOCK_LIST}" = "1" ] && nft_rule_dual "PSW_OUTPUT_MANGLE" "ip daddr" "$NFTSET_BLOCK" "counter reject"
 	[ "${USE_DIRECT_LIST}" = "1" ] && nft_rule_dual "PSW_OUTPUT_MANGLE" "ip daddr" "$NFTSET_WHITE" "counter return"
-	if [ "$FORK_OPTIMIZE" != "1" ]; then
+	if [ "$NFT_OPTIMIZE" != "1" ]; then
 		nft "add rule $NFTABLE_NAME PSW_OUTPUT_MANGLE ct direction reply counter return"
 		nft "add rule $NFTABLE_NAME PSW_OUTPUT_MANGLE meta mark and 0xff == 0xff counter return"
 	fi
@@ -1344,7 +1344,7 @@ add_firewall_rule() {
 		nft "add rule $NFTABLE_NAME PSW_OUTPUT_NAT ip daddr @$NFTSET_VPS counter return"
 		[ "${USE_BLOCK_LIST}" = "1" ] && nft_rule_dual "PSW_OUTPUT_NAT" "ip daddr" "$NFTSET_BLOCK" "counter reject"
 		[ "${USE_DIRECT_LIST}" = "1" ] && nft_rule_dual "PSW_OUTPUT_NAT" "ip daddr" "$NFTSET_WHITE" "counter return"
-		if [ "$FORK_OPTIMIZE" != "1" ]; then
+		if [ "$NFT_OPTIMIZE" != "1" ]; then
 			nft "add rule $NFTABLE_NAME PSW_OUTPUT_NAT meta mark and 0xff == 0xff counter return"
 		fi
 	}
@@ -1383,7 +1383,7 @@ add_firewall_rule() {
 	nft "flush chain $NFTABLE_NAME PSW_MANGLE_V6"
 	nft "add rule $NFTABLE_NAME PSW_MANGLE_V6 ip6 daddr @$NFTSET_LAN6 counter return"
 	nft "add rule $NFTABLE_NAME PSW_MANGLE_V6 ip6 daddr @$NFTSET_VPS6 counter return"
-	[ "$FORK_OPTIMIZE" != "1" ] && nft "add rule $NFTABLE_NAME PSW_MANGLE_V6 ct direction reply counter return"
+	[ "$NFT_OPTIMIZE" != "1" ] && nft "add rule $NFTABLE_NAME PSW_MANGLE_V6 ct direction reply counter return"
 
 	nft "add chain $NFTABLE_NAME PSW_OUTPUT_MANGLE_V6"
 	nft "flush chain $NFTABLE_NAME PSW_OUTPUT_MANGLE_V6"
@@ -1391,7 +1391,7 @@ add_firewall_rule() {
 	nft "add rule $NFTABLE_NAME PSW_OUTPUT_MANGLE_V6 ip6 daddr @$NFTSET_VPS6 counter return"
 	[ "${USE_BLOCK_LIST}" = "1" ] && nft_rule_dual "PSW_OUTPUT_MANGLE_V6" "ip6 daddr" "$NFTSET_BLOCK6" "counter reject"
 	[ "${USE_DIRECT_LIST}" = "1" ] && nft_rule_dual "PSW_OUTPUT_MANGLE_V6" "ip6 daddr" "$NFTSET_WHITE6" "counter return"
-	if [ "$FORK_OPTIMIZE" != "1" ]; then
+	if [ "$NFT_OPTIMIZE" != "1" ]; then
 		nft "add rule $NFTABLE_NAME PSW_OUTPUT_MANGLE_V6 ct direction reply counter return"
 		nft "add rule $NFTABLE_NAME PSW_OUTPUT_MANGLE_V6 meta mark and 0xff == 0xff counter return"
 	fi
@@ -1452,7 +1452,7 @@ add_firewall_rule() {
 
 		if [ -n "$NODE" ] && ([ -n "${LOCALHOST_TCP_PROXY_MODE}" ] || [ -n "${LOCALHOST_UDP_PROXY_MODE}" ]); then
 			[ -n "$DNS_REDIRECT_PORT" ] && {
-				if [ "$FORK_OPTIMIZE" = "1" ]; then
+				if [ "$NFT_OPTIMIZE" = "1" ]; then
 					nft "add rule $NFTABLE_NAME nat_output oif lo meta l4proto { tcp, udp } th dport 53 counter redirect to :$DNS_REDIRECT_PORT comment \"PSW_DNS\""
 				else
 					nft "add rule $NFTABLE_NAME nat_output meta l4proto udp oif lo udp dport 53 counter redirect to :$DNS_REDIRECT_PORT comment \"PSW_DNS\""
@@ -1651,10 +1651,10 @@ add_firewall_rule() {
 
 	if [ "$FORK_OPTIMIZE" = "1" ]; then
 		filter_direct_node_list > /dev/null 2>&1
-		insert_fast_return_rules
 	else
 		filter_direct_node_list > /dev/null 2>&1 &
 	fi
+	insert_fast_return_rules
 
 	nft "insert rule $NFTABLE_NAME mangle_output meta skgid $DIRECT_GID counter return comment \"PSW_DIRECT\""
 	nft "insert rule $NFTABLE_NAME nat_output meta skgid $DIRECT_GID counter return comment \"PSW_DIRECT\""

@@ -196,10 +196,9 @@ end
 
 if not REMOTE_GROUP or REMOTE_GROUP == "nil" then
 	REMOTE_GROUP = "passwall_proxy"
-	if REMOTE_DNS then
-		REMOTE_DNS = REMOTE_DNS:gsub("#", ":")
-	end
-	sys.call('sed -i "/passwall/d" /etc/smartdns/custom.conf >/dev/null 2>&1')
+end
+if REMOTE_DNS then
+	REMOTE_DNS = REMOTE_DNS:gsub("#", ":")
 end
 
 local force_https_soa = api.uci_get_c("@global[0]", "force_https_soa") or 0
@@ -284,7 +283,7 @@ end
 if DEFAULT_DNS_GROUP then
 	local domain_rules_str = "domain-rules /./ -nameserver " .. DEFAULT_DNS_GROUP
 	if DEFAULT_DNS_GROUP == REMOTE_GROUP then
-		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no -no-serve-expired" .. get_remote_rule_extra()
+		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no" .. get_remote_rule_extra()
 		domain_rules_str = domain_rules_str .. " -address " .. ((only_global and IS_SHUNT_NODE) and "-6" or (NO_PROXY_IPV6 == "1" and "#6" or "-6"))
 	elseif DEFAULT_DNS_GROUP == LOCAL_GROUP then
 		domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
@@ -519,9 +518,7 @@ if USE_PROXY_LIST == "1" and is_file_nonzero(file_proxy_host) then
 		string.format("domain-set -name %s -file %s", domain_set_name, file_proxy_host)
 	}
 	local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
-	domain_rules_str = domain_rules_str .. " -speed-check-mode none"
-	domain_rules_str = domain_rules_str .. " -no-serve-expired"
-	domain_rules_str = domain_rules_str .. " -no-ip-alias"
+	domain_rules_str = domain_rules_str .. " -speed-check-mode none" .. get_remote_rule_extra()
 	local sets = {
 		"#4:" .. setflag .. "psw_black"
 	}
@@ -543,9 +540,7 @@ if USE_GFW_LIST == "1" and is_file_nonzero(RULES_PATH .. "/gfwlist") then
 		string.format("domain-set -name %s -file %s", domain_set_name, RULES_PATH .. "/gfwlist")
 	}
 	local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
-	domain_rules_str = domain_rules_str .. " -speed-check-mode none"
-	domain_rules_str = domain_rules_str .. " -no-serve-expired"
-	domain_rules_str = domain_rules_str .. " -no-ip-alias"
+	domain_rules_str = domain_rules_str .. " -speed-check-mode none" .. get_remote_rule_extra()
 	local sets = {
 		"#4:" .. setflag .. "psw_gfw"
 	}
@@ -583,7 +578,7 @@ if CHN_LIST ~= "0" and is_file_nonzero(RULES_PATH .. "/chnlist") then
 	--回中国模式
 	if CHN_LIST == "proxy" then
 		local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
-		domain_rules_str = domain_rules_str .. " -speed-check-mode none -no-serve-expired" .. get_remote_rule_extra()
+		domain_rules_str = domain_rules_str .. " -speed-check-mode none" .. get_remote_rule_extra()
 		local sets = {
 			"#4:" .. setflag .. "psw_chn"
 		}
@@ -729,13 +724,15 @@ if IS_SHUNT_NODE and not only_global then
 		tmp_lines = {
 			string.format("domain-set -name %s -file %s", domain_set_name, shunt_direct_host)
 		}
-		local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
-		domain_rules_str = domain_rules_str .. " -speed-check-mode none -no-serve-expired" .. get_remote_rule_extra()
-		local sets = {
-			"#4:" .. setflag .. "psw_shunt",
-			"#6:" .. setflag .. "psw_shunt6"
-		}
-		domain_rules_str = domain_rules_str .. " -address -6 -d no " .. set_type .. " " .. table.concat(sets, ",")
+		local sets = (CHN_LIST == "direct")
+			and { "#4:" .. setflag .. "psw_chn", "#6:" .. setflag .. "psw_chn6" }
+			or  { "#4:" .. setflag .. "psw_white", "#6:" .. setflag .. "psw_white6" }
+		local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s%s",
+			domain_set_name,
+			LOCAL_GROUP and ("-nameserver " .. LOCAL_GROUP) or "",
+			set_type,
+			table.concat(sets, ","),
+			LOCAL_EXTEND_ARG ~= "" and (" " .. LOCAL_EXTEND_ARG) or "")
 		table.insert(tmp_lines, domain_rules_str)
 		insert_array_after(config_lines, tmp_lines, "#--1")
 	end
@@ -746,12 +743,16 @@ if IS_SHUNT_NODE and not only_global then
 			string.format("domain-set -name %s -file %s", domain_set_name, shunt_proxy_host)
 		}
 		local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
-		domain_rules_str = domain_rules_str .. " -speed-check-mode none -no-serve-expired" .. get_remote_rule_extra()
+		domain_rules_str = domain_rules_str .. " -speed-check-mode none" .. get_remote_rule_extra()
 		local sets = {
-			"#4:" .. setflag .. "psw_shunt",
-			"#6:" .. setflag .. "psw_shunt6"
+			"#4:" .. setflag .. "psw_shunt"
 		}
-		domain_rules_str = domain_rules_str .. " -address -6 -d no " .. set_type .. " " .. table.concat(sets, ",")
+		if NO_PROXY_IPV6 == "1" then
+			domain_rules_str = domain_rules_str .. " -address #6 " .. set_type .. " " .. table.concat(sets, ",")
+		else
+			table.insert(sets, "#6:" .. setflag .. "psw_shunt6")
+			domain_rules_str = domain_rules_str .. " -address -6 -d no " .. set_type .. " " .. table.concat(sets, ",")
+		end
 		table.insert(tmp_lines, domain_rules_str)
 		insert_array_after(config_lines, tmp_lines, "#--2")
 	end
@@ -759,16 +760,9 @@ if IS_SHUNT_NODE and not only_global then
 	if is_file_nonzero(shunt_black_host) then
 		local domain_set_name = "psw-shunt-black"
 		tmp_lines = {
-			string.format("domain-set -name %s -file %s", domain_set_name, shunt_black_host)
+			string.format("domain-set -name %s -file %s", domain_set_name, shunt_black_host),
+			string.format('domain-rules /domain-set:%s/ -a #', domain_set_name)
 		}
-		local domain_rules_str = string.format('domain-rules /domain-set:%s/ -nameserver %s', domain_set_name, REMOTE_GROUP)
-		domain_rules_str = domain_rules_str .. " -speed-check-mode none -no-serve-expired" .. get_remote_rule_extra()
-		local sets = {
-			"#4:" .. setflag .. "psw_shunt",
-			"#6:" .. setflag .. "psw_shunt6"
-		}
-		domain_rules_str = domain_rules_str .. " -address -6 -d no " .. set_type .. " " .. table.concat(sets, ",")
-		table.insert(tmp_lines, domain_rules_str)
 		insert_array_after(config_lines, tmp_lines, "#--3")
 	end
 end
@@ -788,6 +782,12 @@ if DEFAULT_DNS_GROUP then
 	log(string.format("  - 默认 DNS 分组：%s", DEFAULT_DNS_GROUP))
 end
 
+api.remove(SMARTDNS_CONF)
 fs.symlink(TMP_CONF_FILE, SMARTDNS_CONF)
-sys.call(string.format('echo "conf-file %s" >> /etc/smartdns/custom.conf', string.gsub(SMARTDNS_CONF, "passwall", "passwall*")))
+sys.call("mkdir -p /etc/smartdns && touch /etc/smartdns/custom.conf")
+local conf_line = string.format("conf-file %s", string.gsub(SMARTDNS_CONF, "passwall", "passwall*"))
+if sys.call(string.format('grep -q "%s" /etc/smartdns/custom.conf', conf_line)) ~= 0 then
+	sys.call('sed -i "/passwall/d" /etc/smartdns/custom.conf >/dev/null 2>&1')
+	sys.call(string.format('echo "%s" >> /etc/smartdns/custom.conf', conf_line))
+end
 log("  - SmartDNS已作为Dnsmasq上游，如果你自行配置了错误的DNS流程，将会导致域名(直连/代理)分流失效！！！")
