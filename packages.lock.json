@@ -21,11 +21,6 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "2de5aee7a4c704a5b689fdab47b97a18ad11c1a2"
-      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
@@ -66,6 +61,11 @@
         "branch": null,
         "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
       },
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+        "branch": null,
+        "commit": "445af53fbee6e00fa6efc0ae33f8b2854df65500"
+      },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
@@ -79,7 +79,7 @@
       "lucky": {
         "repo": "https://github.com/gdy666/luci-app-lucky",
         "branch": null,
-        "commit": "711076e315a8a62674f78b3d8f8e2aa93f2147e1"
+        "commit": "6e1daaca98ff8819e5a4a52beacf3fc770668a17"
       },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
@@ -89,17 +89,17 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "e026e2e4c6aba3cca2eea0e95fb2bf89e2b8ee0e"
+        "commit": "975ff1601959e939a75cef0ede2a1a62560af912"
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "50c43140b9be0344c2e6b883079a1885b147099d"
       },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "6fb711fed018a04030ffae4976030b7079c9a489"
-      },
-      "luci-app-argon-config": {
-        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
-        "branch": null,
-        "commit": "445af53fbee6e00fa6efc0ae33f8b2854df65500"
+        "commit": "a855effe82552e22cefc973cdd5af175c9364414"
       }
     }
   }
