@@ -36,21 +36,21 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `arp-scan` | arp-scan 基于arping的局域网扫描工具 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`25ad600`](https://github.com/immortalwrt/packages/commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `mt798x` |
 | `cdnspeedtest` | cdnspeedtest CloudFlare CDN 测速 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`25ad600`](https://github.com/immortalwrt/packages/commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `main`, `mt798x`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`bd40245`](https://github.com/sbwml/luci-app-mosdns/commit/bd40245303cd0ba56804d49eed5dbc4be2a082ca)) | `main`, `mt798x`, `qualcommax`, `qt6` |
-| `luci-app-argon-config` | luci-app-argon-conf | [jerrykuku/luci-app-argon-config](https://github.com/jerrykuku/luci-app-argon-config) ([`3f844c4`](https://github.com/jerrykuku/luci-app-argon-config/commit/3f844c467ce5075e2b0dd61ebf7271640eb08da2)) | `mt798x`, `qualcommax` |
+| `luci-app-argon-config` | luci-app-argon-conf | [jerrykuku/luci-app-argon-config](https://github.com/jerrykuku/luci-app-argon-config) ([`445af53`](https://github.com/jerrykuku/luci-app-argon-config/commit/445af53fbee6e00fa6efc0ae33f8b2854df65500)) | `mt798x`, `qualcommax` |
 | `luci-app-cloudflarespeedtest` | CloudflareSpeedtest Cloudflare Speedtest 插件 | [stevenjoezhang/luci-app-cloudflarespeedtest](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest) ([`aebbcbd`](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest/commit/aebbcbd686d61e0c9a0c44456d65bc5144395e01)) | `mt798x`, `qualcommax` |
 | `luci-app-ddnsto` | luci-app-ddnsto | [linkease/ddnsto-openwrt-package](https://github.com/linkease/ddnsto-openwrt-package) ([`1e884dd`](https://github.com/linkease/ddnsto-openwrt-package/commit/1e884ddab9135d2a42d73cedd98de606b8a6907c)) | `mt798x`, `qualcommax` |
 | `luci-app-dnsfilter` | dnsfilter 基于dnsmasq的去广告程序 | [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter) ([`3a49542`](https://github.com/kiddin9/luci-app-dnsfilter/commit/3a49542e566d8a95cb81b664a05aae29e1f534cf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
-| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`46f35a2`](https://github.com/solarflows/openwrt-passwall/commit/46f35a2e1b297e6130b805763496fa167bbe1563)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`e026e2e`](https://github.com/solarflows/openwrt-passwall/commit/e026e2e4c6aba3cca2eea0e95fb2bf89e2b8ee0e)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-passwall2` | 规范化 PKG_RELEASE: 统一 release 为整数规范 | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) ([`2de5aee`](https://github.com/Openwrt-Passwall/openwrt-passwall2/commit/2de5aee7a4c704a5b689fdab47b97a18ad11c1a2)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-smartdns` | SmartDNS | [pymumu/luci-app-smartdns](https://github.com/pymumu/luci-app-smartdns) ([`581e5e8`](https://github.com/pymumu/luci-app-smartdns/commit/581e5e816d92d3a663b1b2e331e3f21685968cf1)) | `mt798x`, `qualcommax` |
 | `luci-app-taskplan` | TaskPlan 定时任务计划管理器 | [sirpdboy/luci-app-taskplan](https://github.com/sirpdboy/luci-app-taskplan) ([`babd67a`](https://github.com/sirpdboy/luci-app-taskplan/commit/babd67a496a592ad9bd625fbc08db804cff45ab9)) | `mt798x`, `qualcommax` |
 | `luci-app-wechatpush` | wechatpush 全能推送 | [tty228/luci-app-wechatpush](https://github.com/tty228/luci-app-wechatpush) ([`e7d4d49`](https://github.com/tty228/luci-app-wechatpush/commit/e7d4d49b14f3755039cc236130afa7cfc65b1e09)) | `main`, `mt798x` |
 | `luci-app-zerotier` | luci-app-zerotier | [zhengmz/luci-app-zerotier](https://github.com/zhengmz/luci-app-zerotier) ([`e35ead5`](https://github.com/zhengmz/luci-app-zerotier/commit/e35ead533d78f58203126693accd04f0d83c7f4b)) | `mt798x` |
 | `luci-theme-argon` | luci-theme-argon | [solarflows/luci-theme-argon](https://github.com/solarflows/luci-theme-argon) ([`7327e1b`](https://github.com/solarflows/luci-theme-argon/commit/7327e1b6f9f3ab40288a583ca561b96152d53e64)) | `main`, `mt798x`, `qt6` |
-| `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`095c8bb`](https://github.com/gdy666/luci-app-lucky/commit/095c8bb418d893deccec33591446e957aa02f52f)) | `main`, `mt798x`, `qualcommax` |
+| `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`711076e`](https://github.com/gdy666/luci-app-lucky/commit/711076e315a8a62674f78b3d8f8e2aa93f2147e1)) | `main`, `mt798x`, `qualcommax` |
 | `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`1af0a5c`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/1af0a5c4fb3a227201683b64d32f61c65db9be72)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`4be700d`](https://github.com/pymumu/openwrt-smartdns/commit/4be700dc3366275605a2a1996865d83ea9bb9a18)) | `mt798x` |
-| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`8b43768`](https://github.com/openwrt/packages//commit/8b437684c720c31c177f1544b5be735b62bac29d)) | `mt798x` |
+| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`6fb711f`](https://github.com/openwrt/packages//commit/6fb711fed018a04030ffae4976030b7079c9a489)) | `mt798x` |
 | `wrtbwmon` | wrtbwmon | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) ([`ec9ef10`](https://github.com/padavanonly/immortalwrt-mt798x-24.10/commit/ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8)) | `mt798x` |
 | `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`7932e2a`](https://github.com/coolsnowwolf/packages/commit/7932e2af2573b98932fa3aa7d3f3129fbe7fa5de)) | `mt798x` |
 
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-10-11 17:14
+**最近更新**: 2026-10-12 03:59
 
 ## 🙏 致谢
 

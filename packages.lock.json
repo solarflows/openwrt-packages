@@ -66,10 +66,10 @@
         "branch": null,
         "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
       },
-      "luci-app-argon-config": {
-        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "3f844c467ce5075e2b0dd61ebf7271640eb08da2"
+        "commit": "7932e2af2573b98932fa3aa7d3f3129fbe7fa5de"
       },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
@@ -79,7 +79,7 @@
       "lucky": {
         "repo": "https://github.com/gdy666/luci-app-lucky",
         "branch": null,
-        "commit": "095c8bb418d893deccec33591446e957aa02f52f"
+        "commit": "711076e315a8a62674f78b3d8f8e2aa93f2147e1"
       },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
@@ -89,17 +89,17 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "46f35a2e1b297e6130b805763496fa167bbe1563"
+        "commit": "e026e2e4c6aba3cca2eea0e95fb2bf89e2b8ee0e"
       },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "8b437684c720c31c177f1544b5be735b62bac29d"
+        "commit": "6fb711fed018a04030ffae4976030b7079c9a489"
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
         "branch": null,
-        "commit": "7932e2af2573b98932fa3aa7d3f3129fbe7fa5de"
+        "commit": "445af53fbee6e00fa6efc0ae33f8b2854df65500"
       }
     }
   }
