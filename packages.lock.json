@@ -181,10 +181,10 @@
         "branch": null,
         "commit": "d45e61be490962325d2da11ce34346d1adc857c4"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "luci-app-openclash": {
+        "repo": "https://github.com/vernesong/OpenClash",
         "branch": null,
-        "commit": "2de5aee7a4c704a5b689fdab47b97a18ad11c1a2"
+        "commit": "e553e82e01c697aefbe1555261a503f425e00ccd"
       },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
@@ -279,7 +279,7 @@
       "luci-app-iperf": {
         "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "843a7f89cdde10656faaf11441c17beba2b83f19"
+        "commit": "a6868bf2633dbf9871f6f057924b139582fa46fe"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
@@ -289,7 +289,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "6fb711fed018a04030ffae4976030b7079c9a489"
+        "commit": "a855effe82552e22cefc973cdd5af175c9364414"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -299,12 +299,12 @@
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "440b0a47ea2100aac61022147b0459af08eba9f6"
+        "commit": "5003317787cc9a0d47fd4d2569ad8f4c195f46b4"
       },
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "51a3c711ad06d7731a911401391aa7f4c1fce901"
+        "commit": "bece182ee8d07dc3a51e48e788a1dba930764ae1"
       },
       "openwrt-nezha": {
         "repo": "https://github.com/Erope/openwrt_nezha",
@@ -316,11 +316,6 @@
         "branch": null,
         "commit": "7fcf9e87dc75f7c28c74e09504a4efa0a2db3c92"
       },
-      "luci-app-openclash": {
-        "repo": "https://github.com/vernesong/OpenClash",
-        "branch": null,
-        "commit": "e553e82e01c697aefbe1555261a503f425e00ccd"
-      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
@@ -329,7 +324,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "e026e2e4c6aba3cca2eea0e95fb2bf89e2b8ee0e"
+        "commit": "975ff1601959e939a75cef0ede2a1a62560af912"
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "50c43140b9be0344c2e6b883079a1885b147099d"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",

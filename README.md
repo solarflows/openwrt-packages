@@ -39,7 +39,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `filebrowser` | filebrowser 文件管理器 | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) ([`25ad600`](https://github.com/immortalwrt/packages//commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `main`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`bd40245`](https://github.com/sbwml/luci-app-mosdns/commit/bd40245303cd0ba56804d49eed5dbc4be2a082ca)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `homeproxy` | HomeProxy Tianling Shen主导的FQ | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) ([`98a6ad9`](https://github.com/immortalwrt/homeproxy/commit/98a6ad9e71484528008ff435694fd107591f3a1d)) | `main`, `qt6` |
-| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`6fb711f`](https://github.com/openwrt/packages/commit/6fb711fed018a04030ffae4976030b7079c9a489)) | `main`, `qt6` |
+| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`a855eff`](https://github.com/openwrt/packages/commit/a855effe82552e22cefc973cdd5af175c9364414)) | `main`, `qt6` |
 | `istore` | linkease 易有云官方软件(易有云ddnsto,linkshare) | [linkease/istore](https://github.com/linkease/istore) ([`a97ace3`](https://github.com/linkease/istore/commit/a97ace34f2da358a015b094d326bba2697697f2e)) | `main`, `qt6` |
 | `libtorrent-rasterbar` | libtorrent-rasterbar | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`25ad600`](https://github.com/immortalwrt/packages/commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `main`, `qt6` |
 | `luci-app-advanced` | advanced 配置文件级别的设置修改插件 | [sirpdboy/luci-app-advanced](https://github.com/sirpdboy/luci-app-advanced) ([`6a5adf2`](https://github.com/sirpdboy/luci-app-advanced/commit/6a5adf2c962e9130c973b038ffbc4e46fb018d17)) | `main`, `qt6` |
@@ -57,15 +57,15 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-filebrowser` | luci-app-filebrowser | [immortalwrt/luci/](https://github.com/immortalwrt/luci/) ([`6d4e767`](https://github.com/immortalwrt/luci//commit/6d4e76757f4b6eb3ee4da74a97a8edecef3c481e)) | `main`, `qt6` |
 | `luci-app-homebridge` | homebridge 米家的智能家居到Apple HomeKit的桥接 | [shanglanxin/luci-app-homebridge](https://github.com/shanglanxin/luci-app-homebridge) ([`91cc402`](https://github.com/shanglanxin/luci-app-homebridge/commit/91cc4028fed3080f7b6c6b1e3b1ef3feb75fd1df)) | `main`, `qt6` |
 | `luci-app-ikoolproxy` | ikoolproxy 广告过滤 | [1wrt/luci-app-ikoolproxy](https://github.com/1wrt/luci-app-ikoolproxy) ([`85f663c`](https://github.com/1wrt/luci-app-ikoolproxy/commit/85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5)) | `main`, `qt6` |
-| `luci-app-iperf` | iperf 测速软件的luci界面 | [Ysurac/openmptcprouter-feeds](https://github.com/Ysurac/openmptcprouter-feeds) ([`843a7f8`](https://github.com/Ysurac/openmptcprouter-feeds/commit/843a7f89cdde10656faaf11441c17beba2b83f19)) | `main`, `qt6` |
+| `luci-app-iperf` | iperf 测速软件的luci界面 | [Ysurac/openmptcprouter-feeds](https://github.com/Ysurac/openmptcprouter-feeds) ([`a6868bf`](https://github.com/Ysurac/openmptcprouter-feeds/commit/a6868bf2633dbf9871f6f057924b139582fa46fe)) | `main`, `qt6` |
 | `luci-app-mmconfig` | mmconfig 3G/LTE 解调器设置 | [erdoukki/luci-app-mmconfig](https://github.com/erdoukki/luci-app-mmconfig) ([`1b4fa94`](https://github.com/erdoukki/luci-app-mmconfig/commit/1b4fa94b3e0e6a06d2fde59f4e07032dce62db01)) | `main`, `qt6` |
 | `luci-app-modeminfo` | modeminfo 3G/LTE 解调器信息 | [4IceG/luci-app-modeminfo](https://github.com/4IceG/luci-app-modeminfo) ([`cf80a0c`](https://github.com/4IceG/luci-app-modeminfo/commit/cf80a0c876db67bbd0d19b54fa7f4b197d989fcd)) | `main`, `qt6` |
 | `luci-app-msd_lite` | msd_lite 新一代IPTV转发 | [ximiTech/luci-app-msd_lite](https://github.com/ximiTech/luci-app-msd_lite) ([`d44eac8`](https://github.com/ximiTech/luci-app-msd_lite/commit/d44eac82ac4f59540bfe468161c30134c93d7c7f)) | `main`, `qt6` |
 | `luci-app-netdata` | netdata | [sirpdboy/luci-app-netdata](https://github.com/sirpdboy/luci-app-netdata) ([`f6bce58`](https://github.com/sirpdboy/luci-app-netdata/commit/f6bce58ba4870d4317e43b1ce39d438fca8d9b6e)) | `main`, `qt6` |
 | `luci-app-nodogsplash` | nodogsplash 无WIFIDOG实现WIFI认证 | [tty228/luci-app-nodogsplash](https://github.com/tty228/luci-app-nodogsplash) ([`d45e61b`](https://github.com/tty228/luci-app-nodogsplash/commit/d45e61be490962325d2da11ce34346d1adc857c4)) | `main`, `qt6` |
 | `luci-app-openclash` | openclash OpenWRT的Clash | [vernesong/OpenClash](https://github.com/vernesong/OpenClash) ([`e553e82`](https://github.com/vernesong/OpenClash/commit/e553e82e01c697aefbe1555261a503f425e00ccd)) | `main`, `qt6` |
-| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`e026e2e`](https://github.com/solarflows/openwrt-passwall/commit/e026e2e4c6aba3cca2eea0e95fb2bf89e2b8ee0e)) | `main`, `mt798x`, `qualcommax`, `qt6` |
-| `luci-app-passwall2` | 规范化 PKG_RELEASE: 统一 release 为整数规范 | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) ([`2de5aee`](https://github.com/Openwrt-Passwall/openwrt-passwall2/commit/2de5aee7a4c704a5b689fdab47b97a18ad11c1a2)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`975ff16`](https://github.com/solarflows/openwrt-passwall/commit/975ff1601959e939a75cef0ede2a1a62560af912)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `luci-app-passwall2` | 规范化 PKG_RELEASE: 统一 release 为整数规范 | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) ([`50c4314`](https://github.com/Openwrt-Passwall/openwrt-passwall2/commit/50c43140b9be0344c2e6b883079a1885b147099d)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-poweroff` | poweroff 关机插件 | [esirplayground/luci-app-poweroff](https://github.com/esirplayground/luci-app-poweroff) ([`af21d41`](https://github.com/esirplayground/luci-app-poweroff/commit/af21d4145f169bcbcf6fbfb30aeed5c927bf0fd3)) | `main`, `qt6` |
 | `luci-app-pushbot` | pushbot 全能推送 | [zzsj0928/luci-app-pushbot](https://github.com/zzsj0928/luci-app-pushbot) ([`d52f746`](https://github.com/zzsj0928/luci-app-pushbot/commit/d52f746df1daa3ecfabb59b6a61e6b4a4ff09f20)) | `qt6` |
 | `luci-app-rtorrent` | rtorrent OpenWRT的rTorrent客户端 | [wolandmaster/luci-app-rtorrent](https://github.com/wolandmaster/luci-app-rtorrent) ([`dce154a`](https://github.com/wolandmaster/luci-app-rtorrent/commit/dce154aa557cb24d24be329d19cd15707e626d30)) | `main`, `qt6` |
@@ -88,8 +88,8 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `lucky` | lucky 大吉多种功能结合体 | [sirpdboy/luci-app-lucky](https://github.com/sirpdboy/luci-app-lucky) ([`31f0680`](https://github.com/sirpdboy/luci-app-lucky/commit/31f068051de9798c0fb8f3e1d8e32310b4063e5d)) | `qt6` |
 | `msd_lite` | msd_lite | [ximiTech/msd_lite](https://github.com/ximiTech/msd_lite) ([`c03c400`](https://github.com/ximiTech/msd_lite/commit/c03c4008c69d92c218644ee5a3b9a750982c59ef)) | `main`, `qt6` |
 | `my-diy` | my-diy | [hyy-666/my-diy](https://github.com/hyy-666/my-diy) ([`eb8ed29`](https://github.com/hyy-666/my-diy/commit/eb8ed29394698e828535868664b3ba4ba9ee8524)) | `qt6` |
-| `nas-packages` | linkease 易有云 nas-packages | [linkease/nas-packages](https://github.com/linkease/nas-packages) ([`51a3c71`](https://github.com/linkease/nas-packages/commit/51a3c711ad06d7731a911401391aa7f4c1fce901)) | `main`, `qt6` |
-| `nas-packages-luci` | linkease 易有云 nas-packages-luci | [linkease/nas-packages-luci](https://github.com/linkease/nas-packages-luci) ([`440b0a4`](https://github.com/linkease/nas-packages-luci/commit/440b0a47ea2100aac61022147b0459af08eba9f6)) | `main`, `qt6` |
+| `nas-packages` | linkease 易有云 nas-packages | [linkease/nas-packages](https://github.com/linkease/nas-packages) ([`bece182`](https://github.com/linkease/nas-packages/commit/bece182ee8d07dc3a51e48e788a1dba930764ae1)) | `main`, `qt6` |
+| `nas-packages-luci` | linkease 易有云 nas-packages-luci | [linkease/nas-packages-luci](https://github.com/linkease/nas-packages-luci) ([`5003317`](https://github.com/linkease/nas-packages-luci/commit/5003317787cc9a0d47fd4d2569ad8f4c195f46b4)) | `main`, `qt6` |
 | `natter` | Hyy2001X 软件库 | [Hyy2001X/AutoBuild-Packages](https://github.com/Hyy2001X/AutoBuild-Packages) ([`276d594`](https://github.com/Hyy2001X/AutoBuild-Packages/commit/276d594e7ed7d3d3e3bf572ff0334ace300f2645)) | `main`, `qt6` |
 | `ngrokc` | ngrokc c语言实现的ngrok | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`25ad600`](https://github.com/immortalwrt/packages/commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `main`, `qt6` |
 | `OpenAppFilter` | OpenAppFilter 内核级应用过滤 | [destan19/OpenAppFilter](https://github.com/destan19/OpenAppFilter) ([`7fcf9e8`](https://github.com/destan19/OpenAppFilter/commit/7fcf9e87dc75f7c28c74e09504a4efa0a2db3c92)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-10-12 03:59
+**最近更新**: 2026-10-12 20:48
 
 ## 🙏 致谢
 
