@@ -176,7 +176,7 @@ if REMOTE_DNS then
 	REMOTE_DNS = REMOTE_DNS:gsub("#", ":")
 end
 
-local SANDBOX_GROUP = "passwall"
+local SANDBOX_GROUP = "passwall_" .. FLAG
 local force_https_soa = api.uci_get_c("@global[0]", "force_https_soa") or 0
 local proxy_server_name = "psw-proxy-server"
 
@@ -190,9 +190,9 @@ if local_domain then
 end
 
 local dnsmasq_lease = api.uci_get_c("dhcp.@dnsmasq[0].leasefile") or "/tmp/dhcp.leases"
-local odhcpd_lease = api.uci_get_c("dhcp.odhcpd.leasefile") or "/tmp/hosts/odhcpd"
-if not fs.access(odhcpd_lease) and fs.access("/tmp/hosts/odhcpd") then
-	odhcpd_lease = "/tmp/hosts/odhcpd"
+local odhcpd_lease = api.uci_get_c("dhcp.odhcpd.leasefile")
+if not odhcpd_lease or odhcpd_lease == "" then
+	odhcpd_lease = fs.access("/tmp/odhcpd.leases") and "/tmp/odhcpd.leases" or "/tmp/hosts/odhcpd"
 end
 
 -- 基础绑定与服务配置（使用端口绑定规则组沙盒，零污染 SmartDNS 默认组与 15354 直连回查端口）
@@ -202,13 +202,30 @@ config_lines = {
 	tonumber(LISTEN_PORT) ~= 0 and ("bind " .. listen_address .. " -group " .. SANDBOX_GROUP .. (NO_RULE_ADDR == "1" and " -no-rule-addr" or "")) or "",
 	tonumber(LISTEN_PORT) ~= 0 and ("bind-tcp " .. listen_address .. " -group " .. SANDBOX_GROUP .. (NO_RULE_ADDR == "1" and " -no-rule-addr" or "")) or "",
 	(tonumber(LOCAL_PORT) ~= 0 and LOCAL_GROUP) and "bind [::]:" .. LOCAL_PORT .. "@lo -group " .. LOCAL_GROUP or "",
+	(tonumber(LOCAL_PORT) ~= 0 and LOCAL_GROUP) and "bind-tcp [::]:" .. LOCAL_PORT .. "@lo -group " .. LOCAL_GROUP or "",
+	tonumber(force_https_soa) == 1 and "force-qtype-SOA 65" or "force-qtype-SOA -,65",
+	"server 223.5.5.5 -bootstrap-dns",
 	(local_domain and local_domain ~= "") and ("local-domain " .. local_domain) or "",
 	"dnsmasq-lease-file " .. dnsmasq_lease,
 	(odhcpd_lease and odhcpd_lease ~= "") and ("odhcpd-lease-file " .. odhcpd_lease) or "",
 	"hosts-file /tmp/hosts/*",
-	"server 223.5.5.5 -bootstrap-dns -exclude-default-group",
+	is_file_nonzero("/etc/hosts") and "hosts-file /etc/hosts" or "",
 	DNS_MODE == "socks" and string.format("proxy-server socks5://%s -name %s", REMOTE_PROXY_SERVER, proxy_server_name) or ""
 }
+
+if DNS_REDIRECT then
+	local hosts = {}
+	api.uci:foreach("dhcp", "host", function(s)
+		if datatypes.hostname(s.name or "") and datatypes.ip4addr(s.ip or "") then
+			hosts[#hosts + 1] = s.ip .. " " .. s.name
+		end
+	end)
+
+	local hosts_file = FLAG_PATH .. "/dhcp-static-hosts"
+	if fs.writefile(hosts_file, table.concat(hosts, "\n") .. "\n") and #hosts > 0 then
+		table.insert(config_lines, string.format("hosts-file %q", hosts_file))
+	end
+end
 
 -- 注册代理上游服务器组 (REMOTE_GROUP)
 if DNS_MODE == "socks" then
@@ -735,10 +752,6 @@ end
 table.insert(config_lines, "")
 table.insert(config_lines, "# ── PassWall 端口级独立规则组沙盒: " .. SANDBOX_GROUP .. " ──")
 table.insert(config_lines, "group-begin " .. SANDBOX_GROUP)
-table.insert(config_lines, tonumber(force_https_soa) == 1 and "force-qtype-SOA 65" or "force-qtype-SOA -,65")
-if is_file_nonzero("/etc/hosts") then
-	table.insert(config_lines, "hosts-file /etc/hosts")
-end
 
 -- (7.1) 默认托底 DNS (最先声明，优先级最低)
 local DEFAULT_DNS_GROUP = (USE_DEFAULT_DNS == "direct" and LOCAL_GROUP) or (USE_DEFAULT_DNS == "remote" and REMOTE_GROUP)
