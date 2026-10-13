@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-passwall
 PKG_VERSION:=26.10.4
-PKG_RELEASE:=11
+PKG_RELEASE:=13
 PKG_PO_VERSION:=$(PKG_VERSION)
 
 PKG_CONFIG_DEPENDS:= \
@@ -166,7 +166,7 @@ define Package/$(PKG_NAME)/postinst
 	}
 }
 rm -f $${IPKG_INSTROOT}/usr/share/passwall/rules/*.nft
-rm -rf $${IPKG_INSTROOT}/tmp/etc/passwall_tmp
+rm -f $${IPKG_INSTROOT}/tmp/etc/passwall_tmp/passwall_version $${IPKG_INSTROOT}/tmp/etc/passwall_tmp/binver_*
 exit 0
 endef
 
