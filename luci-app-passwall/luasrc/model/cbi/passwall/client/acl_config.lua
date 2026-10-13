@@ -1,5 +1,4 @@
 local api = require "luci.passwall.api"
-local datatypes = api.datatypes
 api.set_default_cbi()
 
 m = Map()
@@ -134,10 +133,10 @@ sources.validate = function(self, value, t)
 				flag = true
 			end
 		end
-		if flag == false and datatypes.macaddr(v) then
+		if flag == false and api.datatypes.macaddr(v) then
 			flag = true
 		end
-		if flag == false and datatypes.ip4addr(v) then
+		if flag == false and api.datatypes.ip4addr(v) then
 			flag = true
 		end
 		if flag == false and api.iprange(v) then
