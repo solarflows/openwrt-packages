@@ -39,7 +39,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `filebrowser` | filebrowser 文件管理器 | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) ([`25ad600`](https://github.com/immortalwrt/packages//commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `main`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`bd40245`](https://github.com/sbwml/luci-app-mosdns/commit/bd40245303cd0ba56804d49eed5dbc4be2a082ca)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `homeproxy` | HomeProxy Tianling Shen主导的FQ | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) ([`98a6ad9`](https://github.com/immortalwrt/homeproxy/commit/98a6ad9e71484528008ff435694fd107591f3a1d)) | `main`, `qt6` |
-| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`c0e71d2`](https://github.com/openwrt/packages/commit/c0e71d28ba557e1e7c91388d2c9b9205fdb583d9)) | `main`, `qt6` |
+| `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`d4a141e`](https://github.com/openwrt/packages/commit/d4a141e3f71aba1bbc4258bb5346541b13e16569)) | `main`, `qt6` |
 | `istore` | linkease 易有云官方软件(易有云ddnsto,linkshare) | [linkease/istore](https://github.com/linkease/istore) ([`a97ace3`](https://github.com/linkease/istore/commit/a97ace34f2da358a015b094d326bba2697697f2e)) | `main`, `qt6` |
 | `libtorrent-rasterbar` | libtorrent-rasterbar | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`25ad600`](https://github.com/immortalwrt/packages/commit/25ad600a90980bed1ee76a212f9a5e42b499bb62)) | `main`, `qt6` |
 | `luci-app-advanced` | advanced 配置文件级别的设置修改插件 | [sirpdboy/luci-app-advanced](https://github.com/sirpdboy/luci-app-advanced) ([`6a5adf2`](https://github.com/sirpdboy/luci-app-advanced/commit/6a5adf2c962e9130c973b038ffbc4e46fb018d17)) | `main`, `qt6` |
@@ -85,7 +85,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-theme-darkmatter` | luci-theme-darkmatter | [apollo-ng/luci-theme-darkmatter](https://github.com/apollo-ng/luci-theme-darkmatter) ([`017fe1f`](https://github.com/apollo-ng/luci-theme-darkmatter/commit/017fe1f448465c7b141036bb62ef7a3517c312b7)) | `main`, `qt6` |
 | `luci-theme-neobird` | luci-theme-neobird | [thinktip/luci-theme-neobird](https://github.com/thinktip/luci-theme-neobird) ([`22ebcf0`](https://github.com/thinktip/luci-theme-neobird/commit/22ebcf0d09c4ec50594b11c1b5419d474970aaa2)) | `main`, `qt6` |
 | `luci-wifidog` | wifidog WIFIDOG的luci管理界面WIFI认证 | [walkingsky/luci-wifidog](https://github.com/walkingsky/luci-wifidog) ([`3a2fdff`](https://github.com/walkingsky/luci-wifidog/commit/3a2fdff5584ef8ecb143f0ad254f2972ec5f2f2d)) | `main`, `qt6` |
-| `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`6e1daac`](https://github.com/gdy666/luci-app-lucky/commit/6e1daaca98ff8819e5a4a52beacf3fc770668a17)) | `main`, `mt798x`, `qualcommax` |
+| `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`c9100e5`](https://github.com/gdy666/luci-app-lucky/commit/c9100e5d886a1454845bc1d9ed4d6c019061f785)) | `main`, `mt798x`, `qualcommax` |
 | `msd_lite` | msd_lite | [ximiTech/msd_lite](https://github.com/ximiTech/msd_lite) ([`c03c400`](https://github.com/ximiTech/msd_lite/commit/c03c4008c69d92c218644ee5a3b9a750982c59ef)) | `main`, `qt6` |
 | `my-diy` | my-diy | [hyy-666/my-diy](https://github.com/hyy-666/my-diy) ([`b942c81`](https://github.com/hyy-666/my-diy/commit/b942c8131ebb30dd7fa57437fe8fe1c191bf88cd)) | `main` |
 | `nas-packages` | linkease 易有云 nas-packages | [linkease/nas-packages](https://github.com/linkease/nas-packages) ([`bece182`](https://github.com/linkease/nas-packages/commit/bece182ee8d07dc3a51e48e788a1dba930764ae1)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-10-13 18:47
+**最近更新**: 2026-10-14 03:15
 
 ## 🙏 致谢
 
