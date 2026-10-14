@@ -16,11 +16,6 @@
         "branch": null,
         "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf"
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "6e1daaca98ff8819e5a4a52beacf3fc770668a17"
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -30,6 +25,11 @@
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
         "commit": "654f20f52a1a17a8ea129ea2f95731e8bf2fdc10"
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "492309ea672c9c40725e2a72cb4d4f1625d9ee53"
       },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
@@ -81,25 +81,25 @@
         "branch": null,
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "c9100e5d886a1454845bc1d9ed4d6c019061f785"
+      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "1af0a5c4fb3a227201683b64d32f61c65db9be72"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "492309ea672c9c40725e2a72cb4d4f1625d9ee53"
-      },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "c0e71d28ba557e1e7c91388d2c9b9205fdb583d9"
+        "commit": "d4a141e3f71aba1bbc4258bb5346541b13e16569"
       },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "3cfeea42e66253d728773ec457e18282f5d9f6fd"
+        "commit": "3d95b298933ef0ece9d007ed8de2185e39416979"
       }
     }
   }
