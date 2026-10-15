@@ -4,6 +4,7 @@ local var = api.get_args(arg)
 local FLAG = var["-FLAG"]
 local SMARTDNS_CONF = var["-SMARTDNS_CONF"]
 local LOCAL_GROUP = var["-LOCAL_GROUP"]
+local LOCAL_DNS = var["-LOCAL_DNS"]
 local VPS_GROUP = var["-VPS_GROUP"]
 if not VPS_GROUP or VPS_GROUP == "" or VPS_GROUP == "nil" then
 	VPS_GROUP = LOCAL_GROUP
@@ -252,40 +253,12 @@ end
 -- 注册代理上游服务器组 (REMOTE_GROUP)
 if DNS_MODE == "socks" then
 	for w in string.gmatch(REMOTE_DNS, '[^|]+') do
-		local server_dns = api.trim(w)
-		local server_param
-		local dnsType = string.match(server_dns, "^(.-)://")
-		dnsType = dnsType and string.lower(dnsType) or nil
-		local dnsServer = string.match(server_dns, "://(.+)") or server_dns
-
-		if dnsType and dnsType ~= "" and dnsType ~= "udp" then
-			if dnsType == "tcp" then
-				server_param = "server-tcp " .. dnsServer
-			elseif dnsType == "tls" then
-				server_param = "server-tls " .. dnsServer
-			elseif dnsType == "quic" then
-				server_param = "server-quic " .. dnsServer
-			elseif dnsType == "https" or dnsType == "h3" then
-				local http_host = nil
-				local url = w
-				local s = api.split(w, ",")
-				if s and #s > 1 then
-					url = s[1]
-					local dns_ip = s[2]
-					local host_port = api.get_domain_from_url(s[1])
-					if host_port and #host_port > 0 then
-						http_host = host_port
-						local s2 = api.split(host_port, ":")
-						if s2 and #s2 > 1 then http_host = s2[1] end
-						url = url:gsub(http_host, dns_ip)
-					end
-				end
-				server_dns = url
-				if http_host then server_dns = server_dns .. " -http-host " .. http_host end
-				server_param = (dnsType == "https" and "server-https " or "server-h3 ") .. server_dns
-			end
-		else
-			server_param = "server " .. dnsServer
+		-- 协议和默认端口由 SmartDNS 根据原始 URL 识别。
+		local dns = api.split(api.trim(w), ",")
+		local server_param = "server " .. api.trim(dns[1])
+		if dns[2] and dns[2] ~= "" then
+			-- 保留 URL 中的域名，固定连接 IP 交给 SmartDNS 处理，避免手动替换影响 SNI 和 HTTP Host。
+			server_param = server_param .. " -host-ip " .. api.trim(dns[2]):gsub("^%[(.*)%]$", "%1")
 		end
 
 		if not api.is_local_ip(w) then
@@ -318,6 +291,126 @@ if VPS_GROUP == "passwall_vps" then
 	table.insert(config_lines, "force-qtype-SOA 65")
 	local vps_sets = { "#4:" .. setflag .. "psw_vps", "#6:" .. setflag .. "psw_vps6" }
 	table.insert(config_lines, string.format("domain-rules /./ -nameserver passwall_vps -speed-check-mode none -d no %s %s", set_type, table.concat(vps_sets, ",")))
+	table.insert(config_lines, "group-end")
+end
+
+-- 注册自研卓越级智能双轨决策组 (passwall_auto)
+local AUTO_GROUP = "passwall_auto"
+if USE_DEFAULT_DNS == "auto" and only_global ~= 1 then
+	table.insert(config_lines, "")
+	table.insert(config_lines, "# ── 智能双轨自适应决策组 (" .. AUTO_GROUP .. ") ──")
+
+	-- 1. 复制/添加国内直连主用服务器，打上 -whitelist-ip 标记
+	local local_servers = {}
+	if LOCAL_DNS and LOCAL_DNS ~= "" then
+		for endpoint in string.gmatch(LOCAL_DNS, "[^, ]+") do
+			local s_endpoint = api.trim(endpoint)
+			if s_endpoint ~= "" then
+				local proto, addr = s_endpoint:match("^(%w+)://(.+)$")
+				proto = proto and proto:lower() or "udp"
+				addr = addr or s_endpoint
+				local host, port = addr:match("^(.-)#(%d+)$")
+				if host then
+					if host:find(":", 1, true) and not host:find("[", 1, true) then host = "[" .. host .. "]" end
+					addr = host .. ":" .. port
+				elseif addr:find(":", 1, true) and not addr:find("[", 1, true) and not addr:find(":", addr:find(":") + 1, true) then
+					-- ipv4:port or host:port
+				elseif addr:find(":", 1, true) and not addr:find("[", 1, true) then
+					addr = "[" .. addr .. "]"
+				end
+				table.insert(local_servers, "server " .. (proto == "tcp" and "tcp://" or "") .. addr)
+			end
+		end
+	end
+	if #local_servers == 0 then
+		api.uci:foreach("smartdns", "server", function(s)
+			if s.enabled ~= "0" and (not LOCAL_GROUP or s.server_group == LOCAL_GROUP) and s.ip and s.ip ~= "" then
+				local addr = s.ip
+				if not addr:find("://", 1, true) then
+					if addr:find(":", 1, true) and not addr:find("[", 1, true) then
+						addr = "[" .. addr .. "]"
+					end
+					if s.port and s.port ~= "" then addr = addr .. ":" .. s.port end
+				end
+				table.insert(local_servers, "server " .. addr)
+			end
+		end)
+	end
+	if #local_servers == 0 then
+		table.insert(local_servers, "server 223.5.5.5")
+		table.insert(local_servers, "server 119.29.29.29")
+	end
+	for _, s_param in ipairs(local_servers) do
+		table.insert(config_lines, s_param .. " -group " .. AUTO_GROUP .. " -exclude-default-group -whitelist-ip")
+	end
+
+	-- 2. 复制远程代理后备服务器，打上 -fallback 标记并强制设置 -speed-check-mode none -d no
+	if DNS_MODE == "socks" then
+		for w in string.gmatch(REMOTE_DNS, '[^|]+') do
+			local dns = api.split(api.trim(w), ",")
+			local server_param = "server " .. api.trim(dns[1])
+			if dns[2] and dns[2] ~= "" then
+				server_param = server_param .. " -host-ip " .. api.trim(dns[2]):gsub("^%[(.*)%]$", "%1")
+			end
+			if not api.is_local_ip(w) then
+				server_param = server_param .. " -proxy " .. proxy_server_name
+			end
+			if SUBNET and SUBNET ~= "" and SUBNET ~= "0" then
+				server_param = server_param .. " -subnet " .. SUBNET
+			end
+			local auto_param = server_param .. " -group " .. AUTO_GROUP .. " -exclude-default-group -fallback -speed-check-mode none -d no"
+			if NO_PROXY_IPV6 == "1" then
+				auto_param = auto_param .. " -blacklist-ip"
+			end
+			table.insert(config_lines, auto_param)
+		end
+	else
+		local auto_param = string.format("server %s -group %s -exclude-default-group -fallback -speed-check-mode none -d no", TUN_DNS:gsub("#", ":"), AUTO_GROUP)
+		if NO_PROXY_IPV6 == "1" then
+			auto_param = auto_param .. " -blacklist-ip"
+		end
+		table.insert(config_lines, auto_param)
+	end
+
+	-- 3. 进入 passwall_auto 规则组作用域
+	table.insert(config_lines, "group-begin " .. AUTO_GROUP .. " -inherit none")
+	table.insert(config_lines, tonumber(force_https_soa) == 1 and "force-qtype-SOA 65" or "force-qtype-SOA -,65")
+
+	-- (3.1) GFW Bogus IP 与私网保留网段拦截（直接丢弃伪造结果并秒级触发 fallback）
+	local bogus_ips = {
+		"0.0.0.0/8", "127.0.0.0/8", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16",
+		"169.254.0.0/16", "::/128", "::1/128", "fc00::/7", "fe80::/10",
+		-- GFW 常见投毒伪造 IP 签名库
+		"24.114.241.77", "37.61.54.158", "46.82.174.68", "59.24.3.173", "64.33.88.161",
+		"64.33.99.11", "64.62.105.171", "64.62.107.163", "64.62.110.147", "64.94.110.11",
+		"65.104.202.252", "65.160.219.160", "66.33.105.11", "69.63.187.12", "78.16.49.15",
+		"93.46.8.89", "128.242.245.116", "159.106.121.75", "188.125.72.69", "188.125.72.70",
+		"189.163.17.60", "199.59.148.10", "200.21.225.82", "202.106.1.2", "202.181.7.85",
+		"203.98.7.65", "208.56.247.166", "209.145.54.50", "209.220.30.174", "209.36.73.33",
+		"211.137.96.205", "211.98.71.195", "213.169.251.35", "216.221.188.182", "216.234.179.13",
+		"243.185.187.39"
+	}
+	for _, bip in ipairs(bogus_ips) do
+		table.insert(config_lines, string.format("ip-rules %s -bogus-nxdomain", bip))
+	end
+
+	-- (3.2) 大陆 IP 路由白名单判定
+	if is_file_nonzero(RULES_PATH .. "/chnroute") then
+		table.insert(config_lines, string.format("ip-set -name %s -file %s", AUTO_GROUP .. "-chnroute", RULES_PATH .. "/chnroute"))
+		table.insert(config_lines, string.format("ip-rules ip-set:%s -whitelist-ip", AUTO_GROUP .. "-chnroute"))
+	end
+	if is_file_nonzero(RULES_PATH .. "/chnroute6") then
+		table.insert(config_lines, string.format("ip-set -name %s -file %s", AUTO_GROUP .. "-chnroute6", RULES_PATH .. "/chnroute6"))
+		local ip6_rule = string.format("ip-rules ip-set:%s -whitelist-ip", AUTO_GROUP .. "-chnroute6")
+		if NO_PROXY_IPV6 == "1" then
+			ip6_rule = ip6_rule .. " -blacklist-ip"
+		end
+		table.insert(config_lines, ip6_rule)
+	end
+	if NO_PROXY_IPV6 == "1" then
+		table.insert(config_lines, "ip-rules ::/0 -blacklist-ip")
+	end
+
 	table.insert(config_lines, "group-end")
 end
 
@@ -578,7 +671,7 @@ if IS_SHUNT_NODE and not only_global then
 				group = cfg_group,
 				resolved_group = resolved_group,
 				serve_expired = s.smartdns_serve_expired or "",
-				force_ipv4 = s.smartdns_force_ipv4 or "0",
+				force_ipv4 = s.smartdns_force_ipv4 or "",
 				doms = r_doms,
 				geosite = r_geosite
 			}
@@ -796,8 +889,25 @@ table.insert(config_lines, "")
 table.insert(config_lines, "# ── PassWall 端口级独立规则组沙盒: " .. SANDBOX_GROUP .. " ──")
 table.insert(config_lines, "group-begin " .. SANDBOX_GROUP .. " -inherit none")
 
+-- 动态将智能双轨/fallback解析出的境外 IP 注入PassWall代理路由集
+if USE_DEFAULT_DNS == "auto" and only_global ~= 1 then
+	if NFTFLAG == "1" then
+		local auto_sets = { "#4:" .. setflag .. "psw_gfw" }
+		if NO_PROXY_IPV6 ~= "1" then
+			table.insert(auto_sets, "#6:" .. setflag .. "psw_gfw6")
+		end
+		table.insert(config_lines, "nftset-no-speed " .. table.concat(auto_sets, ","))
+	else
+		local auto_sets = { "#4:psw_gfw" }
+		if NO_PROXY_IPV6 ~= "1" then
+			table.insert(auto_sets, "#6:psw_gfw6")
+		end
+		table.insert(config_lines, "ipset-no-speed " .. table.concat(auto_sets, ","))
+	end
+end
+
 -- (7.1) 默认托底 DNS (最先声明，优先级最低)
-local DEFAULT_DNS_GROUP = (USE_DEFAULT_DNS == "remote" and REMOTE_GROUP) or LOCAL_GROUP
+local DEFAULT_DNS_GROUP = (USE_DEFAULT_DNS == "remote" and REMOTE_GROUP) or (USE_DEFAULT_DNS == "auto" and AUTO_GROUP) or LOCAL_GROUP
 if only_global == 1 then
 	DEFAULT_DNS_GROUP = REMOTE_GROUP
 end
@@ -806,11 +916,16 @@ if DEFAULT_DNS_GROUP then
 	if DEFAULT_DNS_GROUP == REMOTE_GROUP then
 		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no" .. get_remote_rule_extra()
 		domain_rules_str = domain_rules_str .. ((not (only_global and IS_SHUNT_NODE) and NO_PROXY_IPV6 == "1") and " -address #6" or "")
+	elseif DEFAULT_DNS_GROUP == AUTO_GROUP then
+		domain_rules_str = domain_rules_str .. " -speed-check-mode none -d no" .. get_remote_rule_extra()
+		if NO_PROXY_IPV6 == "1" then
+			domain_rules_str = domain_rules_str .. " -address #6"
+		end
 	elseif DEFAULT_DNS_GROUP == LOCAL_GROUP then
 		domain_rules_str = domain_rules_str .. (LOCAL_EXTEND_ARG ~= "" and " " .. LOCAL_EXTEND_ARG or "")
 	end
 	table.insert(config_lines, domain_rules_str)
-	log(string.format("  - 默认 DNS 分组：%s", DEFAULT_DNS_GROUP))
+	log(string.format("  - 默认 DNS 分组：%s", DEFAULT_DNS_GROUP == AUTO_GROUP and "智能双轨决策(passwall_auto)" or DEFAULT_DNS_GROUP))
 end
 
 -- (7.2) 中国域名表 (chnlist)
@@ -860,6 +975,8 @@ if IS_SHUNT_NODE and not only_global then
 					end
 					if rdata.force_ipv4 == "1" then
 						extend = extend:gsub("%s*%-address%s+%S+", "") .. " -address #6"
+					elseif rdata.force_ipv4 == "0" then
+						extend = extend:gsub("%s*%-address%s+#6", "")
 					end
 					local domain_rules_str = string.format("domain-rules /domain-set:%s/ %s %s %s%s",
 						domain_set_name,
@@ -878,7 +995,14 @@ if IS_SHUNT_NODE and not only_global then
 						extra = extra:gsub("%s*%-no%-serve%-expired", "")
 						expired_rule = " -no-serve-expired"
 					end
-					local rule_ipv6 = (rdata.force_ipv4 == "1" or NO_PROXY_IPV6 == "1") and " -address #6" or " -d no"
+					local rule_ipv6
+					if rdata.force_ipv4 == "1" then
+						rule_ipv6 = " -address #6"
+					elseif rdata.force_ipv4 == "0" then
+						rule_ipv6 = " -d no"
+					else
+						rule_ipv6 = (NO_PROXY_IPV6 == "1") and " -address #6" or " -d no"
+					end
 					table.insert(config_lines, string.format("domain-rules /domain-set:%s/ -nameserver %s -speed-check-mode none%s%s%s %s %s",
 						domain_set_name, REMOTE_GROUP, expired_rule, extra, rule_ipv6, set_type, table.concat(shunt_target_sets, ",")))
 				end
@@ -980,16 +1104,12 @@ if #config_lines > 0 then
 	f_out:close()
 end
 
-api.remove(SMARTDNS_CONF)
-fs.symlink(TMP_CONF_FILE, SMARTDNS_CONF)
-sys.call("mkdir -p /etc/smartdns && touch /etc/smartdns/custom.conf")
-local conf_line = string.format("conf-file %s", string.gsub(SMARTDNS_CONF, "passwall", "passwall*"))
-if sys.call(string.format('grep -q "%s" /etc/smartdns/custom.conf', conf_line)) ~= 0 then
-	sys.call('sed -i "/passwall/d" /etc/smartdns/custom.conf >/dev/null 2>&1')
-	sys.call(string.format('echo "%s" >> /etc/smartdns/custom.conf', conf_line))
-end
-if DNS_REDIRECT then
-	log("  - SmartDNS (规则组沙盒模式) 已作为系统 DNS 重定向直接承载！")
-else
-	log("  - SmartDNS (规则组沙盒模式) 已作为上游启动！")
-end
+	if SMARTDNS_CONF and SMARTDNS_CONF ~= "" and SMARTDNS_CONF ~= TMP_CONF_FILE then
+		api.remove(SMARTDNS_CONF)
+		fs.symlink(TMP_CONF_FILE, SMARTDNS_CONF)
+	end
+	if DNS_REDIRECT then
+		log("  - SmartDNS 已作为系统 DNS 重定向直接承载！")
+	else
+		log("  - SmartDNS 已作为上游启动！")
+	end

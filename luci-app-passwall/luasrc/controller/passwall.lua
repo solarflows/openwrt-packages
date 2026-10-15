@@ -73,6 +73,7 @@ function index()
 	entry({"admin", "services", appname, "get_redir_log"}, call("get_redir_log")).leaf = true
 	entry({"admin", "services", appname, "get_socks_log"}, call("get_socks_log")).leaf = true
 	entry({"admin", "services", appname, "get_chinadns_log"}, call("get_chinadns_log")).leaf = true
+	entry({"admin", "services", appname, "get_smartdns_log"}, call("get_smartdns_log")).leaf = true
 	entry({"admin", "services", appname, "get_log"}, call("get_log")).leaf = true
 	entry({"admin", "services", appname, "clear_log"}, call("clear_log")).leaf = true
 	entry({"admin", "services", appname, "index_status"}, call("index_status")).leaf = true
@@ -315,6 +316,16 @@ function get_chinadns_log()
 	end
 end
 
+function get_smartdns_log()
+	local path = api.TMP_PATH .. "/acl/default/smartdns.log"
+	http.prepare_content("text/plain; charset=utf-8")
+	if fs.access(path) then
+		http.write(luci.sys.exec("tail -n 5000 " .. util.shellquote(path)))
+	else
+		http.write(i18n.translate("Not enabled log"))
+	end
+end
+
 function get_log()
 	-- luci.sys.exec("[ -f /tmp/log/passwall.log ] && sed '1!G;h;$!d' /tmp/log/passwall.log > /tmp/log/passwall_show.log")
 	http.write(luci.sys.exec("[ -f '/tmp/log/passwall.log' ] && cat /tmp/log/passwall.log"))
@@ -328,8 +339,10 @@ function index_status()
 	local e = {}
 	local dns_shunt = uci_get("@global[0]", "dns_shunt") or "dnsmasq"
 	if dns_shunt == "smartdns" then
-		local port = api.get_cache_var("SMARTDNS_LOCAL_PORT") or 0
-		e.dns_mode_status = (port ~= 0) and luci.sys.call("netstat -apn | grep ':%s ' >/dev/null" % port) == 0 or false
+		local config_file = api.TMP_PATH .. "/acl/default/smartdns.conf"
+		e.dns_mode_status = luci.sys.call("/bin/busybox top -bn1 | grep -v 'grep' | grep -F %s | grep 'smartdns' >/dev/null" % util.shellquote(config_file)) == 0
+	elseif dns_shunt == "smartdns-shared" then
+		e.dns_mode_status = luci.sys.call("/bin/busybox top -bn1 | grep -v 'grep' | grep 'smartdns' >/dev/null") == 0
 	elseif dns_shunt == "chinadns-ng" then
 		e.dns_mode_status = luci.sys.call("/bin/busybox top -bn1 | grep -v 'grep' | grep '%s/bin/' | grep 'default' | grep 'chinadns_ng' >/dev/null" % api.TMP_PATH) == 0
 	else
@@ -545,7 +558,7 @@ function set_node()
 		if node_protocol == "_shunt" then
 			local node_type = uci_get(section, "type")
 			local dns_shunt = uci_get(type, "dns_shunt")
-			local dns_key = (dns_shunt == "smartdns") and "smartdns_dns_mode" or "dns_mode"
+			local dns_key = (dns_shunt == "smartdns" or dns_shunt == "smartdns-shared") and "smartdns_dns_mode" or "dns_mode"
 			local dns_mode = uci_get(type, dns_key)
 			local new_dns_mode = (node_type == "Xray") and "xray" or "sing-box"
 			if dns_mode ~= new_dns_mode then
