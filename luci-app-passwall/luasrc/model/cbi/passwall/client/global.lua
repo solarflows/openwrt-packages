@@ -176,26 +176,97 @@ o.write = function(self, section, value)
 	if old and old ~= value then
 		m:set(section, "flush_set", "1")
 	end
-	if value ~= "smartdns" then
+	if value ~= "smartdns-shared" then
 		m:del(section, "group_domestic")
 	end
 	return ListValue.write(self, section, value)
 end
 if has_smartdns then
 	o:value("smartdns", "SmartDNS")
+	o:value("smartdns-shared", "SmartDNS-Shared")
 
 	o = s:taboption("DNS", Value, "group_domestic", translate("Domestic group name"))
-	o.placeholder = "local"
+	o.default = "cn"
+	o.placeholder = "cn"
 	o.rmempty = false
-	o:depends("dns_shunt", "smartdns")
-	o.description = translate("You only need to configure domestic DNS packets in SmartDNS, and fill in the domestic DNS group name here.")
-	o.validate = function(self, value, section)
-		value = api.trim(value)
-		if value == "" then
-			return nil, translatef("%s cannot be empty.", "SmartDNS " .. translate("Domestic group name"))
+	o:depends("dns_shunt", "smartdns-shared")
+	o.description = translate("You only need to configure domestic DNS in SmartDNS, and fill in the domestic DNS group name here (default: cn).")
+
+	local function bind_global_opt(opt_obj)
+		local orig_cfgvalue = opt_obj.cfgvalue
+		opt_obj.cfgvalue = function(self, section)
+			local val = m:get(section, self.option)
+			if val == nil then
+				val = m:get("@global_optimize[0]", self.option)
+			end
+			if val ~= nil then return val end
+			if orig_cfgvalue then return orig_cfgvalue(self, section) end
+			return self.default
 		end
-		return value
+		local orig_write = opt_obj.write
+		opt_obj.write = function(self, section, value)
+			if m:get("@global_optimize[0]", self.option) ~= nil then
+				m:del("@global_optimize[0]", self.option)
+			end
+			if orig_write then
+				return orig_write(self, section, value)
+			else
+				return self.map:set(section, self.option, value)
+			end
+		end
 	end
+
+	o = s:taboption("DNS", Flag, "smartdns_vps_group", translate("SmartDNS Dedicated Node Direct Group (passwall_vps)"),
+		translate("Create an independent group (passwall_vps) with clean DoH upstreams dedicated to resolving node domain names (vpslist), completely isolated from domestic ISP DNS."))
+	o.default = "1"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns-shared")
+	bind_global_opt(o)
+
+	o = s:taboption("DNS", Value, "smartdns_vps_group_custom", translate("Custom Node Direct Group Name"),
+		translate("Leave empty to use dedicated encrypted group (passwall_vps); specify a group name (e.g. cn) to reuse an existing group."))
+	o.placeholder = "passwall_vps"
+	o:depends({dns_shunt = "smartdns-shared", smartdns_vps_group = "1"})
+	bind_global_opt(o)
+
+	o = s:taboption("DNS", Flag, "smartdns_split_shunt", translate("SmartDNS Per-Rule Shunt Strategy"),
+		translate("Enable per-rule atomic domain sets and independent DNS routing/caching strategy for shunt rules."))
+	o.default = "0"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns-shared")
+	bind_global_opt(o)
+
+	o = s:taboption("DNS", ListValue, "smartdns_cache_mode", translate("SmartDNS Proxy Cache Mode"),
+		translate("Control DNS record caching for proxy domains. Shorter TTL allows fast adaptation to node switching and dynamic CDN while maintaining low latency."))
+	o:value("default", translate("Default (SmartDNS Global Policy)"))
+	o:value("300", translate("Short TTL (5 Minutes / 300s, Recommended)"))
+	o:value("60", translate("Very Short TTL (1 Minute / 60s)"))
+	o:value("nocache", translate("Disable Cache (-no-cache)"))
+	o.default = "300"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns-shared")
+	bind_global_opt(o)
+
+	o = s:taboption("DNS", Flag, "smartdns_serve_expired", translate("SmartDNS Proxy Serve Expired (Optimistic Cache)"),
+		translate("Allow proxy and shunt domains to use expired cache and revalidate in background. Greatly enhances browsing and streaming smoothness during network jitter."))
+	o.default = "1"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns-shared")
+	bind_global_opt(o)
+
+	o = s:taboption("DNS", Flag, "smartdns_no_ip_alias", translate("SmartDNS Disable IP Alias (-no-ip-alias)"),
+		translate("Ignore global ip-alias rules for proxy domain rules to prevent IP remapping from polluting PassWall routing sets."))
+	o.default = "1"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns-shared")
+	bind_global_opt(o)
+
+	o = s:taboption("DNS", Flag, "smartdns_no_rule_addr", translate("SmartDNS Skip Static Address Rules (-no-rule-addr)"),
+		translate("Skip static address / hosts rules in SmartDNS for proxy domains, preventing local hijack from intercepting proxy traffic."))
+	o.default = "1"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns-shared")
+	bind_global_opt(o)
 end
 
 o = s:taboption("DNS", ListValue, "direct_dns_mode", translate("Direct DNS") .. " " .. translate("Request protocol"))
@@ -204,6 +275,9 @@ o:value("udp", translatef("Requery DNS By %s", "UDP"))
 o:value("tcp", translatef("Requery DNS By %s", "TCP"))
 o:depends({dns_shunt = "dnsmasq"})
 o:depends({dns_shunt = "chinadns-ng"})
+if has_smartdns then
+	o:depends({dns_shunt = "smartdns"})
+end
 
 o = s:taboption("DNS", Value, "direct_dns", translate("Direct DNS"))
 o.datatype = "or(ipaddr,ipaddrport(1))"
@@ -233,7 +307,7 @@ function dns_mode_save(section)
 			local type_val = v.type
 			if type_val and (type_val == "Xray" or type_val == "sing-box") then
 				local dns_shunt_val = s.fields["dns_shunt"]:formvalue(section)
-				local dns_mode_val = (dns_shunt_val ~= "smartdns") and "dns_mode" or "smartdns_dns_mode"
+				local dns_mode_val = (dns_shunt_val ~= "smartdns" and dns_shunt_val ~= "smartdns-shared") and "dns_mode" or "smartdns_dns_mode"
 				local current_val = m:get(section, dns_mode_val) or ""
 				local new_val = (type_val == "Xray") and "xray" or "sing-box"
 
@@ -295,6 +369,7 @@ if has_smartdns then
 		o:value("xray", "Xray")
 	end
 	o:depends({ dns_shunt = "smartdns", _node_sel_shunt = "" })
+	o:depends({ dns_shunt = "smartdns-shared", _node_sel_shunt = "" })
 	o.write = function(self, section, value)
 		if value == "socks" then
 			m:del(section, "v2ray_dns_mode")
@@ -329,6 +404,7 @@ if has_smartdns then
 	o:value("https://doh.libredns.gr/dns-query,116.202.176.26")
 	o:value("https://doh.libredns.gr/ads,116.202.176.26")
 	o:depends({ dns_shunt = "smartdns", smartdns_dns_mode = "socks" })
+	o:depends({ dns_shunt = "smartdns-shared", smartdns_dns_mode = "socks" })
 	o.cfgvalue = function(self, section)
 		return m:get(section, self.option) or {"tcp://1.1.1.1"}
 	end
@@ -430,6 +506,7 @@ o.datatype = "ipaddr"
 o:depends({dns_mode = "sing-box"})
 o:depends({dns_mode = "xray"})
 o:depends("dns_shunt", "smartdns")
+o:depends("dns_shunt", "smartdns-shared")
 o:depends("_node_sel_shunt", "1")
 
 o = s:taboption("DNS", Flag, "remote_fakedns", "FakeDNS", translate("Use FakeDNS work in the domain that proxy."))
@@ -437,9 +514,11 @@ o.default = "0"
 o:depends({dns_mode = "sing-box", dns_shunt = "dnsmasq"})
 o:depends({dns_mode = "sing-box", dns_shunt = "chinadns-ng"})
 o:depends({smartdns_dns_mode = "sing-box", dns_shunt = "smartdns"})
+o:depends({smartdns_dns_mode = "sing-box", dns_shunt = "smartdns-shared"})
 o:depends({dns_mode = "xray", dns_shunt = "dnsmasq"})
 o:depends({dns_mode = "xray", dns_shunt = "chinadns-ng"})
 o:depends({smartdns_dns_mode = "xray", dns_shunt = "smartdns"})
+o:depends({smartdns_dns_mode = "xray", dns_shunt = "smartdns-shared"})
 --o:depends("_node_sel_shunt", "1")
 o.validate = function(self, value, t)
 	if value and value == "1" then
@@ -463,6 +542,7 @@ o.default = "30"
 o:depends({dns_mode = "sing-box", dns_shunt = "dnsmasq"})
 o:depends({dns_mode = "sing-box", dns_shunt = "chinadns-ng"})
 o:depends({smartdns_dns_mode = "sing-box", dns_shunt = "smartdns"})
+o:depends({smartdns_dns_mode = "sing-box", dns_shunt = "smartdns-shared"})
 
 o = s:taboption("DNS", ListValue, "chinadns_ng_default_tag", translate("Default DNS"))
 o.default = "none"
@@ -499,6 +579,7 @@ if has_smartdns then
 		.. "<li>" .. translate("Auto: Prefer mainland China IPs returned by direct DNS and fall back to remote DNS when no usable result is available.") .. "</li>"
 		.. "</ul>"
 	o:depends({dns_shunt = "smartdns", tcp_proxy_mode = "proxy", chn_list = "direct"})
+	o:depends({dns_shunt = "smartdns-shared", tcp_proxy_mode = "proxy", chn_list = "direct"})
 end
 
 o = s:taboption("DNS", Flag, "force_https_soa", translate("Force HTTPS SOA"), translate("Force queries with qtype 65 to respond with an SOA record."))
@@ -506,6 +587,7 @@ o.default = "0"
 o:depends({dns_shunt = "chinadns-ng"})
 if has_smartdns then
 	o:depends({dns_shunt = "smartdns"})
+	o:depends({dns_shunt = "smartdns-shared"})
 end
 
 o = s:taboption("DNS", Flag, "dns_redirect", translate("DNS Redirect"), translate("Force special DNS server to need proxy devices."))
@@ -654,6 +736,90 @@ o.cfgvalue = function(t, n)
 	return s
 end
 o:depends("log_chinadns_ng", "1")
+
+if has_smartdns then
+	o = s:taboption("log", Flag, "log_smartdns", translate("Enable") .. " SmartDNS " .. translate("Log"))
+	o.default = "0"
+	o.rmempty = false
+	o:depends("dns_shunt", "smartdns")
+
+	o = s:taboption("log", ListValue, "smartdns_log_level", "SmartDNS " .. translate("Log Level"))
+	o.default = "error"
+	o:value("fatal", "Fatal")
+	o:value("error", "Error")
+	o:value("warn", "Warning")
+	o:value("notice", "Notice")
+	o:value("info", "Info")
+	o:value("debug", "Debug")
+	o:depends({dns_shunt = "smartdns", log_smartdns = "1"})
+
+	o = s:taboption("log", Value, "smartdns_log_size", translate("Log Size") .. " (MB)")
+	o.default = "1"
+	o.datatype = "and(uinteger,min(1))"
+	o.rmempty = false
+	o:depends({dns_shunt = "smartdns", log_smartdns = "1"})
+
+	o = s:taboption("log", DummyValue, "_smartdns_log", translate("Log File"))
+	o.rawhtml = true
+	o.cfgvalue = function(t, n)
+		local log_file = api.TMP_PATH .. "/acl/default/smartdns.log"
+		local log_url = api.url("get_smartdns_log")
+		local s = "<code>%s</code>&nbsp;&nbsp;" % log_file
+		if api.fs.access(log_file) then
+			local btn = string.format(
+				'<input class="btn cbi-button cbi-button-apply" type="button" value="%s" onclick="window.open(\'%s\', \'_blank\')" />',
+				translate("View Log"),
+				log_url
+			)
+			s = s .. btn
+		end
+		return s
+	end
+	o:depends({dns_shunt = "smartdns", log_smartdns = "1"})
+
+	if api.fs.access("/usr/lib/smartdns_ui.so") or api.fs.access("/usr/lib/smartdns/smartdns_ui.so") then
+		o = s:taboption("log", Flag, "smartdns_ui", "SmartDNS " .. translate("Enable WebUI"))
+		o.default = "0"
+		o.rmempty = false
+		o:depends("dns_shunt", "smartdns")
+
+		o = s:taboption("log", Value, "smartdns_ui_port", translate("WebUI Port"))
+		o.default = "9880"
+		o.datatype = "range(1,65535)"
+		o.rmempty = false
+		o:depends({dns_shunt = "smartdns", smartdns_ui = "1"})
+
+		o = s:taboption("log", Value, "smartdns_ui_data_dir", translate("WebUI Database Directory"))
+		o.default = api.CACHE_PATH .. "/smartdns"
+		o.rmempty = false
+		o.validate = function(self, value, section)
+			value = api.trim(value)
+			if value:sub(1, 1) ~= "/" or value:find("%s") then
+				return nil, translate("An absolute path without spaces is required.")
+			end
+			return value
+		end
+		o:depends({dns_shunt = "smartdns", smartdns_ui = "1"})
+
+		o = s:taboption("log", Value, "smartdns_ui_log_max_age", translate("WebUI Log Retention Days"))
+		o.default = "7"
+		o.datatype = "and(uinteger,min(1))"
+		o.rmempty = false
+		o:depends({dns_shunt = "smartdns", smartdns_ui = "1"})
+
+		o = s:taboption("log", DummyValue, "_smartdns_ui_link", "WebUI")
+		o.rawhtml = true
+		o.cfgvalue = function(self, section)
+			local port = tonumber(m:get(section, "smartdns_ui_port")) or 9880
+			if port < 1 or port > 65535 or port % 1 ~= 0 then port = 9880 end
+			return string.format(
+				[[<input class="btn cbi-button cbi-button-apply" type="button" value="%s" onclick="var host = window.location.hostname; if (host.indexOf(':') !== -1 &amp;&amp; host.charAt(0) !== '[') host = '[' + host + ']'; window.open('http://' + host + ':%d', '_blank', 'noopener,noreferrer');" />]],
+				translate("Open WebUI"), port
+			)
+		end
+		o:depends({dns_shunt = "smartdns", smartdns_ui = "1"})
+	end
+end
 
 o = s:taboption("log", Flag, "advanced_log_feature", translate("Advanced log feature"), translate("For professionals only."))
 o.default = "0"
