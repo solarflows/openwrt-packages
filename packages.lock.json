@@ -31,10 +31,20 @@
         "branch": "custom",
         "commit": "679c8543bd8f4ae504858e27da9fefffa0221ebf"
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "e3788855d3cb3ddc3f4027ea2480d7c19019f033"
+      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "681b4179a3ca463c879153cad403a25707b9983e"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -89,17 +99,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "4a66c03c357333538f161bcb2588043c08673c19"
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "e3788855d3cb3ddc3f4027ea2480d7c19019f033"
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "681b4179a3ca463c879153cad403a25707b9983e"
+        "commit": "3ab13856aadb93642325a504b94ab9796fe55ee1"
       }
     }
   }
