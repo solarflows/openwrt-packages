@@ -196,11 +196,6 @@
         "branch": null,
         "commit": "e553e82e01c697aefbe1555261a503f425e00ccd"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "88d82889dca8621bee7dc97f082203c1402effaa"
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -326,10 +321,15 @@
         "branch": null,
         "commit": "4a66c03c357333538f161bcb2588043c08673c19"
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "679c8543bd8f4ae504858e27da9fefffa0221ebf"
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "24595ef82ed36724ad3a2d10caa45b518917cdaa"
+        "commit": "25a36b558b4de87b8174679952a6e96e7436fa5c"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
