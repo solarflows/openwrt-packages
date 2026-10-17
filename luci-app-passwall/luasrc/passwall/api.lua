@@ -100,10 +100,12 @@ function uci_get_c(section, option)
 end
 
 function uci_set_c(section, option, value)
+	_valid_nodes_cache = nil
 	return uci_set(c_config, section, option, value)
 end
 
 function uci_save_c(commit, apply)
+	_valid_nodes_cache = nil
 	return uci_save(uci, c_config, commit, apply)
 end
 
@@ -188,9 +190,11 @@ function get_cache_var(key)
 	return val
 end
 
-function get_new_port()
-	local cmd_format = ". /usr/share/passwall/utils.sh ; echo -n $(get_new_port %s tcp,udp)"
-	return tonumber(sys.exec(string.format(cmd_format, "auto")))
+function get_new_port(start_port, protocol)
+	start_port = tonumber(start_port) or "auto"
+	if protocol ~= "tcp" and protocol ~= "udp" then protocol = "tcp,udp" end
+	local cmd_format = ". /usr/share/passwall/utils.sh ; echo -n $(get_new_port %s %s)"
+	return tonumber(sys.exec(string.format(cmd_format, util.shellquote(tostring(start_port)), util.shellquote(protocol))))
 end
 
 function exec_call(cmd)
@@ -269,6 +273,19 @@ end
 -- 计算文件 MD5
 function md5_file(path)
 	if type(path) ~= "string" then return "" end
+	if nixio and nixio.crypto and nixio.crypto.hash and nixio.open then
+		local h = nixio.crypto.hash("md5")
+		local f = nixio.open(path, "r")
+		if f then
+			while true do
+				local chunk = f:read(4096)
+				if not chunk or #chunk == 0 then break end
+				h:update(chunk)
+			end
+			f:close()
+			return h:final()
+		end
+	end
 	local quoted = "'" .. path:gsub("'", "'\\''") .. "'"
 	local out = sys.exec("md5sum " .. quoted)
 	if not out then return "" end
@@ -278,6 +295,11 @@ end
 -- 计算字符串 MD5
 function md5_string(str)
 	if type(str) ~= "string" then return "" end
+	if nixio and nixio.crypto and nixio.crypto.hash then
+		local h = nixio.crypto.hash("md5")
+		h:update(str)
+		return h:final()
+	end
 	local quoted = "'" .. str:gsub("'", "'\\''") .. "'"
 	local out = sys.exec("printf '%s' " .. quoted .. " | md5sum")
 	if not out then return "" end
@@ -633,7 +655,25 @@ function get_domain_from_url(url)
 	return url
 end
 
-function get_valid_nodes()
+local _valid_nodes_cache = nil
+local _special_proto_trans = nil
+
+function clear_valid_nodes_cache()
+	_valid_nodes_cache = nil
+end
+
+function get_valid_nodes(force_reload)
+	if _valid_nodes_cache and not force_reload then
+		return _valid_nodes_cache
+	end
+	if not _special_proto_trans then
+		_special_proto_trans = {
+			_balancing = i18n.translatef("_balancing"),
+			_shunt = i18n.translatef("_shunt"),
+			_iface = i18n.translatef("_iface"),
+			_urltest = i18n.translatef("_urltest")
+		}
+	end
 	local show_node_info = uci_get_c("@global_other[0]", "show_node_info") or "0"
 	local nodes = {}
 	local default_nodes = {}
@@ -644,7 +684,8 @@ function get_valid_nodes()
 			local type_name = e.type
 			if e.type == "sing-box" then type_name = "Sing-Box" end
 			if e.protocol and (e.protocol == "_balancing" or e.protocol == "_shunt" or e.protocol == "_iface" or e.protocol == "_urltest") then
-				e["remark"] = trim("%s：[%s]" % {type_name .. " " .. i18n.translatef(e.protocol), e.remarks})
+				local proto_txt = _special_proto_trans[e.protocol] or i18n.translatef(e.protocol)
+				e["remark"] = trim("%s：[%s]" % {type_name .. " " .. proto_txt, e.remarks})
 				e["node_type"] = "special"
 				if not e.group or e.group == "" then
 					default_nodes[#default_nodes + 1] = e
@@ -703,6 +744,7 @@ function get_valid_nodes()
 	end)
 	for i = 1, #default_nodes do nodes[#nodes + 1] = default_nodes[i] end
 	for i = 1, #other_nodes do nodes[#nodes + 1] = other_nodes[i] end
+	_valid_nodes_cache = nodes
 	return nodes
 end
 
