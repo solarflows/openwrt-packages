@@ -26,11 +26,6 @@
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "679c8543bd8f4ae504858e27da9fefffa0221ebf"
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -40,6 +35,11 @@
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09"
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "3d6229131a40fc3417ad2d8bd9d4050458c4fd95"
       },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
@@ -81,11 +81,6 @@
         "branch": null,
         "commit": "445af53fbee6e00fa6efc0ae33f8b2854df65500"
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "d0f211716bf1f69f8a638b49023d2256749a1613"
-      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -94,12 +89,17 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "3ab13856aadb93642325a504b94ab9796fe55ee1"
+        "commit": "3ce5cebb8033b0ac8e4d314066b9e2bfc1e1b258"
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "eaa64a39191416c9e475c66d4f3b068b75582d1e"
+      },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "3d6229131a40fc3417ad2d8bd9d4050458c4fd95"
+        "commit": "db878c7c6a2b6af593f0b02281f738dad3d7670f"
       }
     }
   }
