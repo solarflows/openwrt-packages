@@ -136,11 +136,6 @@
         "branch": null,
         "commit": "b3a3f7bf55e8a20b47d3e1167f874ace2a49a4c7"
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "681b4179a3ca463c879153cad403a25707b9983e"
-      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -300,6 +295,11 @@
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
         "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "3d6229131a40fc3417ad2d8bd9d4050458c4fd95"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
