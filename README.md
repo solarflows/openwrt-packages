@@ -48,11 +48,11 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-zerotier` | luci-app-zerotier | [zhengmz/luci-app-zerotier](https://github.com/zhengmz/luci-app-zerotier) ([`e35ead5`](https://github.com/zhengmz/luci-app-zerotier/commit/e35ead533d78f58203126693accd04f0d83c7f4b)) | `mt798x` |
 | `luci-theme-argon` | luci-theme-argon | [solarflows/luci-theme-argon](https://github.com/solarflows/luci-theme-argon) ([`7327e1b`](https://github.com/solarflows/luci-theme-argon/commit/7327e1b6f9f3ab40288a583ca561b96152d53e64)) | `main`, `mt798x`, `qt6` |
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`9449a52`](https://github.com/gdy666/luci-app-lucky/commit/9449a5250c61f1aa8f16b2d8e04a9da25c26e735)) | `main`, `mt798x`, `qualcommax` |
-| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`3ce5ceb`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/3ce5cebb8033b0ac8e4d314066b9e2bfc1e1b258)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`6edb7ef`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/6edb7efcf3a9505128824ea47c1c058151e290af)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`4be700d`](https://github.com/pymumu/openwrt-smartdns/commit/4be700dc3366275605a2a1996865d83ea9bb9a18)) | `mt798x` |
-| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`7dac3ce`](https://github.com/openwrt/packages//commit/7dac3ce6a6b227671cc492a712af7430453bd0df)) | `mt798x` |
+| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`70ac3a8`](https://github.com/openwrt/packages//commit/70ac3a84406cab03865c55be84de960af815436a)) | `mt798x` |
 | `wrtbwmon` | wrtbwmon | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) ([`ec9ef10`](https://github.com/padavanonly/immortalwrt-mt798x-24.10/commit/ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8)) | `mt798x` |
-| `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`db878c7`](https://github.com/coolsnowwolf/packages/commit/db878c7c6a2b6af593f0b02281f738dad3d7670f)) | `mt798x` |
+| `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`37992e6`](https://github.com/coolsnowwolf/packages/commit/37992e691dad6d567185581903e77da4cb2192df)) | `mt798x` |
 
 > 📌 仅列出各分支中实际采集的插件，已注释/归档的不在此列。
 
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-10-19 02:57
+**最近更新**: 2026-10-19 18:14
 
 ## 🙏 致谢
 
