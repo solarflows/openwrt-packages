@@ -36,11 +36,6 @@
         "branch": null,
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09"
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "3d6229131a40fc3417ad2d8bd9d4050458c4fd95"
-      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
@@ -81,6 +76,11 @@
         "branch": null,
         "commit": "445af53fbee6e00fa6efc0ae33f8b2854df65500"
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "db878c7c6a2b6af593f0b02281f738dad3d7670f"
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -94,12 +94,12 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "eaa64a39191416c9e475c66d4f3b068b75582d1e"
+        "commit": "cccd636c2749093326edaab959627e99512b66a1"
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "db878c7c6a2b6af593f0b02281f738dad3d7670f"
+        "commit": "7dac3ce6a6b227671cc492a712af7430453bd0df"
       }
     }
   }
