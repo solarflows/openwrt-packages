@@ -6,6 +6,11 @@
         "branch": "21.02",
         "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64"
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "ad4a2261e3405ee0920744a6d92537ecd6803363"
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -20,6 +25,11 @@
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "e37ba3bd14e85c008f1bec0e6ff87b1260a1395e"
       },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
@@ -40,6 +50,11 @@
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
         "commit": "ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8"
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "ad4a2261e3405ee0920744a6d92537ecd6803363"
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
@@ -81,25 +96,10 @@
         "branch": null,
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b"
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "ad4a2261e3405ee0920744a6d92537ecd6803363"
-      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
         "commit": "6edb7efcf3a9505128824ea47c1c058151e290af"
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "e37ba3bd14e85c008f1bec0e6ff87b1260a1395e"
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "ad4a2261e3405ee0920744a6d92537ecd6803363"
       }
     }
   }
