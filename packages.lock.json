@@ -6,15 +6,20 @@
         "branch": null,
         "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf"
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "69305fef127259892ba4603e98f730f0330e5caa"
+      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
         "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "300ea00edaec392e935a83f019aa2a5053683652"
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "3f14e3ec65795583a44ca6651a2dc96137f5860e"
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
@@ -61,20 +66,15 @@
         "branch": null,
         "commit": "a5299ce0144859f47683ec3bc40805bf616f534f"
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "69305fef127259892ba4603e98f730f0330e5caa"
-      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "6edb7efcf3a9505128824ea47c1c058151e290af"
+        "commit": "049aaf472e8ce7e423299d43a516b7092a25b381"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "3f14e3ec65795583a44ca6651a2dc96137f5860e"
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "896c586a27c9a7c0b9e3d75b631965dea86b9945"
       }
     }
   }
