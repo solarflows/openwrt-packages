@@ -4,352 +4,672 @@
       "luci-theme-argon-dark-mod": {
         "repo": "https://github.com/Leo-Jo-My/luci-theme-argon-dark-mod",
         "branch": null,
-        "commit": "8d881b8fc030500604c3c81ba9a15705f904b8d6"
+        "commit": "8d881b8fc030500604c3c81ba9a15705f904b8d6",
+        "dirs": [
+          "luci-theme-argon-dark-mod"
+        ]
       },
       "luci-theme-Butterfly-dark": {
         "repo": "https://github.com/hyy-666/luci-theme-Butterfly-dark",
         "branch": null,
-        "commit": "869bf2e3625f564e6cdf4f9b3007f82134ccc206"
+        "commit": "869bf2e3625f564e6cdf4f9b3007f82134ccc206",
+        "dirs": [
+          "luci-theme-Butterfly-dark"
+        ]
       },
       "luci-theme-darkmatter": {
         "repo": "https://github.com/apollo-ng/luci-theme-darkmatter",
         "branch": null,
-        "commit": "017fe1f448465c7b141036bb62ef7a3517c312b7"
+        "commit": "017fe1f448465c7b141036bb62ef7a3517c312b7",
+        "dirs": [
+          "luci-theme-darkmatter"
+        ]
       },
       "luci-theme-argon": {
         "repo": "https://github.com/solarflows/luci-theme-argon",
         "branch": "21.02",
-        "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64"
+        "commit": "7327e1b6f9f3ab40288a583ca561b96152d53e64",
+        "dirs": [
+          "luci-theme-argon"
+        ]
       },
       "luci-theme-neobird": {
         "repo": "https://github.com/thinktip/luci-theme-neobird",
         "branch": null,
-        "commit": "22ebcf0d09c4ec50594b11c1b5419d474970aaa2"
+        "commit": "22ebcf0d09c4ec50594b11c1b5419d474970aaa2",
+        "dirs": [
+          "luci-theme-neobird"
+        ]
       },
       "luci-theme-alpha": {
         "repo": "https://github.com/derisamedia/luci-theme-alpha",
         "branch": null,
-        "commit": "16e0c038c09421236319a4cc369a1f3fc98e1ef4"
+        "commit": "16e0c038c09421236319a4cc369a1f3fc98e1ef4",
+        "dirs": [
+          "luci-theme-alpha"
+        ]
       },
       "luci-app-argon-config": {
         "repo": "https://github.com/jerrykuku/luci-app-argon-config",
         "branch": "18.06",
-        "commit": "ae293f7e8219d7c5742296f0a8e4becd26304c45"
+        "commit": "ae293f7e8219d7c5742296f0a8e4becd26304c45",
+        "dirs": [
+          "luci-app-argon-config"
+        ]
       },
       "luci-app-aliyundrive-webdav": {
         "repo": "https://github.com/messense/aliyundrive-webdav",
         "branch": null,
-        "commit": "00caff62b55ae53327f1c8824b19b1c9532cc174"
+        "commit": "00caff62b55ae53327f1c8824b19b1c9532cc174",
+        "dirs": [
+          "aliyundrive-webdav",
+          "luci-app-aliyundrive-webdav"
+        ]
       },
       "luci-app-advanced": {
         "repo": "https://github.com/sirpdboy/luci-app-advanced",
         "branch": null,
-        "commit": "6a5adf2c962e9130c973b038ffbc4e46fb018d17"
+        "commit": "6a5adf2c962e9130c973b038ffbc4e46fb018d17",
+        "dirs": [
+          "luci-app-advanced"
+        ]
       },
       "airconnect": {
         "repo": "https://github.com/sbwml/luci-app-airconnect",
         "branch": null,
-        "commit": "b0dfd0689356d634191e77a25ff4f8c92763df4a"
+        "commit": "b0dfd0689356d634191e77a25ff4f8c92763df4a",
+        "dirs": [
+          "airconnect",
+          "luci-app-airconnect"
+        ]
       },
       "luci-app-amlogic": {
         "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
-        "commit": "92e345373454636ed91e464008008068bc631ba0"
+        "commit": "92e345373454636ed91e464008008068bc631ba0",
+        "dirs": [
+          "luci-app-amlogic"
+        ]
       },
       "luci-app-autoipsetadder": {
         "repo": "https://github.com/rufengsuixing/luci-app-autoipsetadder",
         "branch": null,
-        "commit": "4e013f36fa793845a47c2f9082e486c01f9b48de"
+        "commit": "4e013f36fa793845a47c2f9082e486c01f9b48de",
+        "dirs": [
+          "luci-app-autoipsetadder"
+        ]
       },
       "luci-app-autotimeset": {
         "repo": "https://github.com/sirpdboy/luci-app-autotimeset",
         "branch": null,
-        "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9"
+        "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9",
+        "dirs": [
+          "luci-app-autotimeset"
+        ]
       },
       "luci-app-autorepeater": {
         "repo": "https://github.com/peter-tank/luci-app-autorepeater",
         "branch": null,
-        "commit": "031925ae633f0825f90946704867092a253c0af4"
+        "commit": "031925ae633f0825f90946704867092a253c0af4",
+        "dirs": [
+          "luci-app-autorepeater"
+        ]
       },
       "luci-app-beardropper": {
         "repo": "https://github.com/NateLol/luci-app-beardropper",
         "branch": null,
-        "commit": "e0280b19010f2ac8ec616b5cde429825d1466872"
+        "commit": "e0280b19010f2ac8ec616b5cde429825d1466872",
+        "dirs": [
+          "luci-app-beardropper"
+        ]
       },
       "cdnspeedtest": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747"
+        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747",
+        "dirs": [
+          "cdnspeedtest"
+        ]
       },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest",
         "branch": null,
-        "commit": "4229177d5349dda8703271e08816b6b46130630a"
-      },
-      "luci-app-dnsfilter": {
-        "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
-        "branch": null,
-        "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf"
-      },
-      "luci-app-dockerman": {
-        "repo": "https://github.com/lisaac/luci-app-dockerman",
-        "branch": null,
-        "commit": "6fd9937954e0b080bf07967182d714ea21fe7eb1"
-      },
-      "filebrowser": {
-        "repo": "https://github.com/immortalwrt/packages/",
-        "branch": null,
-        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747"
-      },
-      "luci-app-filebrowser": {
-        "repo": "https://github.com/immortalwrt/luci/",
-        "branch": "openwrt-18.06",
-        "commit": "6d4e76757f4b6eb3ee4da74a97a8edecef3c481e"
-      },
-      "luci-app-homebridge": {
-        "repo": "https://github.com/shanglanxin/luci-app-homebridge",
-        "branch": null,
-        "commit": "91cc4028fed3080f7b6c6b1e3b1ef3feb75fd1df"
-      },
-      "homeproxy": {
-        "repo": "https://github.com/immortalwrt/homeproxy",
-        "branch": null,
-        "commit": "fadaa676104f59ff6ace480a780a258d846d0aec"
-      },
-      "natter": {
-        "repo": "https://github.com/Hyy2001X/AutoBuild-Packages",
-        "branch": null,
-        "commit": "276d594e7ed7d3d3e3bf572ff0334ace300f2645"
-      },
-      "luci-app-ikoolproxy": {
-        "repo": "https://github.com/1wrt/luci-app-ikoolproxy",
-        "branch": null,
-        "commit": "85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5"
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "f9b81f382e08d8e3590f820c326cd438c663cd16"
-      },
-      "libtorrent-rasterbar": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747"
-      },
-      "app-store-ui": {
-        "repo": "https://github.com/linkease/istore-ui",
-        "branch": null,
-        "commit": "a595baefa686fdd2f5b5f64820fb1b5a38749165"
-      },
-      "geo2txt": {
-        "repo": "https://github.com/sbwml/luci-app-mosdns",
-        "branch": "v5",
-        "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca"
-      },
-      "luci-app-mmconfig": {
-        "repo": "https://github.com/erdoukki/luci-app-mmconfig",
-        "branch": null,
-        "commit": "1b4fa94b3e0e6a06d2fde59f4e07032dce62db01"
-      },
-      "luci-app-modeminfo": {
-        "repo": "https://github.com/4IceG/luci-app-modeminfo",
-        "branch": null,
-        "commit": "cf80a0c876db67bbd0d19b54fa7f4b197d989fcd"
-      },
-      "luci-app-msd_lite": {
-        "repo": "https://github.com/ximiTech/luci-app-msd_lite",
-        "branch": null,
-        "commit": "d44eac82ac4f59540bfe468161c30134c93d7c7f"
-      },
-      "msd_lite": {
-        "repo": "https://github.com/ximiTech/msd_lite",
-        "branch": null,
-        "commit": "c03c4008c69d92c218644ee5a3b9a750982c59ef"
-      },
-      "luci-app-netdata": {
-        "repo": "https://github.com/sirpdboy/luci-app-netdata",
-        "branch": null,
-        "commit": "f6bce58ba4870d4317e43b1ce39d438fca8d9b6e"
-      },
-      "ngrokc": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747"
-      },
-      "luci-app-nodogsplash": {
-        "repo": "https://github.com/tty228/luci-app-nodogsplash",
-        "branch": null,
-        "commit": "d45e61be490962325d2da11ce34346d1adc857c4"
-      },
-      "luci-app-openclash": {
-        "repo": "https://github.com/vernesong/OpenClash",
-        "branch": null,
-        "commit": "e553e82e01c697aefbe1555261a503f425e00ccd"
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "896c586a27c9a7c0b9e3d75b631965dea86b9945"
-      },
-      "pikpak-webdav": {
-        "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
-        "branch": null,
-        "commit": "c6d221969570474ce1baeee4ddf876283e7547dd"
-      },
-      "luci-app-poweroff": {
-        "repo": "https://github.com/esirplayground/luci-app-poweroff",
-        "branch": null,
-        "commit": "af21d4145f169bcbcf6fbfb30aeed5c927bf0fd3"
-      },
-      "luci-app-rtorrent": {
-        "repo": "https://github.com/wolandmaster/luci-app-rtorrent",
-        "branch": null,
-        "commit": "dce154aa557cb24d24be329d19cd15707e626d30"
-      },
-      "luci-app-smartdns": {
-        "repo": "https://github.com/pymumu/luci-app-smartdns",
-        "branch": "lede",
-        "commit": "cddf8cd04869ffd69c8aa9b01eb58b10f7ba41ca"
-      },
-      "smartdns": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747"
-      },
-      "luci-app-smartinfo": {
-        "repo": "https://github.com/huajijam/luci-app-smartinfo",
-        "branch": null,
-        "commit": "abff7c8d23718ecc19ec24e47627cc77d0b3af6e"
-      },
-      "luci-app-sms-tool": {
-        "repo": "https://github.com/4IceG/luci-app-sms-tool",
-        "branch": null,
-        "commit": "4cea4135074bc5c93826139127cc7f0f4d2acbdf"
-      },
-      "sms-tool": {
-        "repo": "https://github.com/4IceG/packages",
-        "branch": null,
-        "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34"
-      },
-      "luci-app-wolplus": {
-        "repo": "https://github.com/sundaqiang/openwrt-packages",
-        "branch": null,
-        "commit": "dd17da787894c2f3b5bd22c79367495e63f058ae"
-      },
-      "luci-app-syncthing": {
-        "repo": "https://github.com/immortalwrt/luci",
-        "branch": "openwrt-18.06",
-        "commit": "6d4e76757f4b6eb3ee4da74a97a8edecef3c481e"
-      },
-      "luci-app-tasks": {
-        "repo": "https://github.com/jjm2473/openwrt-apps",
-        "branch": null,
-        "commit": "e2e8e742f5ce3265445d0540dae2fa4c60976db5"
-      },
-      "luci-app-tailscaler": {
-        "repo": "https://github.com/zijieKwok/luci-app-tailscale1",
-        "branch": null,
-        "commit": "abc4530f1d01d4c8b515248a014a83b55ed319ef"
-      },
-      "luci-app-tcpdump": {
-        "repo": "https://github.com/KFERMercer/luci-app-tcpdump",
-        "branch": null,
-        "commit": "958650ee4dc57b5d7b987ace47c608aaf179dce0"
-      },
-      "luci-app-tinyfilemanager": {
-        "repo": "https://github.com/muink/luci-app-tinyfilemanager",
-        "branch": null,
-        "commit": "899bbbeefe7169da5ac18228158c0ed0219d7259"
-      },
-      "xmurp-ua": {
-        "repo": "https://github.com/CHN-beta/xmurp-ua",
-        "branch": null,
-        "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d"
-      },
-      "lucky": {
-        "repo": "https://github.com/sirpdboy/luci-app-lucky",
-        "branch": null,
-        "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d"
-      },
-      "luci-app-pushbot": {
-        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
-        "branch": null,
-        "commit": "d52f746df1daa3ecfabb59b6a61e6b4a4ff09f20"
+        "commit": "4229177d5349dda8703271e08816b6b46130630a",
+        "dirs": [
+          "luci-app-cloudflarespeedtest"
+        ]
       },
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "323888e9d89fe15971e561299e56d430d29ccbed"
+        "commit": "323888e9d89fe15971e561299e56d430d29ccbed",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
+      "luci-app-dnsfilter": {
+        "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
+        "branch": null,
+        "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf",
+        "dirs": [
+          "luci-app-dnsfilter"
+        ]
+      },
+      "luci-app-dockerman": {
+        "repo": "https://github.com/lisaac/luci-app-dockerman",
+        "branch": null,
+        "commit": "6fd9937954e0b080bf07967182d714ea21fe7eb1",
+        "dirs": [
+          "luci-app-dockerman"
+        ]
+      },
+      "filebrowser": {
+        "repo": "https://github.com/immortalwrt/packages/",
+        "branch": null,
+        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747",
+        "dirs": [
+          "filebrowser"
+        ]
+      },
+      "luci-app-filebrowser": {
+        "repo": "https://github.com/immortalwrt/luci/",
+        "branch": "openwrt-18.06",
+        "commit": "6d4e76757f4b6eb3ee4da74a97a8edecef3c481e",
+        "dirs": [
+          "luci-app-filebrowser"
+        ]
+      },
+      "luci-app-homebridge": {
+        "repo": "https://github.com/shanglanxin/luci-app-homebridge",
+        "branch": null,
+        "commit": "91cc4028fed3080f7b6c6b1e3b1ef3feb75fd1df",
+        "dirs": [
+          "luci-app-homebridge"
+        ]
+      },
+      "homeproxy": {
+        "repo": "https://github.com/immortalwrt/homeproxy",
+        "branch": null,
+        "commit": "fadaa676104f59ff6ace480a780a258d846d0aec",
+        "dirs": [
+          "homeproxy"
+        ]
+      },
+      "natter": {
+        "repo": "https://github.com/Hyy2001X/AutoBuild-Packages",
+        "branch": null,
+        "commit": "276d594e7ed7d3d3e3bf572ff0334ace300f2645",
+        "dirs": [
+          "luci-app-adguardhome",
+          "luci-app-natter",
+          "luci-app-onliner",
+          "luci-app-webd",
+          "natter",
+          "webd"
+        ]
+      },
+      "luci-app-ikoolproxy": {
+        "repo": "https://github.com/1wrt/luci-app-ikoolproxy",
+        "branch": null,
+        "commit": "85f663ce3e9d9091ef421b001aaeafd1e6f1aeb5",
+        "dirs": [
+          "koolproxy",
+          "luci-app-ikoolproxy"
+        ]
+      },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "f9b81f382e08d8e3590f820c326cd438c663cd16",
+        "dirs": [
+          "luci-app-iperf"
+        ]
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
-        "commit": "338b898f3b76159f05794b0120d38e697a7808b0"
+        "commit": "338b898f3b76159f05794b0120d38e697a7808b0",
+        "dirs": [
+          "LICENSE",
+          "README.md",
+          "iptvhelper",
+          "luci-app-iptvhelper"
+        ]
       },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "e11263a639d63a8b9f6740bde64a60368faeb3f3"
+        "commit": "c33185f91520a334d3a905a703a0cf1c33ababea",
+        "dirs": [
+          "irqbalance"
+        ]
+      },
+      "libtorrent-rasterbar": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747",
+        "dirs": [
+          "libtorrent-rasterbar"
+        ]
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
         "branch": null,
-        "commit": "a97ace34f2da358a015b094d326bba2697697f2e"
+        "commit": "a97ace34f2da358a015b094d326bba2697697f2e",
+        "dirs": [
+          "luci-app-store",
+          "luci-lib-taskd",
+          "luci-lib-xterm",
+          "taskd"
+        ]
       },
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "93e94175535c0b793300eacb3fe231601d0e87d8"
+        "commit": "52b14de7f914cc0c93e77b499ef2337bf2902139",
+        "dirs": [
+          "luci-app-baidudrive",
+          "luci-app-ddnsto",
+          "luci-app-dockermanager",
+          "luci-app-fastnet",
+          "luci-app-floatip",
+          "luci-app-istoreenhance",
+          "luci-app-istorerouter",
+          "luci-app-istorex",
+          "luci-app-kai",
+          "luci-app-linkease",
+          "luci-app-linkeasefull",
+          "luci-app-linkeasefull-embed",
+          "luci-app-quickstart",
+          "luci-app-unishare",
+          "luci-lib-iform",
+          "luci-lib-linkeaseauth",
+          "luci-lib-linkeasefile",
+          "luci-mod-istorenext",
+          "luci-nginxer",
+          "luci-theme-istorenas"
+        ]
+      },
+      "app-store-ui": {
+        "repo": "https://github.com/linkease/istore-ui",
+        "branch": null,
+        "commit": "a595baefa686fdd2f5b5f64820fb1b5a38749165",
+        "dirs": [
+          "app-store-ui"
+        ]
       },
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "2fc436d5507bd90f00093fd4a94b93968acce32b"
+        "commit": "f1e31e2a7a308cffa94ccb743489822ed5a5c26c",
+        "dirs": [
+          "baidudrive",
+          "ddnsto",
+          "dockermanager",
+          "fastnet",
+          "ffmpeg-remux",
+          "floatip",
+          "istoreenhance",
+          "kai",
+          "kai-agent",
+          "kai_session",
+          "ks-cli",
+          "linkease",
+          "linkease-app-entry",
+          "linkease-common-bin",
+          "linkease-runtime-transition",
+          "linkeasefull",
+          "quickstart",
+          "unishare",
+          "webdav2"
+        ]
+      },
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca",
+        "dirs": [
+          "geo2txt",
+          "luci-app-mosdns",
+          "mosdns"
+        ]
+      },
+      "luci-app-mmconfig": {
+        "repo": "https://github.com/erdoukki/luci-app-mmconfig",
+        "branch": null,
+        "commit": "1b4fa94b3e0e6a06d2fde59f4e07032dce62db01",
+        "dirs": [
+          "luci-app-mmconfig"
+        ]
+      },
+      "luci-app-modeminfo": {
+        "repo": "https://github.com/4IceG/luci-app-modeminfo",
+        "branch": null,
+        "commit": "cf80a0c876db67bbd0d19b54fa7f4b197d989fcd",
+        "dirs": [
+          "luci-app-modeminfo"
+        ]
+      },
+      "luci-app-msd_lite": {
+        "repo": "https://github.com/ximiTech/luci-app-msd_lite",
+        "branch": null,
+        "commit": "d44eac82ac4f59540bfe468161c30134c93d7c7f",
+        "dirs": [
+          "luci-app-msd_lite"
+        ]
+      },
+      "msd_lite": {
+        "repo": "https://github.com/ximiTech/msd_lite",
+        "branch": null,
+        "commit": "c03c4008c69d92c218644ee5a3b9a750982c59ef",
+        "dirs": [
+          "msd_lite"
+        ]
       },
       "openwrt-nezha": {
         "repo": "https://github.com/Erope/openwrt_nezha",
         "branch": null,
-        "commit": "f9ff58d097558ef0a9c9ac2c39f1e0e247179db2"
+        "commit": "f9ff58d097558ef0a9c9ac2c39f1e0e247179db2",
+        "dirs": [
+          "luci-app-nezha",
+          "nezha-agent"
+        ]
+      },
+      "luci-app-netdata": {
+        "repo": "https://github.com/sirpdboy/luci-app-netdata",
+        "branch": null,
+        "commit": "f6bce58ba4870d4317e43b1ce39d438fca8d9b6e",
+        "dirs": [
+          "luci-app-netdata"
+        ]
+      },
+      "ngrokc": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747",
+        "dirs": [
+          "ngrokc"
+        ]
+      },
+      "luci-app-nodogsplash": {
+        "repo": "https://github.com/tty228/luci-app-nodogsplash",
+        "branch": null,
+        "commit": "d45e61be490962325d2da11ce34346d1adc857c4",
+        "dirs": [
+          "luci-app-nodogsplash"
+        ]
       },
       "OpenAppFilter": {
         "repo": "https://github.com/destan19/OpenAppFilter",
         "branch": null,
-        "commit": "7fcf9e87dc75f7c28c74e09504a4efa0a2db3c92"
+        "commit": "7fcf9e87dc75f7c28c74e09504a4efa0a2db3c92",
+        "dirs": [
+          "LICENSE",
+          "README.md",
+          "luci-app-oaf",
+          "oaf",
+          "open-app-filter"
+        ]
+      },
+      "luci-app-openclash": {
+        "repo": "https://github.com/vernesong/OpenClash",
+        "branch": null,
+        "commit": "e553e82e01c697aefbe1555261a503f425e00ccd",
+        "dirs": [
+          "luci-app-openclash"
+        ]
       },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "049aaf472e8ce7e423299d43a516b7092a25b381"
+        "commit": "049aaf472e8ce7e423299d43a516b7092a25b381",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "smartdns",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
       },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "17052dfc6c91b76067ccc430c7962cda90850ff7"
+        "commit": "af4642b357a469c51e4c2f3c82d2042981ecf21c",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "896c586a27c9a7c0b9e3d75b631965dea86b9945",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
+      "pikpak-webdav": {
+        "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
+        "branch": null,
+        "commit": "c6d221969570474ce1baeee4ddf876283e7547dd",
+        "dirs": [
+          "luci-app-pikpak-webdav",
+          "pikpak-webdav"
+        ]
+      },
+      "luci-app-poweroff": {
+        "repo": "https://github.com/esirplayground/luci-app-poweroff",
+        "branch": null,
+        "commit": "af21d4145f169bcbcf6fbfb30aeed5c927bf0fd3",
+        "dirs": [
+          "luci-app-poweroff"
+        ]
+      },
+      "luci-app-rtorrent": {
+        "repo": "https://github.com/wolandmaster/luci-app-rtorrent",
+        "branch": null,
+        "commit": "dce154aa557cb24d24be329d19cd15707e626d30",
+        "dirs": [
+          "luci-app-rtorrent"
+        ]
+      },
+      "luci-app-smartdns": {
+        "repo": "https://github.com/pymumu/luci-app-smartdns",
+        "branch": "lede",
+        "commit": "cddf8cd04869ffd69c8aa9b01eb58b10f7ba41ca",
+        "dirs": [
+          "luci-app-smartdns"
+        ]
+      },
+      "smartdns": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "72c7391fb2d04080afd0bfe919605749f81eb747",
+        "dirs": [
+          "smartdns"
+        ]
+      },
+      "luci-app-smartinfo": {
+        "repo": "https://github.com/huajijam/luci-app-smartinfo",
+        "branch": null,
+        "commit": "abff7c8d23718ecc19ec24e47627cc77d0b3af6e",
+        "dirs": [
+          "luci-app-smartinfo"
+        ]
+      },
+      "luci-app-sms-tool": {
+        "repo": "https://github.com/4IceG/luci-app-sms-tool",
+        "branch": null,
+        "commit": "4cea4135074bc5c93826139127cc7f0f4d2acbdf",
+        "dirs": [
+          "luci-app-sms-tool"
+        ]
+      },
+      "sms-tool": {
+        "repo": "https://github.com/4IceG/packages",
+        "branch": null,
+        "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
+        "dirs": [
+          "sms-tool"
+        ]
       },
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "bb3bf448f42c800a42a8d1708a8ea5a09fee9959"
+        "commit": "45893d778767f3bdb2fcb6e873cf8f9a667d94d4",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
+        ]
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
         "branch": null,
-        "commit": "c725d7142ddb0d5100f1e06a4eb0e3cab622b52c"
+        "commit": "c725d7142ddb0d5100f1e06a4eb0e3cab622b52c",
+        "dirs": [
+          "README.md",
+          "libcron",
+          "quickjspp",
+          "rapidjson",
+          "subconverter",
+          "toml11"
+        ]
+      },
+      "luci-app-wolplus": {
+        "repo": "https://github.com/sundaqiang/openwrt-packages",
+        "branch": null,
+        "commit": "dd17da787894c2f3b5bd22c79367495e63f058ae",
+        "dirs": [
+          "luci-app-nginx-manager",
+          "luci-app-supervisord",
+          "luci-app-wolplus"
+        ]
+      },
+      "luci-app-syncthing": {
+        "repo": "https://github.com/immortalwrt/luci",
+        "branch": "openwrt-18.06",
+        "commit": "6d4e76757f4b6eb3ee4da74a97a8edecef3c481e",
+        "dirs": [
+          "luci-app-syncthing"
+        ]
+      },
+      "luci-app-tasks": {
+        "repo": "https://github.com/jjm2473/openwrt-apps",
+        "branch": null,
+        "commit": "e2e8e742f5ce3265445d0540dae2fa4c60976db5",
+        "dirs": [
+          "luci-app-tasks"
+        ]
+      },
+      "luci-app-tailscaler": {
+        "repo": "https://github.com/zijieKwok/luci-app-tailscale1",
+        "branch": null,
+        "commit": "abc4530f1d01d4c8b515248a014a83b55ed319ef",
+        "dirs": [
+          "luci-app-tailscaler"
+        ]
       },
       "tencentcloud_ddns": {
         "repo": "https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns",
         "branch": null,
-        "commit": "537a537436663cb1595a49db44989fac4314d83c"
+        "commit": "537a537436663cb1595a49db44989fac4314d83c",
+        "dirs": [
+          "luci-app-tencentddns"
+        ]
+      },
+      "luci-app-tcpdump": {
+        "repo": "https://github.com/KFERMercer/luci-app-tcpdump",
+        "branch": null,
+        "commit": "958650ee4dc57b5d7b987ace47c608aaf179dce0",
+        "dirs": [
+          "luci-app-tcpdump"
+        ]
+      },
+      "luci-app-tinyfilemanager": {
+        "repo": "https://github.com/muink/luci-app-tinyfilemanager",
+        "branch": null,
+        "commit": "899bbbeefe7169da5ac18228158c0ed0219d7259",
+        "dirs": [
+          "luci-app-tinyfilemanager"
+        ]
       },
       "luci-wifidog": {
         "repo": "https://github.com/walkingsky/luci-wifidog",
         "branch": null,
-        "commit": "3a2fdff5584ef8ecb143f0ad254f2972ec5f2f2d"
+        "commit": "3a2fdff5584ef8ecb143f0ad254f2972ec5f2f2d",
+        "dirs": [
+          "luci-app-wifidog"
+        ]
+      },
+      "xmurp-ua": {
+        "repo": "https://github.com/CHN-beta/xmurp-ua",
+        "branch": null,
+        "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d",
+        "dirs": [
+          "xmurp-ua"
+        ]
       },
       "my-diy": {
         "repo": "https://github.com/hyy-666/my-diy",
         "branch": "qt6",
-        "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524"
+        "commit": "eb8ed29394698e828535868664b3ba4ba9ee8524",
+        "dirs": [
+          "aria2",
+          "cups",
+          "cups-bjnp",
+          "cups-dymo",
+          "cups-opfilter",
+          "luci-app-cupsd",
+          "luci-app-eqos",
+          "luci-app-qBittorrent-Enhanced-Edition",
+          "mysettings",
+          "python-apprise",
+          "python-beautifulsoup4",
+          "python-html5lib",
+          "python-pyDes",
+          "python-pyusb",
+          "python-requests-oauthlib",
+          "python-requests-toolbelt",
+          "python-soupsieve",
+          "python-tencentcloud-sdk-python",
+          "qBittorrent-Enhanced-Edition",
+          "qBittorrent-Enhanced-Edition-static",
+          "qt6base",
+          "qt6tools",
+          "requests requests_toolbelt tencentcloud_.txt",
+          "syncthing"
+        ]
+      },
+      "lucky": {
+        "repo": "https://github.com/sirpdboy/luci-app-lucky",
+        "branch": null,
+        "commit": "31f068051de9798c0fb8f3e1d8e32310b4063e5d",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
+      "luci-app-pushbot": {
+        "repo": "https://github.com/zzsj0928/luci-app-pushbot",
+        "branch": null,
+        "commit": "d52f746df1daa3ecfabb59b6a61e6b4a4ff09f20",
+        "dirs": [
+          "luci-app-pushbot"
+        ]
       }
     }
   }
