@@ -186,10 +186,10 @@
         "branch": null,
         "commit": "e553e82e01c697aefbe1555261a503f425e00ccd"
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "3f14e3ec65795583a44ca6651a2dc96137f5860e"
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "896c586a27c9a7c0b9e3d75b631965dea86b9945"
       },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
@@ -279,7 +279,7 @@
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "8c397ea4e971aa9da984a646b33637f66676f1ce"
+        "commit": "323888e9d89fe15971e561299e56d430d29ccbed"
       },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
@@ -289,7 +289,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "2a5d2301904f84ff61615dd4e4d1db6d4f1fbf67"
+        "commit": "e11263a639d63a8b9f6740bde64a60368faeb3f3"
       },
       "istore": {
         "repo": "https://github.com/linkease/istore",
@@ -321,15 +321,15 @@
         "branch": null,
         "commit": "049aaf472e8ce7e423299d43a516b7092a25b381"
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "896c586a27c9a7c0b9e3d75b631965dea86b9945"
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "17052dfc6c91b76067ccc430c7962cda90850ff7"
       },
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "4e4dee0c0634ea6846d8e04f483fed675c3a0567"
+        "commit": "bb3bf448f42c800a42a8d1708a8ea5a09fee9959"
       },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
