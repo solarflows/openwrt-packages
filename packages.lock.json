@@ -132,6 +132,14 @@
           "luci-app-airconnect"
         ]
       },
+      "luci-app-amlogic": {
+        "repo": "https://github.com/ophub/luci-app-amlogic",
+        "branch": null,
+        "commit": "e98bf87bc5a07ae1b82cd150bae0a6ff9eb43953",
+        "dirs": [
+          "luci-app-amlogic"
+        ]
+      },
       "luci-app-autoipsetadder": {
         "repo": "https://github.com/rufengsuixing/luci-app-autoipsetadder",
         "branch": null,
@@ -486,6 +494,14 @@
           "luci-app-passwall"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "0f923be3f00f9fb8db9591c9ecab41e7de5ec75e",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -549,6 +565,17 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "9213963c6a798658c55c7402f3ae7db81d891256",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -646,18 +673,10 @@
           "xmurp-ua"
         ]
       },
-      "luci-app-amlogic": {
-        "repo": "https://github.com/ophub/luci-app-amlogic",
-        "branch": null,
-        "commit": "e98bf87bc5a07ae1b82cd150bae0a6ff9eb43953",
-        "dirs": [
-          "luci-app-amlogic"
-        ]
-      },
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "12874ce78cbc69fd9aa1233019e4b74a03aafa68",
+        "commit": "338bb154b137cfecb54ff903a5691d690f279f59",
         "dirs": [
           "luci-app-control-guest-wifi"
         ]
@@ -665,28 +684,9 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "a17f3d474a99f274ca8bd924f905cfd4891c99de",
+        "commit": "770d4058b06f09d4c16321ca53401454f148095e",
         "dirs": [
           "irqbalance"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "0f923be3f00f9fb8db9591c9ecab41e7de5ec75e",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "9213963c6a798658c55c7402f3ae7db81d891256",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
         ]
       }
     }
