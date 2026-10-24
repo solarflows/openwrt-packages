@@ -188,14 +188,6 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "611639708867179064415999f04423d34a935424",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -283,14 +275,6 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "dcb9ad544060a7c9c3d54b936964a20c124be9e5",
-        "dirs": [
-          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -583,17 +567,6 @@
           "sms-tool"
         ]
       },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "9213963c6a798658c55c7402f3ae7db81d891256",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
-        ]
-      },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
         "branch": null,
@@ -687,6 +660,33 @@
         "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d",
         "dirs": [
           "xmurp-ua"
+        ]
+      },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "8f51379dcd5baac41695c37020bea9b832c7054c",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "881683c06807d4da661205d15b934c2677e2caf5",
+        "dirs": [
+          "irqbalance"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "652714ba3821d45ead2be6537b436989f39e638b",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       }
     }
