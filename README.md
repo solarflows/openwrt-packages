@@ -50,7 +50,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`69305fe`](https://github.com/gdy666/luci-app-lucky/commit/69305fef127259892ba4603e98f730f0330e5caa)) | `main`, `mt798x`, `qualcommax` |
 | `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`d3230c7`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/d3230c7645d8f046039c84161c9384ae81a294f2)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`1db3543`](https://github.com/pymumu/openwrt-smartdns/commit/1db3543cfaa397cd1115b0479416f73062711a63)) | `mt798x` |
-| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`dcb9ad5`](https://github.com/openwrt/packages//commit/dcb9ad544060a7c9c3d54b936964a20c124be9e5)) | `mt798x` |
+| `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`881683c`](https://github.com/openwrt/packages//commit/881683c06807d4da661205d15b934c2677e2caf5)) | `mt798x` |
 | `wrtbwmon` | wrtbwmon | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) ([`ec9ef10`](https://github.com/padavanonly/immortalwrt-mt798x-24.10/commit/ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8)) | `mt798x` |
 | `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`5f3e19c`](https://github.com/coolsnowwolf/packages/commit/5f3e19ca2b1cc93e59b2128cc195a98b8717ff5c)) | `mt798x` |
 
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-10-24 10:50
+**最近更新**: 2026-10-24 15:16
 
 ## 🙏 致谢
 
