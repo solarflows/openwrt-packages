@@ -269,7 +269,7 @@
       "luci-app-iperf": {
         "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "6a9723ea5e4a9987dac7dab7d3f1f13cb6301289",
+        "commit": "e5e67719267868298f4542bfcd0f6da3692c8d1b",
         "dirs": [
           "luci-app-iperf"
         ]
@@ -288,7 +288,7 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "26c83ff3511190acfcc32fb40b6e9fd17f96c19f",
+        "commit": "dcb9ad544060a7c9c3d54b936964a20c124be9e5",
         "dirs": [
           "irqbalance"
         ]
@@ -480,7 +480,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "ae518eceb8ce99cf7b6ecd3c256b8ffc945ab1e3",
+        "commit": "d3230c7645d8f046039c84161c9384ae81a294f2",
         "dirs": [
           "chinadns-ng",
           "dns2socks",
@@ -505,7 +505,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "af4642b357a469c51e4c2f3c82d2042981ecf21c",
+        "commit": "45d3d05047468798b9f9c90c705740f787e0e5c9",
         "dirs": [
           "luci-app-passwall"
         ]
