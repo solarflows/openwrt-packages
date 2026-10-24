@@ -31,7 +31,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "ae518eceb8ce99cf7b6ecd3c256b8ffc945ab1e3",
+        "commit": "d3230c7645d8f046039c84161c9384ae81a294f2",
         "dirs": [
           "chinadns-ng",
           "dns2socks",
@@ -56,7 +56,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "af4642b357a469c51e4c2f3c82d2042981ecf21c",
+        "commit": "45d3d05047468798b9f9c90c705740f787e0e5c9",
         "dirs": [
           "luci-app-passwall"
         ]
