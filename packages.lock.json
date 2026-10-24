@@ -47,7 +47,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "ae518eceb8ce99cf7b6ecd3c256b8ffc945ab1e3",
+        "commit": "d3230c7645d8f046039c84161c9384ae81a294f2",
         "dirs": [
           "chinadns-ng",
           "dns2socks",
@@ -71,7 +71,7 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "af4642b357a469c51e4c2f3c82d2042981ecf21c",
+        "commit": "45d3d05047468798b9f9c90c705740f787e0e5c9",
         "dirs": [
           "luci-app-passwall"
         ]
@@ -95,7 +95,7 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "d3e62d0767f842d340a4498af934211017e21d56",
+        "commit": "dcb9ad544060a7c9c3d54b936964a20c124be9e5",
         "dirs": [
           "tailscale"
         ]
@@ -170,7 +170,7 @@
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "0ede3e2278aac10f391ab58e6ba9d8b5577cf9d0",
+        "commit": "5f3e19ca2b1cc93e59b2128cc195a98b8717ff5c",
         "dirs": [
           "zerotier"
         ]
