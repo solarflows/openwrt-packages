@@ -64,7 +64,7 @@
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "0f923be3f00f9fb8db9591c9ecab41e7de5ec75e",
+        "commit": "b68b3a03caf76065bf012f92f9514f07bb1c3f9b",
         "dirs": [
           "luci-app-passwall2"
         ]
