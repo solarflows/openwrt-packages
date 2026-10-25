@@ -9,15 +9,6 @@
           "luci-app-dnsfilter"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "69305fef127259892ba4603e98f730f0330e5caa",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -140,6 +131,15 @@
         "commit": "a5299ce0144859f47683ec3bc40805bf616f534f",
         "dirs": [
           "luci-app-aurora-config"
+        ]
+      },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
         ]
       }
     }
