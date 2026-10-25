@@ -132,14 +132,6 @@
           "luci-app-airconnect"
         ]
       },
-      "luci-app-amlogic": {
-        "repo": "https://github.com/ophub/luci-app-amlogic",
-        "branch": null,
-        "commit": "e98bf87bc5a07ae1b82cd150bae0a6ff9eb43953",
-        "dirs": [
-          "luci-app-amlogic"
-        ]
-      },
       "luci-app-autoipsetadder": {
         "repo": "https://github.com/rufengsuixing/luci-app-autoipsetadder",
         "branch": null,
@@ -357,14 +349,13 @@
           "webdav2"
         ]
       },
-      "geo2txt": {
-        "repo": "https://github.com/sbwml/luci-app-mosdns",
-        "branch": "v5",
-        "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca",
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
         "dirs": [
-          "geo2txt",
-          "luci-app-mosdns",
-          "mosdns"
+          "luci-app-lucky",
+          "lucky"
         ]
       },
       "luci-app-mmconfig": {
@@ -475,14 +466,6 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "45d3d05047468798b9f9c90c705740f787e0e5c9",
-        "dirs": [
-          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
@@ -653,10 +636,18 @@
           "xmurp-ua"
         ]
       },
+      "luci-app-amlogic": {
+        "repo": "https://github.com/ophub/luci-app-amlogic",
+        "branch": null,
+        "commit": "16df300f86e5b4e48e955cd66f337c5872d27d3c",
+        "dirs": [
+          "luci-app-amlogic"
+        ]
+      },
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "4fadba82c8b157d15268c8412ad3997e3a74d6b7",
+        "commit": "65694be63f3662f6b1e4c7d8251bcc13ffbff762",
         "dirs": [
           "luci-app-control-guest-wifi"
         ]
@@ -664,24 +655,33 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "9fc8d0260b2be03366bf437af14aa3289a5cea26",
+        "commit": "8b0c87b1ec2b88352db5d1f1741d8965fefb7a73",
         "dirs": [
           "irqbalance"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
         "dirs": [
-          "luci-app-lucky",
-          "lucky"
+          "geo2txt",
+          "luci-app-mosdns",
+          "mosdns"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "20756eaad8aa61ce7168dad90b56db2d7c81063c",
+        "commit": "31b180df838e456bb36036bb8791f569af0fd661",
         "dirs": [
           "lua-neturl",
           "luci-app-ssr-plus",
