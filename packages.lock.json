@@ -357,15 +357,6 @@
           "webdav2"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "69305fef127259892ba4603e98f730f0330e5caa",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -665,7 +656,7 @@
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "8f51379dcd5baac41695c37020bea9b832c7054c",
+        "commit": "4fadba82c8b157d15268c8412ad3997e3a74d6b7",
         "dirs": [
           "luci-app-control-guest-wifi"
         ]
@@ -673,15 +664,24 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "881683c06807d4da661205d15b934c2677e2caf5",
+        "commit": "9fc8d0260b2be03366bf437af14aa3289a5cea26",
         "dirs": [
           "irqbalance"
+        ]
+      },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
         ]
       },
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "652714ba3821d45ead2be6537b436989f39e638b",
+        "commit": "20756eaad8aa61ce7168dad90b56db2d7c81063c",
         "dirs": [
           "lua-neturl",
           "luci-app-ssr-plus",
