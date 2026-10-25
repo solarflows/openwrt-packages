@@ -25,15 +25,6 @@
           "luci-app-dnsfilter"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "69305fef127259892ba4603e98f730f0330e5caa",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -159,14 +150,6 @@
           "luci-app-argon-config"
         ]
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "5f3e19ca2b1cc93e59b2128cc195a98b8717ff5c",
-        "dirs": [
-          "zerotier"
-        ]
-      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -175,12 +158,29 @@
           "luci-app-zerotier"
         ]
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "881683c06807d4da661205d15b934c2677e2caf5",
+        "commit": "9fc8d0260b2be03366bf437af14aa3289a5cea26",
         "dirs": [
           "tailscale"
+        ]
+      },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "74e002c9f38c36aec8aa42e21f0b0fc313f4b881",
+        "dirs": [
+          "zerotier"
         ]
       }
     }
