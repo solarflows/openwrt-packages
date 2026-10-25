@@ -9,14 +9,13 @@
           "luci-app-dnsfilter"
         ]
       },
-      "geo2txt": {
-        "repo": "https://github.com/sbwml/luci-app-mosdns",
-        "branch": "v5",
-        "commit": "bd40245303cd0ba56804d49eed5dbc4be2a082ca",
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
         "dirs": [
-          "geo2txt",
-          "luci-app-mosdns",
-          "mosdns"
+          "luci-app-lucky",
+          "lucky"
         ]
       },
       "openwrt-passwall-packages": {
@@ -42,14 +41,6 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "45d3d05047468798b9f9c90c705740f787e0e5c9",
-        "dirs": [
-          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
@@ -133,13 +124,22 @@
           "luci-app-aurora-config"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
         "dirs": [
-          "luci-app-lucky",
-          "lucky"
+          "geo2txt",
+          "luci-app-mosdns",
+          "mosdns"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
+        "dirs": [
+          "luci-app-passwall"
         ]
       }
     }
