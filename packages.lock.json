@@ -9,15 +9,6 @@
           "luci-app-dnsfilter"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "8358dc8b654e8a31aabae3754b7ce36682532111",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -53,12 +44,12 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "22e37d49b18ef6bf1c2a942be9c3a066095931b1",
         "dirs": [
-          "luci-app-passwall"
+          "luci-app-passwall2"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -126,18 +117,27 @@
           "luci-app-aurora-config"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
         "branch": null,
-        "commit": "22e37d49b18ef6bf1c2a942be9c3a066095931b1",
+        "commit": "295115bd07a6748f4137e1bdf98600bc99625d01",
         "dirs": [
-          "luci-app-passwall2"
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "25d63b0502613a48d7bba52bc455ceb862c14417",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "luci-theme-argon": {
         "repo": "https://github.com/jerrykuku/luci-theme-argon",
         "branch": null,
-        "commit": "765cd4b6fdd795dba0457985f57be20492dab357",
+        "commit": "815f0b27275f3c9555a8cc7c5bb2332b5a798533",
         "dirs": [
           "luci-theme-argon"
         ]
