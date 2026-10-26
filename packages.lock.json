@@ -34,6 +34,16 @@
           "lucky"
         ]
       },
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
+        "dirs": [
+          "geo2txt",
+          "luci-app-mosdns",
+          "mosdns"
+        ]
+      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
@@ -58,12 +68,12 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "b68b3a03caf76065bf012f92f9514f07bb1c3f9b",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
         "dirs": [
-          "luci-app-passwall2"
+          "luci-app-passwall"
         ]
       },
       "luci-app-wechatpush": {
@@ -149,28 +159,18 @@
           "luci-app-zerotier"
         ]
       },
-      "geo2txt": {
-        "repo": "https://github.com/sbwml/luci-app-mosdns",
-        "branch": "v5",
-        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "22e37d49b18ef6bf1c2a942be9c3a066095931b1",
         "dirs": [
-          "geo2txt",
-          "luci-app-mosdns",
-          "mosdns"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
-        "dirs": [
-          "luci-app-passwall"
+          "luci-app-passwall2"
         ]
       },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "8b0c87b1ec2b88352db5d1f1741d8965fefb7a73",
+        "commit": "55a2c45d8b6d3c0c1695c1bdb5c87ffc3119e2f0",
         "dirs": [
           "tailscale"
         ]
@@ -178,7 +178,7 @@
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "623dfe88fac415f6f91b8c199f3c68d30e4b1e75",
+        "commit": "ec41c4f811e2f2ce2e8305c8827f61c310a36b2e",
         "dirs": [
           "zerotier"
         ]
