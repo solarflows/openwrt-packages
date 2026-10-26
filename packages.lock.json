@@ -18,6 +18,16 @@
           "lucky"
         ]
       },
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
+        "dirs": [
+          "geo2txt",
+          "luci-app-mosdns",
+          "mosdns"
+        ]
+      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
@@ -43,12 +53,12 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "b68b3a03caf76065bf012f92f9514f07bb1c3f9b",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
         "dirs": [
-          "luci-app-passwall2"
+          "luci-app-passwall"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -100,14 +110,6 @@
           "luci-app-podman"
         ]
       },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "81e781c09ecf27e82737a6d46bd7697371d08ba8",
-        "dirs": [
-          "luci-theme-argon"
-        ]
-      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -124,22 +126,20 @@
           "luci-app-aurora-config"
         ]
       },
-      "geo2txt": {
-        "repo": "https://github.com/sbwml/luci-app-mosdns",
-        "branch": "v5",
-        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "22e37d49b18ef6bf1c2a942be9c3a066095931b1",
         "dirs": [
-          "geo2txt",
-          "luci-app-mosdns",
-          "mosdns"
+          "luci-app-passwall2"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "fff5ca7e65674ccd8a45c1e4ec43ce1c13b8ddc2",
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "765cd4b6fdd795dba0457985f57be20492dab357",
         "dirs": [
-          "luci-app-passwall"
+          "luci-theme-argon"
         ]
       }
     }
