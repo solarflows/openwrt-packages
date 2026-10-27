@@ -9,6 +9,15 @@
           "luci-app-dnsfilter"
         ]
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "295115bd07a6748f4137e1bdf98600bc99625d01",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -42,6 +51,14 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "25d63b0502613a48d7bba52bc455ceb862c14417",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
@@ -101,6 +118,14 @@
           "luci-app-podman"
         ]
       },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "815f0b27275f3c9555a8cc7c5bb2332b5a798533",
+        "dirs": [
+          "luci-theme-argon"
+        ]
+      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -115,31 +140,6 @@
         "commit": "a5299ce0144859f47683ec3bc40805bf616f534f",
         "dirs": [
           "luci-app-aurora-config"
-        ]
-      },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "295115bd07a6748f4137e1bdf98600bc99625d01",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "25d63b0502613a48d7bba52bc455ceb862c14417",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "815f0b27275f3c9555a8cc7c5bb2332b5a798533",
-        "dirs": [
-          "luci-theme-argon"
         ]
       }
     }
