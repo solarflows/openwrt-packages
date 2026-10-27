@@ -9,12 +9,29 @@
           "luci-theme-argon"
         ]
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "0a5212e0b37c019df5a152553e571378ec6c5dcc",
+        "dirs": [
+          "cdnspeedtest"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
         "commit": "3a49542e566d8a95cb81b664a05aae29e1f534cf",
         "dirs": [
           "luci-app-dnsfilter"
+        ]
+      },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "295115bd07a6748f4137e1bdf98600bc99625d01",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
         ]
       },
       "geo2txt": {
@@ -51,6 +68,14 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "25d63b0502613a48d7bba52bc455ceb862c14417",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -67,6 +92,14 @@
           "luci-app-wechatpush"
         ]
       },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "f9faf3fc2826ee55616ddffa59ecc170561d25a4",
+        "dirs": [
+          "tailscale"
+        ]
+      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
@@ -75,6 +108,14 @@
           "luci-app-mwan3helper-chinaroute",
           "luci-app-wrtbwmon",
           "wrtbwmon"
+        ]
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "0a5212e0b37c019df5a152553e571378ec6c5dcc",
+        "dirs": [
+          "arp-scan"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -126,61 +167,20 @@
           "luci-app-argon-config"
         ]
       },
-      "luci-app-zerotier": {
-        "repo": "https://github.com/zhengmz/luci-app-zerotier",
-        "branch": null,
-        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
-        "dirs": [
-          "luci-app-zerotier"
-        ]
-      },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "0a5212e0b37c019df5a152553e571378ec6c5dcc",
-        "dirs": [
-          "cdnspeedtest"
-        ]
-      },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "295115bd07a6748f4137e1bdf98600bc99625d01",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "25d63b0502613a48d7bba52bc455ceb862c14417",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "f9faf3fc2826ee55616ddffa59ecc170561d25a4",
-        "dirs": [
-          "tailscale"
-        ]
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "0a5212e0b37c019df5a152553e571378ec6c5dcc",
-        "dirs": [
-          "arp-scan"
-        ]
-      },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
         "commit": "72d8820579ad2a40d5f8c71a1b95cbeebd46ec2d",
         "dirs": [
           "zerotier"
+        ]
+      },
+      "luci-app-zerotier": {
+        "repo": "https://github.com/zhengmz/luci-app-zerotier",
+        "branch": null,
+        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
+        "dirs": [
+          "luci-app-zerotier"
         ]
       }
     }
