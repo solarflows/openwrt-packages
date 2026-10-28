@@ -137,7 +137,7 @@
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "ed87be8816785e5b315a86e7aaf3c63cea0f6311",
+        "commit": "2e474f61caf44c78c9acf5d9c1a079ecd02f9377",
         "dirs": [
           "luci-app-passwall2"
         ]
