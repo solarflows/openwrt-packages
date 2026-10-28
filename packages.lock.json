@@ -44,38 +44,6 @@
           "mosdns"
         ]
       },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "d3230c7645d8f046039c84161c9384ae81a294f2",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "25d63b0502613a48d7bba52bc455ceb862c14417",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
@@ -167,10 +135,42 @@
           "luci-app-zerotier"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "19b6d1133fd861312659b3be38f19d52aaf3facf",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "50fa74e79350905cda4c18db4b5d071f6851b02c",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "2e474f61caf44c78c9acf5d9c1a079ecd02f9377",
+        "commit": "36752bf8e12bd979986bfee642e3ea402b2236a1",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -178,7 +178,7 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "401b45e748b543f3f5e20c329e490d049ec5d263",
+        "commit": "0afe9b1e614f15149565e85b98f91f870ba50c29",
         "dirs": [
           "tailscale"
         ]
