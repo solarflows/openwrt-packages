@@ -9,6 +9,14 @@
           "luci-theme-argon"
         ]
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "aeccc22b5cb176d6c8b138ffd5931872e5ff88d1",
+        "dirs": [
+          "cdnspeedtest"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -86,6 +94,14 @@
           "wrtbwmon"
         ]
       },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "aeccc22b5cb176d6c8b138ffd5931872e5ff88d1",
+        "dirs": [
+          "arp-scan"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -135,6 +151,14 @@
           "luci-app-argon-config"
         ]
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "12fe94094ea44d0d7fcce2841f0405c473e4cd4e",
+        "dirs": [
+          "zerotier"
+        ]
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -143,18 +167,10 @@
           "luci-app-zerotier"
         ]
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "aeccc22b5cb176d6c8b138ffd5931872e5ff88d1",
-        "dirs": [
-          "cdnspeedtest"
-        ]
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "ed87be8816785e5b315a86e7aaf3c63cea0f6311",
+        "commit": "2e474f61caf44c78c9acf5d9c1a079ecd02f9377",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -162,25 +178,9 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "f9983a8169942a55e5768a1c503653e40613835c",
+        "commit": "401b45e748b543f3f5e20c329e490d049ec5d263",
         "dirs": [
           "tailscale"
-        ]
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "aeccc22b5cb176d6c8b138ffd5931872e5ff88d1",
-        "dirs": [
-          "arp-scan"
-        ]
-      },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "12fe94094ea44d0d7fcce2841f0405c473e4cd4e",
-        "dirs": [
-          "zerotier"
         ]
       }
     }
