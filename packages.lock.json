@@ -172,6 +172,14 @@
           "luci-app-beardropper"
         ]
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "dirs": [
+          "cdnspeedtest"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -202,6 +210,14 @@
         "commit": "6fd9937954e0b080bf07967182d714ea21fe7eb1",
         "dirs": [
           "luci-app-dockerman"
+        ]
+      },
+      "filebrowser": {
+        "repo": "https://github.com/immortalwrt/packages/",
+        "branch": null,
+        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "dirs": [
+          "filebrowser"
         ]
       },
       "luci-app-filebrowser": {
@@ -250,14 +266,6 @@
           "luci-app-ikoolproxy"
         ]
       },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "5a4cd73b5acd5b37955943c754456dc1330a9f4b",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -267,6 +275,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "libtorrent-rasterbar": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "dirs": [
+          "libtorrent-rasterbar"
         ]
       },
       "istore": {
@@ -337,15 +353,6 @@
           "webdav2"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "295115bd07a6748f4137e1bdf98600bc99625d01",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -405,6 +412,14 @@
           "luci-app-netdata"
         ]
       },
+      "ngrokc": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "dirs": [
+          "ngrokc"
+        ]
+      },
       "luci-app-nodogsplash": {
         "repo": "https://github.com/tty228/luci-app-nodogsplash",
         "branch": null,
@@ -431,29 +446,6 @@
         "commit": "e553e82e01c697aefbe1555261a503f425e00ccd",
         "dirs": [
           "luci-app-openclash"
-        ]
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "19b6d1133fd861312659b3be38f19d52aaf3facf",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
         ]
       },
       "pikpak-webdav": {
@@ -489,6 +481,14 @@
           "luci-app-smartdns"
         ]
       },
+      "smartdns": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "dirs": [
+          "smartdns"
+        ]
+      },
       "luci-app-smartinfo": {
         "repo": "https://github.com/huajijam/luci-app-smartinfo",
         "branch": null,
@@ -511,17 +511,6 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
-        ]
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "31b180df838e456bb36036bb8791f569af0fd661",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -619,50 +608,58 @@
           "xmurp-ua"
         ]
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "commit": "2861a969c94f417e689507456f4c25ae12f65b40",
         "dirs": [
-          "cdnspeedtest"
-        ]
-      },
-      "filebrowser": {
-        "repo": "https://github.com/immortalwrt/packages/",
-        "branch": null,
-        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
-        "dirs": [
-          "filebrowser"
+          "luci-app-iperf"
         ]
       },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "7b81037c4d1404a385841e3ef3a564d778dfdac0",
+        "commit": "6307bdf3b7997a4de5317e127383b4266fe36108",
         "dirs": [
           "irqbalance"
         ]
       },
-      "libtorrent-rasterbar": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
         "branch": null,
-        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "commit": "91b506627c1d81fa323816e3aeafcbde493d03a9",
         "dirs": [
-          "libtorrent-rasterbar"
+          "luci-app-lucky",
+          "lucky"
         ]
       },
-      "ngrokc": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "commit": "a851b8ecfc6415f6171abaa5d6c74d06452d2d09",
         "dirs": [
-          "ngrokc"
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
         ]
       },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "784a5f454d4077972baa2745d6f4fc15084ce1d3",
+        "commit": "7f234af07070f5238fcccb58953bbf4384b6e50f",
         "dirs": [
           "luci-app-passwall"
         ]
@@ -670,17 +667,20 @@
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "b7ec339b373fed62e4963ca05bbf3f00f9274d34",
+        "commit": "90445447a9f5e12337d48b71ff6cf2c4824f6eb3",
         "dirs": [
           "luci-app-passwall2"
         ]
       },
-      "smartdns": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "006a19cba079cd045fe6b4e8f19508347d0dcb9e",
+        "commit": "09afd16261e781c8ecdf633504fb656e1107e41b",
         "dirs": [
-          "smartdns"
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       }
     }
