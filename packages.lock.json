@@ -9,6 +9,15 @@
           "luci-app-dnsfilter"
         ]
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "91b506627c1d81fa323816e3aeafcbde493d03a9",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -17,6 +26,31 @@
           "geo2txt",
           "luci-app-mosdns",
           "mosdns"
+        ]
+      },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "a851b8ecfc6415f6171abaa5d6c74d06452d2d09",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "smartdns",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -59,6 +93,14 @@
           "luci-app-podman"
         ]
       },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "517971b773991541ecb5e118b0c5d0b609a79e06",
+        "dirs": [
+          "luci-theme-argon"
+        ]
+      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -75,44 +117,10 @@
           "luci-app-aurora-config"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "91b506627c1d81fa323816e3aeafcbde493d03a9",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "a851b8ecfc6415f6171abaa5d6c74d06452d2d09",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "smartdns",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "7f234af07070f5238fcccb58953bbf4384b6e50f",
+        "commit": "86bc52ce6f4b01fcb268c19247ca8b6c91a5cf16",
         "dirs": [
           "luci-app-passwall"
         ]
@@ -120,7 +128,7 @@
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "90445447a9f5e12337d48b71ff6cf2c4824f6eb3",
+        "commit": "e16790adaa3a2370766d051bfa98cc58d1d7afb2",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -128,18 +136,10 @@
       "luci-app-ddnsto": {
         "repo": "https://github.com/linkease/ddnsto-openwrt-package",
         "branch": null,
-        "commit": "2bfe3babdd749120942d11a6f13331a4c512de20",
+        "commit": "5ba6f8060a540a95133767193ea570aa3b76456b",
         "dirs": [
           "ddnsto",
           "luci-app-ddnsto"
-        ]
-      },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "517971b773991541ecb5e118b0c5d0b609a79e06",
-        "dirs": [
-          "luci-theme-argon"
         ]
       }
     }
