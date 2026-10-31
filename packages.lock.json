@@ -44,6 +44,46 @@
           "mosdns"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "54f65c7e1852006517a8b342ac91c8b7386a89be",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "b2e6e9fde095613d7ffb5756bf40c2ca0981f433",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "6e06876b7140a6451139dd8116635f80897ec3b3",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
@@ -68,6 +108,14 @@
         "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
         "dirs": [
           "arp-scan"
+        ]
+      },
+      "luci-app-cloudflarespeedtest": {
+        "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
+        "branch": null,
+        "commit": "3e1973406f4ea00b8e4120160ed4acae82fd0d0d",
+        "dirs": [
+          "luci-app-cloudflarespeedtest"
         ]
       },
       "luci-app-ddnsto": {
@@ -119,66 +167,18 @@
           "luci-app-zerotier"
         ]
       },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "54f65c7e1852006517a8b342ac91c8b7386a89be",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "b2e6e9fde095613d7ffb5756bf40c2ca0981f433",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "6e06876b7140a6451139dd8116635f80897ec3b3",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "6231f41016f8233e0ce7e75f53cea592d32690f0",
+        "commit": "76bf8b232b20a0e66870096d21203d666afbee46",
         "dirs": [
           "tailscale"
-        ]
-      },
-      "luci-app-cloudflarespeedtest": {
-        "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
-        "branch": null,
-        "commit": "3e1973406f4ea00b8e4120160ed4acae82fd0d0d",
-        "dirs": [
-          "luci-app-cloudflarespeedtest"
         ]
       },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "0cfc5edc85c58769e8e1b61aa646ff727fc157b1",
+        "commit": "e615b74949cb66f87167f3352e4baec72c802f93",
         "dirs": [
           "zerotier"
         ]
