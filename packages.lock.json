@@ -285,6 +285,14 @@
           "luci-app-iptvhelper"
         ]
       },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "87849fccd6596a1e8823396489399b73852baf2d",
+        "dirs": [
+          "irqbalance"
+        ]
+      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -477,10 +485,12 @@
           "ipt2socks",
           "microsocks",
           "naiveproxy",
+          "shadow-tls",
           "shadowsocks-rust",
           "shadowsocksr-libev",
           "simple-obfs",
           "sing-box",
+          "smartdns",
           "tcping",
           "v2ray-geodata",
           "v2ray-plugin",
@@ -499,7 +509,7 @@
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "6e06876b7140a6451139dd8116635f80897ec3b3",
+        "commit": "d08e7f88fcb5c7f94b870f7281db0045a0477293",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -572,7 +582,7 @@
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "41959d166fda4a69c760373350dcce400d10c3f2",
+        "commit": "aaef4910416339301522d7bb4575d3557dc06f4c",
         "dirs": [
           "lua-neturl",
           "luci-app-ssr-plus",
@@ -673,14 +683,6 @@
         "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d",
         "dirs": [
           "xmurp-ua"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "76bf8b232b20a0e66870096d21203d666afbee46",
-        "dirs": [
-          "irqbalance"
         ]
       }
     }
