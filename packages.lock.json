@@ -28,63 +28,6 @@
           "mosdns"
         ]
       },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
-        "branch": null,
-        "commit": "5ba6f8060a540a95133767193ea570aa3b76456b",
-        "dirs": [
-          "ddnsto",
-          "luci-app-ddnsto"
-        ]
-      },
-      "luci-app-smartdns": {
-        "repo": "https://github.com/pymumu/luci-app-smartdns",
-        "branch": "master",
-        "commit": "581e5e816d92d3a663b1b2e331e3f21685968cf1",
-        "dirs": [
-          "luci-app-smartdns"
-        ]
-      },
-      "luci-app-taskplan": {
-        "repo": "https://github.com/sirpdboy/luci-app-taskplan",
-        "branch": null,
-        "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9",
-        "dirs": [
-          "luci-app-taskplan"
-        ]
-      },
-      "luci-app-argon-config": {
-        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
-        "branch": null,
-        "commit": "9f096c916c16be8075610dd137d3b18982f81f1e",
-        "dirs": [
-          "luci-app-argon-config"
-        ]
-      },
-      "luci-app-podman": {
-        "repo": "https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman",
-        "branch": null,
-        "commit": "c59635b0cceb9c418b5219812c55d937443a39bc",
-        "dirs": [
-          "luci-app-podman"
-        ]
-      },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "517971b773991541ecb5e118b0c5d0b609a79e06",
-        "dirs": [
-          "luci-theme-argon"
-        ]
-      },
-      "luci-app-aurora-config": {
-        "repo": "https://github.com/eamonxg/luci-app-aurora-config",
-        "branch": null,
-        "commit": "a5299ce0144859f47683ec3bc40805bf616f534f",
-        "dirs": [
-          "luci-app-aurora-config"
-        ]
-      },
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
@@ -134,12 +77,69 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "5ba6f8060a540a95133767193ea570aa3b76456b",
+        "dirs": [
+          "ddnsto",
+          "luci-app-ddnsto"
+        ]
+      },
+      "luci-app-smartdns": {
+        "repo": "https://github.com/pymumu/luci-app-smartdns",
+        "branch": "master",
+        "commit": "581e5e816d92d3a663b1b2e331e3f21685968cf1",
+        "dirs": [
+          "luci-app-smartdns"
+        ]
+      },
+      "luci-app-taskplan": {
+        "repo": "https://github.com/sirpdboy/luci-app-taskplan",
+        "branch": null,
+        "commit": "babd67a496a592ad9bd625fbc08db804cff45ab9",
+        "dirs": [
+          "luci-app-taskplan"
+        ]
+      },
+      "luci-app-argon-config": {
+        "repo": "https://github.com/jerrykuku/luci-app-argon-config",
+        "branch": null,
+        "commit": "9f096c916c16be8075610dd137d3b18982f81f1e",
+        "dirs": [
+          "luci-app-argon-config"
+        ]
+      },
+      "luci-app-podman": {
+        "repo": "https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman",
+        "branch": null,
+        "commit": "c59635b0cceb9c418b5219812c55d937443a39bc",
+        "dirs": [
+          "luci-app-podman"
+        ]
+      },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "517971b773991541ecb5e118b0c5d0b609a79e06",
+        "dirs": [
+          "luci-theme-argon"
+        ]
+      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
         "commit": "a09fc305fc015f722ef4ad9ed07f8b3f29e3386e",
         "dirs": [
           "luci-theme-aurora"
+        ]
+      },
+      "luci-app-aurora-config": {
+        "repo": "https://github.com/eamonxg/luci-app-aurora-config",
+        "branch": null,
+        "commit": "a5299ce0144859f47683ec3bc40805bf616f534f",
+        "dirs": [
+          "luci-app-aurora-config"
         ]
       }
     }
