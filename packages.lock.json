@@ -44,6 +44,30 @@
           "mosdns"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "da712cf06cf4e6fd39e147fb36e6ec936003fcc9",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
@@ -66,6 +90,14 @@
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09",
         "dirs": [
           "luci-app-wechatpush"
+        ]
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "0d5f51b58e878508ff2df6189b98c6511c33ae51",
+        "dirs": [
+          "tailscale"
         ]
       },
       "wrtbwmon": {
@@ -149,38 +181,6 @@
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
         "dirs": [
           "luci-app-zerotier"
-        ]
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "da712cf06cf4e6fd39e147fb36e6ec936003fcc9",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "0d5f51b58e878508ff2df6189b98c6511c33ae51",
-        "dirs": [
-          "tailscale"
         ]
       }
     }
