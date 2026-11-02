@@ -68,6 +68,14 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
@@ -119,14 +127,6 @@
           "smartdns"
         ]
       },
-      "luci-app-smartdns": {
-        "repo": "https://github.com/pymumu/luci-app-smartdns",
-        "branch": "master",
-        "commit": "581e5e816d92d3a663b1b2e331e3f21685968cf1",
-        "dirs": [
-          "luci-app-smartdns"
-        ]
-      },
       "luci-app-taskplan": {
         "repo": "https://github.com/sirpdboy/luci-app-taskplan",
         "branch": null,
@@ -143,6 +143,14 @@
           "luci-app-argon-config"
         ]
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "e11984b9a88abdbfa4e0dbc2d423e18e83d39d01",
+        "dirs": [
+          "zerotier"
+        ]
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -151,18 +159,10 @@
           "luci-app-zerotier"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "be8d917a3b88a090c084540af9bb9c1864578552",
+        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -170,17 +170,17 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "b700c83d5624ed863a880c8ae693ee3ddfcd3f63",
+        "commit": "50a97173cfafdbb037330f59da753b21a9a0fe59",
         "dirs": [
           "tailscale"
         ]
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "e11984b9a88abdbfa4e0dbc2d423e18e83d39d01",
+      "luci-app-smartdns": {
+        "repo": "https://github.com/pymumu/luci-app-smartdns",
+        "branch": "master",
+        "commit": "8e1959c5292fd8819d635fcde5afc4cddd2f59b5",
         "dirs": [
-          "zerotier"
+          "luci-app-smartdns"
         ]
       }
     }
