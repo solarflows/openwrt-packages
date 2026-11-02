@@ -53,12 +53,12 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
         "dirs": [
-          "luci-app-passwall"
+          "luci-app-passwall2"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -102,14 +102,6 @@
           "luci-app-podman"
         ]
       },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "517971b773991541ecb5e118b0c5d0b609a79e06",
-        "dirs": [
-          "luci-theme-argon"
-        ]
-      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -126,20 +118,28 @@
           "luci-app-aurora-config"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "ef271f9016158e30d8f47c65f7f267c54006f5ea",
         "dirs": [
-          "luci-app-passwall2"
+          "luci-app-passwall"
         ]
       },
       "luci-app-smartdns": {
         "repo": "https://github.com/pymumu/luci-app-smartdns",
         "branch": "master",
-        "commit": "8e1959c5292fd8819d635fcde5afc4cddd2f59b5",
+        "commit": "8f0c70281189fbdc1cd102bc134c1f6cac3a4640",
         "dirs": [
           "luci-app-smartdns"
+        ]
+      },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "378db9f62bdc843cc71c58a9c01f94b817508c66",
+        "dirs": [
+          "luci-theme-argon"
         ]
       }
     }
