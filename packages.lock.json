@@ -139,6 +139,14 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "7a3bcd40cde22cda0115ca4dfec4fed549c9401b",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -207,14 +215,6 @@
         "dirs": [
           "koolproxy",
           "luci-app-ikoolproxy"
-        ]
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "723b72082ccd703d9b9f756148a83089d9d6ceaa",
-        "dirs": [
-          "luci-app-iperf"
         ]
       },
       "openwrt-iptvhelper": {
@@ -420,6 +420,14 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "pikpak-webdav": {
@@ -633,34 +641,26 @@
           "luci-app-pushbot"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "7a3bcd40cde22cda0115ca4dfec4fed549c9401b",
+        "commit": "70ebddfe9cd2c16ac56f613b05e21ca2a7c77de0",
         "dirs": [
-          "luci-app-control-guest-wifi"
+          "luci-app-iperf"
         ]
       },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "b700c83d5624ed863a880c8ae693ee3ddfcd3f63",
+        "commit": "50a97173cfafdbb037330f59da753b21a9a0fe59",
         "dirs": [
           "irqbalance"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
-        "dirs": [
-          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "be8d917a3b88a090c084540af9bb9c1864578552",
+        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
         "dirs": [
           "luci-app-passwall2"
         ]
