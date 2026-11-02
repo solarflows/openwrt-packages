@@ -53,6 +53,14 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -68,14 +76,6 @@
         "dirs": [
           "ddnsto",
           "luci-app-ddnsto"
-        ]
-      },
-      "luci-app-smartdns": {
-        "repo": "https://github.com/pymumu/luci-app-smartdns",
-        "branch": "master",
-        "commit": "581e5e816d92d3a663b1b2e331e3f21685968cf1",
-        "dirs": [
-          "luci-app-smartdns"
         ]
       },
       "luci-app-taskplan": {
@@ -126,20 +126,20 @@
           "luci-app-aurora-config"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "19c755afcc4cd007cd4dd6c46dac1cff3de86f0b",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "be8d917a3b88a090c084540af9bb9c1864578552",
+        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
         "dirs": [
           "luci-app-passwall2"
+        ]
+      },
+      "luci-app-smartdns": {
+        "repo": "https://github.com/pymumu/luci-app-smartdns",
+        "branch": "master",
+        "commit": "8e1959c5292fd8819d635fcde5afc4cddd2f59b5",
+        "dirs": [
+          "luci-app-smartdns"
         ]
       }
     }
