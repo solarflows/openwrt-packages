@@ -53,22 +53,6 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "ef271f9016158e30d8f47c65f7f267c54006f5ea",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -126,14 +110,6 @@
           "luci-theme-argon"
         ]
       },
-      "luci-theme-aurora": {
-        "repo": "https://github.com/eamonxg/luci-theme-aurora",
-        "branch": null,
-        "commit": "a09fc305fc015f722ef4ad9ed07f8b3f29e3386e",
-        "dirs": [
-          "luci-theme-aurora"
-        ]
-      },
       "luci-app-aurora-config": {
         "repo": "https://github.com/eamonxg/luci-app-aurora-config",
         "branch": null,
@@ -149,6 +125,30 @@
         "dirs": [
           "luci-app-zapret2",
           "zapret2"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "74d712358eada65e04153ba5121875f9c2bc5099",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "176e27cb8d9852ce9b30d2e180810b544d8fc9dc",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
+      "luci-theme-aurora": {
+        "repo": "https://github.com/eamonxg/luci-theme-aurora",
+        "branch": null,
+        "commit": "a80c7980f9e07f15df81dbadf0ec045bc0605569",
+        "dirs": [
+          "luci-theme-aurora"
         ]
       }
     }
