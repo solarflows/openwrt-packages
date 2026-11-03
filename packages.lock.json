@@ -139,6 +139,14 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "1199f99f7b505ffad1defe9c0263ef0313b39601",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -209,6 +217,14 @@
           "luci-app-ikoolproxy"
         ]
       },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "6090047d1f2e25c82fb40a6de381d3f3717cf3f8",
+        "dirs": [
+          "luci-app-iperf"
+        ]
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -218,6 +234,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "1f7abcb5127707be54c8edac0201baa82ad641d7",
+        "dirs": [
+          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -403,15 +427,25 @@
           "ipt2socks",
           "microsocks",
           "naiveproxy",
+          "shadow-tls",
           "shadowsocks-rust",
           "shadowsocksr-libev",
           "simple-obfs",
           "sing-box",
+          "smartdns",
           "tcping",
           "v2ray-geodata",
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "ef271f9016158e30d8f47c65f7f267c54006f5ea",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
@@ -631,38 +665,6 @@
         "commit": "3591659191b93870f777c8ea4aa296e41b5ad2ec",
         "dirs": [
           "luci-app-pushbot"
-        ]
-      },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "1199f99f7b505ffad1defe9c0263ef0313b39601",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "6090047d1f2e25c82fb40a6de381d3f3717cf3f8",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "1f7abcb5127707be54c8edac0201baa82ad641d7",
-        "dirs": [
-          "irqbalance"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "ef271f9016158e30d8f47c65f7f267c54006f5ea",
-        "dirs": [
-          "luci-app-passwall"
         ]
       }
     }
