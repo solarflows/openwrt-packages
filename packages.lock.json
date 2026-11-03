@@ -188,14 +188,6 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "1199f99f7b505ffad1defe9c0263ef0313b39601",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -338,29 +330,6 @@
           "app-store-ui"
         ]
       },
-      "nas-packages": {
-        "repo": "https://github.com/linkease/nas-packages",
-        "branch": null,
-        "commit": "aeb8ca964e437c06c507a171d38e0c7927c2384d",
-        "dirs": [
-          "baidudrive",
-          "ddnsto",
-          "dockermanager",
-          "fastnet",
-          "ffmpeg-remux",
-          "floatip",
-          "istoreenhance",
-          "ks-cli",
-          "linkease",
-          "linkease-app-entry",
-          "linkease-common-bin",
-          "linkease-runtime-transition",
-          "linkeasefull",
-          "quickstart",
-          "unishare",
-          "webdav2"
-        ]
-      },
       "lucky": {
         "repo": "https://github.com/gdy666/luci-app-lucky",
         "branch": null,
@@ -490,22 +459,6 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "ef271f9016158e30d8f47c65f7f267c54006f5ea",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "8c67190debee97bc2b3d68c3e41521ba9ddea3b5",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -569,17 +522,6 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
-        ]
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "04fe559424048d44aaf7c53f3b3c9a775c513a3b",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -677,12 +619,70 @@
           "xmurp-ua"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "b2bb88ca2c98c061851f3727f0057d2d35c188c6",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "2d91e6d319bfb0e5a6a521d2f99915fa72db907b",
+        "commit": "2eeeddaef44f677d1b007013c8dbc3e191d59e9f",
         "dirs": [
           "irqbalance"
+        ]
+      },
+      "nas-packages": {
+        "repo": "https://github.com/linkease/nas-packages",
+        "branch": null,
+        "commit": "4686d83533dcf4923f86c4353d75c3e683ea8bca",
+        "dirs": [
+          "baidudrive",
+          "ddnsto",
+          "dockermanager",
+          "fastnet",
+          "ffmpeg-remux",
+          "floatip",
+          "istoreenhance",
+          "ks-cli",
+          "linkease",
+          "linkease-app-entry",
+          "linkease-common-bin",
+          "linkease-runtime-transition",
+          "linkeasefull",
+          "quickstart",
+          "unishare",
+          "webdav2"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "74d712358eada65e04153ba5121875f9c2bc5099",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "176e27cb8d9852ce9b30d2e180810b544d8fc9dc",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "c66d5d3fbf8861a7eb2f0ef2a5190daa03bc5e1b",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       }
     }
