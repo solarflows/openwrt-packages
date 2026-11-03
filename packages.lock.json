@@ -92,14 +92,6 @@
           "luci-app-wechatpush"
         ]
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "1f7abcb5127707be54c8edac0201baa82ad641d7",
-        "dirs": [
-          "tailscale"
-        ]
-      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
@@ -181,6 +173,14 @@
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
         "dirs": [
           "luci-app-zerotier"
+        ]
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "2d91e6d319bfb0e5a6a521d2f99915fa72db907b",
+        "dirs": [
+          "tailscale"
         ]
       }
     }
