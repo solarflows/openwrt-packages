@@ -25,15 +25,6 @@
           "luci-app-dnsfilter"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
-        "branch": null,
-        "commit": "91b506627c1d81fa323816e3aeafcbde493d03a9",
-        "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -66,6 +57,14 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "176e27cb8d9852ce9b30d2e180810b544d8fc9dc",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       },
       "luci-app-wechatpush": {
@@ -143,6 +142,14 @@
           "luci-app-argon-config"
         ]
       },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "970d7296e646918746df95396eb12e3a344668a0",
+        "dirs": [
+          "zerotier"
+        ]
+      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -151,36 +158,29 @@
           "luci-app-zerotier"
         ]
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "b07f65c28bb5fa3da1fea4b8af5ce24a1488e79a",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "74d712358eada65e04153ba5121875f9c2bc5099",
+        "commit": "821b58ecb3ae42ed5641a616007a4c8a6fcae5d4",
         "dirs": [
           "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "176e27cb8d9852ce9b30d2e180810b544d8fc9dc",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "2eeeddaef44f677d1b007013c8dbc3e191d59e9f",
+        "commit": "a6e9c57af78eee2351849134416014696e1d658c",
         "dirs": [
           "tailscale"
-        ]
-      },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "970d7296e646918746df95396eb12e3a344668a0",
-        "dirs": [
-          "zerotier"
         ]
       }
     }
