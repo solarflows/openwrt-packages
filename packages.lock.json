@@ -9,6 +9,15 @@
           "luci-app-dnsfilter"
         ]
       },
+      "lucky": {
+        "repo": "https://github.com/gdy666/luci-app-lucky",
+        "branch": null,
+        "commit": "b07f65c28bb5fa3da1fea4b8af5ce24a1488e79a",
+        "dirs": [
+          "luci-app-lucky",
+          "lucky"
+        ]
+      },
       "geo2txt": {
         "repo": "https://github.com/sbwml/luci-app-mosdns",
         "branch": "v5",
@@ -42,6 +51,14 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "821b58ecb3ae42ed5641a616007a4c8a6fcae5d4",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
@@ -109,14 +126,6 @@
           "luci-theme-argon"
         ]
       },
-      "luci-theme-aurora": {
-        "repo": "https://github.com/eamonxg/luci-theme-aurora",
-        "branch": null,
-        "commit": "a80c7980f9e07f15df81dbadf0ec045bc0605569",
-        "dirs": [
-          "luci-theme-aurora"
-        ]
-      },
       "luci-app-aurora-config": {
         "repo": "https://github.com/eamonxg/luci-app-aurora-config",
         "branch": null,
@@ -134,21 +143,12 @@
           "zapret2"
         ]
       },
-      "lucky": {
-        "repo": "https://github.com/gdy666/luci-app-lucky",
+      "luci-theme-aurora": {
+        "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
-        "commit": "b07f65c28bb5fa3da1fea4b8af5ce24a1488e79a",
+        "commit": "298dbcc74ddf820923a51285fb0826d429e5d7ca",
         "dirs": [
-          "luci-app-lucky",
-          "lucky"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "821b58ecb3ae42ed5641a616007a4c8a6fcae5d4",
-        "dirs": [
-          "luci-app-passwall"
+          "luci-theme-aurora"
         ]
       }
     }
