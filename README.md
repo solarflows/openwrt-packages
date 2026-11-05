@@ -35,13 +35,13 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 |:---|:---|:---|:---|
 | `airconnect` | airconnect 将DLNA设备转为AirPlay设备 | [sbwml/luci-app-airconnect](https://github.com/sbwml/luci-app-airconnect) ([`b0dfd06`](https://github.com/sbwml/luci-app-airconnect/commit/b0dfd0689356d634191e77a25ff4f8c92763df4a)) | `main`, `qt6` |
 | `app-store-ui` | app-store-ui | [linkease/istore-ui](https://github.com/linkease/istore-ui) ([`a595bae`](https://github.com/linkease/istore-ui/commit/a595baefa686fdd2f5b5f64820fb1b5a38749165)) | `main`, `qt6` |
-| `cdnspeedtest` | cdnspeedtest CloudFlare CDN 测速 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`48f6090`](https://github.com/immortalwrt/packages/commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `main`, `mt798x`, `qt6` |
-| `filebrowser` | filebrowser 文件管理器 | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) ([`48f6090`](https://github.com/immortalwrt/packages//commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `main`, `qt6` |
+| `cdnspeedtest` | cdnspeedtest CloudFlare CDN 测速 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `mt798x`, `qt6` |
+| `filebrowser` | filebrowser 文件管理器 | [immortalwrt/packages/](https://github.com/immortalwrt/packages/) ([`395ca4d`](https://github.com/immortalwrt/packages//commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`dbdd91a`](https://github.com/sbwml/luci-app-mosdns/commit/dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `homeproxy` | HomeProxy Tianling Shen主导的FQ | [immortalwrt/homeproxy](https://github.com/immortalwrt/homeproxy) ([`fadaa67`](https://github.com/immortalwrt/homeproxy/commit/fadaa676104f59ff6ace480a780a258d846d0aec)) | `main`, `qt6` |
 | `irqbalance` | irqbalance 修复lean的irqbalance | [openwrt/packages](https://github.com/openwrt/packages) ([`5a350e9`](https://github.com/openwrt/packages/commit/5a350e9adf2e5c411205597f9092a8069bd04580)) | `main`, `qt6` |
 | `istore` | linkease 易有云官方软件(易有云ddnsto,linkshare) | [linkease/istore](https://github.com/linkease/istore) ([`a97ace3`](https://github.com/linkease/istore/commit/a97ace34f2da358a015b094d326bba2697697f2e)) | `main`, `qt6` |
-| `libtorrent-rasterbar` | libtorrent-rasterbar | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`48f6090`](https://github.com/immortalwrt/packages/commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `main`, `qt6` |
+| `libtorrent-rasterbar` | libtorrent-rasterbar | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `qt6` |
 | `luci-app-advanced` | advanced 配置文件级别的设置修改插件 | [sirpdboy/luci-app-advanced](https://github.com/sirpdboy/luci-app-advanced) ([`6a5adf2`](https://github.com/sirpdboy/luci-app-advanced/commit/6a5adf2c962e9130c973b038ffbc4e46fb018d17)) | `main`, `qt6` |
 | `luci-app-aliyundrive-webdav` | 阿里网盘Webdav挂载 | [messense/aliyundrive-webdav](https://github.com/messense/aliyundrive-webdav) ([`00caff6`](https://github.com/messense/aliyundrive-webdav/commit/00caff62b55ae53327f1c8824b19b1c9532cc174)) | `main`, `qt6` |
 | `luci-app-amlogic` | amlogic 固件更新功能加强 | [ophub/luci-app-amlogic](https://github.com/ophub/luci-app-amlogic) ([`869a7ae`](https://github.com/ophub/luci-app-amlogic/commit/869a7ae501d54d9b94742a1165df374b2a4d0e69)) | `main`, `qt6` |
@@ -91,7 +91,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `nas-packages` | linkease 易有云 nas-packages | [linkease/nas-packages](https://github.com/linkease/nas-packages) ([`4686d83`](https://github.com/linkease/nas-packages/commit/4686d83533dcf4923f86c4353d75c3e683ea8bca)) | `main`, `qt6` |
 | `nas-packages-luci` | linkease 易有云 nas-packages-luci | [linkease/nas-packages-luci](https://github.com/linkease/nas-packages-luci) ([`2a71fe5`](https://github.com/linkease/nas-packages-luci/commit/2a71fe50f64f57b85c190d34d7ffc0244b4ca794)) | `main`, `qt6` |
 | `natter` | Hyy2001X 软件库 | [Hyy2001X/AutoBuild-Packages](https://github.com/Hyy2001X/AutoBuild-Packages) ([`276d594`](https://github.com/Hyy2001X/AutoBuild-Packages/commit/276d594e7ed7d3d3e3bf572ff0334ace300f2645)) | `main`, `qt6` |
-| `ngrokc` | ngrokc c语言实现的ngrok | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`48f6090`](https://github.com/immortalwrt/packages/commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `main`, `qt6` |
+| `ngrokc` | ngrokc c语言实现的ngrok | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `qt6` |
 | `OpenAppFilter` | OpenAppFilter 内核级应用过滤 | [destan19/OpenAppFilter](https://github.com/destan19/OpenAppFilter) ([`0814b87`](https://github.com/destan19/OpenAppFilter/commit/0814b87f57181ef238b9a21604c999e98de73cf2)) | `main`, `qt6` |
 | `openwrt-iptvhelper` | iptvhelper 融合IPTV到家庭局域网 | [riverscn/openwrt-iptvhelper](https://github.com/riverscn/openwrt-iptvhelper) ([`338b898`](https://github.com/riverscn/openwrt-iptvhelper/commit/338b898f3b76159f05794b0120d38e697a7808b0)) | `main`, `qt6` |
 | `openwrt-nezha` | nezha 开源、轻量的服务器和网站监控、运维工具 | [Erope/openwrt_nezha](https://github.com/Erope/openwrt_nezha) ([`f9ff58d`](https://github.com/Erope/openwrt_nezha/commit/f9ff58d097558ef0a9c9ac2c39f1e0e247179db2)) | `main`, `qt6` |
@@ -99,7 +99,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `openwrt-subconverter` | subconverter 订阅转换 | [WYC-2020/openwrt-subconverter](https://github.com/WYC-2020/openwrt-subconverter) ([`c725d71`](https://github.com/WYC-2020/openwrt-subconverter/commit/c725d7142ddb0d5100f1e06a4eb0e3cab622b52c)) | `main`, `qt6` |
 | `pikpak-webdav` | pikpak-webdav 海外迅雷网盘 | [ykxVK8yL5L/pikpak-webdav](https://github.com/ykxVK8yL5L/pikpak-webdav) ([`c6d2219`](https://github.com/ykxVK8yL5L/pikpak-webdav/commit/c6d221969570474ce1baeee4ddf876283e7547dd)) | `main`, `qt6` |
 | `shadow-tls` | ssr-plus 科学上网 | [fw876/helloworld](https://github.com/fw876/helloworld) ([`81c6320`](https://github.com/fw876/helloworld/commit/81c6320d40d455e6d623b6579f460d0665e1a421)) | `main`, `qt6` |
-| `smartdns` | smartdns | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`48f6090`](https://github.com/immortalwrt/packages/commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `main`, `qt6` |
+| `smartdns` | smartdns | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `qt6` |
 | `sms-tool` | sms-tool | [4IceG/packages](https://github.com/4IceG/packages) ([`3ad0ae0`](https://github.com/4IceG/packages/commit/3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34)) | `main`, `qt6` |
 | `tencentcloud_ddns` | tencentcloud_ddns 腾讯云DDNS | [Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns](https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns) ([`537a537`](https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns/commit/537a537436663cb1595a49db44989fac4314d83c)) | `main`, `qt6` |
 | `xmurp-ua` | xmurp-ua 在 OpenWrt 上修改 HTTP 流量的 UA | [CHN-beta/xmurp-ua](https://github.com/CHN-beta/xmurp-ua) ([`f3383f5`](https://github.com/CHN-beta/xmurp-ua/commit/f3383f5f85301725c0bbc186ef96804f8411a34d)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-04 19:15
+**最近更新**: 2026-11-05 04:49
 
 ## 🙏 致谢
 
