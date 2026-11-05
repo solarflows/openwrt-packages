@@ -9,14 +9,6 @@
           "luci-theme-argon"
         ]
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
-        "dirs": [
-          "cdnspeedtest"
-        ]
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -92,6 +84,14 @@
           "luci-app-wechatpush"
         ]
       },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "5a350e9adf2e5c411205597f9092a8069bd04580",
+        "dirs": [
+          "tailscale"
+        ]
+      },
       "wrtbwmon": {
         "repo": "https://github.com/padavanonly/immortalwrt-mt798x-24.10",
         "branch": null,
@@ -100,14 +100,6 @@
           "luci-app-mwan3helper-chinaroute",
           "luci-app-wrtbwmon",
           "wrtbwmon"
-        ]
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
-        "dirs": [
-          "arp-scan"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -175,12 +167,20 @@
           "luci-app-zerotier"
         ]
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "5a350e9adf2e5c411205597f9092a8069bd04580",
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
         "dirs": [
-          "tailscale"
+          "cdnspeedtest"
+        ]
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "dirs": [
+          "arp-scan"
         ]
       }
     }

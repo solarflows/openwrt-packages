@@ -33,8 +33,8 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 | 插件名称 | 功能描述 | 上游来源 | 适用分支 |
 |:---|:---|:---|:---|
-| `arp-scan` | arp-scan 基于arping的局域网扫描工具 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`48f6090`](https://github.com/immortalwrt/packages/commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `mt798x` |
-| `cdnspeedtest` | cdnspeedtest CloudFlare CDN 测速 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`48f6090`](https://github.com/immortalwrt/packages/commit/48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd)) | `main`, `mt798x`, `qt6` |
+| `arp-scan` | arp-scan 基于arping的局域网扫描工具 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `mt798x` |
+| `cdnspeedtest` | cdnspeedtest CloudFlare CDN 测速 | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `mt798x`, `qt6` |
 | `geo2txt` | # MosDNS 插件化可定制的DNS转发器 | [sbwml/luci-app-mosdns](https://github.com/sbwml/luci-app-mosdns) ([`dbdd91a`](https://github.com/sbwml/luci-app-mosdns/commit/dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-argon-config` | luci-app-argon-conf | [jerrykuku/luci-app-argon-config](https://github.com/jerrykuku/luci-app-argon-config) ([`9f096c9`](https://github.com/jerrykuku/luci-app-argon-config/commit/9f096c916c16be8075610dd137d3b18982f81f1e)) | `mt798x`, `qualcommax` |
 | `luci-app-cloudflarespeedtest` | CloudflareSpeedtest Cloudflare Speedtest 插件 | [stevenjoezhang/luci-app-cloudflarespeedtest](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest) ([`3e19734`](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest/commit/3e1973406f4ea00b8e4120160ed4acae82fd0d0d)) | `mt798x`, `qualcommax` |
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-04 19:15
+**最近更新**: 2026-11-05 04:49
 
 ## 🙏 致谢
 
