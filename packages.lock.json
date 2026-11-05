@@ -123,6 +123,14 @@
           "luci-app-beardropper"
         ]
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "dirs": [
+          "cdnspeedtest"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -153,6 +161,14 @@
         "commit": "6fd9937954e0b080bf07967182d714ea21fe7eb1",
         "dirs": [
           "luci-app-dockerman"
+        ]
+      },
+      "filebrowser": {
+        "repo": "https://github.com/immortalwrt/packages/",
+        "branch": null,
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "dirs": [
+          "filebrowser"
         ]
       },
       "luci-app-filebrowser": {
@@ -220,12 +236,12 @@
           "luci-app-iptvhelper"
         ]
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
+      "libtorrent-rasterbar": {
+        "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "5a350e9adf2e5c411205597f9092a8069bd04580",
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
         "dirs": [
-          "irqbalance"
+          "libtorrent-rasterbar"
         ]
       },
       "istore": {
@@ -355,6 +371,14 @@
           "luci-app-netdata"
         ]
       },
+      "ngrokc": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "dirs": [
+          "ngrokc"
+        ]
+      },
       "luci-app-nodogsplash": {
         "repo": "https://github.com/tty228/luci-app-nodogsplash",
         "branch": null,
@@ -416,14 +440,6 @@
           "luci-app-passwall"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "176e27cb8d9852ce9b30d2e180810b544d8fc9dc",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -455,6 +471,14 @@
         "commit": "cddf8cd04869ffd69c8aa9b01eb58b10f7ba41ca",
         "dirs": [
           "luci-app-smartdns"
+        ]
+      },
+      "smartdns": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "dirs": [
+          "smartdns"
         ]
       },
       "luci-app-smartinfo": {
@@ -627,44 +651,20 @@
           "luci-app-pushbot"
         ]
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "commit": "92643a05ce1b97891f376151bca6a2467370f507",
         "dirs": [
-          "cdnspeedtest"
+          "irqbalance"
         ]
       },
-      "filebrowser": {
-        "repo": "https://github.com/immortalwrt/packages/",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "commit": "3247e147669bb2d9e4a6398222f7cb1a98fd13f0",
         "dirs": [
-          "filebrowser"
-        ]
-      },
-      "libtorrent-rasterbar": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
-        "dirs": [
-          "libtorrent-rasterbar"
-        ]
-      },
-      "ngrokc": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
-        "dirs": [
-          "ngrokc"
-        ]
-      },
-      "smartdns": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
-        "dirs": [
-          "smartdns"
+          "luci-app-passwall2"
         ]
       }
     }
