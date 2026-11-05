@@ -126,6 +126,14 @@
           "luci-theme-argon"
         ]
       },
+      "luci-theme-aurora": {
+        "repo": "https://github.com/eamonxg/luci-theme-aurora",
+        "branch": null,
+        "commit": "298dbcc74ddf820923a51285fb0826d429e5d7ca",
+        "dirs": [
+          "luci-theme-aurora"
+        ]
+      },
       "luci-app-aurora-config": {
         "repo": "https://github.com/eamonxg/luci-app-aurora-config",
         "branch": null,
@@ -141,14 +149,6 @@
         "dirs": [
           "luci-app-zapret2",
           "zapret2"
-        ]
-      },
-      "luci-theme-aurora": {
-        "repo": "https://github.com/eamonxg/luci-theme-aurora",
-        "branch": null,
-        "commit": "298dbcc74ddf820923a51285fb0826d429e5d7ca",
-        "dirs": [
-          "luci-theme-aurora"
         ]
       }
     }
