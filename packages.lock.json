@@ -123,20 +123,20 @@
           "luci-app-beardropper"
         ]
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
-        "dirs": [
-          "cdnspeedtest"
-        ]
-      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/mingxiaoyu/luci-app-cloudflarespeedtest",
         "branch": null,
         "commit": "4229177d5349dda8703271e08816b6b46130630a",
         "dirs": [
           "luci-app-cloudflarespeedtest"
+        ]
+      },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "8242f69246ad3c258eea127021457e0831cf5c7a",
+        "dirs": [
+          "luci-app-control-guest-wifi"
         ]
       },
       "luci-app-dnsfilter": {
@@ -153,14 +153,6 @@
         "commit": "6fd9937954e0b080bf07967182d714ea21fe7eb1",
         "dirs": [
           "luci-app-dockerman"
-        ]
-      },
-      "filebrowser": {
-        "repo": "https://github.com/immortalwrt/packages/",
-        "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
-        "dirs": [
-          "filebrowser"
         ]
       },
       "luci-app-filebrowser": {
@@ -209,6 +201,14 @@
           "luci-app-ikoolproxy"
         ]
       },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "61cde372b4589c6cfb23bbd03dbb89b89b83272e",
+        "dirs": [
+          "luci-app-iperf"
+        ]
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -220,12 +220,12 @@
           "luci-app-iptvhelper"
         ]
       },
-      "libtorrent-rasterbar": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
+        "commit": "5a350e9adf2e5c411205597f9092a8069bd04580",
         "dirs": [
-          "libtorrent-rasterbar"
+          "irqbalance"
         ]
       },
       "istore": {
@@ -355,14 +355,6 @@
           "luci-app-netdata"
         ]
       },
-      "ngrokc": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
-        "dirs": [
-          "ngrokc"
-        ]
-      },
       "luci-app-nodogsplash": {
         "repo": "https://github.com/tty228/luci-app-nodogsplash",
         "branch": null,
@@ -465,14 +457,6 @@
           "luci-app-smartdns"
         ]
       },
-      "smartdns": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "48f609040f2e4beb16c1aa62af6a6aaafd2eb6cd",
-        "dirs": [
-          "smartdns"
-        ]
-      },
       "luci-app-smartinfo": {
         "repo": "https://github.com/huajijam/luci-app-smartinfo",
         "branch": null,
@@ -495,6 +479,17 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "81c6320d40d455e6d623b6579f460d0665e1a421",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -632,39 +627,44 @@
           "luci-app-pushbot"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "8242f69246ad3c258eea127021457e0831cf5c7a",
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
         "dirs": [
-          "luci-app-control-guest-wifi"
+          "cdnspeedtest"
         ]
       },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+      "filebrowser": {
+        "repo": "https://github.com/immortalwrt/packages/",
         "branch": null,
-        "commit": "61cde372b4589c6cfb23bbd03dbb89b89b83272e",
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
         "dirs": [
-          "luci-app-iperf"
+          "filebrowser"
         ]
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
+      "libtorrent-rasterbar": {
+        "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "5a350e9adf2e5c411205597f9092a8069bd04580",
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
         "dirs": [
-          "irqbalance"
+          "libtorrent-rasterbar"
         ]
       },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
+      "ngrokc": {
+        "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "81c6320d40d455e6d623b6579f460d0665e1a421",
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
         "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
+          "ngrokc"
+        ]
+      },
+      "smartdns": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0",
+        "dirs": [
+          "smartdns"
         ]
       }
     }
