@@ -432,14 +432,6 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "821b58ecb3ae42ed5641a616007a4c8a6fcae5d4",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -654,15 +646,23 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "92643a05ce1b97891f376151bca6a2467370f507",
+        "commit": "3a0dd68784bed871312e685db753e21bc45a27f3",
         "dirs": [
           "irqbalance"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "8e1860acd9fdc81b6f474ab29c0e580240f64575",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "3247e147669bb2d9e4a6398222f7cb1a98fd13f0",
+        "commit": "819de45d8c8aaa3520d60080aeb4048e085240b4",
         "dirs": [
           "luci-app-passwall2"
         ]
