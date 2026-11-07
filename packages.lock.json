@@ -68,10 +68,18 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "e8a6ecae7c561c3a790676e848fc169c2217419a",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "edef18ec550432b446423a6b61f5a086062e9bdc",
+        "commit": "7d6b5bc75185956c8cbed7a6c8c07065a04d5059",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -82,6 +90,14 @@
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09",
         "dirs": [
           "luci-app-wechatpush"
+        ]
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "7eef26d5122e52301e0df3ddf9327cff16c1a713",
+        "dirs": [
+          "tailscale"
         ]
       },
       "wrtbwmon": {
@@ -151,36 +167,20 @@
           "luci-app-argon-config"
         ]
       },
-      "luci-app-zerotier": {
-        "repo": "https://github.com/zhengmz/luci-app-zerotier",
-        "branch": null,
-        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
-        "dirs": [
-          "luci-app-zerotier"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "e8a6ecae7c561c3a790676e848fc169c2217419a",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "1c248d7e25e66304ffe96faba031d14b845d8eaf",
-        "dirs": [
-          "tailscale"
-        ]
-      },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
         "commit": "497b99d7b47496b3d547ccedf45d07640ca3d0e7",
         "dirs": [
           "zerotier"
+        ]
+      },
+      "luci-app-zerotier": {
+        "repo": "https://github.com/zhengmz/luci-app-zerotier",
+        "branch": null,
+        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
+        "dirs": [
+          "luci-app-zerotier"
         ]
       }
     }
