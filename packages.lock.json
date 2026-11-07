@@ -53,6 +53,14 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "edef18ec550432b446423a6b61f5a086062e9bdc",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -102,6 +110,14 @@
           "luci-app-podman"
         ]
       },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "c6d63bd68aa9272e40c35cee5e615f45cc1e4eb0",
+        "dirs": [
+          "luci-theme-argon"
+        ]
+      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -130,25 +146,9 @@
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "bdaab18b2f0ecd5246d9cbfb1b8fce0c35cdbd17",
+        "commit": "e8a6ecae7c561c3a790676e848fc169c2217419a",
         "dirs": [
           "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "edef18ec550432b446423a6b61f5a086062e9bdc",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "c6d63bd68aa9272e40c35cee5e615f45cc1e4eb0",
-        "dirs": [
-          "luci-theme-argon"
         ]
       }
     }
