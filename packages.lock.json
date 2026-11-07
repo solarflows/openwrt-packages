@@ -139,6 +139,14 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "b521a389d9f4ba6b31e86a7a49507f031d3fb753",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -209,6 +217,14 @@
           "luci-app-ikoolproxy"
         ]
       },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "6178646e77a47cef4d2b6f4d8d395f11fecc26c3",
+        "dirs": [
+          "luci-app-iperf"
+        ]
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -239,12 +255,61 @@
           "taskd"
         ]
       },
+      "nas-packages-luci": {
+        "repo": "https://github.com/linkease/nas-packages-luci",
+        "branch": null,
+        "commit": "3785382b3e920ba6d7428b8d825c30196b7b3519",
+        "dirs": [
+          "luci-app-baidudrive",
+          "luci-app-ddnsto",
+          "luci-app-dockermanager",
+          "luci-app-fastnet",
+          "luci-app-floatip",
+          "luci-app-istoreenhance",
+          "luci-app-istorerouter",
+          "luci-app-istorex",
+          "luci-app-linkease",
+          "luci-app-linkeasefull",
+          "luci-app-linkeasefull-embed",
+          "luci-app-quickstart",
+          "luci-app-unishare",
+          "luci-lib-iform",
+          "luci-lib-linkeaseauth",
+          "luci-lib-linkeasefile",
+          "luci-mod-istorenext",
+          "luci-nginxer",
+          "luci-theme-istorenas"
+        ]
+      },
       "app-store-ui": {
         "repo": "https://github.com/linkease/istore-ui",
         "branch": null,
         "commit": "a595baefa686fdd2f5b5f64820fb1b5a38749165",
         "dirs": [
           "app-store-ui"
+        ]
+      },
+      "nas-packages": {
+        "repo": "https://github.com/linkease/nas-packages",
+        "branch": null,
+        "commit": "2c4bb9929a4b57509a20090610041be25a315a7e",
+        "dirs": [
+          "baidudrive",
+          "ddnsto",
+          "dockermanager",
+          "fastnet",
+          "ffmpeg-remux",
+          "floatip",
+          "istoreenhance",
+          "ks-cli",
+          "linkease",
+          "linkease-app-entry",
+          "linkease-common-bin",
+          "linkease-runtime-transition",
+          "linkeasefull",
+          "quickstart",
+          "unishare",
+          "webdav2"
         ]
       },
       "geo2txt": {
@@ -365,6 +430,14 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "edef18ec550432b446423a6b61f5a086062e9bdc",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       },
       "pikpak-webdav": {
@@ -567,99 +640,26 @@
           "luci-app-pushbot"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "b521a389d9f4ba6b31e86a7a49507f031d3fb753",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "6178646e77a47cef4d2b6f4d8d395f11fecc26c3",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "b50b8eadc01f5e38c258c52802a5d810871d367b",
+        "commit": "1c248d7e25e66304ffe96faba031d14b845d8eaf",
         "dirs": [
           "irqbalance"
-        ]
-      },
-      "nas-packages-luci": {
-        "repo": "https://github.com/linkease/nas-packages-luci",
-        "branch": null,
-        "commit": "3785382b3e920ba6d7428b8d825c30196b7b3519",
-        "dirs": [
-          "luci-app-baidudrive",
-          "luci-app-ddnsto",
-          "luci-app-dockermanager",
-          "luci-app-fastnet",
-          "luci-app-floatip",
-          "luci-app-istoreenhance",
-          "luci-app-istorerouter",
-          "luci-app-istorex",
-          "luci-app-linkease",
-          "luci-app-linkeasefull",
-          "luci-app-linkeasefull-embed",
-          "luci-app-quickstart",
-          "luci-app-unishare",
-          "luci-lib-iform",
-          "luci-lib-linkeaseauth",
-          "luci-lib-linkeasefile",
-          "luci-mod-istorenext",
-          "luci-nginxer",
-          "luci-theme-istorenas"
-        ]
-      },
-      "nas-packages": {
-        "repo": "https://github.com/linkease/nas-packages",
-        "branch": null,
-        "commit": "2c4bb9929a4b57509a20090610041be25a315a7e",
-        "dirs": [
-          "baidudrive",
-          "ddnsto",
-          "dockermanager",
-          "fastnet",
-          "ffmpeg-remux",
-          "floatip",
-          "istoreenhance",
-          "ks-cli",
-          "linkease",
-          "linkease-app-entry",
-          "linkease-common-bin",
-          "linkease-runtime-transition",
-          "linkeasefull",
-          "quickstart",
-          "unishare",
-          "webdav2"
         ]
       },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
-        "commit": "bdaab18b2f0ecd5246d9cbfb1b8fce0c35cdbd17",
+        "commit": "e8a6ecae7c561c3a790676e848fc169c2217419a",
         "dirs": [
           "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "edef18ec550432b446423a6b61f5a086062e9bdc",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       },
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "ecac6bb5223400c362e519ed3d02a96d8bed504b",
+        "commit": "c4a72267ce2bc1c37371da62f4713a237fef4dcb",
         "dirs": [
           "lua-neturl",
           "luci-app-ssr-plus",
