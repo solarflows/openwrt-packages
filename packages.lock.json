@@ -86,7 +86,7 @@
       "luci-app-amlogic": {
         "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
-        "commit": "869a7ae501d54d9b94742a1165df374b2a4d0e69",
+        "commit": "b84ff404cd425993e004701b9f0c057d7d7e1464",
         "dirs": [
           "luci-app-amlogic"
         ]
@@ -142,7 +142,7 @@
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "b521a389d9f4ba6b31e86a7a49507f031d3fb753",
+        "commit": "df5eb78a862467e97e3cba702a4034a274a98268",
         "dirs": [
           "luci-app-control-guest-wifi"
         ]
@@ -236,6 +236,14 @@
           "luci-app-iptvhelper"
         ]
       },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "7eef26d5122e52301e0df3ddf9327cff16c1a713",
+        "dirs": [
+          "irqbalance"
+        ]
+      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -258,7 +266,7 @@
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "3785382b3e920ba6d7428b8d825c30196b7b3519",
+        "commit": "f5b7f467a62cba958cf58c01fa1c18f0272624ce",
         "dirs": [
           "luci-app-baidudrive",
           "luci-app-ddnsto",
@@ -292,7 +300,7 @@
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "2c4bb9929a4b57509a20090610041be25a315a7e",
+        "commit": "c4933274e12e5a60def72daaac6e64f71607e6ce",
         "dirs": [
           "baidudrive",
           "ddnsto",
@@ -432,10 +440,18 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "e8a6ecae7c561c3a790676e848fc169c2217419a",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "edef18ec550432b446423a6b61f5a086062e9bdc",
+        "commit": "7d6b5bc75185956c8cbed7a6c8c07065a04d5059",
         "dirs": [
           "luci-app-passwall2"
         ]
@@ -503,6 +519,17 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "c4a72267ce2bc1c37371da62f4713a237fef4dcb",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -638,33 +665,6 @@
         "commit": "3591659191b93870f777c8ea4aa296e41b5ad2ec",
         "dirs": [
           "luci-app-pushbot"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "1c248d7e25e66304ffe96faba031d14b845d8eaf",
-        "dirs": [
-          "irqbalance"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "e8a6ecae7c561c3a790676e848fc169c2217419a",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "c4a72267ce2bc1c37371da62f4713a237fef4dcb",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
         ]
       }
     }
