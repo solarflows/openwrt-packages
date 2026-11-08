@@ -521,17 +521,6 @@
           "sms-tool"
         ]
       },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "c4a72267ce2bc1c37371da62f4713a237fef4dcb",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
-        ]
-      },
       "openwrt-subconverter": {
         "repo": "https://github.com/WYC-2020/openwrt-subconverter",
         "branch": null,
@@ -665,6 +654,17 @@
         "commit": "3591659191b93870f777c8ea4aa296e41b5ad2ec",
         "dirs": [
           "luci-app-pushbot"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "425d4805ef6fa4d78759f0f0c96e1b31e8dde069",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       }
     }
