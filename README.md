@@ -47,7 +47,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-theme-argon` | luci-theme-argon | [jerrykuku/luci-theme-argon](https://github.com/jerrykuku/luci-theme-argon) ([`c6d63bd`](https://github.com/jerrykuku/luci-theme-argon/commit/c6d63bd68aa9272e40c35cee5e615f45cc1e4eb0)) | `qualcommax` |
 | `luci-theme-aurora` | luci-theme-aurora | [eamonxg/luci-theme-aurora](https://github.com/eamonxg/luci-theme-aurora) ([`298dbcc`](https://github.com/eamonxg/luci-theme-aurora/commit/298dbcc74ddf820923a51285fb0826d429e5d7ca)) | `qualcommax` |
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`b07f65c`](https://github.com/gdy666/luci-app-lucky/commit/b07f65c28bb5fa3da1fea4b8af5ce24a1488e79a)) | `main`, `mt798x`, `qualcommax` |
-| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`da712cf`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/da712cf06cf4e6fd39e147fb36e6ec936003fcc9)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`4dad9be`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/4dad9be70a37343ad3ef88cd3722576e8e234edf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `zapret2` | zapret2 DPI 绕过核心与 LuCI 控制面板 | [damocjwj/openwrt-zapret2](https://github.com/damocjwj/openwrt-zapret2) ([`87868df`](https://github.com/damocjwj/openwrt-zapret2/commit/87868dfaf81608fd87a37ef94ad64068188ab6dc)) | `qualcommax` |
 
 > 📌 仅列出各分支中实际采集的插件，已注释/归档的不在此列。
@@ -56,7 +56,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-09 04:17
+**最近更新**: 2026-11-09 21:52
 
 ## 🙏 致谢
 
