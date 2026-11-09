@@ -53,6 +53,22 @@
           "xray-plugin"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "9701235482ccdfd0ddeace689a03fd4cfd89555d",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "0d5a1697a926a34e661ecd0e67b0c038f9f42c4e",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -133,22 +149,6 @@
         "dirs": [
           "luci-app-zapret2",
           "zapret2"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "9701235482ccdfd0ddeace689a03fd4cfd89555d",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "0d5a1697a926a34e661ecd0e67b0c038f9f42c4e",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       }
     }
