@@ -217,14 +217,6 @@
           "luci-app-ikoolproxy"
         ]
       },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "31f64c01be8e42197a8500af6f62f010be412f10",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -234,14 +226,6 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "e29a7551fcb928562509326b0d1e793cf3ad2e03",
-        "dirs": [
-          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -438,22 +422,6 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "9701235482ccdfd0ddeace689a03fd4cfd89555d",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "0d5a1697a926a34e661ecd0e67b0c038f9f42c4e",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -517,6 +485,17 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "e8efa31ae45ddf217863dced9068730bf24dd37a",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -654,15 +633,36 @@
           "luci-app-pushbot"
         ]
       },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "e8efa31ae45ddf217863dced9068730bf24dd37a",
+        "commit": "acef5ba8f9d642f5466f687cd5c0a46a549a92bf",
         "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
+          "luci-app-iperf"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "bc1d35804a3993c66c48e8f97415ec4ec6523c28",
+        "dirs": [
+          "irqbalance"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "c485ffe53a1c9ca153173040c6b13ece9cea7ab2",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "24baf7cffdb34272adb8f8b31d6ad901596c3f61",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       }
     }
