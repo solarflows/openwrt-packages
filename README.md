@@ -98,7 +98,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`4dad9be`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/4dad9be70a37343ad3ef88cd3722576e8e234edf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `openwrt-subconverter` | subconverter 订阅转换 | [WYC-2020/openwrt-subconverter](https://github.com/WYC-2020/openwrt-subconverter) ([`c725d71`](https://github.com/WYC-2020/openwrt-subconverter/commit/c725d7142ddb0d5100f1e06a4eb0e3cab622b52c)) | `main`, `qt6` |
 | `pikpak-webdav` | pikpak-webdav 海外迅雷网盘 | [ykxVK8yL5L/pikpak-webdav](https://github.com/ykxVK8yL5L/pikpak-webdav) ([`c6d2219`](https://github.com/ykxVK8yL5L/pikpak-webdav/commit/c6d221969570474ce1baeee4ddf876283e7547dd)) | `main`, `qt6` |
-| `shadow-tls` | ssr-plus 科学上网 | [fw876/helloworld](https://github.com/fw876/helloworld) ([`425d480`](https://github.com/fw876/helloworld/commit/425d4805ef6fa4d78759f0f0c96e1b31e8dde069)) | `main`, `qt6` |
+| `shadow-tls` | ssr-plus 科学上网 | [fw876/helloworld](https://github.com/fw876/helloworld) ([`e8efa31`](https://github.com/fw876/helloworld/commit/e8efa31ae45ddf217863dced9068730bf24dd37a)) | `main`, `qt6` |
 | `smartdns` | smartdns | [immortalwrt/packages](https://github.com/immortalwrt/packages) ([`395ca4d`](https://github.com/immortalwrt/packages/commit/395ca4d2df4754cdb8e89bc4b37cdbcf54d905b0)) | `main`, `qt6` |
 | `sms-tool` | sms-tool | [4IceG/packages](https://github.com/4IceG/packages) ([`3ad0ae0`](https://github.com/4IceG/packages/commit/3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34)) | `main`, `qt6` |
 | `tencentcloud_ddns` | tencentcloud_ddns 腾讯云DDNS | [Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns](https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns) ([`537a537`](https://github.com/Tencent-Cloud-Plugins/tencentcloud-openwrt-plugin-ddns/commit/537a537436663cb1595a49db44989fac4314d83c)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-09 21:52
+**最近更新**: 2026-11-10 05:44
 
 ## 🙏 致谢
 
