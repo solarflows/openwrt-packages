@@ -44,6 +44,30 @@
           "mosdns"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "4dad9be70a37343ad3ef88cd3722576e8e234edf",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
@@ -66,6 +90,14 @@
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09",
         "dirs": [
           "luci-app-wechatpush"
+        ]
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "e29a7551fcb928562509326b0d1e793cf3ad2e03",
+        "dirs": [
+          "tailscale"
         ]
       },
       "wrtbwmon": {
@@ -101,6 +133,14 @@
         "dirs": [
           "ddnsto",
           "luci-app-ddnsto"
+        ]
+      },
+      "smartdns": {
+        "repo": "https://github.com/pymumu/openwrt-smartdns",
+        "branch": null,
+        "commit": "d14610199a709c5c3534bce12a1fbe27d1858e89",
+        "dirs": [
+          "smartdns"
         ]
       },
       "luci-app-smartdns": {
@@ -141,46 +181,6 @@
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
         "dirs": [
           "luci-app-zerotier"
-        ]
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "4dad9be70a37343ad3ef88cd3722576e8e234edf",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "e29a7551fcb928562509326b0d1e793cf3ad2e03",
-        "dirs": [
-          "tailscale"
-        ]
-      },
-      "smartdns": {
-        "repo": "https://github.com/pymumu/openwrt-smartdns",
-        "branch": null,
-        "commit": "d14610199a709c5c3534bce12a1fbe27d1858e89",
-        "dirs": [
-          "smartdns"
         ]
       }
     }
