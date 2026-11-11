@@ -9,6 +9,14 @@
           "luci-theme-argon"
         ]
       },
+      "cdnspeedtest": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "decf94639ffd6ddd26591c190b547c6b7eea150b",
+        "dirs": [
+          "cdnspeedtest"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -60,12 +68,12 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "24baf7cffdb34272adb8f8b31d6ad901596c3f61",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "972573ad6e3c61ea7bb0c5472af12900a3a9d632",
         "dirs": [
-          "luci-app-passwall2"
+          "luci-app-passwall"
         ]
       },
       "luci-app-wechatpush": {
@@ -84,6 +92,14 @@
           "luci-app-mwan3helper-chinaroute",
           "luci-app-wrtbwmon",
           "wrtbwmon"
+        ]
+      },
+      "arp-scan": {
+        "repo": "https://github.com/immortalwrt/packages",
+        "branch": null,
+        "commit": "decf94639ffd6ddd26591c190b547c6b7eea150b",
+        "dirs": [
+          "arp-scan"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -151,36 +167,20 @@
           "luci-app-zerotier"
         ]
       },
-      "cdnspeedtest": {
-        "repo": "https://github.com/immortalwrt/packages",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "decf94639ffd6ddd26591c190b547c6b7eea150b",
+        "commit": "7aeb0aa4e10246115f6a568b5c69bca122c75794",
         "dirs": [
-          "cdnspeedtest"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "972573ad6e3c61ea7bb0c5472af12900a3a9d632",
-        "dirs": [
-          "luci-app-passwall"
+          "luci-app-passwall2"
         ]
       },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "ee6c58052aabdf6ed6c5c66cfe962fcae5b07b20",
+        "commit": "5ddd2c318659c085100ced945b7e96efcdd892ed",
         "dirs": [
           "tailscale"
-        ]
-      },
-      "arp-scan": {
-        "repo": "https://github.com/immortalwrt/packages",
-        "branch": null,
-        "commit": "decf94639ffd6ddd26591c190b547c6b7eea150b",
-        "dirs": [
-          "arp-scan"
         ]
       }
     }
