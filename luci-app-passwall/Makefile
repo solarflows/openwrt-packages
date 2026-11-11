@@ -7,7 +7,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=luci-app-passwall
-PKG_VERSION:=26.11.3
+PKG_VERSION:=26.11.11
 PKG_RELEASE:=1
 PKG_PO_VERSION:=$(PKG_VERSION)
 
@@ -173,7 +173,7 @@ define Package/$(PKG_NAME)/conffiles
 endef
 
 # Downstream release revision anchor (single source of truth for feed builds)
-PKG_RELEASE:=26
+PKG_RELEASE:=27
 
 include $(TOPDIR)/feeds/luci/luci.mk
 
