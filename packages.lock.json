@@ -28,12 +28,37 @@
           "mosdns"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "7aeb0aa4e10246115f6a568b5c69bca122c75794",
+        "commit": "b094b79c32ac4e4de3113a5c44971c6182eee535",
         "dirs": [
-          "luci-app-passwall2"
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "smartdns",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "65b0ccc129acdb56de1f97325c23b17cdf84264f",
+        "dirs": [
+          "luci-app-passwall"
         ]
       },
       "luci-app-cloudflarespeedtest": {
@@ -118,37 +143,12 @@
           "zapret2"
         ]
       },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "b094b79c32ac4e4de3113a5c44971c6182eee535",
+        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
         "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "smartdns",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "65b0ccc129acdb56de1f97325c23b17cdf84264f",
-        "dirs": [
-          "luci-app-passwall"
+          "luci-app-passwall2"
         ]
       }
     }
