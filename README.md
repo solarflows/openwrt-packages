@@ -39,7 +39,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-cloudflarespeedtest` | CloudflareSpeedtest Cloudflare Speedtest 插件 | [stevenjoezhang/luci-app-cloudflarespeedtest](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest) ([`3e19734`](https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest/commit/3e1973406f4ea00b8e4120160ed4acae82fd0d0d)) | `mt798x`, `qualcommax` |
 | `luci-app-ddnsto` | luci-app-ddnsto | [linkease/ddnsto-openwrt-package](https://github.com/linkease/ddnsto-openwrt-package) ([`5ba6f80`](https://github.com/linkease/ddnsto-openwrt-package/commit/5ba6f8060a540a95133767193ea570aa3b76456b)) | `mt798x`, `qualcommax` |
 | `luci-app-dnsfilter` | dnsfilter 基于dnsmasq的去广告程序 | [kiddin9/luci-app-dnsfilter](https://github.com/kiddin9/luci-app-dnsfilter) ([`3a49542`](https://github.com/kiddin9/luci-app-dnsfilter/commit/3a49542e566d8a95cb81b664a05aae29e1f534cf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
-| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`972573a`](https://github.com/solarflows/openwrt-passwall/commit/972573ad6e3c61ea7bb0c5472af12900a3a9d632)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`65b0ccc`](https://github.com/solarflows/openwrt-passwall/commit/65b0ccc129acdb56de1f97325c23b17cdf84264f)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-passwall2` | 规范化 PKG_RELEASE: 统一 release 为整数规范 | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) ([`7aeb0aa`](https://github.com/Openwrt-Passwall/openwrt-passwall2/commit/7aeb0aa4e10246115f6a568b5c69bca122c75794)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-podman` | luci-app-podman | [Zerogiven-OpenWRT-Packages/luci-app-podman](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman) ([`c59635b`](https://github.com/Zerogiven-OpenWRT-Packages/luci-app-podman/commit/c59635b0cceb9c418b5219812c55d937443a39bc)) | `qualcommax` |
 | `luci-app-smartdns` | SmartDNS | [pymumu/luci-app-smartdns](https://github.com/pymumu/luci-app-smartdns) ([`8f0c702`](https://github.com/pymumu/luci-app-smartdns/commit/8f0c70281189fbdc1cd102bc134c1f6cac3a4640)) | `mt798x`, `qualcommax` |
@@ -47,7 +47,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-theme-argon` | luci-theme-argon | [jerrykuku/luci-theme-argon](https://github.com/jerrykuku/luci-theme-argon) ([`c6d63bd`](https://github.com/jerrykuku/luci-theme-argon/commit/c6d63bd68aa9272e40c35cee5e615f45cc1e4eb0)) | `qualcommax` |
 | `luci-theme-aurora` | luci-theme-aurora | [eamonxg/luci-theme-aurora](https://github.com/eamonxg/luci-theme-aurora) ([`298dbcc`](https://github.com/eamonxg/luci-theme-aurora/commit/298dbcc74ddf820923a51285fb0826d429e5d7ca)) | `qualcommax` |
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`b07f65c`](https://github.com/gdy666/luci-app-lucky/commit/b07f65c28bb5fa3da1fea4b8af5ce24a1488e79a)) | `main`, `mt798x`, `qualcommax` |
-| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`4dad9be`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/4dad9be70a37343ad3ef88cd3722576e8e234edf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`b094b79`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/b094b79c32ac4e4de3113a5c44971c6182eee535)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `zapret2` | zapret2 DPI 绕过核心与 LuCI 控制面板 | [damocjwj/openwrt-zapret2](https://github.com/damocjwj/openwrt-zapret2) ([`87868df`](https://github.com/damocjwj/openwrt-zapret2/commit/87868dfaf81608fd87a37ef94ad64068188ab6dc)) | `qualcommax` |
 
 > 📌 仅列出各分支中实际采集的插件，已注释/归档的不在此列。
@@ -56,7 +56,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-11 19:10
+**最近更新**: 2026-11-12 05:29
 
 ## 🙏 致谢
 
