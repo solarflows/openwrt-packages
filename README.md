@@ -64,7 +64,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-app-netdata` | netdata | [sirpdboy/luci-app-netdata](https://github.com/sirpdboy/luci-app-netdata) ([`f6bce58`](https://github.com/sirpdboy/luci-app-netdata/commit/f6bce58ba4870d4317e43b1ce39d438fca8d9b6e)) | `main`, `qt6` |
 | `luci-app-nodogsplash` | nodogsplash 无WIFIDOG实现WIFI认证 | [tty228/luci-app-nodogsplash](https://github.com/tty228/luci-app-nodogsplash) ([`d45e61b`](https://github.com/tty228/luci-app-nodogsplash/commit/d45e61be490962325d2da11ce34346d1adc857c4)) | `main`, `qt6` |
 | `luci-app-openclash` | openclash OpenWRT的Clash | [vernesong/OpenClash](https://github.com/vernesong/OpenClash) ([`e553e82`](https://github.com/vernesong/OpenClash/commit/e553e82e01c697aefbe1555261a503f425e00ccd)) | `main`, `qt6` |
-| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`972573a`](https://github.com/solarflows/openwrt-passwall/commit/972573ad6e3c61ea7bb0c5472af12900a3a9d632)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `luci-app-passwall` | luci-app-passwall | [solarflows/openwrt-passwall](https://github.com/solarflows/openwrt-passwall) ([`65b0ccc`](https://github.com/solarflows/openwrt-passwall/commit/65b0ccc129acdb56de1f97325c23b17cdf84264f)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-passwall2` | 规范化 PKG_RELEASE: 统一 release 为整数规范 | [Openwrt-Passwall/openwrt-passwall2](https://github.com/Openwrt-Passwall/openwrt-passwall2) ([`7aeb0aa`](https://github.com/Openwrt-Passwall/openwrt-passwall2/commit/7aeb0aa4e10246115f6a568b5c69bca122c75794)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `luci-app-poweroff` | poweroff 关机插件 | [esirplayground/luci-app-poweroff](https://github.com/esirplayground/luci-app-poweroff) ([`af21d41`](https://github.com/esirplayground/luci-app-poweroff/commit/af21d4145f169bcbcf6fbfb30aeed5c927bf0fd3)) | `main`, `qt6` |
 | `luci-app-rtorrent` | rtorrent OpenWRT的rTorrent客户端 | [wolandmaster/luci-app-rtorrent](https://github.com/wolandmaster/luci-app-rtorrent) ([`dce154a`](https://github.com/wolandmaster/luci-app-rtorrent/commit/dce154aa557cb24d24be329d19cd15707e626d30)) | `main`, `qt6` |
@@ -95,7 +95,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `OpenAppFilter` | OpenAppFilter 内核级应用过滤 | [destan19/OpenAppFilter](https://github.com/destan19/OpenAppFilter) ([`0814b87`](https://github.com/destan19/OpenAppFilter/commit/0814b87f57181ef238b9a21604c999e98de73cf2)) | `main`, `qt6` |
 | `openwrt-iptvhelper` | iptvhelper 融合IPTV到家庭局域网 | [riverscn/openwrt-iptvhelper](https://github.com/riverscn/openwrt-iptvhelper) ([`338b898`](https://github.com/riverscn/openwrt-iptvhelper/commit/338b898f3b76159f05794b0120d38e697a7808b0)) | `main`, `qt6` |
 | `openwrt-nezha` | nezha 开源、轻量的服务器和网站监控、运维工具 | [Erope/openwrt_nezha](https://github.com/Erope/openwrt_nezha) ([`f9ff58d`](https://github.com/Erope/openwrt_nezha/commit/f9ff58d097558ef0a9c9ac2c39f1e0e247179db2)) | `main`, `qt6` |
-| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`4dad9be`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/4dad9be70a37343ad3ef88cd3722576e8e234edf)) | `main`, `mt798x`, `qualcommax`, `qt6` |
+| `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`b094b79`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/b094b79c32ac4e4de3113a5c44971c6182eee535)) | `main`, `mt798x`, `qualcommax`, `qt6` |
 | `openwrt-subconverter` | subconverter 订阅转换 | [WYC-2020/openwrt-subconverter](https://github.com/WYC-2020/openwrt-subconverter) ([`c725d71`](https://github.com/WYC-2020/openwrt-subconverter/commit/c725d7142ddb0d5100f1e06a4eb0e3cab622b52c)) | `main`, `qt6` |
 | `pikpak-webdav` | pikpak-webdav 海外迅雷网盘 | [ykxVK8yL5L/pikpak-webdav](https://github.com/ykxVK8yL5L/pikpak-webdav) ([`c6d2219`](https://github.com/ykxVK8yL5L/pikpak-webdav/commit/c6d221969570474ce1baeee4ddf876283e7547dd)) | `main`, `qt6` |
 | `shadow-tls` | ssr-plus 科学上网 | [fw876/helloworld](https://github.com/fw876/helloworld) ([`e8efa31`](https://github.com/fw876/helloworld/commit/e8efa31ae45ddf217863dced9068730bf24dd37a)) | `main`, `qt6` |
@@ -110,7 +110,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-11 19:10
+**最近更新**: 2026-11-12 05:29
 
 ## 🙏 致谢
 

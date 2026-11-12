@@ -285,6 +285,14 @@
           "luci-app-iptvhelper"
         ]
       },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "5ddd2c318659c085100ced945b7e96efcdd892ed",
+        "dirs": [
+          "irqbalance"
+        ]
+      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -465,35 +473,12 @@
           "luci-app-openclash"
         ]
       },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
-        "commit": "4dad9be70a37343ad3ef88cd3722576e8e234edf",
+        "commit": "7aeb0aa4e10246115f6a568b5c69bca122c75794",
         "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "972573ad6e3c61ea7bb0c5472af12900a3a9d632",
-        "dirs": [
-          "luci-app-passwall"
+          "luci-app-passwall2"
         ]
       },
       "pikpak-webdav": {
@@ -667,20 +652,35 @@
           "xmurp-ua"
         ]
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "5ddd2c318659c085100ced945b7e96efcdd892ed",
+        "commit": "b094b79c32ac4e4de3113a5c44971c6182eee535",
         "dirs": [
-          "irqbalance"
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "7aeb0aa4e10246115f6a568b5c69bca122c75794",
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "65b0ccc129acdb56de1f97325c23b17cdf84264f",
         "dirs": [
-          "luci-app-passwall2"
+          "luci-app-passwall"
         ]
       }
     }
