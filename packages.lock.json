@@ -126,6 +126,15 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "86a548c935c3f6e0d56ff237b32cd4d61175f336",
+        "dirs": [
+          "ddnsto",
+          "luci-app-ddnsto"
+        ]
+      },
       "smartdns": {
         "repo": "https://github.com/pymumu/openwrt-smartdns",
         "branch": null,
@@ -166,19 +175,10 @@
           "luci-app-zerotier"
         ]
       },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
-        "branch": null,
-        "commit": "86a548c935c3f6e0d56ff237b32cd4d61175f336",
-        "dirs": [
-          "ddnsto",
-          "luci-app-ddnsto"
-        ]
-      },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "789ce9f68183cb4683e4f412ff9d6df1f7c0d817",
+        "commit": "3e08bc51b8b0b55cae4dbec78839b6dd5972247b",
         "dirs": [
           "zerotier"
         ]
