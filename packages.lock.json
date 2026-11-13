@@ -217,6 +217,14 @@
           "luci-app-ikoolproxy"
         ]
       },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "372907b987e5970a30c0ba012e1844d205b50686",
+        "dirs": [
+          "luci-app-iperf"
+        ]
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -226,6 +234,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "66689386bc1f645c5926dcc48dff300fcf1b77aa",
+        "dirs": [
+          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -253,29 +269,6 @@
         "commit": "a595baefa686fdd2f5b5f64820fb1b5a38749165",
         "dirs": [
           "app-store-ui"
-        ]
-      },
-      "nas-packages": {
-        "repo": "https://github.com/linkease/nas-packages",
-        "branch": null,
-        "commit": "757438fa3214b874d0ac80d8c60e5ad3ac316403",
-        "dirs": [
-          "baidudrive",
-          "ddnsto",
-          "dockermanager",
-          "fastnet",
-          "ffmpeg-remux",
-          "floatip",
-          "istoreenhance",
-          "ks-cli",
-          "linkease",
-          "linkease-app-entry",
-          "linkease-common-bin",
-          "linkease-runtime-transition",
-          "linkeasefull",
-          "quickstart",
-          "unishare",
-          "webdav2"
         ]
       },
       "geo2txt": {
@@ -404,6 +397,14 @@
           "luci-app-passwall"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -467,17 +468,6 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
-        ]
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "e8efa31ae45ddf217863dced9068730bf24dd37a",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -615,26 +605,10 @@
           "luci-app-pushbot"
         ]
       },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "372907b987e5970a30c0ba012e1844d205b50686",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "66689386bc1f645c5926dcc48dff300fcf1b77aa",
-        "dirs": [
-          "irqbalance"
-        ]
-      },
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "01a5c8c8aa3d90892d2bccd56bb2cac9efdfe7ff",
+        "commit": "a5b59a923c314619a8b87676121dd3dba1e7b69c",
         "dirs": [
           "luci-app-baidudrive",
           "luci-app-ddnsto",
@@ -657,12 +631,39 @@
           "luci-theme-istorenas"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "nas-packages": {
+        "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
+        "commit": "7fd4f8d5a968971d23fdcc358a21b2cba59382ef",
         "dirs": [
-          "luci-app-passwall2"
+          "baidudrive",
+          "ddnsto",
+          "dockermanager",
+          "fastnet",
+          "ffmpeg-remux",
+          "floatip",
+          "istoreenhance",
+          "ks-cli",
+          "linkease",
+          "linkease-app-entry",
+          "linkease-common-bin",
+          "linkease-runtime-transition",
+          "linkeasefull",
+          "quickstart",
+          "quickstart-netpolicy",
+          "unishare",
+          "webdav2"
+        ]
+      },
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "6fbc9f563c9e7cd3b65061fba13ffc62666066aa",
+        "dirs": [
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       }
     }
