@@ -11,7 +11,7 @@ PKG_ARCH_DDNSTO:=$(ARCH)
 
 PKG_NAME:=ddnsto
 # use PKG_SOURCE_DATE instead of PKG_VERSION for compatible
-PKG_SOURCE_DATE:=4.2.8
+PKG_SOURCE_DATE:=4.2.9
 PKG_RELEASE:=1
 
 # 构建类型：standard 或 lite（保留包命名，lite 下载 Micro 二进制）
@@ -38,12 +38,12 @@ PKG_SOURCE_VERSION:=$(ARCH_HEXCODE)
 ifeq ($(DDNSTO_TYPE),lite)
   PKG_SOURCE:=$(PKG_NAME)-micro-$(PKG_SOURCE_DATE).tar.gz
   PKG_SOURCE_URL:=https://fw0.koolcenter.com/binary/ddnsto/linux-binary/
-  PKG_HASH:=1f02efa595df4740312eb633da1453b8ab8abc0e6b3bf33285a878430c0e7f3b
+  PKG_HASH:=9053b90fad120ba18120c6f49eac1f607d2d0bc7e8fbebfd0e932d8f0ed32261
   PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-micro-$(PKG_SOURCE_DATE)
 else
   PKG_SOURCE:=$(PKG_NAME)-standard-$(PKG_SOURCE_DATE).tar.gz
   PKG_SOURCE_URL:=https://fw0.koolcenter.com/binary/ddnsto/linux-binary/
-  PKG_HASH:=3bf7ada14448b5aa04afa171e497f85d0b8bb4adcf2209991e52ef5826d4e975
+  PKG_HASH:=fccde60849f3eb78d51dce2716ae3d886088a057bee5abef9176fd59fc159a95
   PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-standard-$(PKG_SOURCE_DATE)
 endif
 

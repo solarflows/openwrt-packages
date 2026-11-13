@@ -76,12 +76,28 @@
           "luci-app-passwall"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09",
         "dirs": [
           "luci-app-wechatpush"
+        ]
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "66689386bc1f645c5926dcc48dff300fcf1b77aa",
+        "dirs": [
+          "tailscale"
         ]
       },
       "wrtbwmon": {
@@ -110,13 +126,12 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+      "smartdns": {
+        "repo": "https://github.com/pymumu/openwrt-smartdns",
         "branch": null,
-        "commit": "5ba6f8060a540a95133767193ea570aa3b76456b",
+        "commit": "d5e498f8d5e9a5702a0f9b4fd237bb4efca444c9",
         "dirs": [
-          "ddnsto",
-          "luci-app-ddnsto"
+          "smartdns"
         ]
       },
       "luci-app-smartdns": {
@@ -143,14 +158,6 @@
           "luci-app-argon-config"
         ]
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "a25f30bbfcdd3cc130dc7dc5c35b9ed54e0155e8",
-        "dirs": [
-          "zerotier"
-        ]
-      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
@@ -159,28 +166,21 @@
           "luci-app-zerotier"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
         "branch": null,
-        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
+        "commit": "86a548c935c3f6e0d56ff237b32cd4d61175f336",
         "dirs": [
-          "luci-app-passwall2"
+          "ddnsto",
+          "luci-app-ddnsto"
         ]
       },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "66689386bc1f645c5926dcc48dff300fcf1b77aa",
+        "commit": "789ce9f68183cb4683e4f412ff9d6df1f7c0d817",
         "dirs": [
-          "tailscale"
-        ]
-      },
-      "smartdns": {
-        "repo": "https://github.com/pymumu/openwrt-smartdns",
-        "branch": null,
-        "commit": "d5e498f8d5e9a5702a0f9b4fd237bb4efca444c9",
-        "dirs": [
-          "smartdns"
+          "zerotier"
         ]
       }
     }
