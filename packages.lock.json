@@ -61,21 +61,20 @@
           "luci-app-passwall"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
         "commit": "3e1973406f4ea00b8e4120160ed4acae82fd0d0d",
         "dirs": [
           "luci-app-cloudflarespeedtest"
-        ]
-      },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
-        "branch": null,
-        "commit": "5ba6f8060a540a95133767193ea570aa3b76456b",
-        "dirs": [
-          "ddnsto",
-          "luci-app-ddnsto"
         ]
       },
       "luci-app-smartdns": {
@@ -143,12 +142,13 @@
           "zapret2"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
         "branch": null,
-        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
+        "commit": "86a548c935c3f6e0d56ff237b32cd4d61175f336",
         "dirs": [
-          "luci-app-passwall2"
+          "ddnsto",
+          "luci-app-ddnsto"
         ]
       }
     }
