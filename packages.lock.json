@@ -77,6 +77,15 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-ddnsto": {
+        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+        "branch": null,
+        "commit": "86a548c935c3f6e0d56ff237b32cd4d61175f336",
+        "dirs": [
+          "ddnsto",
+          "luci-app-ddnsto"
+        ]
+      },
       "luci-app-smartdns": {
         "repo": "https://github.com/pymumu/luci-app-smartdns",
         "branch": "master",
@@ -109,14 +118,6 @@
           "luci-app-podman"
         ]
       },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "c6d63bd68aa9272e40c35cee5e615f45cc1e4eb0",
-        "dirs": [
-          "luci-theme-argon"
-        ]
-      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -142,13 +143,12 @@
           "zapret2"
         ]
       },
-      "luci-app-ddnsto": {
-        "repo": "https://github.com/linkease/ddnsto-openwrt-package",
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
         "branch": null,
-        "commit": "86a548c935c3f6e0d56ff237b32cd4d61175f336",
+        "commit": "a121960d2adbe9d57333db3f4e045467dcb375c9",
         "dirs": [
-          "ddnsto",
-          "luci-app-ddnsto"
+          "luci-theme-argon"
         ]
       }
     }
