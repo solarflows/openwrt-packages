@@ -285,14 +285,6 @@
           "luci-app-iptvhelper"
         ]
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "6a7c887861d10a16f6ccbcdeb7f4e33775dd06a0",
-        "dirs": [
-          "irqbalance"
-        ]
-      },
       "libtorrent-rasterbar": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
@@ -684,6 +676,14 @@
         "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d",
         "dirs": [
           "xmurp-ua"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "00772801e56244a3fcf12aa4818898e140a6f47c",
+        "dirs": [
+          "irqbalance"
         ]
       }
     }
