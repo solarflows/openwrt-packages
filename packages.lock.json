@@ -266,6 +266,14 @@
           "luci-app-ikoolproxy"
         ]
       },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "773fed80e3b39f2ef6b810baa266d07a790d2520",
+        "dirs": [
+          "luci-app-iperf"
+        ]
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -275,14 +283,6 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "66689386bc1f645c5926dcc48dff300fcf1b77aa",
-        "dirs": [
-          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -676,12 +676,12 @@
           "xmurp-ua"
         ]
       },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "773fed80e3b39f2ef6b810baa266d07a790d2520",
+        "commit": "b986e7a60d3ca47158a831c2e2d60dcc9851da2e",
         "dirs": [
-          "luci-app-iperf"
+          "irqbalance"
         ]
       }
     }
