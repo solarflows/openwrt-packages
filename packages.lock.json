@@ -313,16 +313,6 @@
           "webdav2"
         ]
       },
-      "geo2txt": {
-        "repo": "https://github.com/sbwml/luci-app-mosdns",
-        "branch": "v5",
-        "commit": "dbdd91ab8ac8b079b6a3ca1a48d99e970d17111b",
-        "dirs": [
-          "geo2txt",
-          "luci-app-mosdns",
-          "mosdns"
-        ]
-      },
       "luci-app-mmconfig": {
         "repo": "https://github.com/erdoukki/luci-app-mmconfig",
         "branch": null,
@@ -439,14 +429,6 @@
         "commit": "06131b3de11d3848bb00ee164bea15a39d8f8ee3",
         "dirs": [
           "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "dd77a236c7ee46b2b3899e1951668fdc88c13c57",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       },
       "pikpak-webdav": {
@@ -663,9 +645,27 @@
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "00772801e56244a3fcf12aa4818898e140a6f47c",
+        "commit": "60aae222edbbcf3fcd1e9b570cabba28d5e06520",
         "dirs": [
           "irqbalance"
+        ]
+      },
+      "geo2txt": {
+        "repo": "https://github.com/sbwml/luci-app-mosdns",
+        "branch": "v5",
+        "commit": "a8a6caffe04167dbb17407a63463eb4ce7243873",
+        "dirs": [
+          "geo2txt",
+          "luci-app-mosdns",
+          "mosdns"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "35d20ce6e9cc40138841c031954899fdefa765d7",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       }
     }
