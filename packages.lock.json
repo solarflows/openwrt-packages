@@ -123,6 +123,15 @@
           "luci-app-advanced"
         ]
       },
+      "airconnect": {
+        "repo": "https://github.com/sbwml/luci-app-airconnect",
+        "branch": null,
+        "commit": "42871c42e59bf86cf1148ab625bf8cc0e6bfeb37",
+        "dirs": [
+          "airconnect",
+          "luci-app-airconnect"
+        ]
+      },
       "luci-app-amlogic": {
         "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
@@ -177,6 +186,14 @@
         "commit": "4229177d5349dda8703271e08816b6b46130630a",
         "dirs": [
           "luci-app-cloudflarespeedtest"
+        ]
+      },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "4eff10adeb89c724a482144c6c38d56dffc26db6",
+        "dirs": [
+          "luci-app-control-guest-wifi"
         ]
       },
       "luci-app-dnsfilter": {
@@ -247,6 +264,14 @@
         "dirs": [
           "koolproxy",
           "luci-app-ikoolproxy"
+        ]
+      },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "4821a1e2106f8f184d7a708ea84bb6c83082521b",
+        "dirs": [
+          "luci-app-iperf"
         ]
       },
       "openwrt-iptvhelper": {
@@ -449,12 +474,43 @@
           "luci-app-openclash"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "efc4093be1477b66b95a33ca00e7a9d819ebc8fb",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
       "luci-app-passwall": {
         "repo": "https://github.com/solarflows/openwrt-passwall",
         "branch": "custom",
         "commit": "06131b3de11d3848bb00ee164bea15a39d8f8ee3",
         "dirs": [
           "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "9ea760ffdee3fd8735df6a5bee842b3dd654be86",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       },
       "pikpak-webdav": {
@@ -626,62 +682,6 @@
         "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d",
         "dirs": [
           "xmurp-ua"
-        ]
-      },
-      "airconnect": {
-        "repo": "https://github.com/sbwml/luci-app-airconnect",
-        "branch": null,
-        "commit": "42871c42e59bf86cf1148ab625bf8cc0e6bfeb37",
-        "dirs": [
-          "airconnect",
-          "luci-app-airconnect"
-        ]
-      },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "4eff10adeb89c724a482144c6c38d56dffc26db6",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "4821a1e2106f8f184d7a708ea84bb6c83082521b",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "efc4093be1477b66b95a33ca00e7a9d819ebc8fb",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "9ea760ffdee3fd8735df6a5bee842b3dd654be86",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       }
     }
