@@ -139,14 +139,6 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "69ed01cf60834e723e537092105152cfacb2df90",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -431,22 +423,6 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "06131b3de11d3848bb00ee164bea15a39d8f8ee3",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "0c817f7dbfc10038510c4e6e9d13e54bd94f769d",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "pikpak-webdav": {
         "repo": "https://github.com/ykxVK8yL5L/pikpak-webdav",
         "branch": null,
@@ -647,18 +623,42 @@
           "luci-app-pushbot"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "aed9f7886520b0a79bfa122fd6e0304b2fc4898d",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "138771c5d189ad614c1cf770595a16b6a96e5e0b",
+        "commit": "3cc304a78e076ca6e09805f707096f0ddc6c9112",
         "dirs": [
           "irqbalance"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "28794ecf890b27891b7410f6ca624a2cc4a5fdb6",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "fbe2b6beac461bfaed6fd236ba2dde1230b94918",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       },
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "c9525e69126d38eb9f117f2448a58678aa4eec7c",
+        "commit": "e825742c1e9267906d5208f080fb3b65d8b300e7",
         "dirs": [
           "lua-neturl",
           "luci-app-ssr-plus",
