@@ -68,22 +68,6 @@
           "xray-plugin"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "06131b3de11d3848bb00ee164bea15a39d8f8ee3",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "0c817f7dbfc10038510c4e6e9d13e54bd94f769d",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
@@ -167,10 +151,26 @@
           "luci-app-zerotier"
         ]
       },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "28794ecf890b27891b7410f6ca624a2cc4a5fdb6",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "fbe2b6beac461bfaed6fd236ba2dde1230b94918",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "138771c5d189ad614c1cf770595a16b6a96e5e0b",
+        "commit": "3cc304a78e076ca6e09805f707096f0ddc6c9112",
         "dirs": [
           "tailscale"
         ]
@@ -178,7 +178,7 @@
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
-        "commit": "11fa941938dd44d11358557268e6682ceee43520",
+        "commit": "ace4b4f71f7bdfc890c09d3169daedc2bebd1fa4",
         "dirs": [
           "zerotier"
         ]
