@@ -40,6 +40,13 @@ GO_PKG_LDFLAGS_X:=$(GO_PKG)/constant.Version=$(PKG_VERSION)
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
+ifneq ($(filter $(GO_ARCH),amd64 arm64),)
+  GO_PKG_TARGET_VARS:=$(subst CGO_ENABLED=1,CGO_ENABLED=0,$(GO_PKG_TARGET_VARS))
+  GO_PKG_DEFAULT_LDFLAGS:=-linkmode internal
+  GO_PKG_LDFLAGS:=-s -w -buildid=
+  GO_PKG_BUILD_VARS+= GOGC=300
+endif
+
 define Package/sing-box
   SECTION:=net
   CATEGORY:=Network
