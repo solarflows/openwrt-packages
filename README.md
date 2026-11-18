@@ -52,7 +52,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`d5e498f`](https://github.com/pymumu/openwrt-smartdns/commit/d5e498f8d5e9a5702a0f9b4fd237bb4efca444c9)) | `mt798x` |
 | `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`3cc304a`](https://github.com/openwrt/packages//commit/3cc304a78e076ca6e09805f707096f0ddc6c9112)) | `mt798x` |
 | `wrtbwmon` | wrtbwmon | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) ([`ec9ef10`](https://github.com/padavanonly/immortalwrt-mt798x-24.10/commit/ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8)) | `mt798x` |
-| `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`ace4b4f`](https://github.com/coolsnowwolf/packages/commit/ace4b4f71f7bdfc890c09d3169daedc2bebd1fa4)) | `mt798x` |
+| `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`bee0f86`](https://github.com/coolsnowwolf/packages/commit/bee0f8665162af7cd2b64c2f849b843bf9595ea1)) | `mt798x` |
 
 > 📌 仅列出各分支中实际采集的插件，已注释/归档的不在此列。
 
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-17 23:44
+**最近更新**: 2026-11-18 05:40
 
 ## 🙏 致谢
 
