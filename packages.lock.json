@@ -139,6 +139,14 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "fb03cae930319b9fd24dacc2ab77590070e7b4b9",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -209,6 +217,14 @@
           "luci-app-ikoolproxy"
         ]
       },
+      "luci-app-iperf": {
+        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
+        "branch": null,
+        "commit": "eaf850663ac47867f1028b7efeab70dc665690d0",
+        "dirs": [
+          "luci-app-iperf"
+        ]
+      },
       "openwrt-iptvhelper": {
         "repo": "https://github.com/riverscn/openwrt-iptvhelper",
         "branch": null,
@@ -218,6 +234,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "f9605a4961c577e7eac1bf019ddabae2b6e558f7",
+        "dirs": [
+          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -365,6 +389,22 @@
           "v2ray-plugin",
           "xray-core",
           "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "80301c8ad5f6cea6d611c59d79928c455fe7c845",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "a32c046760c5fcbb018607824341ed42f4d50ba6",
+        "dirs": [
+          "luci-app-passwall2"
         ]
       },
       "pikpak-webdav": {
@@ -578,34 +618,10 @@
           "luci-app-pushbot"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "fb03cae930319b9fd24dacc2ab77590070e7b4b9",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
-      "luci-app-iperf": {
-        "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
-        "branch": null,
-        "commit": "eaf850663ac47867f1028b7efeab70dc665690d0",
-        "dirs": [
-          "luci-app-iperf"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "f9605a4961c577e7eac1bf019ddabae2b6e558f7",
-        "dirs": [
-          "irqbalance"
-        ]
-      },
       "nas-packages-luci": {
         "repo": "https://github.com/linkease/nas-packages-luci",
         "branch": null,
-        "commit": "0dc5220f6bfbe1af260238bd4e2a40764ad180ec",
+        "commit": "bdfd3fa600306954f32eba32ede829dd90676914",
         "dirs": [
           "luci-app-baidudrive",
           "luci-app-ddnsto",
@@ -631,7 +647,7 @@
       "nas-packages": {
         "repo": "https://github.com/linkease/nas-packages",
         "branch": null,
-        "commit": "c769d98fa57a217299b929ea35c6a3c4ce6a5238",
+        "commit": "797f6781a6b399d484e8791d769377f5c6a1daa8",
         "dirs": [
           "baidudrive",
           "ddnsto",
@@ -650,22 +666,6 @@
           "quickstart-netpolicy",
           "unishare",
           "webdav2"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "80301c8ad5f6cea6d611c59d79928c455fe7c845",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "a32c046760c5fcbb018607824341ed42f4d50ba6",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       }
     }
