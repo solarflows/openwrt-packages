@@ -132,14 +132,6 @@
           "luci-app-airconnect"
         ]
       },
-      "luci-app-amlogic": {
-        "repo": "https://github.com/ophub/luci-app-amlogic",
-        "branch": null,
-        "commit": "b84ff404cd425993e004701b9f0c057d7d7e1464",
-        "dirs": [
-          "luci-app-amlogic"
-        ]
-      },
       "luci-app-autoipsetadder": {
         "repo": "https://github.com/rufengsuixing/luci-app-autoipsetadder",
         "branch": null,
@@ -186,14 +178,6 @@
         "commit": "4229177d5349dda8703271e08816b6b46130630a",
         "dirs": [
           "luci-app-cloudflarespeedtest"
-        ]
-      },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "ceb43f426726915d3edd1ccf4a7ba9706137b16c",
-        "dirs": [
-          "luci-app-control-guest-wifi"
         ]
       },
       "luci-app-dnsfilter": {
@@ -283,6 +267,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "f2aa920111eb5123715af5514921af01fc33e220",
+        "dirs": [
+          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -466,6 +458,37 @@
           "luci-app-openclash"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "a880c9046f8bd5d2d4f1fb6b8f2e70968c463322",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "0bae8ffc5971bc8379d839da0512a3e7370a9112",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
       "luci-app-passwall2": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
         "branch": null,
@@ -537,17 +560,6 @@
         "commit": "3ad0ae006d3ec96f4753bd9f8dffc7a0e2cb6d34",
         "dirs": [
           "sms-tool"
-        ]
-      },
-      "shadow-tls": {
-        "repo": "https://github.com/fw876/helloworld",
-        "branch": null,
-        "commit": "e825742c1e9267906d5208f080fb3b65d8b300e7",
-        "dirs": [
-          "lua-neturl",
-          "luci-app-ssr-plus",
-          "redsocks2",
-          "shadow-tls"
         ]
       },
       "openwrt-subconverter": {
@@ -645,43 +657,31 @@
           "xmurp-ua"
         ]
       },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
+      "luci-app-amlogic": {
+        "repo": "https://github.com/ophub/luci-app-amlogic",
         "branch": null,
-        "commit": "f2aa920111eb5123715af5514921af01fc33e220",
+        "commit": "e67c5be847e202964fa0bed4de93514ddcb47315",
         "dirs": [
-          "irqbalance"
+          "luci-app-amlogic"
         ]
       },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "a880c9046f8bd5d2d4f1fb6b8f2e70968c463322",
+        "commit": "ede22b0e2da52f2dfd2525a3caffb162849efd6a",
         "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
+          "luci-app-control-guest-wifi"
         ]
       },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "0bae8ffc5971bc8379d839da0512a3e7370a9112",
+      "shadow-tls": {
+        "repo": "https://github.com/fw876/helloworld",
+        "branch": null,
+        "commit": "67449c659329e92d683075962555d602c98978b3",
         "dirs": [
-          "luci-app-passwall"
+          "lua-neturl",
+          "luci-app-ssr-plus",
+          "redsocks2",
+          "shadow-tls"
         ]
       }
     }
