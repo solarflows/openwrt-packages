@@ -49,7 +49,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 | `luci-theme-argon` | luci-theme-argon | [solarflows/luci-theme-argon](https://github.com/solarflows/luci-theme-argon) ([`7327e1b`](https://github.com/solarflows/luci-theme-argon/commit/7327e1b6f9f3ab40288a583ca561b96152d53e64)) | `main`, `mt798x`, `qt6` |
 | `lucky` | lucky 大吉多种功能结合体 | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky) ([`b07f65c`](https://github.com/gdy666/luci-app-lucky/commit/b07f65c28bb5fa3da1fea4b8af5ce24a1488e79a)) | `main`, `mt798x`, `qualcommax` |
 | `openwrt-passwall-packages` | PassWall1&2 科学上网 | [Openwrt-Passwall/openwrt-passwall-packages](https://github.com/Openwrt-Passwall/openwrt-passwall-packages) ([`a880c90`](https://github.com/Openwrt-Passwall/openwrt-passwall-packages/commit/a880c9046f8bd5d2d4f1fb6b8f2e70968c463322)) | `main`, `mt798x`, `qualcommax`, `qt6` |
-| `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`d5e498f`](https://github.com/pymumu/openwrt-smartdns/commit/d5e498f8d5e9a5702a0f9b4fd237bb4efca444c9)) | `mt798x` |
+| `smartdns` | SmartDNS | [pymumu/openwrt-smartdns](https://github.com/pymumu/openwrt-smartdns) ([`8c5b92c`](https://github.com/pymumu/openwrt-smartdns/commit/8c5b92cc45ed55e12a4e941a661ea256c6c0a224)) | `mt798x` |
 | `tailscale` | tailscale | [openwrt/packages/](https://github.com/openwrt/packages/) ([`f2aa920`](https://github.com/openwrt/packages//commit/f2aa920111eb5123715af5514921af01fc33e220)) | `mt798x` |
 | `wrtbwmon` | wrtbwmon | [padavanonly/immortalwrt-mt798x-24.10](https://github.com/padavanonly/immortalwrt-mt798x-24.10) ([`ec9ef10`](https://github.com/padavanonly/immortalwrt-mt798x-24.10/commit/ec9ef10efc65da1e6d1de4e2c043c0e13d08eed8)) | `mt798x` |
 | `zerotier` | ZeroTier | [coolsnowwolf/packages](https://github.com/coolsnowwolf/packages) ([`2813256`](https://github.com/coolsnowwolf/packages/commit/2813256827a60adc60aac76b54a21e719f38eea7)) | `mt798x` |
@@ -60,7 +60,7 @@ git clone -b <branch> https://github.com/solarflows/openwrt-packages.git package
 
 插件每 **12 小时** 自动更新一次（北京时间 0:00 和 12:00）。
 
-**最近更新**: 2026-11-20 05:27
+**最近更新**: 2026-11-20 19:32
 
 ## 🙏 致谢
 
