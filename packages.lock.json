@@ -191,7 +191,7 @@
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "ede22b0e2da52f2dfd2525a3caffb162849efd6a",
+        "commit": "e69cbf6cafb887f8f00effd742121365e9e1c500",
         "dirs": [
           "luci-app-control-guest-wifi"
         ]
@@ -269,7 +269,7 @@
       "luci-app-iperf": {
         "repo": "https://github.com/Ysurac/openmptcprouter-feeds",
         "branch": null,
-        "commit": "eaf850663ac47867f1028b7efeab70dc665690d0",
+        "commit": "861f42a1a2ad9933f9482dde008cd9f5fcee6bbd",
         "dirs": [
           "luci-app-iperf"
         ]
@@ -283,6 +283,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "f860bffeee696081d05807405d290944bf9b1c34",
+        "dirs": [
+          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -478,10 +486,12 @@
           "ipt2socks",
           "microsocks",
           "naiveproxy",
+          "shadow-tls",
           "shadowsocks-rust",
           "shadowsocksr-libev",
           "simple-obfs",
           "sing-box",
+          "smartdns",
           "tcping",
           "v2ray-geodata",
           "v2ray-plugin",
@@ -573,7 +583,7 @@
       "shadow-tls": {
         "repo": "https://github.com/fw876/helloworld",
         "branch": null,
-        "commit": "67449c659329e92d683075962555d602c98978b3",
+        "commit": "8134e2fff2b49b5f4308d295d2b2a987ca7207ec",
         "dirs": [
           "lua-neturl",
           "luci-app-ssr-plus",
@@ -674,14 +684,6 @@
         "commit": "f3383f5f85301725c0bbc186ef96804f8411a34d",
         "dirs": [
           "xmurp-ua"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "42e2ff5a73c4d8ea0c9653c600c990f6b08a0f8a",
-        "dirs": [
-          "irqbalance"
         ]
       }
     }
