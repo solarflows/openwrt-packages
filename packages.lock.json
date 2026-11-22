@@ -188,6 +188,14 @@
           "luci-app-cloudflarespeedtest"
         ]
       },
+      "luci-app-control-guest-wifi": {
+        "repo": "https://github.com/zxlhhyccc/bf-package-master",
+        "branch": null,
+        "commit": "cd093f45fd03671b883b119e7662faa6a8436710",
+        "dirs": [
+          "luci-app-control-guest-wifi"
+        ]
+      },
       "luci-app-dnsfilter": {
         "repo": "https://github.com/kiddin9/luci-app-dnsfilter",
         "branch": null,
@@ -670,18 +678,10 @@
           "xmurp-ua"
         ]
       },
-      "luci-app-control-guest-wifi": {
-        "repo": "https://github.com/zxlhhyccc/bf-package-master",
-        "branch": null,
-        "commit": "cd093f45fd03671b883b119e7662faa6a8436710",
-        "dirs": [
-          "luci-app-control-guest-wifi"
-        ]
-      },
       "irqbalance": {
         "repo": "https://github.com/openwrt/packages",
         "branch": null,
-        "commit": "4703b1c6996fbc5dd5a61e66d4931c7710113b40",
+        "commit": "4682f63d2c2d87e7d6baa0766f092701e4789f8f",
         "dirs": [
           "irqbalance"
         ]
