@@ -125,14 +125,6 @@
           "luci-app-podman"
         ]
       },
-      "luci-theme-argon": {
-        "repo": "https://github.com/jerrykuku/luci-theme-argon",
-        "branch": null,
-        "commit": "076355f33cd762172a67fa06ec6bd2230d9d9e09",
-        "dirs": [
-          "luci-theme-argon"
-        ]
-      },
       "luci-theme-aurora": {
         "repo": "https://github.com/eamonxg/luci-theme-aurora",
         "branch": null,
@@ -156,6 +148,14 @@
         "dirs": [
           "luci-app-zapret2",
           "zapret2"
+        ]
+      },
+      "luci-theme-argon": {
+        "repo": "https://github.com/jerrykuku/luci-theme-argon",
+        "branch": null,
+        "commit": "5d6a6e8b86ea9aee0f3cbb9637f9140414153a45",
+        "dirs": [
+          "luci-theme-argon"
         ]
       }
     }
