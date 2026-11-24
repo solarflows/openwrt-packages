@@ -12,7 +12,7 @@
       "cdnspeedtest": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "decf94639ffd6ddd26591c190b547c6b7eea150b",
+        "commit": "7a34fbb3596b47fd6d6438263f2d3d578c8f5c7c",
         "dirs": [
           "cdnspeedtest"
         ]
@@ -44,12 +44,60 @@
           "mosdns"
         ]
       },
+      "openwrt-passwall-packages": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
+        "branch": null,
+        "commit": "a7e65d1d5d624f4b7910ba738ba7045fc2f534ce",
+        "dirs": [
+          "chinadns-ng",
+          "dns2socks",
+          "geoview",
+          "hysteria",
+          "ipt2socks",
+          "microsocks",
+          "naiveproxy",
+          "shadow-tls",
+          "shadowsocks-rust",
+          "shadowsocksr-libev",
+          "simple-obfs",
+          "sing-box",
+          "tcping",
+          "v2ray-geodata",
+          "v2ray-plugin",
+          "xray-core",
+          "xray-plugin"
+        ]
+      },
+      "luci-app-passwall": {
+        "repo": "https://github.com/solarflows/openwrt-passwall",
+        "branch": "custom",
+        "commit": "9edb65b441687bbd6640a7db3347a7bf2968aab6",
+        "dirs": [
+          "luci-app-passwall"
+        ]
+      },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "d9ba18d0443e6c66fc254beacf63367ca4a4c85d",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
         "commit": "e7d4d49b14f3755039cc236130afa7cfc65b1e09",
         "dirs": [
           "luci-app-wechatpush"
+        ]
+      },
+      "tailscale": {
+        "repo": "https://github.com/openwrt/packages/",
+        "branch": null,
+        "commit": "45ad85cbfa9106e23c07ae7a86e3507ccd113b47",
+        "dirs": [
+          "tailscale"
         ]
       },
       "wrtbwmon": {
@@ -65,7 +113,7 @@
       "arp-scan": {
         "repo": "https://github.com/immortalwrt/packages",
         "branch": null,
-        "commit": "decf94639ffd6ddd26591c190b547c6b7eea150b",
+        "commit": "7a34fbb3596b47fd6d6438263f2d3d578c8f5c7c",
         "dirs": [
           "arp-scan"
         ]
@@ -119,68 +167,20 @@
           "luci-app-argon-config"
         ]
       },
-      "luci-app-zerotier": {
-        "repo": "https://github.com/zhengmz/luci-app-zerotier",
-        "branch": null,
-        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
-        "dirs": [
-          "luci-app-zerotier"
-        ]
-      },
-      "openwrt-passwall-packages": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
-        "branch": null,
-        "commit": "a7e65d1d5d624f4b7910ba738ba7045fc2f534ce",
-        "dirs": [
-          "chinadns-ng",
-          "dns2socks",
-          "geoview",
-          "hysteria",
-          "ipt2socks",
-          "microsocks",
-          "naiveproxy",
-          "shadow-tls",
-          "shadowsocks-rust",
-          "shadowsocksr-libev",
-          "simple-obfs",
-          "sing-box",
-          "tcping",
-          "v2ray-geodata",
-          "v2ray-plugin",
-          "xray-core",
-          "xray-plugin"
-        ]
-      },
-      "luci-app-passwall": {
-        "repo": "https://github.com/solarflows/openwrt-passwall",
-        "branch": "custom",
-        "commit": "9edb65b441687bbd6640a7db3347a7bf2968aab6",
-        "dirs": [
-          "luci-app-passwall"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "d9ba18d0443e6c66fc254beacf63367ca4a4c85d",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
-      "tailscale": {
-        "repo": "https://github.com/openwrt/packages/",
-        "branch": null,
-        "commit": "45ad85cbfa9106e23c07ae7a86e3507ccd113b47",
-        "dirs": [
-          "tailscale"
-        ]
-      },
       "zerotier": {
         "repo": "https://github.com/coolsnowwolf/packages",
         "branch": null,
         "commit": "027ad73e5d0e4e9cce25e43487ae0d185433a511",
         "dirs": [
           "zerotier"
+        ]
+      },
+      "luci-app-zerotier": {
+        "repo": "https://github.com/zhengmz/luci-app-zerotier",
+        "branch": null,
+        "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
+        "dirs": [
+          "luci-app-zerotier"
         ]
       }
     }
