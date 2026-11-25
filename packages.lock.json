@@ -76,6 +76,14 @@
           "luci-app-passwall"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "8900ebcb1daeffce1aabe069b6b5af96901e5ffc",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-wechatpush": {
         "repo": "https://github.com/tty228/luci-app-wechatpush",
         "branch": null,
@@ -167,18 +175,10 @@
           "luci-app-zerotier"
         ]
       },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "8900ebcb1daeffce1aabe069b6b5af96901e5ffc",
-        "dirs": [
-          "luci-app-passwall2"
-        ]
-      },
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "ea11c8e94b573ff83d74cec14b8f9bb31aa9483f",
+        "commit": "ea15f3057aac203c6eb2246614c2d0e9803999bf",
         "dirs": [
           "tailscale"
         ]
