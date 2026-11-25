@@ -60,6 +60,14 @@
           "luci-app-passwall"
         ]
       },
+      "luci-app-passwall2": {
+        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
+        "branch": null,
+        "commit": "8900ebcb1daeffce1aabe069b6b5af96901e5ffc",
+        "dirs": [
+          "luci-app-passwall2"
+        ]
+      },
       "luci-app-cloudflarespeedtest": {
         "repo": "https://github.com/stevenjoezhang/luci-app-cloudflarespeedtest",
         "branch": null,
@@ -148,14 +156,6 @@
         "dirs": [
           "luci-app-zapret2",
           "zapret2"
-        ]
-      },
-      "luci-app-passwall2": {
-        "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall2",
-        "branch": null,
-        "commit": "8900ebcb1daeffce1aabe069b6b5af96901e5ffc",
-        "dirs": [
-          "luci-app-passwall2"
         ]
       }
     }
