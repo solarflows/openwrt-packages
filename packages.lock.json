@@ -178,7 +178,7 @@
       "tailscale": {
         "repo": "https://github.com/openwrt/packages/",
         "branch": null,
-        "commit": "818a306b3f4805c442aa5dab9d0a35ff508dc15d",
+        "commit": "a3cc8482f4037f118bc135cfca191c7cb6250aa6",
         "dirs": [
           "tailscale"
         ]
