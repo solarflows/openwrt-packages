@@ -167,20 +167,20 @@
           "luci-app-argon-config"
         ]
       },
-      "zerotier": {
-        "repo": "https://github.com/coolsnowwolf/packages",
-        "branch": null,
-        "commit": "178675761e069359bba027ad88cbf96fd86978cb",
-        "dirs": [
-          "zerotier"
-        ]
-      },
       "luci-app-zerotier": {
         "repo": "https://github.com/zhengmz/luci-app-zerotier",
         "branch": null,
         "commit": "e35ead533d78f58203126693accd04f0d83c7f4b",
         "dirs": [
           "luci-app-zerotier"
+        ]
+      },
+      "zerotier": {
+        "repo": "https://github.com/coolsnowwolf/packages",
+        "branch": null,
+        "commit": "3ffc1b19c246443eac22dd87960ca433e13cad32",
+        "dirs": [
+          "zerotier"
         ]
       }
     }
