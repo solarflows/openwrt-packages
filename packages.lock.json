@@ -142,7 +142,7 @@
       "luci-app-control-guest-wifi": {
         "repo": "https://github.com/zxlhhyccc/bf-package-master",
         "branch": null,
-        "commit": "f851d41d3cbe014bca841aedd2debf407254f3e0",
+        "commit": "2e333865a59b7f9bdbd9f52aead880fe5d2eb461",
         "dirs": [
           "luci-app-control-guest-wifi"
         ]
@@ -234,6 +234,14 @@
           "README.md",
           "iptvhelper",
           "luci-app-iptvhelper"
+        ]
+      },
+      "irqbalance": {
+        "repo": "https://github.com/openwrt/packages",
+        "branch": null,
+        "commit": "3fe8d804b1f9df60e082ce6f3dd09d433384952f",
+        "dirs": [
+          "irqbalance"
         ]
       },
       "libtorrent-rasterbar": {
@@ -410,7 +418,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "f941f174da66f7229814601a2f0c67f2be52e039",
+        "commit": "1ad22706a9377880628a6fd334c6a20298d1281e",
         "dirs": [
           "chinadns-ng",
           "dns2socks",
@@ -419,10 +427,12 @@
           "ipt2socks",
           "microsocks",
           "naiveproxy",
+          "shadow-tls",
           "shadowsocks-rust",
           "shadowsocksr-libev",
           "simple-obfs",
           "sing-box",
+          "smartdns",
           "tcping",
           "v2ray-geodata",
           "v2ray-plugin",
@@ -655,14 +665,6 @@
         "commit": "3591659191b93870f777c8ea4aa296e41b5ad2ec",
         "dirs": [
           "luci-app-pushbot"
-        ]
-      },
-      "irqbalance": {
-        "repo": "https://github.com/openwrt/packages",
-        "branch": null,
-        "commit": "3fe8d804b1f9df60e082ce6f3dd09d433384952f",
-        "dirs": [
-          "irqbalance"
         ]
       }
     }
