@@ -31,7 +31,7 @@
       "openwrt-passwall-packages": {
         "repo": "https://github.com/Openwrt-Passwall/openwrt-passwall-packages",
         "branch": null,
-        "commit": "f941f174da66f7229814601a2f0c67f2be52e039",
+        "commit": "1ad22706a9377880628a6fd334c6a20298d1281e",
         "dirs": [
           "chinadns-ng",
           "dns2socks",
